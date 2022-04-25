@@ -10,26 +10,30 @@
             <strong>@T("Products.TierPrices")</strong>
         </div>
         <div class="table-wrapper">
-            <div class="prices-table">
-                <div class="prices-row thead">
-                    <div class="field-header">@T("Products.TierPrices.Quantity")</div>
+            <table class="prices-table">
+                <tr>
+                    <td class="field-header">
+                        @T("Products.TierPrices.Quantity")
+                    </td>
                     @foreach (var tierPrice in Model)
                     {
-                        <div class="item-quantity">
+                        <td class="item-quantity">
                             @(tierPrice.Quantity)+
-                        </div>
+                        </td>
                     }
-                </div>
-                <div class="prices-row tbody">
-                    <div class="field-header">@T("Products.TierPrices.Price")</div>
+                </tr>
+                <tr>
+                    <td class="field-header">
+                        @T("Products.TierPrices.Price")
+                    </td>
                     @foreach (var tierPrice in Model)
                     {
-                        <div class="item-price">
+                        <td class="item-price">
                             @tierPrice.Price
-                        </div>
+                        </td>
                     }
-                </div>
-            </div>
+                </tr>
+            </table>
         </div>
     </div>
 }

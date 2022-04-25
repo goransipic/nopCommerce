@@ -8,25 +8,20 @@
     NopHtml.AppendPageCssClassParts("html-account-page");
     NopHtml.AppendPageCssClassParts("html-downloadable-products-page");
 }
-
 @section left
 {
     @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.DownloadableProducts })
 }
-@section accountPageTitle
-{
+<div class="page account-page downloadable-products-page">
     <div class="page-title">
         <h1>@T("Account.MyAccount") - @T("Account.DownloadableProducts")</h1>
     </div>
-}
-<div class="page account-page downloadable-products-page">
     <div class="page-body">
         @if (Model.Items.Count > 0)
         {
             <div class="table-wrapper">
                 <table class="data-table">
                     <colgroup>
-                        @*<col width="1" />*@
                         <col width="1" />
                         <col width="1" />
                         <col />
@@ -34,11 +29,10 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            @*<th><span class="item-count">#</span></th>*@
-                            <th class="order" data-hide="w410, w480">
+                            <th class="order">
                                 @T("DownloadableProducts.Fields.Order")
                             </th>
-                            <th class="date" data-hide="w410, w480">
+                            <th class="date">
                                 @T("DownloadableProducts.Fields.Date")
                             </th>
                             <th class="product">
@@ -54,17 +48,13 @@
                         {
                             var item = Model.Items[i];
                             <tr @(i % 2 == 0 ? Html.Raw(" class=\"odd\"") : Html.Raw(" class=\"even\""))>
-                                @*<td><span class="item-count">@(i+1)</span></td>*@
                                 <td class="order">
-                                    <label class="td-title">@T("DownloadableProducts.Fields.Order")</label>
                                     <a href="@Url.RouteUrl("OrderDetails", new { orderId = item.OrderId })">@item.CustomOrderNumber</a>
                                 </td>
                                 <td class="date">
-                                    <label class="td-title">@T("DownloadableProducts.Fields.Date")</label>
-                                    <span>@item.CreatedOn.ToString("d")</span>
+                                    @item.CreatedOn.ToString("d")
                                 </td>
                                 <td class="product">
-                                    <label class="td-title">@T("DownloadableProducts.Fields.Product")</label>
                                     <a href="@Url.RouteUrl("Product", new { SeName = item.ProductSeName })">@item.ProductName</a>
                                     @if (!string.IsNullOrEmpty(item.ProductAttributes))
                                     {

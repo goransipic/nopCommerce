@@ -12,9 +12,9 @@
     <div class="page-title">
         <h1>@T("Account.Register")</h1>
     </div>
-    <div asp-validation-summary="ModelOnly" class="message-error"></div>
     <div class="page-body">
         <form asp-route="Register" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="message-error"></div>
             <div class="fieldset">
                 <div class="title">
                     <strong>@T("Account.YourPersonalDetails")</strong>
@@ -70,6 +70,7 @@
                                              asp-begin-year="@(DateTime.Now.AddYears(-110))"
                                              asp-end-year="@(DateTime.UtcNow)"
                                              asp-selected-date="@Model.ParseDateOfBirth()" />
+
                             @if (Model.DateOfBirthRequired)
                             {
                                 <nop-required />
@@ -141,11 +142,11 @@
                 </div>
             }
             @if (Model.StreetAddressEnabled ||
-                Model.StreetAddress2Enabled || 
-                Model.ZipPostalCodeEnabled || 
-                Model.CityEnabled || 
-                Model.CountyEnabled || 
-                Model.CountryEnabled)
+             Model.StreetAddress2Enabled ||
+             Model.ZipPostalCodeEnabled ||
+             Model.CityEnabled ||
+             Model.CountyEnabled ||
+             Model.CountryEnabled)
             {
                 <div class="fieldset">
                     <div class="title">
@@ -237,8 +238,8 @@
                                 {
                                     <nop-required />
                                 }
-                                <span asp-validation-for="StateProvinceId"></span>
                                 <span id="states-loading-progress" style="display: none;" class="please-wait">@T("Common.Wait")</span>
+                                <span asp-validation-for="StateProvinceId"></span>
                             </div>
                         }
                     </div>
@@ -288,8 +289,8 @@
                         @if (Model.NewsletterEnabled)
                         {
                             <div class="inputs">
+                                <label asp-for="Newsletter" asp-postfix=":"></label>
                                 <input asp-for="Newsletter" />
-                                <label asp-for="Newsletter"></label>
                                 <span asp-validation-for="Newsletter"></span>
                             </div>
                         }
@@ -346,6 +347,9 @@
             @if (Model.AcceptPrivacyPolicyEnabled || Model.GdprConsents.Count > 0)
             {
                 <div class="fieldset">
+                    <div class="title">
+                        <strong>@T("Account.UserAgreement")</strong>
+                    </div>
                     <div class="form-fields">
                         @if (Model.AcceptPrivacyPolicyEnabled)
                         {
@@ -370,14 +374,14 @@
                                 {
                                     <span class="read" id="read-privacyinfo">@T("Account.Fields.AcceptPrivacyPolicy.Read")</span>
                                     <script asp-location="Footer">
-                                        $(document).ready(function() {
-                                            $('#read-privacyinfo').on('click',
-                                                function(e) {
-                                                    displayPopupContentFromUrl(
-                                                        '@Url.RouteUrl("TopicPopup", new {SystemName = "privacyinfo"})',
-                                                        '@T("Account.Fields.AcceptPrivacyPolicy")');
-                                                });
-                                        });
+                                    $(document).ready(function() {
+                                        $('#read-privacyinfo').on('click',
+                                            function(e) {
+                                                displayPopupContentFromUrl(
+                                                    '@Url.RouteUrl("TopicPopup", new {SystemName = "privacyinfo"})',
+                                                    '@T("Account.Fields.AcceptPrivacyPolicy")');
+                                            });
+                                    });
                                     </script>
                                 }
                                 else
@@ -413,10 +417,12 @@
                                     <label for="consent@(consent.Id)">@consent.Message</label>
                                 </div>
                             }
+
                         }
                     </div>
                 </div>
             }
+
             <div class="buttons">
                 <button type="submit" name="register-button" id="register-button" class="button-1 register-next-step-button">@T("Account.Register.Button")</button>
             </div>

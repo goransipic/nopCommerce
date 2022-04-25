@@ -16,45 +16,10 @@
     @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.Info })
 }
 
-@section accountPageTitle
-    {
+<div class="page account-page customer-info-page">
     <div class="page-title">
         <h1>@T("Account.MyAccount") - @T("Account.CustomerInfo")</h1>
     </div>
-}
-
-@if (Model.CountryEnabled && Model.StateProvinceEnabled)
-{
-    <script type="text/javascript" asp-location="Footer">
-        $(document).ready(function () {
-            $("#@Html.IdFor(model => model.CountryId)").on('change', function () {
-                var selectedItem = $(this).val();
-                var ddlStates = $("#@Html.IdFor(model => model.StateProvinceId)");
-                var statesProgress = $("#states-loading-progress");
-                statesProgress.show();
-                $.ajax({
-                    cache: false,
-                    type: "GET",
-                    url: "@(Url.RouteUrl("GetStatesByCountryId"))",
-                    data: { "countryId": selectedItem, "addSelectStateItem": "true" },
-                    success: function (data) {
-                        ddlStates.html('');
-                        $.each(data, function (id, option) {
-                            ddlStates.append($('<option></option>').val(option.id).html(option.name));
-                        });
-                        statesProgress.hide();
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert('Failed to retrieve states.');
-                        statesProgress.hide();
-                    }
-                });
-            });
-        });
-    </script>
-}
-
-<div class="page account-page customer-info-page">
     <div class="page-body">
         <form asp-route="CustomerInfo" method="post">
             <div asp-validation-summary="ModelOnly" class="message-error"></div>
@@ -113,6 +78,7 @@
                                              asp-begin-year="@(DateTime.Now.AddYears(-110))"
                                              asp-end-year="@(DateTime.UtcNow)"
                                              asp-selected-date="@Model.ParseDateOfBirth()" />
+
                             @if (Model.DateOfBirthRequired)
                             {
                                 <nop-required />
@@ -146,11 +112,11 @@
                                 <label asp-for="Username" asp-postfix=":"></label>
                                 <input asp-for="Username" />
                                 <nop-required />
+                                <span asp-validation-for="Username"></span>
                                 @if (Model.CheckUsernameAvailabilityEnabled)
                                 {
                                     @await Html.PartialAsync("_CheckUsernameAvailability")
                                 }
-                                <span asp-validation-for="Username"></span>
                             </div>
                         }
                         else
@@ -197,11 +163,11 @@
                 </div>
             }
             @if (Model.StreetAddressEnabled ||
-                   Model.StreetAddress2Enabled ||
-                   Model.ZipPostalCodeEnabled ||
-                   Model.CityEnabled ||
-                   Model.CountyEnabled ||
-                   Model.CountryEnabled)
+        Model.StreetAddress2Enabled ||
+        Model.ZipPostalCodeEnabled ||
+        Model.CityEnabled ||
+        Model.CountyEnabled ||
+        Model.CountryEnabled)
             {
                 <div class="fieldset">
                     <div class="title">
@@ -293,8 +259,8 @@
                                 {
                                     <nop-required />
                                 }
-                                <span asp-validation-for="StateProvinceId"></span>
                                 <span id="states-loading-progress" style="display: none;" class="please-wait">@T("Common.Wait")</span>
+                                <span asp-validation-for="StateProvinceId"></span>
                             </div>
                         }
                     </div>
@@ -344,8 +310,8 @@
                         @if (Model.NewsletterEnabled)
                         {
                             <div class="inputs">
+                                <label asp-for="Newsletter" asp-postfix=":"></label>
                                 <input asp-for="Newsletter" />
-                                <label asp-for="Newsletter"></label>
                                 <span asp-validation-for="Newsletter"></span>
                             </div>
                         }
@@ -456,6 +422,9 @@
             @if (Model.GdprConsents.Count > 0)
             {
                 <div class="fieldset">
+                    <div class="title">
+                        <strong>@T("Account.UserAgreement")</strong>
+                    </div>
                     <div class="form-fields">
                         @foreach (var consent in Model.GdprConsents)
                         {
@@ -465,14 +434,14 @@
                                     $(document).ready(function() {
                                         $('#save-info-button').on('click', function() {
                                             if ($('#consent@(consent.Id)').is(':checked')) {
-                                                //do some stuff
-                                                return true;
-                                            } else {
-                                                //just show validation errors, don't post
-                                            alert('@Html.Raw(JavaScriptEncoder.Default.Encode(consent.RequiredMessage))');
-                                                return false;
-                                            }
-                                        });
+                                                    //do some stuff
+                                                    return true;
+                                                } else {
+                                                    //just show validation errors, don't post
+                                               alert('@Html.Raw(JavaScriptEncoder.Default.Encode(consent.RequiredMessage))');
+                                                    return false;
+                                                }
+                                            });
                                     });
                                 </script>
                             }

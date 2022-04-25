@@ -1,45 +1,19 @@
 ﻿@model SocialModel
-
-@using Nop.Core
-@using Nop.Services.Configuration
-
-@inject IStoreContext storeContext
-@inject ISettingService settingService
-
-@{
-    var storeId = (await storeContext.GetCurrentStoreAsync()).Id;
-    var instagramUrl = await settingService.GetSettingByKeyAsync("emporiumthemesettings.instagramurl", String.Empty, storeId, true);
-    var pinterestUrl = await settingService.GetSettingByKeyAsync("emporiumthemesettings.pinteresturl", String.Empty, storeId, true);
-    var vimeoUrl = await settingService.GetSettingByKeyAsync("emporiumthemesettings.vimeourl", String.Empty, storeId, true);
-}
-
-<ul class="social-sharing">
-    @if (!String.IsNullOrEmpty(Model.TwitterLink))
-    {
-        <li><a target="_blank" class="twitter" href="@Model.TwitterLink" rel="noopener noreferrer" aria-label="@T("Footer.FollowUs.Twitter")"></a></li>
-    }
-    @if (!String.IsNullOrEmpty(Model.FacebookLink))
-    {
-        <li><a target="_blank" class="facebook" href="@Model.FacebookLink" rel="noopener noreferrer" aria-label="@T("Footer.FollowUs.Facebook")"></a></li>
-    }
-    @if (!String.IsNullOrEmpty(Model.YoutubeLink))
-    {
-        <li><a target="_blank" class="youtube" href="@Model.YoutubeLink" rel="noopener noreferrer" aria-label="@T("Footer.FollowUs.Youtube")"></a></li>
-    }
-    @if (!String.IsNullOrEmpty(pinterestUrl))
-    {
-        <li><a target="_blank" class="pinterest" href="@pinterestUrl" rel="noopener noreferrer" aria-label="@T("SevenSpikes.Themes.Common.Footer.FollowUs.Pinterest")"></a></li>
-    }
-    @if (!String.IsNullOrEmpty(vimeoUrl))
-    {
-        <li><a target="_blank" class="vimeo" href="@vimeoUrl" rel="noopener noreferrer" aria-label="@T("SevenSpikes.Themes.Common.Footer.FollowUs.Vimeo")"></a></li>
-    }
-    @if (!String.IsNullOrEmpty(instagramUrl))
-    {
-        <li><a target="_blank" class="instagram" href="@instagramUrl" rel="noopener noreferrer" aria-label="@T("SevenSpikes.Themes.Common.Footer.FollowUs.Instagram")"></a></li>
-    }
-    @if (Model.NewsEnabled)
-    {
-        <li><a class="rss" href="@Url.RouteUrl("NewsRSS", new {languageId = Model.WorkingLanguageId})" aria-label="@T("Footer.FollowUs.RSS")"></a></li>
-    }
+<ul class="networks">
+	@if (!string.IsNullOrEmpty(Model.FacebookLink))
+	{
+		<li class="facebook"><a href="@Model.FacebookLink" target="_blank" rel="noopener noreferrer">@T("Footer.FollowUs.Facebook")</a></li>
+	}
+	@if (!string.IsNullOrEmpty(Model.TwitterLink))
+	{
+		<li class="twitter"><a href="@Model.TwitterLink" target="_blank" rel="noopener noreferrer">@T("Footer.FollowUs.Twitter")</a></li>
+	}
+	@if (Model.NewsEnabled)
+	{
+		<li class="rss"><a href="@Url.RouteUrl("NewsRSS", new {languageId = Model.WorkingLanguageId})">@T("Footer.FollowUs.RSS")</a></li>
+	}
+	@if (!string.IsNullOrEmpty(Model.YoutubeLink))
+	{
+		<li class="youtube"><a href="@Model.YoutubeLink" target="_blank" rel="noopener noreferrer">@T("Footer.FollowUs.Youtube")</a></li>
+	}
 </ul>

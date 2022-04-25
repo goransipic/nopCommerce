@@ -6,24 +6,24 @@
 }
 @if (!Model.DisableBuyButton || Model.CustomerEntersPrice)
 {
-    @if (Model.CustomerEntersPrice)
-    {
-        <div class="customer-entered-price">
-            <div class="price-input">
-                <label asp-for="CustomerEnteredPrice" asp-postfix=":" class="enter-price-label"></label>
-                @*round price*@
-                <input asp-for="CustomerEnteredPrice" value="@Convert.ToInt32(Math.Ceiling(Model.CustomerEnteredPrice))" class="enter-price-input"/>
-            </div>
-            <div class="price-range">
-                @Model.CustomerEnteredPriceRange
-            </div>
-        </div>
-    }
-    @if (!string.IsNullOrEmpty(Model.MinimumQuantityNotification))
-    {
-        <div class="min-qty-notification">@Model.MinimumQuantityNotification</div>
-    }
     <div class="add-to-cart">
+        @if (Model.CustomerEntersPrice)
+        {
+            <div class="customer-entered-price">
+                <div class="price-input">
+                    <label asp-for="CustomerEnteredPrice" asp-postfix=":" class="enter-price-label"></label>
+                    @*round price*@
+                    <input asp-for="CustomerEnteredPrice" value="@Convert.ToInt32(Math.Ceiling(Model.CustomerEnteredPrice))" class="enter-price-input" />
+                </div>
+                <div class="price-range">
+                    @Model.CustomerEnteredPriceRange
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.MinimumQuantityNotification))
+        {
+            <div class="min-qty-notification">@Model.MinimumQuantityNotification</div>
+        }
         @if (!Model.DisableBuyButton)
         {
             <div class="add-to-cart-panel">
@@ -45,11 +45,7 @@
                 }
                 else
                 {
-                    <div class="add-to-cart-qty-wrapper">
-                        <input asp-for="EnteredQuantity" id="product_enteredQuantity_@Model.ProductId" class="qty-input" type="text" aria-label=@T("Products.Qty.AriaLabel")/>
-                        <span class="plus">&#x69;</span>
-                        <span class="minus">&#x68;</span>
-                    </div>
+                    <input asp-for="EnteredQuantity" id="product_enteredQuantity_@Model.ProductId" class="qty-input" type="text" aria-label=@T("Products.Qty.AriaLabel")/>
                     <script asp-location="Footer">
                         //when a customer clicks 'Enter' button we submit the "add to cart" button (if visible)
                         $(document).ready(function() {

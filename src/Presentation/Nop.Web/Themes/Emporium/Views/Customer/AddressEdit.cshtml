@@ -12,15 +12,11 @@
 {
     @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.Addresses })
 }
-
-@section accountPageTitle
-{
-    <div class="page-title">
-        <h1>@T("Account.MyAccount") - @T("Account.CustomerAddresses.Edit")</h1>
-    </div>
-}
 <form asp-route="CustomerAddressEdit" method="post">
     <div class="page account-page address-edit-page">
+        <div class="page-title">
+            <h1>@T("Account.MyAccount") - @T("Account.CustomerAddresses.Edit")</h1>
+        </div>
         <div class="page-body">
             <div asp-validation-summary="ModelOnly" class="message-error"></div>
             @{

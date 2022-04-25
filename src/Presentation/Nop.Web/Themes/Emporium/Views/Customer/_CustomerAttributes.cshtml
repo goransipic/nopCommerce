@@ -9,10 +9,7 @@
 
     <div class="inputs custom-attributes">
         <label>@textPrompt:</label>
-        @if (attribute.IsRequired)
-        {
-            <nop-required />
-        }
+        
         @switch (attribute.AttributeControlType)
         {
             case AttributeControlType.DropdownList:
@@ -74,6 +71,10 @@
                     //not support attribute type
                 }
                 break;
+        }
+        @if (attribute.IsRequired)
+        {
+            <nop-required />
         }
     </div>
 }

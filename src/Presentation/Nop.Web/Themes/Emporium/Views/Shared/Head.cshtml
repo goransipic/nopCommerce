@@ -1,41 +1,17 @@
 ﻿@using Nop.Core
-
-@inject IWorkContext workContext
-
+@using Nop.Services.Helpers
+@using Nop.Web.Framework.UI
+@inject IThemeContext themeContext
+@inject IUserAgentHelper userAgentHelper
 @{
-    var supportRtl = (await workContext.GetWorkingLanguageAsync()).Rtl;
+    Layout ="";
+    var themeName = await themeContext.GetWorkingThemeNameAsync();
+    var supportRtl = await Html.ShouldUseRtlThemeAsync();
+    <div>Hello World...</div>
+    //add main CSS file
+    NopHtml.AppendCssFileParts($"~/Themes/{themeName}/Content/css/styles{(supportRtl ? ".rtl" : "")}.css");
 
-    if (supportRtl)
-    {
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/1600.rtl.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/1280.rtl.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/1024.rtl.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/768.rtl.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/480.rtl.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/mobile.rtl.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/tables.rtl.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/styles.rtl.css");
-    }
-    else
-    {
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/1600.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/1280.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/1024.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/768.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/480.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/mobile.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/tables.css");
-        NopHtml.AppendCssFileParts("~/Themes/Emporium/Content/css/styles.css");
-    }
+    //add jQuery UI css file
+    NopHtml.AppendCssFileParts("~/lib_npm/jquery-ui-dist/jquery-ui.min.css");
 
-    NopHtml.AppendCssFileParts("~/Plugins/SevenSpikes.Core/Styles/slick-slider-1.6.0.css");
-    NopHtml.AppendCssFileParts("~/Plugins/SevenSpikes.Core/Styles/perfect-scrollbar.min.css");
-
-    <script src="~/Plugins/SevenSpikes.Core/Scripts/footable.min.js" asp-location="Footer"></script>
-    <script src="~/Plugins/SevenSpikes.Core/Scripts/perfect-scrollbar.min.js" asp-location="Footer"></script>
-    <script src="~/Plugins/SevenSpikes.Core/Scripts/slick-slider-1.6.0.min.js" asp-location="Footer"></script>
-    <script src="~/Plugins/SevenSpikes.Core/Scripts/sevenspikes.core.min.js" asp-location="Footer"></script>
-    <script src="~/Plugins/SevenSpikes.Core/Scripts/sevenspikes.theme.min.js" asp-location="Footer"></script>
-
-    <script src="~/Themes/Emporium/Content/scripts/emporium.js" asp-location="Footer"></script>
 }

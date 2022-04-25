@@ -1,7 +1,7 @@
 ﻿@inject Nop.Services.Html.IHtmlFormatter htmlFormatter
 @model BlogPostModel
 @{
-    Layout = "_ColumnsOne";
+    Layout = "_ColumnsTwo";
 
     //title
     NopHtml.AddTitleParts(!string.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Title);
@@ -11,26 +11,24 @@
     //page class
     NopHtml.AppendPageCssClassParts("html-blogpost-page");
 }
-@*@section left {
+@section left {
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnBlogBefore, additionalData = Model })
     @await Component.InvokeAsync("BlogMonths")
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnAfterBlogArchive, additionalData = Model })
     @await Component.InvokeAsync("BlogTags")
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnBlogAfter, additionalData = Model })
-}*@
+}
 <div class="page blogpost-page">
-    @await Component.InvokeAsync("Widget", new { widgetZone = "blogpost_page_top", additionalData = Model.Id })
-    <a class="back-to-all-button" href="@Url.RouteUrl("Blog")">@T("SevenSpikes.Themes.Emporium.Common.BackToAll")</a>
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BlogPostPageTop, additionalData = Model })
     <div class="page-title">
         <h1>@Model.Title</h1>
     </div>
     <div class="page-body">
         <div class="post-date">
-            @Model.CreatedOn.ToString("dd MMM yyyy")
+            @Model.CreatedOn.ToString("D")
         </div>
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BlogPostPageBeforeBody, additionalData = Model })
         <div class="post-body">
-            @await Component.InvokeAsync("Widget", new { widgetZone = "blogpost_page_before_image", additionalData = Model.Id })
-            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BlogPostPageBeforeBody, additionalData = Model })
             @Html.Raw(Model.Body)
         </div>
         @if (Model.Tags.Count > 0)
@@ -55,11 +53,7 @@
         {
             <div class="fieldset new-comment" id="comments">
                 <div class="title">
-                    <strong>@T("Blog.Comments")</strong>
-                </div>
-                <div class="comment-form-btn">
-                    <strong class="open-comment-form"><span>@T("Blog.Comments.LeaveYourComment")</span></strong>
-                    <strong class="close-comment-form"><span>@T("SevenSpikes.Themes.Emporium.Common.Close")</span></strong>
+                    <strong>@T("Blog.Comments.LeaveYourComment")</strong>
                 </div>
                 <div class="notifications">
                     <div asp-validation-summary="ModelOnly" class="message-error"></div>
@@ -99,15 +93,24 @@
             if (Model.Comments.Count > 0)
             {
                 <div class="comment-list">
-                    @*<div class="title">
-                            <strong>@T("Blog.Comments")</strong>
-                        </div>*@
+                    <div class="title">
+                        <strong>@T("Blog.Comments")</strong>
+                    </div>
                     <div class="comments">
                         @foreach (var comment in Model.Comments)
                         {
                             <div class="comment blog-comment">
                                 <div class="comment-info">
                                     <div class="user-info">
+                                        @if (comment.AllowViewingProfiles)
+                                        {
+                                            <a href="@Url.RouteUrl("CustomerProfile", new {id = comment.CustomerId})" class="username">@(comment.CustomerName)</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="username">@(comment.CustomerName)</span>
+                                        }
+
                                         @if (!string.IsNullOrEmpty(comment.CustomerAvatarUrl))
                                         {
                                             <div class="avatar">
@@ -123,24 +126,13 @@
                                                 }
                                             </div>
                                         }
-                                        <div class="name-and-time">
-                                            @if (comment.AllowViewingProfiles)
-                                            {
-                                                <a href="@Url.RouteUrl("CustomerProfile", new {id = comment.CustomerId})" class="username">@(comment.CustomerName)</a>
-                                            }
-                                            else
-                                            {
-                                                <span class="username">@(comment.CustomerName)</span>
-                                            }
-
-                                            <div class="comment-time">
-                                                <label>@T("Blog.Comments.CreatedOn"):</label>
-                                                <span class="stat-value">@comment.CreatedOn.ToString("g")</span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="comment-content">
+                                    <div class="comment-time">
+                                        <label>@T("Blog.Comments.CreatedOn"):</label>
+                                        <span class="stat-value">@comment.CreatedOn.ToString("g")</span>
+                                    </div>
                                     <div class="comment-body">
                                         @Html.Raw(htmlFormatter.FormatText(comment.CommentText, false, true, false, false, false, false))
                                     </div>

@@ -159,21 +159,21 @@
                 <div class="table-wrapper">
                     <table class="data-table">
                         <colgroup>
-                            @*@if (Model.ShowSku)
+                            @if (Model.ShowSku)
                             {
                                 <col width="1" />
-                            }*@
+                            }
                             <col />
                             <col />
                         </colgroup>
                         <thead>
                             <tr>
-                                @*@if (Model.ShowSku)
+                                @if (Model.ShowSku)
                                 {
                                     <th class="sku">
                                         @T("Order.Shipments.Product(s).SKU")
                                     </th>
-                                }*@
+                                }
                                 <th class="name">
                                     @T("Order.Shipments.Product(s).Name")
                                 </th>
@@ -186,13 +186,12 @@
                             @foreach (var item in Model.Items)
                             {
                                 <tr>
-                                    @*@if (Model.ShowSku)
+                                    @if (Model.ShowSku)
                                     {
                                         <td class="sku">
-                                            <label>@T("Order.Shipments.Product(s).SKU"): </label>
-                                            <span>@item.Sku</span>
+                                            @item.Sku
                                         </td>
-                                    }*@
+                                    }
                                     <td class="name">
                                         <em><a href="@Url.RouteUrl("Product", new { SeName = item.ProductSeName })">@item.ProductName</a></em>
                                         @if (!string.IsNullOrEmpty(item.AttributeInfo))
@@ -209,8 +208,7 @@
                                         }
                                     </td>
                                     <td class="quantity">
-                                        <label>@T("Order.Shipments.Product(s).Quantity"): </label>
-                                        <span>@item.QuantityShipped</span>
+                                        @item.QuantityShipped
                                     </td>
                                 </tr>
                             }

@@ -19,17 +19,15 @@ a {
 .order-details-page .order-overview {
 	margin: 0 0 25px;
 }
-.order-details-page .order-buttons {
-	display: none;
-}
-.order-details-page .order-number {
+.order-details-page .order-overview .order-number {
 	font-size: 11pt;
 	text-transform: uppercase;
+    padding: 10px 40px;
 }
-.order-details-page .order-total {
+.order-details-page .order-overview .order-total {
 	margin: 10px 0 0;
 }
-.order-details-page .order-total strong {
+.order-details-page .order-overview .order-total strong {
 	font-size: 10pt;
 }
 
@@ -37,12 +35,13 @@ a {
 	margin: 0 0 25px;
 	overflow: hidden;
 }
-.order-details-page .billing-info-wrap,
-.order-details-page .shipping-info-wrap {
+.order-details-page .order-details-area ul {
+    padding-left: 0px;
+}
+.order-details-page .order-details-area > div {
 	float: left;
-	width: 40%;
-	margin: 0 5%;
-	padding: 0;
+	width: 48%;
+	margin: 0 1% 40px;
 }
 .order-details-page .order-details-area li.title {
 	margin: 10px 0 5px;
@@ -92,7 +91,7 @@ a {
 .order-details-page .tax-shipping-info,
 .order-details-page .selected-checkout-attributes {
 	margin: 20px 0;
-	text-align: right;
+	text-align:right;
 }
 
 .order-details-page .cart-total-right {

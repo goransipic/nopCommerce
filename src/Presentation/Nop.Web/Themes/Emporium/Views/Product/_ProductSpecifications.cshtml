@@ -1,4 +1,5 @@
 ﻿@model ProductSpecificationModel
+
 @using Nop.Core.Domain.Catalog;
 
 @if (Model.Groups.SelectMany(g => g.Attributes).ToList().Count > 0)
@@ -9,10 +10,12 @@
         </div>
         <div class="table-wrapper">
             <table class="data-table">
-                <colgroup>
-                    <col width="25%" />
-                    <col />
-                </colgroup>
+                <thead>
+                    <tr class="hidden-row">
+                        <th width="25%"><span>@T("Products.Specs.AttributeName")</span></th>
+                        <th><span>@T("Products.Specs.AttributeValue")</span></th>
+                    </tr>
+                </thead>
                 <tbody>
                     @foreach (var group in Model.Groups)
                     {
@@ -42,7 +45,7 @@
 
                                             @if (!string.IsNullOrEmpty(value.ColorSquaresRgb) && (value.AttributeTypeId == (int)SpecificationAttributeType.Option))
                                             {
-                                                <div class="attribute-squares color-squares">
+                                                <div class="attribute-squares color-squares attribute-squares-padding">
                                                     <span class="attribute-square-container" title="@Html.Raw(value.ValueRaw)">
                                                         <span class="attribute-square" style="background-color: @(value.ColorSquaresRgb);">&nbsp;</span>
                                                     </span>
