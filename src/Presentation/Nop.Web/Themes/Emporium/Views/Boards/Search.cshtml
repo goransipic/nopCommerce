@@ -99,12 +99,12 @@
                 });
             }
             @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BoardsSearchBeforeResults, additionalData = Model })
-            @if (!string.IsNullOrEmpty(await pager.RenderHtmlContentAsync()))
+            @*@if (!string.IsNullOrEmpty(await pager.RenderHtmlContentAsync()))
             {
                 <div class="pager upper">
                     @pager
                 </div>
-            }
+            }*@
             @if (Model.NoResultsVisisble)
             {
                 <div class="no-result">
@@ -120,6 +120,7 @@
                                 <col width="1" />
                                 <col />
                                 <col width="1" />
+                                <col width="1" />
                                 @if (Model.AllowPostVoting)
                                 {
                                     <col width="1" />
@@ -131,10 +132,10 @@
                                     <th class="topic-details" colspan="2">
                                         @T("Forum.TopicTitle")
                                     </th>
-                                    <th class="replies">
+                                    <th class="replies" data-hide="w410, w480, w580">
                                         @T("Forum.Replies")
                                     </th>
-                                    <th class="views">
+                                    <th class="views" data-hide="w410, w480, w580">
                                         @T("Forum.Views")
                                     </th>
                                     @if (Model.AllowPostVoting)
@@ -143,7 +144,7 @@
                                             @T("Forum.Votes")
                                         </th>
                                     }
-                                    <th class="latest-post">
+                                    <th class="latest-post" data-hide="w410, w480, w580">
                                         @T("Forum.LatestPost")
                                     </th>
                                 </tr>

@@ -1,4 +1,4 @@
-@model WishlistModel
+﻿@model WishlistModel
 @using Nop.Core
 @using Nop.Core.Domain.Tax
 @inject IWebHelper webHelper
@@ -34,7 +34,7 @@
                         <ul>
                             @foreach (var warning in Model.Warnings)
                             {
-                                <li>@warning</li>
+                                <li>@Html.Raw(warning)</li>
                             }
                         </ul>
                     </div>
@@ -43,14 +43,18 @@
                     <div class="table-wrapper">
                         <table class="cart">
                             <colgroup>
+                                @if (Model.IsEditable)
+                                {
+                                    <col width="1" />
+                                }
                                 @if (Model.DisplayAddToCart)
                                 {
                                     <col width="1" />
                                 }
-                                @if (Model.ShowSku)
+                                @*@if (Model.ShowSku)
                                 {
                                     <col width="1" />
-                                }
+                                }*@
                                 @if (Model.ShowProductImages)
                                 {
                                     <col width="1" />
@@ -59,69 +63,72 @@
                                 <col width="1" />
                                 <col width="1" />
                                 <col width="1" />
-                                @if (Model.IsEditable)
-                                {
-                                    <col width="1" />
-                                }
                             </colgroup>
                             <thead>
-                                <tr>
+	                            <tr class="cart-header-row">
+                                    @if (Model.IsEditable)
+                                    {
+                                    	<th class="remove-from-cart" data-hide="w410, w480, w580">
+                                            @T("ShoppingCart.Remove")
+                                        </th>
+                                    }
                                     @if (Model.DisplayAddToCart)
                                     {
-                                        <th class="add-to-cart">
+                                    	<th class="add-to-cart" data-hide="w410">
                                             @T("ShoppingCart.AddToCart")
                                         </th>
                                     }
-                                    @if (Model.ShowSku)
+                                    @*@if (Model.ShowSku)
                                     {
-                                        <th class="sku">
+                                    	<th class="sku" data-hide="w410, w480, w580">
                                             @T("ShoppingCart.SKU")
                                         </th>
-                                    }
+                                    }*@
                                     @if (Model.ShowProductImages)
                                     {
                                         <th class="product-picture">
                                             @T("ShoppingCart.Image")
                                         </th>
                                     }
-                                    <th class="product">
+                                	<th class="product" data-hide="w410, w480, w580, w768">
                                         @T("ShoppingCart.Product(s)")
                                     </th>
-                                    <th class="unit-price">
+                                	<th class="unit-price" data-hide="w410, w480, w580">
                                         @T("ShoppingCart.UnitPrice")
                                     </th>
-                                    <th class="quantity">
+                                	<th class="quantity" data-hide="w410">
                                         @T("ShoppingCart.Quantity")
                                     </th>
                                     <th class="subtotal">
                                         @T("ShoppingCart.ItemTotal")
                                     </th>
-                                    @if (Model.IsEditable)
-                                    {
-                                        <th class="remove-from-cart">
-                                            @T("ShoppingCart.Remove")
-                                        </th>
-                                    }
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model.Items)
                                 {
-                                    <tr>
+                                	<tr class="cart-item-row">
+                                        @if (Model.IsEditable)
+                                        {
+                                            <td class="remove-from-cart">
+                                                <input type="checkbox" name="removefromcart" id="removefromcart@(item.Id)" value="@(item.Id)" aria-label="@T("ShoppingCart.Remove")" />
+                                                <button type="button" name="updatecart" class="remove-btn" onclick="$('#removefromcart@(item.Id)').attr('checked', true); $('#updatecart').click();"></button>
+                                            </td>
+                                        }
                                         @if (Model.DisplayAddToCart)
                                         {
                                             <td class="add-to-cart">
-                                                <label class="td-title">@T("ShoppingCart.AddToCart"):</label>
-                                                <input type="checkbox" name="addtocart" value="@(item.Id)" />
+                                                <input type="checkbox" id="addToCartFromWishlistCheckbox@(item.Id)" name="addtocart" value="@(item.Id)" aria-label="@T("ShoppingCart.AddToCart")" />
+                                                <label class="td-title" for="addToCartFromWishlistCheckbox@(item.Id)">@T("ShoppingCart.AddToCart")</label>
                                             </td>
                                         }
-                                        @if (Model.ShowSku)
+                                        @*@if (Model.ShowSku)
                                         {
                                             <td class="sku">
-                                                <label class="td-title">@T("ShoppingCart.SKU"):</label>
+                                                <label class="td-title">@T("ShoppingCart.SKU"): </label>
                                                 <span class="sku-number">@item.Sku</span>
                                             </td>
-                                        }
+                                        }*@
                                         @if (Model.ShowProductImages)
                                         {
                                             <td class="product-picture">
@@ -162,7 +169,7 @@
                                                     <ul>
                                                         @foreach (var warning in item.Warnings)
                                                         {
-                                                            <li>@Html.Raw(warning)</li>
+                                                            <li>@warning</li>
                                                         }
                                                     </ul>
                                                 </div>
@@ -211,13 +218,6 @@
                                                 }
                                             }
                                         </td>
-                                        @if (Model.IsEditable)
-                                        {
-                                            <td class="remove-from-cart">
-                                                <input type="checkbox" name="removefromcart" id="removefromcart@(item.Id)" value="@(item.Id)" aria-label="@T("ShoppingCart.Remove")" />
-                                                <button type="button" name="updatecart" class="remove-btn" onclick="$('#removefromcart@(item.Id)').attr('checked', true); $('#updatecart').click();"></button>
-                                            </td>
-                                        }
                                     </tr>
                                 }
                             </tbody>
@@ -235,15 +235,15 @@
                     <div class="buttons">
                         @if (Model.IsEditable)
                         {
-                            <button type="submit" name="updatecart" id="updatecart" class="button-2 update-wishlist-button">@T("Wishlist.UpdateCart")</button>
-                        }
-                        @if (Model.DisplayAddToCart)
-                        {
-                            <button type="submit" name="addtocartbutton" class="button-2 wishlist-add-to-cart-button">@T("ShoppingCart.AddToCart")</button>
+                            <button type="submit" name="updatecart" id="updatecart" class="button-2 update-wishlist-button"><span>@T("Wishlist.UpdateCart")</span></button>
                         }
                         @if (Model.IsEditable && Model.EmailWishlistEnabled)
                         {
-                            <button type="button" class="button-2 email-a-friend-wishlist-button" onclick="setLocation('@Url.RouteUrl("EmailWishlist")')">@T("Wishlist.EmailAFriend")</button>
+                            <button type="button" class="button-2 email-a-friend-wishlist-button" onclick="setLocation('@Url.RouteUrl("EmailWishlist")')"><span>@T("Wishlist.EmailAFriend")</span></button>
+                        }
+                        @if (Model.DisplayAddToCart)
+                        {
+                            <button type="submit" name="addtocartbutton" class="button-2 wishlist-add-to-cart-button"><span>@T("ShoppingCart.AddToCart")</span></button>
                         }
                     </div>
                 </form>
@@ -257,10 +257,9 @@
         }
         @if (Model.IsEditable && Model.Items.Count > 0)
         {
-            var wishlistUrl = Url.RouteUrl("Wishlist", new { customerGuid = Model.CustomerGuid }, webHelper.GetCurrentRequestProtocol());
             <div class="share-info">
                 <span class="share-label">@T("Wishlist.YourWishlistURL"):</span>
-                <a href="@wishlistUrl" class="share-link">@wishlistUrl</a>
+                <a href="@Url.RouteUrl("Wishlist", new { customerGuid = Model.CustomerGuid })" class="share-link">@Url.RouteUrl("Wishlist", new { customerGuid = Model.CustomerGuid }, "http")</a>
             </div>
         }
     </div>

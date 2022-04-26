@@ -2,7 +2,7 @@
 @inject IDateTimeHelper dateTimeHelper
 <div class="forums-header">
     <div class="current-time">
-        @((await dateTimeHelper.ConvertToUserTimeAsync(DateTime.UtcNow)).ToString("F"))
+        @((await dateTimeHelper.ConvertToUserTimeAsync(DateTime.UtcNow)).ToString("d MMM yyyy"))
     </div>
     @await Html.PartialAsync("_SearchBox")
 </div>

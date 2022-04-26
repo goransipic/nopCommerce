@@ -29,6 +29,7 @@
                         <tr>
                             <th class="select">
                                 <input type="checkbox" id="selectall-sent" />
+                            	<label for="selectall-sent"></label>
                             </th>
                             <th class="to">
                                 @T("PrivateMessages.Inbox.ToColumn")
@@ -42,31 +43,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (var i = 0; i < Model.Messages.Count; i++)
-                        {
-                            var item = Model.Messages[i];
-                            <tr @(i % 2 == 0 ? Html.Raw(" class=\"odd\"") : Html.Raw(" class=\"even\""))>
-                                <td class="select">
-                                    <input type="checkbox" name="si@(item.Id)" class="rowcheckbox" />
-                                </td>
-                                <td class="to">
-                                    @if (item.AllowViewingToProfile)
-                                    {
-                                        @Html.RouteLink(item.CustomerToName, "CustomerProfile", new { Id = item.ToCustomerId })
-                                    }
-                                    else
-                                    {
-                                        @item.CustomerToName
-                                    }
-                                </td>
-                                <td class="subject">
-                                    @Html.RouteLink(item.Subject, "ViewPM", new { privateMessageId = item.Id }, new { @class = "pm-read" })
-                                </td>
-                                <td class="date">
-                                    @item.CreatedOn
-                                </td>
-                            </tr>
-                        }
+                    @for (var i = 0; i < Model.Messages.Count; i++)
+                    {
+                        var item = Model.Messages[i];
+                        <tr @(i % 2 == 0 ? Html.Raw(" class=\"odd\"") : Html.Raw(" class=\"even\""))>
+                            <td class="select">
+                                <input type="checkbox" name="si@(item.Id)" id="si@(item.Id)" class="rowcheckbox" />
+                                <label for="si@(item.Id)"></label>
+                            </td>
+                            <td class="to">
+                                <label class="td-title">@T("PrivateMessages.Inbox.ToColumn"): </label>
+                                @if (item.AllowViewingToProfile)
+                                {
+                                    @Html.RouteLink(item.CustomerToName, "CustomerProfile", new { Id = item.ToCustomerId })
+                                }
+                                else
+                                {
+                                    @item.CustomerToName
+                                }
+                            </td>
+                            <td class="subject">
+                                <label class="td-title">@T("PrivateMessages.Inbox.SubjectColumn"): </label>
+                                @Html.RouteLink(item.Subject, "ViewPM", new { privateMessageId = item.Id }, new { @class = "pm-read" })
+                            </td>
+                            <td class="date">
+                                <label class="td-title">@T("PrivateMessages.Inbox.DateColumn"): </label>
+                                <span>@item.CreatedOn</span>
+                            </td>
+                        </tr>
+                    }
                     </tbody>
                 </table>
             </div>

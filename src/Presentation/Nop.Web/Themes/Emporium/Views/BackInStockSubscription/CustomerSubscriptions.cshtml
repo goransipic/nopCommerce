@@ -12,10 +12,14 @@
 {
     @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.BackInStockSubscriptions })
 }
-<div class="page account-page back-in-stock-subscription-list-page">
+
+@section accountPageTitle
+{
     <div class="page-title">
         <h1>@T("Account.MyAccount") - @T("Account.BackInStockSubscriptions")</h1>
     </div>
+}
+<div class="page account-page back-in-stock-subscription-list-page">
     <div class="page-body">
         @if (Model.Subscriptions.Count > 0)
         {
@@ -47,6 +51,7 @@
                             <tr>
                                 <th class="select-boxes">
                                     <input type="checkbox" id="selectall" />
+                                    <label for="selectall"></label>
                                 </th>
                                 <th class="product">
                                     @T("Account.BackInStockSubscriptions.ProductColumn")
@@ -59,7 +64,8 @@
                                 var item = Model.Subscriptions[i];
                                 <tr @(i % 2 == 0 ? Html.Raw(" class=\"odd\"") : Html.Raw(" class=\"even\""))>
                                     <td class="select-boxes">
-                                        <input type="checkbox" name="biss@(item.Id)" class="rowcheckbox" />
+                                        <input type="checkbox" name="biss@(item.Id)" id="biss@(item.Id)" class="rowcheckbox" />
+                                        <label for="biss@(item.Id)"></label>
                                     </td>
                                     <td class="product">
                                         @Html.RouteLink(item.ProductName, "Product", new { SeName = item.SeName })

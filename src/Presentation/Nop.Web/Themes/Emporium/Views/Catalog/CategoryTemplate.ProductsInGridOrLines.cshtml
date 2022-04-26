@@ -1,9 +1,13 @@
 ﻿@model CategoryModel
+
 @using Nop.Core.Domain.Common
 @using Nop.Core.Domain.Seo
+
 @inject Nop.Core.IWebHelper webHelper
 @inject SeoSettings seoSettings
 @inject CommonSettings commonSettings
+@inject IViewComponentSelector viewComponentSelector
+
 @{
     Layout = "_ColumnsTwo";
 
@@ -24,8 +28,13 @@
     var breadcrumbDelimiter = commonSettings.BreadcrumbDelimiter;
 }
 @*category breadcrumb*@
-@section Breadcrumb
-{
+
+@section CatalogFilters {
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBeforeFilters, additionalData = Model })
+    @await Html.PartialAsync("_CatalogFilters", Model.CatalogProductsModel)
+}
+
+<div class="page category-page">
     @if (Model.DisplayCategoryBreadcrumb)
     {
         <div class="breadcrumb">
@@ -61,14 +70,6 @@
         </div>
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsAfterBreadcrumb, additionalData = Model })
     }
-}
-
-@section CatalogFilters {
-    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBeforeFilters, additionalData = Model })
-    @await Html.PartialAsync("_CatalogFilters", Model.CatalogProductsModel)
-}
-
-<div class="page category-page">
     <div class="page-title">
         <h1>@Model.Name</h1>
     </div>
@@ -91,16 +92,28 @@
                     {
                         <div class="item-box">
                             <div class="sub-category-item">
+                                <div class="picture">
+                                    <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                                        @if (viewComponentSelector.SelectComponent("LazyLoadImage") != null)
+                                        {
+                                            @await Component.InvokeAsync("LazyLoadImage", new (string Key, string Value)[]
+                                            {
+                                                ("src", item.PictureModel.ImageUrl),
+                                                ("alt", item.PictureModel.AlternateText),
+                                                ("title", item.PictureModel.Title)
+                                            })
+                                        }
+                                        else
+                                        {
+                                            <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
+                                        }
+                                    </a>
+                                </div>
                                 <h2 class="title">
                                     <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
                                         @item.Name
                                     </a>
                                 </h2>
-                                <div class="picture">
-                                    <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
-                                        <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     }
@@ -132,6 +145,7 @@
             var catalogProductsViewData = new ViewDataDictionary(ViewData);
             catalogProductsViewData["fetchUrl"] = Html.Raw(Url.Action("GetCategoryProducts", "Catalog", new { categoryId = Model.Id }));
         }
+        <div class="returned-products-marker"></div>
         @await Html.PartialAsync("_CatalogProducts", Model.CatalogProductsModel, catalogProductsViewData)
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBottom, additionalData = Model })
     </div>

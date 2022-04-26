@@ -9,7 +9,10 @@
 }
 
 <div class="product-selectors">
-    @*view mode*@
+    <div class="filters-button-wrapper">
+        <button class="filters-button">@T("SevenSpikes.Themes.Emporium.Common.Filter")</button>
+    </div>
+
     @if (Model.AllowProductViewModeChanging)
     {
         <div class="product-viewmode">

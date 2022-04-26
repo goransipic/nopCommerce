@@ -8,7 +8,7 @@
 
 @{
     var isRegisterCustomer = await customerService.IsRegisteredAsync(await workContext.GetCurrentCustomerAsync());
-    Layout = isRegisterCustomer ? "_ColumnsTwo" : "_ColumnsOne";
+    Layout = "_ColumnsTwo";
 
     //title
     NopHtml.AddTitleParts(T("PageTitle.CheckGiftCardBalance").Text);
@@ -16,26 +16,25 @@
     NopHtml.AppendPageCssClassParts("html-account-page");
 }
 
-@if (isRegisterCustomer)
+@section left
 {
-    @section left
-    {
-        @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.CheckGiftCardBalance })
-    }
+	@await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.CheckGiftCardBalance })
+}
+@section accountPageTitle
+{
+    <div class="page-title">
+            @if (isRegisterCustomer)
+            {
+                <h1>@T("Account.MyAccount") - @T("PageTitle.CheckGiftCardBalance")</h1>
+            }
+            else
+            {
+                <h1>@T("PageTitle.CheckGiftCardBalance")</h1>
+            }
+    </div>
 }
 
-
 <div class="page account-page check-gift-card-balance-page">
-    <div class="page-title">
-        @if (isRegisterCustomer)
-        {
-            <h1>@T("Account.MyAccount") - @T("PageTitle.CheckGiftCardBalance")</h1>
-        }
-        else
-        {
-            <h1>@T("PageTitle.CheckGiftCardBalance")</h1>
-        }
-    </div>
     <div class="page-body">
         @if (!string.IsNullOrEmpty(Model.Message))
         {
@@ -61,19 +60,19 @@
                     </div>
                     <nop-captcha />
                 </div>
-            </div>
-            <div class="buttons">
-                <button type="submit" name="checkbalancegiftcard" id="checkbalancegiftcard" class="button-1 check-gift-card-balance-button">@T("CheckGiftCard.GiftCardCouponCode.Button")</button>
-                <script asp-location="Footer">
-                    $(document).ready(function () {
-                        $('#giftcardcouponcode').keydown(function (event) {
-                            if (event.keyCode == 13) {
-                                $('#checkbalancegiftcard').click();
-                                return false;
-                            }
+                <div class="buttons">
+                	<button type="submit" name="checkbalancegiftcard" id="checkbalancegiftcard" class="button-1 check-gift-card-balance-button">@T("CheckGiftCard.GiftCardCouponCode.Button")</button>
+                    <script asp-location="Footer">
+                        $(document).ready(function () {
+                            $('#giftcardcouponcode').keydown(function (event) {
+                                if (event.keyCode == 13) {
+                                    $('#checkbalancegiftcard').click();
+                                    return false;
+                                }
+                            });
                         });
-                    });
-                </script>
+                    </script>
+                </div>
             </div>
         </form>
     </div>

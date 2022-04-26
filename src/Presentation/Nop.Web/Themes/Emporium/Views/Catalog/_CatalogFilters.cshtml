@@ -8,18 +8,23 @@
 }
 
 <div class="block product-filters">
-    @if (Model.PriceRangeFilter.Enabled)
-    {
-        @await Html.PartialAsync("_FilterPriceBox", Model.PriceRangeFilter)
-    }
+    <div class="title">
+        <strong>@T("SevenSpikes.NopAjaxFilters.Client.Common.FilterBy")</strong>
+    </div>
+    <div class="listbox">
+        @if (Model.PriceRangeFilter.Enabled)
+        {
+            @await Html.PartialAsync("_FilterPriceBox", Model.PriceRangeFilter)
+        }
 
-    @if (Model.SpecificationFilter.Enabled)
-    {
-        @await Html.PartialAsync("_FilterSpecsBox", Model.SpecificationFilter)
-    }
+        @if (Model.SpecificationFilter.Enabled)
+        {
+            @await Html.PartialAsync("_FilterSpecsBox", Model.SpecificationFilter)
+        }
 
-    @if (Model.ManufacturerFilter.Enabled)
-    {
-        @await Html.PartialAsync("_FilterManufacturerBox", Model.ManufacturerFilter)
-    }
+        @if (Model.ManufacturerFilter.Enabled)
+        {
+            @await Html.PartialAsync("_FilterManufacturerBox", Model.ManufacturerFilter)
+        }
+    </div>
 </div>

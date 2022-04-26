@@ -28,6 +28,7 @@
                     <tr>
                         <th class="select">
                             <input type="checkbox" id="select-all-inbox" />
+                            <label for="select-all-inbox"></label>
                         </th>
                         <th class="from">
                             @T("PrivateMessages.Inbox.FromColumn")
@@ -46,9 +47,11 @@
                         var item = Model.Messages[i];
                         <tr @(i % 2 == 0 ? Html.Raw(" class=\"odd\"") : Html.Raw(" class=\"even\""))>
                             <td class="select">
-                                <input type="checkbox" name="pm@(item.Id)" class="rowcheckbox" />
+                                <input type="checkbox" name="pm@(item.Id)" id="pm@(item.Id)" class="rowcheckbox" />
+                                <label for="pm@(item.Id)"></label>
                             </td>
                             <td class="from">
+                                <label class="td-title">@T("PrivateMessages.Inbox.FromColumn"): </label>
                                 @if (item.AllowViewingFromProfile)
                                 {
                                     @Html.RouteLink(item.CustomerFromName, "CustomerProfile", new { Id = item.FromCustomerId })
@@ -59,10 +62,12 @@
                                 }
                             </td>
                             <td class="subject">
+                                <label class="td-title">@T("PrivateMessages.Inbox.SubjectColumn"): </label>
                                 @Html.RouteLink(item.Subject, "ViewPM", new { privateMessageId = item.Id }, new { @class = (item.IsRead) ? "pm-read" : "pm-unread" })
                             </td>
                             <td class="date">
-                                @item.CreatedOn
+                                <label class="td-title">@T("PrivateMessages.Inbox.DateColumn"): </label>
+                                <span>@item.CreatedOn</span>
                             </td>
                         </tr>
                     }

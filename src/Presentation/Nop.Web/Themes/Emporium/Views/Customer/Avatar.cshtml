@@ -12,11 +12,15 @@
 {
     @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.Avatar })
 }
+
+@section accountPageTitle
+{
+    <div class="page-title">
+        <h1>@T("Account.MyAccount") - @T("Account.Avatar")</h1>
+    </div>
+}
 <form asp-route="CustomerAvatar" method="post" enctype="multipart/form-data">
     <div class="page account-page avatar-page">
-        <div class="page-title">
-            <h1>@T("Account.MyAccount") - @T("Account.Avatar")</h1>
-        </div>
         <div class="page-body">
             <div asp-validation-summary="ModelOnly" class="message-error"></div>
             <div class="fieldset">
@@ -26,7 +30,11 @@
                         <img src="@(Model.AvatarUrl)" alt="avatar" />
                     </div>
                 }
-                <input name="uploadedFile" accept="image/jpeg, image/gif" type="file" />
+                <input class="upload-image" id="imagefile" name="uploadedFile" type="file" accept="image/jpeg, image/gif" />
+                <label for="imagefile" class="button-2">@T("Account.Avatar.ChooseFile")</label>
+            </div>
+            <div class="info">
+                @T("Account.Avatar.UploadRules")
             </div>
             <div class="buttons">
                 <button type="submit" name="upload-avatar" class="button-1 upload-avatar-button">@T("Common.Upload")</button>
@@ -34,9 +42,6 @@
                 {
                     <button type="submit" name="remove-avatar" class="button-2 remove-avatar-button">@T("Account.Avatar.RemoveAvatar")</button>
                 }
-            </div>
-            <div class="info">
-                @T("Account.Avatar.UploadRules")
             </div>
         </div>
     </div>
