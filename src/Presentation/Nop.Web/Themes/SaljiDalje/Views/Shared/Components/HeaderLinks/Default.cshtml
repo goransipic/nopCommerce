@@ -1,14 +1,23 @@
 ﻿@model HeaderLinksModel
 @using Nop.Core.Domain.Customers
+@using Nop.Services.Configuration
+@using Nop.Web.Framework.TagHelpers.Shared
+@using Nop.Core
 @inject Nop.Core.IWebHelper webHelper
+@inject IStoreContext storeContext
+@inject ISettingService settingService
 
-<div class="header-links">
-    <ul>
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksBefore, additionalData = Model })
+@{
+    int storeId = (await storeContext.GetCurrentStoreAsync()).Id;
+    bool compareProductsEnabled = await settingService.GetSettingByKeyAsync("catalogsettings.compareproductsenabled", true, storeId, true);
+}
+@* <div class="header-links"> *@
+    @*<ul>*@
+        @* @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksBefore, additionalData = Model }) *@
         @if (Model.IsAuthenticated)
         {
-            <li><a href="@Url.RouteUrl("CustomerInfo")" class="ico-account">@T("Account.MyAccount")@*@Model.CustomerName*@</a></li>
-            <li><a href="@Url.RouteUrl("Logout")" class="ico-logout">@T("Account.Logout")</a></li>
+            @*<li>*@<a href="@Url.RouteUrl("CustomerInfo")" class="ico-account btn btn-sm text-primary d-none d-lg-block order-lg-3">@T("Account.MyAccount")@*@Model.CustomerName*@</a>/*</li>*/
+            @*<li>*@<a href="@Url.RouteUrl("Logout")" class="ico-logout btn btn-sm text-primary d-none d-lg-block order-lg-3">@T("Account.Logout")</a>@*</li>*@
         }
         else
         {
@@ -18,29 +27,33 @@
 
             @if (Model.RegistrationType != UserRegistrationType.Disabled)
             {
-                <li><a href="@Url.RouteUrl("Register", new { returnUrl })" class="ico-register">@T("Account.Register")</a></li>
+                @*<li><a href="@Url.RouteUrl("Register", new { returnUrl })" class="ico-register btn btn-sm text-primary d-none d-lg-block order-lg-3">@T("Account.Register")</a></li>*@
             }
-            <li><a href="@Url.RouteUrl("Login", new { returnUrl })" class="ico-login">@T("Account.Login")</a></li>
+            @*<li>*@<a href="@Url.RouteUrl("Login", new { returnUrl })" class="ico-login btn btn-sm text-primary d-none d-lg-block order-lg-3">@T("Account.Login")</a>/*</li>*/
         }
         @if (Model.AllowPrivateMessages)
         {
-            <li>
-                <a href="@Url.RouteUrl("PrivateMessages", new { tab = "" })" class="ico-inbox">
+            @*<li>*@
+                <a href="@Url.RouteUrl("PrivateMessages", new { tab = "" })" class="ico-inbox btn btn-sm text-primary d-none d-lg-block order-lg-3">
                     <span class="inbox-label">@T("PrivateMessages.Inbox")</span>
                     <span class="inbox-unread">@Model.UnreadPrivateMessages</span>
                 </a>
-            </li>
+            @*</li>*@
         }
+        @if (compareProductsEnabled)
+                {
+                    @*<li>*@<a href="@Url.RouteUrl("CompareProducts")" class="ico-compare btn btn-sm text-primary d-none d-lg-block order-lg-3">@T("Products.Compare.List")</a>@*</li>*@
+                }
         @if (Model.WishlistEnabled)
         {
-            <li>
-                <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
+            @*<li>*@
+                <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist btn btn-sm text-primary d-none d-lg-block order-lg-3">
                     <span class="wishlist-label">@T("Wishlist")</span>
                     <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
                 </a>
-            </li>
+            @*</li>*@
         }
-        @if (Model.ShoppingCartEnabled)
+        @*@if (Model.ShoppingCartEnabled)
         {
             <li id="topcartlink">
                 <a href="@Url.RouteUrl("ShoppingCart")" class="ico-cart">
@@ -48,9 +61,11 @@
                     <span class="cart-qty">@T("ShoppingCart.HeaderQuantity", Model.ShoppingCartItems)</span>
                 </a>
             </li>
-        }
+        }*@
+        @*
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksAfter, additionalData = Model })
-    </ul>
+    *@
+    @*</ul>*@
     @if (Model.AllowPrivateMessages && !string.IsNullOrEmpty(Model.AlertMessage))
     {
         //new private message notification
@@ -60,7 +75,7 @@
             });
         </script>
     }
-    @if (Model.ShoppingCartEnabled)
+    @*@if (Model.ShoppingCartEnabled)
     {
         <script asp-location="Footer">
             $(document).ready(function () {
@@ -78,5 +93,5 @@
                 });
             });
         </script>
-    }
-</div>
+    }*@
+@*</div>*@

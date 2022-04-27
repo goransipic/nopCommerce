@@ -1,10 +1,12 @@
 ﻿@model SearchBoxModel
-<form asp-route="ProductSearch" method="get" id="small-search-box-form">
+<form asp-route="ProductSearch" method="get" id="small-search-box-form" class="container-fluid">
     @if (Model.ShowSearchBox)
     {
-        <input type="text" class="search-box-text" id="small-searchterms" autocomplete="off" name="q" placeholder="@T("Search.SearchBox.Tooltip")" aria-label="@T("Search.SearchBox.Text.Label")" />
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.SearchBoxBeforeSearchButton, additionalData = Model })
-        <button type="submit" class="button-1 search-box-button">@T("Search.Button")</button>
+        <div class="input-group">
+            <input type="text" class="search-box-text form-control" id="small-searchterms" autocomplete="off" name="q" placeholder="@T("Search.SearchBox.Tooltip")" aria-label="@T("Search.SearchBox.Text.Label")" />
+            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.SearchBoxBeforeSearchButton, additionalData = Model })
+            <button type="submit" class="button-1 search-box-button input-group-text bg-warning"><i class="fi-search"></i></button>
+        </div>
         @if (Model.SearchTermMinimumLength > 0)
         {
             <script asp-location="Footer">
@@ -56,6 +58,6 @@
                 });
             </script>
         }
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.SearchBox, additionalData = Model })
+        @* @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.SearchBox, additionalData = Model }) *@
     }
 </form>

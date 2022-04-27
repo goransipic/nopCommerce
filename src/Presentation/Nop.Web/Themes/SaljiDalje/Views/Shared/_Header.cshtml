@@ -1,102 +1,44 @@
-﻿<div class="header">
-    @* @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderBefore }) *@
-    <div class="header-upper">
-        @*<div class="header-selectors-wrapper">
+﻿@* <div class="header"> *@
+@* @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderBefore }) *@
+@* <div class="header-upper"> *@
+@*<div class="header-selectors-wrapper">
             @await Component.InvokeAsync("TaxTypeSelector")
             @await Component.InvokeAsync("CurrencySelector")
             @await Component.InvokeAsync("LanguageSelector")
             @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderSelectors })
         </div>*@
-        <div class="header-links-wrapper">
+@*<div class="header-links-wrapper">
             @await Component.InvokeAsync("HeaderLinks")
             @await Component.InvokeAsync("FlyoutShoppingCart")
-        </div>
-    </div>
+        </div>*@
+@* </div> *@
+@*
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMiddle })
-    <div class="header-lower">
-        <header class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" data-scroll-header>
-            <div class="container"><a class="navbar-brand me-3 me-xl-4" href="city-guide-home-v1.html"><img class="d-block" src="img/logo/logo-dark.svg" width="116" alt="Finder"></a>
-                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><a class="btn btn-sm text-primary d-none d-lg-block order-lg-3" href="#signin-modal" data-bs-toggle="modal"><i class="fi-user me-2"></i>Sign in</a><a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="city-guide-add-business.html"><i class="fi-plus me-2"></i>Predaj<span class='d-none d-sm-inline'> Oglas</span></a>
-                <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
-                    <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
-                        <!-- Demos switcher-->
-                        @*<li class="nav-item dropdown me-lg-2"><a class="nav-link dropdown-toggle align-items-center pe-lg-4" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fi-layers me-2"></i>Demos<span class="d-none d-lg-block position-absolute top-50 end-0 translate-middle-y border-end" style="width: 1px; height: 30px;"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="real-estate-home-v1.html"><i class="fi-building fs-base opacity-50 me-2"></i>Real Estate Demo</a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="car-finder-home.html"><i class="fi-car fs-base opacity-50 me-2"></i>Car Finder Demo</a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="job-board-home-v1.html"><i class="fi-briefcase fs-base opacity-50 me-2"></i>Job Board Demo</a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="city-guide-home-v1.html"><i class="fi-map-pin fs-base opacity-50 me-2"></i>City Guide Demo</a></li>
-                                        <li class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="index.html"><i class="fi-home fs-base opacity-50 me-2"></i>Main Page</a></li>
-                                        <li><a class="dropdown-item" href="components/typography.html"><i class="fi-list fs-base opacity-50 me-2"></i>Components</a></li>
-                                        <li><a class="dropdown-item" href="docs/dev-setup.html"><i class="fi-file fs-base opacity-50 me-2"></i>Documentation</a></li>
-                                    </ul>
-                                </li>*@
-                        <!-- Menu items-->
-                        <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Home</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="city-guide-home-v1.html">Homepage v.1</a></li>
-                                <li><a class="dropdown-item" href="city-guide-home-v2.html">Homepage v.2</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catalog</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="city-guide-catalog.html">Grid with Filters</a></li>
-                                <li><a class="dropdown-item" href="city-guide-single.html">Single Place - Gallery</a></li>
-                                <li><a class="dropdown-item" href="city-guide-single-info.html">Single Place - Info</a></li>
-                                <li><a class="dropdown-item" href="city-guide-single-reviews.html">Single Place - Reviews</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="city-guide-account-info.html">Personal Info</a></li>
-                                <li><a class="dropdown-item" href="city-guide-account-favorites.html">Favorites</a></li>
-                                <li><a class="dropdown-item" href="city-guide-account-reviews.html">Reviews</a></li>
-                                <li><a class="dropdown-item" href="city-guide-account-notifications.html">Notifications</a></li>
-                                <li><a class="dropdown-item" href="signin-light.html">Sign In</a></li>
-                                <li><a class="dropdown-item" href="signup-light.html">Sign Up</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Vendor</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="city-guide-add-business.html">Predaj oglas</a></li>
-                                <li><a class="dropdown-item" href="city-guide-business-promotion.html">Business Promotion</a></li>
-                                <li><a class="dropdown-item" href="city-guide-vendor-businesses.html">My Businesses</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="city-guide-about.html">About</a></li>
-                                <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="city-guide-blog.html">Blog Grid</a></li>
-                                        <li><a class="dropdown-item" href="city-guide-blog-single.html">Single Post</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="dropdown-item" href="city-guide-contacts.html">Contacts</a></li>
-                                <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Help Center</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="city-guide-help-center.html">Help Topics</a></li>
-                                        <li><a class="dropdown-item" href="city-guide-help-center-single-topic.html">Single Topic</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="dropdown-item" href="city-guide-404.html">404 Not Found</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item d-lg-none"><a class="nav-link" href="#signin-modal" data-bs-toggle="modal"><i class="fi-user me-2"></i>Sign in</a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        <div class="header-logo">
-            @await Component.InvokeAsync("Logo")
-        </div>
-        <div class="search-box store-search-box">
+    *@
+@* <div class="header-lower"> *@
+<header class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" data-scroll-header>
+    <div class="container">
+        <a class="navbar-brand me-3 me-xl-4" href="#">
+            <img class="d-block" src="~/Themes/SaljiDalje/Content/img/logo/logo-dark.svg" width="116" alt="Finder">
+        </a>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
             @await Component.InvokeAsync("SearchBox")
         </div>
+        @await Component.InvokeAsync("HeaderLinks")
+        <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="#">
+            <i class="fi-plus me-2"></i>Predaj<span class='d-none d-sm-inline'>Oglas</span>
+        </a>
     </div>
-    @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.HeaderAfter})
-</div>
+</header>
+@*<div class="header-logo">
+            @await Component.InvokeAsync("Logo")
+        </div>*@
+@*<div class="search-box store-search-box">
+            @await Component.InvokeAsync("SearchBox")
+        </div>*@
+@* </div> *@
+@* @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.HeaderAfter}) *@
+@* </div> *@
