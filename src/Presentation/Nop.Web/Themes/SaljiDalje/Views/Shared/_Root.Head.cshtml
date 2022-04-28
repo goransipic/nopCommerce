@@ -33,6 +33,7 @@
     string themename = await themeContext.GetWorkingThemeNameAsync();
     
     NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/js/theme.js", excludeFromBundle:true);
+    NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/tiny-slider/dist/min/tiny-slider.js", excludeFromBundle:true);
     NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/jarallax/dist/jarallax.min.js", excludeFromBundle:true);
     NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/smooth-scroll/dist/smooth-scroll.js", excludeFromBundle:true);
     NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/bootstrap/dist/js/bootstrap.bundle.js", excludeFromBundle:true);
