@@ -16,21 +16,20 @@
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMiddle })
     *@
 @* <div class="header-lower"> *@
-<header class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" data-scroll-header>
+<header role="navigation" class="fixed-top bg-light navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand me-3 me-xl-4" href="#">
-            <img class="d-block" src="~/Themes/SaljiDalje/Content/img/logo/logo-dark.svg" width="116" alt="Finder">
+        <a href="/city-guide" class="me-3 me-xl-4 navbar-brand">
+            <span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;">
+                <span style="box-sizing: border-box; display: block; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"><img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27116%27%20height=%2732%27/%3e" style="display: block; max-width: 100%; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"></span>
+                <img alt="Finder" src="~/Themes/SaljiDalje/Content/img/logo/logo-dark.svg" decoding="async" data-nimg="intrinsic" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+            </span>
         </a>
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
-            @await Component.InvokeAsync("SearchBox")
+        <button aria-controls="navbarNav" type="button" aria-label="Toggle navigation" class="ms-auto navbar-toggler collapsed"><span class="navbar-toggler-icon"></span></button><button type="button" class="btn btn-sm text-primary d-none d-lg-block order-lg-3"><i class="fi-user me-2"></i>Sign in</button><a role="button" tabindex="0" href="/city-guide/add-business" class="rounded-pill order-lg-3 ms-2 btn btn-primary btn-sm"><i class="fi-plus me-2"></i>Add <span class="d-none d-sm-inline">business</span></a>
+        <div class="order-md-2 navbar-collapse collapse" id="navbarNav">
+            <div class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
+                @await Component.InvokeAsync("TopMenu")
+            </div>
         </div>
-        @await Component.InvokeAsync("HeaderLinks")
-        <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="#">
-            <i class="fi-plus me-2"></i>Predaj<span class='d-none d-sm-inline'>Oglas</span>
-        </a>
     </div>
 </header>
 @*<div class="header-logo">

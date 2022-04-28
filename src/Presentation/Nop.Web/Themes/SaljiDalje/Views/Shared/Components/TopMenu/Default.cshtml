@@ -3,31 +3,13 @@
 @functions {
     async Task CategoryLine(TopMenuModel.CategoryLineModel lineModel)
     {
-        <li>
-            <a href="@Url.RouteUrl("Category", new { SeName = lineModel.Category.SeName })">@lineModel.Category.Name
-                @if (lineModel.Category.NumberOfProducts.HasValue)
-                {
-                    <text> </text>@T("Categories.TotalProducts", lineModel.Category.NumberOfProducts.Value)
-                }
-            </a>
-            @{
-                //subcategories
-                var subCategories = lineModel.ResponsiveMobileMenu ?
-                    //responsive (all categories)
-                    lineModel.Category.SubCategories :
-                    //standard design (only categories with "IncludeInTopMenu")
-                    lineModel.Category.SubCategories.Where(x => x.IncludeInTopMenu).ToList();
-
-                var levelClass = "";
-                if (lineModel.Level == 0)
-                {
-                    levelClass = "first-level";
-                }
-                if (subCategories.Count > 0)
-                {
-                    <div class="sublist-toggle"></div>
-                    <ul class="sublist @levelClass">
-                        @foreach (var subCategory in subCategories)
+        if (lineModel.Category.SubCategories.Count > 0)
+        {
+            <div class="dropdown">
+                <a href="@Url.RouteUrl("Category", new {SeName = lineModel.Category.SeName})" id="react-aria-32" aria-expanded="false" data-rr-ui-dropdown-item="" class="dropdown-toggle dropdown-item" role="button" tabindex="0">@lineModel.Category.Name</a>
+                <div data-bs-popper="static" class="dropdown-menu" aria-labelledby="react-aria-32">
+                    @{  
+                        @foreach (var subCategory in lineModel.Category.SubCategories)
                         {
                             var categoryLineModel = new TopMenuModel.CategoryLineModel
                             {
@@ -37,15 +19,29 @@
                             };
                             await CategoryLine(categoryLineModel);
                         }
-                    </ul>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <a href="@Url.RouteUrl("Category", new {SeName = lineModel.Category.SeName})" class="dropdown-item">@lineModel.Category.Name
+                @if (lineModel.Category.NumberOfProducts.HasValue)
+                {
+                    <text> </text>@T("Categories.TotalProducts", lineModel.Category.NumberOfProducts.Value)
                 }
-            }
-        </li>
+            </a>
+        }
     }
 }
 
-<ul class="top-menu notmobile">
-    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMenuBefore, additionalData = Model })
+<div class="me-lg-2 nav-item dropdown">
+    <a id="react-aria-26" aria-expanded="false" role="button" class="align-items-center pe-lg-4 dropdown-toggle nav-link" tabindex="0" href="#">
+        <i class="fi-layers me-2"></i>
+        Kategorije<span class="d-none d-lg-block position-absolute top-50 end-0 translate-middle-y border-end" style="width: 1px; height: 30px;">
+        </span>
+    </a>
+    @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.HeaderMenuBefore, additionalData = Model})
     @if (Model.DisplayHomepageMenuItem)
     {
         <li><a href="@Url.RouteUrl("Homepage")">@T("Homepage")</a></li>
@@ -53,19 +49,21 @@
     @if (!Model.UseAjaxMenu)
     {
         var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
-        @foreach (var category in rootCategories)
-        {
-            var categoryLineModel = new TopMenuModel.CategoryLineModel
+        <div data-bs-popper="static" class="dropdown-menu" aria-labelledby="react-aria-26">
+            @foreach (var category in rootCategories)
             {
-                Category = category
-            };
-            await CategoryLine(categoryLineModel);
-        }
+                var categoryLineModel = new TopMenuModel.CategoryLineModel
+                {
+                    Category = category
+                };
+                await CategoryLine(categoryLineModel);
+            }
+        </div>
 
     }
     @foreach (var topic in Model.Topics)
     {
-        <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
+        <li><a href="@Url.RouteUrl("Topic", new {SeName = topic.SeName})">@topic.Name</a></li>
     }
     @if (Model.NewProductsEnabled && Model.DisplayNewProductsMenuItem)
     {
@@ -91,9 +89,9 @@
     {
         <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
     }
-    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMenuAfter, additionalData = Model })
-</ul>
-@{
+    @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.HeaderMenuAfter, additionalData = Model})
+</div>
+@*@{
     var rootCategoriesResponsive = Model.Categories.ToList();
     //name it "Categories" if we have only categories. Otherwise, "Menu"
     var responsiveMenuTitle = Model.HasOnlyCategories ? T("Categories") : T("Menu");
@@ -180,4 +178,4 @@
 
     }
 
-}
+}*@
