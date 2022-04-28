@@ -91,6 +91,42 @@
     }
     @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.HeaderMenuAfter, additionalData = Model})
 </div>
+
+@if (Model.DisplayHomepageMenuItem)
+{
+    <div class="nav-item">
+        <a href="@Url.RouteUrl("Homepage")"  aria-expanded="false" class="nav-link" tabindex="0" href="#">@T("Homepage")</a>
+    </div>                                                         
+}
+@foreach (var topic in Model.Topics)
+{
+    <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></div>
+}
+@if (Model.NewProductsEnabled && Model.DisplayNewProductsMenuItem)
+{
+    <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("NewProducts")">@T("Products.NewProducts")</a></div>
+}
+@if (Model.DisplayProductSearchMenuItem)
+{
+    <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("ProductSearch")">@T("Search")</a></div>
+}
+@if (Model.DisplayCustomerInfoMenuItem)
+{
+    <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("CustomerInfo")">@T("Account.MyAccount")</a></div>
+}
+@if (Model.BlogEnabled && Model.DisplayBlogMenuItem)
+{
+    <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("Blog")">@T("Blog")</a></div>
+}
+@if (Model.ForumEnabled && Model.DisplayForumsMenuItem)
+{
+    <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("Boards")">@T("Forum.Forums")</a></div>
+}
+@if (Model.DisplayContactUsMenuItem)
+{
+    <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></div>
+}
+
 @*@{
     var rootCategoriesResponsive = Model.Categories.ToList();
     //name it "Categories" if we have only categories. Otherwise, "Menu"
