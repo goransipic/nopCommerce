@@ -9,6 +9,9 @@
     var supportRtl = await Html.ShouldUseRtlThemeAsync();
     //add main CSS file
     NopHtml.AppendCssFileParts($"~/Themes/{themeName}/Content/css/theme{(supportRtl ? ".rtl" : "")}.css", excludeFromBundle:true);
+    NopHtml.AppendCssFileParts($"~/Themes/{themeName}/Content/vendor/tiny-slider/dist/tiny-slider.css", excludeFromBundle:true);
+    NopHtml.AppendCssFileParts($"~/Themes/{themeName}/Content/vendor/lightgallery/css/lightgallery-bundle.min.css", excludeFromBundle:true);
+    NopHtml.AppendCssFileParts($"~/Themes/{themeName}/Content/vendor/simplebar/dist/simplebar.min.css", excludeFromBundle:true);
 
     //add jQuery UI css file
     NopHtml.AppendCssFileParts("~/lib_npm/jquery-ui-dist/jquery-ui.min.css");
