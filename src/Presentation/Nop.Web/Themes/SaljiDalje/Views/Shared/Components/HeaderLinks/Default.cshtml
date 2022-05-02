@@ -29,7 +29,9 @@
             {
                 @*<li><a href="@Url.RouteUrl("Register", new { returnUrl })" class="ico-register btn btn-sm text-primary d-none d-lg-block order-lg-3">@T("Account.Register")</a></li>*@
             }
-            @*<li>*@<a href="@Url.RouteUrl("Login", new { returnUrl })" class="ico-login btn btn-sm text-primary d-none d-lg-block order-lg-3">@T("Account.Login")</a>/*</li>*/
+            @*<li>*@<a href="@Url.RouteUrl("Login", new {returnUrl})" class="ico-login btn btn-sm text-primary d-none d-lg-block order-lg-3">
+                <i class="fi-user me-2"></i>@T("Account.Login")
+            </a>/*</li>*/
         }
         @if (Model.AllowPrivateMessages)
         {
@@ -40,19 +42,19 @@
                 </a>
             @*</li>*@
         }
-        @if (compareProductsEnabled)
+        @*@if (compareProductsEnabled)
                 {
-                    @*<li>*@<a href="@Url.RouteUrl("CompareProducts")" class="ico-compare btn btn-sm text-primary d-none d-lg-block order-lg-3">@T("Products.Compare.List")</a>@*</li>*@
-                }
-        @if (Model.WishlistEnabled)
+                    $1$<li>#1#<a href="@Url.RouteUrl("CompareProducts")" class="ico-compare btn btn-sm text-primary d-none d-lg-block order-lg-3">@T("Products.Compare.List")</a>$1$</li>#1#
+                }*@
+        @*@if (Model.WishlistEnabled)
         {
-            @*<li>*@
+            $1$<li>#1#
                 <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist btn btn-sm text-primary d-none d-lg-block order-lg-3">
                     <span class="wishlist-label">@T("Wishlist")</span>
                     <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
                 </a>
-            @*</li>*@
-        }
+            $1$</li>#1#
+        }*@
         @*@if (Model.ShoppingCartEnabled)
         {
             <li id="topcartlink">

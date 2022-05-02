@@ -16,14 +16,18 @@
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMiddle })
     *@
 @* <div class="header-lower"> *@
-<header class="navbar navbar-expand-lg navbar-light bg-light fixed-top navbar-stuck" data-scroll-header="">
+<header class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top navbar-stuck" data-scroll-header="">
     <div class="container">
         <a class="navbar-brand me-3 me-xl-4" href="@Url.RouteUrl("Homepage")">
             <img class="d-block" src="~/Themes/SaljiDalje/Content/img/logo/logo-dark.svg" width="116" alt="Finder">
         </a>
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button><a class="btn btn-sm text-primary d-none d-lg-block order-lg-3" href="#signin-modal" data-bs-toggle="modal"><i class="fi-user me-2"></i>Sign in</a><a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="city-guide-add-business.html"><i class="fi-plus me-2"></i>Add<span class="d-none d-sm-inline"> business</span></a>
+        </button>
+        @await Component.InvokeAsync("HeaderLinks")
+        <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="city-guide-add-business.html">
+            <i class="fi-plus me-2"></i>Add<span class="d-none d-sm-inline"> business</span>
+        </a>
         <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
             <div class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
                 @await Component.InvokeAsync("TopMenu")
