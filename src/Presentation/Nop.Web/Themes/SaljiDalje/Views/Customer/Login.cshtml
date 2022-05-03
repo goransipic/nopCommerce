@@ -19,21 +19,22 @@
     <div class="row">
         <div class="col-12 pt-4">
             <h2 class="h3 mb-4 mb-sm-5 text-center">@T("Account.Login.Welcome")</h2>
+            <hr/>
         </div>
     </div>
     @*<div class="col-md-6 border-end-md p-4 p-sm-4">
         <img class="d-block mx-auto" src="~/Themes/@themeName/Content/img/signin-modal/signin.svg" width="344" alt="Illustartion">
         <div class="mt-4 mt-sm-5 text-center">Don't have an account? <a href="#" onclick="location.href='@registerUrl'">@T("Account.Register")</a></div>
     </div>*@
-    <div class="col-sm-10 col-md-6 mx-auto px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-3">
-        <form class="needs-validation" asp-route="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" autocomplete="off">
+    <div class="col-sm-10 col-md-6 mx-auto px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
+        <form asp-route="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" autocomplete="off">
             <div asp-validation-summary="ModelOnly">@T("Account.Login.Unsuccessful")</div>
             <div class="mb-4">
                 <label asp-for="Email" class="form-label mb-2" for="signin-email"></label>
                 <input asp-for="Email" class="form-control" type="email" id="signin-email" autofocus="autofocus"/>
                 <span asp-validation-for="Email"></span>
             </div>
-            <div class="mb-4">
+            <div class="mb-3">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <label asp-for="Password" class="form-label mb-0" for="signin-password"></label>
                     <a class="fs-sm" asp-route="PasswordRecovery">@T("Account.Login.ForgotPassword")</a>
@@ -47,12 +48,22 @@
                 </div>
                 <span asp-validation-for="Password"></span>
             </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input asp-for="RememberMe" class="form-check-input" type="checkbox" id="invalidCheck"/>
+                    <label asp-for="RememberMe" class="form-check-label" for="invalidCheck"></label>
+                </div>
+            </div>
+            @if (Model.DisplayCaptcha)
+            {
+                <nop-captcha/>
+            }
             <button class="btn btn-primary btn-lg rounded-pill w-100" type="submit">
                 @T("Account.Login.LoginButton")
             </button>
         </form>
-        <div class="mt-4 mt-sm-5 text-center">Don't have an account? <a href="#" onclick="location.href='@registerUrl'">@T("Account.Register")</a></div>
-        <div class="d-flex align-items-center py-3 mb-3">
+       
+        <div class="d-flex align-items-center py-2 mb-2">
             <hr class="w-100">
             <div class="px-3">ili</div>
             <hr class="w-100">
@@ -63,6 +74,10 @@
         <a class="btn btn-outline-info rounded-pill w-100 mb-3" href="#">
             <i class="fi-facebook fs-lg me-1"></i>Sign in with Facebook
         </a>
+         @if (Model.RegistrationType != UserRegistrationType.Disabled)
+         {
+           <div class="mt-3 mb-2 mt-sm-4 text-center">Don't have an account? <a href="#" onclick="location.href='@registerUrl'">@T("Account.Register")</a></div>
+         }
     </div>
 </div>
 
