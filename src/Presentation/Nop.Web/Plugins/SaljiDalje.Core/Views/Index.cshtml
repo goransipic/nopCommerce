@@ -1,0 +1,158 @@
+@using Nop.Web.Models.Catalog
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Nop.Web.Models.Catalog.TopMenuModel
+
+@{
+    Layout = "_ColumnsOne";
+    var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
+}
+
+@functions {
+
+    async Task CategoryLine(TopMenuModel.CategoryLineModel lineModel)
+    {
+        if (lineModel.Category.SubCategories.Count > 0)
+        {
+            <div id="@lineModel.Category.Id" class="py-1 border-end border-bottom d-flex flex-row justify-content-between align-content-center">
+                <div>
+                    <a href="#" class="btn btn-sm ms-2">@lineModel.Category.Name</a>
+                </div>
+                <div>
+                    <div class="btn btn-sm ms-2">
+                        <i class="fi-chevron-right"></i>
+                    </div>
+                </div>
+                @{
+                    @foreach (var subCategory in lineModel.Category.SubCategories)
+                    {
+                        var categoryLineModel = new TopMenuModel.CategoryLineModel
+                        {
+                            Category = subCategory,
+                            Level = lineModel.Level + 1,
+                            ResponsiveMobileMenu = lineModel.ResponsiveMobileMenu
+                        };
+                        await CategoryLine(categoryLineModel);
+                    }
+                }
+            </div>
+            <script asp-location="Footer">
+                $('#@lineModel.Category.Id').click(function(){
+                        var temp = $('#@lineModel.Category.Id')
+                        temp.parent().parent().next().children().remove();
+                        var siblings = temp.children(".d-none").clone().removeClass("d-none");
+                        temp.parent().parent().next().append(siblings)
+                })                           
+            </script>
+        }
+        else
+        {
+            if (lineModel.Level == 0)
+                {
+                <div class="py-1 border-bottom border-end">
+                    <a href="#" class="btn btn-sm ms-2">
+                        @lineModel.Category.Name
+                        @if (lineModel.Category.NumberOfProducts.HasValue)
+                        {
+                            <text> </text>
+                            @T("Categories.TotalProducts", lineModel.Category.NumberOfProducts.Value)
+                        }
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="py-1 border-bottom border-end d-none">
+                    <a href="#" class="btn btn-sm ms-2">
+                        @lineModel.Category.Name
+                        @if (lineModel.Category.NumberOfProducts.HasValue)
+                        {
+                            <text> </text>
+                            @T("Categories.TotalProducts", lineModel.Category.NumberOfProducts.Value)
+                        }
+                    </a>
+                </div>
+            }
+        }
+    }
+
+}
+
+<!-- Page content-->
+<div class="row justify-content-center pb-sm-2">
+    <div class="col-lg-11 col-xl-10">
+        <!-- Page title-->
+        <div class="text-center pb-4 mb-3">
+            <h1 class="h2 mb-4">Create online resume</h1>
+            <p class="mb-4">Save time by uploading a resume to prefill some of the fields below. Please, use PDF format.</p>
+            <button class="btn btn-primary btn-lg rounded-pill" type="button">
+                <i class="fi-upload me-2"></i>Upload existing resume
+            </button>
+        </div>
+        <!-- Steps-->
+        <div class="bg-secondary rounded-3 py-4 px-md-4 mb-3">
+            <div class="steps pt-4 pb-1">
+                <div class="step active">
+                    <div class="step-progress">
+                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">1</span>
+                    </div>
+                    <div class="step-label">Basic info</div>
+                </div>
+                <div class="step">
+                    <div class="step-progress">
+                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">2</span>
+                    </div>
+                    <div class="step-label">Education</div>
+                </div>
+                <div class="step">
+                    <div class="step-progress">
+                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">3</span>
+                    </div>
+                    <div class="step-label">Experience</div>
+                </div>
+                @*<div class="step">
+                    <div class="step-progress">
+                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">4</span>
+                    </div>
+                    <div class="step-label">Skills</div>
+                </div>
+                <div class="step">
+                    <div class="step-progress">
+                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">5</span>
+                    </div>
+                    <div class="step-label">Review</div>
+                </div>*@
+            </div>
+        </div>
+        <!-- Step 1: Basic Info-->
+        <div class="bg-secondary rounded-3 p-4 p-md-5 mb-3">
+            <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Odaberite kategoriju u kojoj će se prikazati vaš oglas</h2>
+            <div class="row shadow-sm bg-white rounded-1">
+                <div class="col-sm g-0">
+                    @{
+                        <div>
+                            @foreach (var category in rootCategories)
+                            {
+                                var categoryLineModel = new TopMenuModel.CategoryLineModel
+                                {
+                                    Category = category
+                                };
+
+                                await CategoryLine(categoryLineModel);
+                            }
+                        </div>
+                    }
+                </div>
+                @for (var i = 0; i < 3; i++)
+                {
+                    <div class="col-sm g-0">
+                    </div>
+                }
+            </div>
+        </div>
+        
+        <!-- Navigation-->
+        <div class="d-flex flex-column flex-sm-row bg-secondary rounded-3 p-4 px-md-5">
+            <a class="btn btn-primary btn-lg rounded-pill ms-sm-auto" href="job-board-post-resume-2.html">Next step<i class="fi-chevron-right fs-sm ms-2"></i></a>
+        </div>
+    </div>
+</div>
