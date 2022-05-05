@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Nop.Web.Factories;
 using Nop.Web.Framework.Controllers;
+using Nop.Web.Models.Catalog;
 
 namespace SaljiDalje.Core.Controllers
 {
@@ -19,5 +20,13 @@ namespace SaljiDalje.Core.Controllers
             var model = await _catalogModelFactory.PrepareTopMenuModelAsync();
             return View("~/Plugins/SaljiDalje.Core/Views/Index.cshtml", model);
         }
+    }
+    
+    public class SortByCategoryModel
+    {
+        public int Level { get; set; }
+        public bool ResponsiveMobileMenu { get; set; }
+        public CategorySimpleModel Category { get; set; }
+        public CategorySimpleModel ParentCategory { get; set; }
     }
 }

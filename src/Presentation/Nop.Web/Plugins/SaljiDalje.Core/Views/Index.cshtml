@@ -1,10 +1,23 @@
 @using Nop.Web.Models.Catalog
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Nop.Core.Domain.Catalog
+@using SaljiDalje.Core.Controllers
 @model Nop.Web.Models.Catalog.TopMenuModel
 
 @{
     Layout = "_ColumnsOne";
+    var categoryPerLevel = new Dictionary<int, List<SortByCategoryModel>>();
+
     var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
+    @foreach (var category in rootCategories)
+    {
+        var categoryLineModel = new SortByCategoryModel
+        {
+            Category = category
+        };
+
+        await SortyByCategory(categoryLineModel, categoryPerLevel);
+    }
 }
 
 @functions {
@@ -22,18 +35,20 @@
                         <i class="fi-chevron-right"></i>
                     </div>
                 </div>
-                @{
-                    @foreach (var subCategory in lineModel.Category.SubCategories)
-                    {
-                        var categoryLineModel = new TopMenuModel.CategoryLineModel
+                <div class="d-none">
+                    @{
+                        @foreach (var subCategory in lineModel.Category.SubCategories)
                         {
-                            Category = subCategory,
-                            Level = lineModel.Level + 1,
-                            ResponsiveMobileMenu = lineModel.ResponsiveMobileMenu
-                        };
-                        await CategoryLine(categoryLineModel);
+                            var categoryLineModel = new TopMenuModel.CategoryLineModel
+                            {
+                                Category = subCategory,
+                                Level = lineModel.Level + 1,
+                                ResponsiveMobileMenu = lineModel.ResponsiveMobileMenu
+                            };
+                            await CategoryLine(categoryLineModel);
+                        }
                     }
-                }
+                </div>
             </div>
             <script asp-location="Footer">
                 $('#@lineModel.Category.Id').click(function(){
@@ -46,32 +61,48 @@
         }
         else
         {
-            if (lineModel.Level == 0)
-                {
-                <div class="py-1 border-bottom border-end">
-                    <a href="#" class="btn btn-sm ms-2">
-                        @lineModel.Category.Name
-                        @if (lineModel.Category.NumberOfProducts.HasValue)
-                        {
-                            <text> </text>
-                            @T("Categories.TotalProducts", lineModel.Category.NumberOfProducts.Value)
-                        }
-                    </a>
-                </div>
-            }
-            else
+            <div class="py-1 border-bottom border-end">
+                <a href="#" class="btn btn-sm ms-2">
+                    @lineModel.Category.Name
+                </a>
+            </div>
+        }
+    }
+
+    async Task SortyByCategory(SortByCategoryModel lineModel, Dictionary<int, List<SortByCategoryModel>> categoryPerLevel)
+    {
+        if (lineModel.Category.SubCategories.Count > 0)
+        {
+            AddItemToCollection(lineModel, categoryPerLevel);
+
+            foreach (var subCategory in lineModel.Category.SubCategories)
             {
-                <div class="py-1 border-bottom border-end d-none">
-                    <a href="#" class="btn btn-sm ms-2">
-                        @lineModel.Category.Name
-                        @if (lineModel.Category.NumberOfProducts.HasValue)
-                        {
-                            <text> </text>
-                            @T("Categories.TotalProducts", lineModel.Category.NumberOfProducts.Value)
-                        }
-                    </a>
-                </div>
+                var categoryLineModel = new SortByCategoryModel
+                {
+                    Category = subCategory,
+                    Level = lineModel.Level + 1,
+                    ResponsiveMobileMenu = lineModel.ResponsiveMobileMenu,
+                    ParentCategory = lineModel.Category
+                };
+                await SortyByCategory(categoryLineModel, categoryPerLevel);
             }
+        }
+        else
+        {
+            AddItemToCollection(lineModel, categoryPerLevel);
+        }
+    }
+
+    private static void AddItemToCollection(SortByCategoryModel lineModel, Dictionary<int, List<SortByCategoryModel>> categoryPerLevel)
+    {
+        if (categoryPerLevel.ContainsKey(lineModel.Level))
+        {
+            var itemList = categoryPerLevel[lineModel.Level];
+            itemList.Add(lineModel);
+        }
+        else
+        {
+            categoryPerLevel.Add(lineModel.Level, new List<SortByCategoryModel> {lineModel});
         }
     }
 
@@ -127,29 +158,75 @@
         <div class="bg-secondary rounded-3 p-4 p-md-5 mb-3">
             <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Odaberite kategoriju u kojoj će se prikazati vaš oglas</h2>
             <div class="row shadow-sm bg-white rounded-1">
-                <div class="col-sm g-0">
-                    @{
-                        <div>
-                            @foreach (var category in rootCategories)
+                @{
+                    foreach (var entry in categoryPerLevel)
+                    {
+                        <div class="col-sm g-0">
+                            @{ int key = entry.Key; }
+                            @foreach (var itemValue in entry.Value)
                             {
-                                var categoryLineModel = new TopMenuModel.CategoryLineModel
+                                if (itemValue.Category.HaveSubCategories)
                                 {
-                                    Category = category
-                                };
+                                    <div data-category-parent-id="@{if (itemValue.ParentCategory != null) {@itemValue.ParentCategory.Id}}" id="@itemValue.Category.Id" data-category-level="@key"
+                                         class="@{if (key > 0){ <text>d-none</text> }} py-1 border-end border-bottom d-flex flex-row justify-content-between align-content-center">
+                                        <div>
+                                            <a href="#" class="btn btn-sm ms-2">@itemValue.Category.Name</a>
+                                        </div>
+                                        <div>
+                                            <div class="btn btn-sm ms-2">
+                                                <i class="fi-chevron-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script asp-location="Footer">
+                                            $('#@itemValue.Category.Id').click(function(){
+                                            var category = $('#@itemValue.Category.Id')
+                                            category.parent().nextAll().children().addClass("d-none")    
+                                            var categoryLevel = category.data("categoryLevel")
+                                            $(`div[data-item-children="true"]`).addClass("d-none")
+                                            
+                                            //$(`div[data-category-level="${categoryLevel}"]`).addClass("d-none")
+                                            
+                                            var id = $('#@itemValue.Category.Id').attr('id')
+                                            categoryLevel = categoryLevel + 1;
+                                            $(`div[data-category-level="${categoryLevel}"][data-category-parent-id="${id}"]`).removeClass("d-none")
 
-                                await CategoryLine(categoryLineModel);
+                                            
+                                        })                           
+                                    </script>
+                                }
+                                else
+                                {
+                                    <div id="@itemValue.Category.Id" data-category-parent-id="@{if (itemValue.ParentCategory != null) {@itemValue.ParentCategory.Id}}" data-category-level="@entry.Key"
+                                         class="@{if (key > 0){ <text>d-none</text> }} d-flex flex-row justify-content-between align-content-center py-1 border-bottom border-end">
+                                        <div>
+                                            <a href="#" class="btn btn-sm ms-2">
+                                                @itemValue.Category.Name
+                                            </a>
+                                        </div>
+                                        <div data-item-children="true" class="d-none">
+                                            <div class="btn btn-sm ms-2">
+                                                <i class="fi-check text-primary"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script asp-location="Footer">
+                                            $('#@itemValue.Category.Id').click(function(){
+                                            var category = $('#@itemValue.Category.Id')
+                                            $(`div[data-item-children="true"]`).addClass("d-none")
+
+                                            category.parent().nextAll().children().addClass("d-none")  
+                                            category.children().next().removeClass("d-none")    
+                                    })                           
+                                    </script>
+                                }
                             }
                         </div>
                     }
-                </div>
-                @for (var i = 0; i < 3; i++)
-                {
-                    <div class="col-sm g-0">
-                    </div>
                 }
             </div>
         </div>
-        
+
         <!-- Navigation-->
         <div class="d-flex flex-column flex-sm-row bg-secondary rounded-3 p-4 px-md-5">
             <a class="btn btn-primary btn-lg rounded-pill ms-sm-auto" href="job-board-post-resume-2.html">Next step<i class="fi-chevron-right fs-sm ms-2"></i></a>
