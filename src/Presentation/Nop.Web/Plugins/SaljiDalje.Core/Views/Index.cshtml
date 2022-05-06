@@ -1,6 +1,4 @@
 @using Nop.Web.Models.Catalog
-@using Microsoft.AspNetCore.Mvc.TagHelpers
-@using Nop.Core.Domain.Catalog
 @using SaljiDalje.Core.Controllers
 @model Nop.Web.Models.Catalog.TopMenuModel
 
@@ -111,49 +109,25 @@
 <!-- Page content-->
 <div class="row justify-content-center pb-sm-2">
     <div class="col-lg-11 col-xl-10">
+        <!-- Breadcrumb-->
+            <nav class="mb-3 pt-2 pt-lg-3" aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Add business</li>
+                </ol>
+            </nav>
         <!-- Page title-->
         <div class="text-center pb-4 mb-3">
             <h1 class="h2 mb-4">Create online resume</h1>
             <p class="mb-4">Save time by uploading a resume to prefill some of the fields below. Please, use PDF format.</p>
-            <button class="btn btn-primary btn-lg rounded-pill" type="button">
+            @*<button class="btn btn-primary btn-lg rounded-pill" type="button">
                 <i class="fi-upload me-2"></i>Upload existing resume
-            </button>
+            </button>*@
         </div>
         <!-- Steps-->
-        <div class="bg-secondary rounded-3 py-4 px-md-4 mb-3">
-            <div class="steps pt-4 pb-1">
-                <div class="step active">
-                    <div class="step-progress">
-                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">1</span>
-                    </div>
-                    <div class="step-label">Basic info</div>
-                </div>
-                <div class="step">
-                    <div class="step-progress">
-                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">2</span>
-                    </div>
-                    <div class="step-label">Education</div>
-                </div>
-                <div class="step">
-                    <div class="step-progress">
-                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">3</span>
-                    </div>
-                    <div class="step-label">Experience</div>
-                </div>
-                @*<div class="step">
-                    <div class="step-progress">
-                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">4</span>
-                    </div>
-                    <div class="step-label">Skills</div>
-                </div>
-                <div class="step">
-                    <div class="step-progress">
-                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">5</span>
-                    </div>
-                    <div class="step-label">Review</div>
-                </div>*@
-            </div>
-        </div>
+        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Steps.cshtml", StepsModel.STEP_ONE); }
         <!-- Step 1: Basic Info-->
         <div class="bg-secondary rounded-3 p-4 p-md-5 mb-3">
             <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Odaberite kategoriju u kojoj će se prikazati vaš oglas</h2>
@@ -185,14 +159,13 @@
                                             var categoryLevel = category.data("categoryLevel")
                                             $(`div[data-item-children="true"]`).addClass("d-none")
                                             
+                                            $('#btn-next-step').addClass("disabled")
                                             //$(`div[data-category-level="${categoryLevel}"]`).addClass("d-none")
                                             
                                             var id = $('#@itemValue.Category.Id').attr('id')
                                             categoryLevel = categoryLevel + 1;
                                             $(`div[data-category-level="${categoryLevel}"][data-category-parent-id="${id}"]`).removeClass("d-none")
-
-                                            
-                                        })                           
+                                            })                           
                                     </script>
                                 }
                                 else
@@ -214,9 +187,10 @@
                                             $('#@itemValue.Category.Id').click(function(){
                                             var category = $('#@itemValue.Category.Id')
                                             $(`div[data-item-children="true"]`).addClass("d-none")
-
                                             category.parent().nextAll().children().addClass("d-none")  
-                                            category.children().next().removeClass("d-none")    
+                                            category.children().next().removeClass("d-none")
+                                            
+                                            $('#btn-next-step').removeClass("disabled")    
                                     })                           
                                     </script>
                                 }
@@ -226,10 +200,8 @@
                 }
             </div>
         </div>
-
         <!-- Navigation-->
-        <div class="d-flex flex-column flex-sm-row bg-secondary rounded-3 p-4 px-md-5">
-            <a class="btn btn-primary btn-lg rounded-pill ms-sm-auto" href="job-board-post-resume-2.html">Next step<i class="fi-chevron-right fs-sm ms-2"></i></a>
-        </div>
+        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (string.Empty,nameof(MakeNewAdController.PlaceAd))); }
+
     </div>
 </div>

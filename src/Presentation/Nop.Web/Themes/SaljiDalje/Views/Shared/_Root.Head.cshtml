@@ -3,6 +3,7 @@
 @using Nop.Core.Domain.Seo
 @using Nop.Services.Security
 @using Nop.Core.Events
+@using SaljiDalje.Core.Controllers
 
 @inject CommonSettings commonSettings
 @inject IEventPublisher eventPublisher
@@ -12,7 +13,6 @@
 @inject IThemeContext themeContext
 
 @{
-
     NopHtml.AppendScriptParts(ResourceLocation.Footer, "~/js/public.countryselect.js");
     NopHtml.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");
     NopHtml.AppendScriptParts(ResourceLocation.Footer, "~/js/public.common.js");
@@ -31,15 +31,32 @@
     NopHtml.AppendScriptParts(ResourceLocation.Footer, "~/lib_npm/jquery/jquery.min.js");
 
     string themename = await themeContext.GetWorkingThemeNameAsync();
-    
-    NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/js/theme.js", excludeFromBundle:true);
-    NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/lightgallery/plugins/video/lg-video.min.js", excludeFromBundle:true);
-    NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/lightgallery/lightgallery.min.js", excludeFromBundle:true);
-    NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/tiny-slider/dist/min/tiny-slider.js", excludeFromBundle:true);
-    NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/jarallax/dist/jarallax.min.js", excludeFromBundle:true);
-    NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/smooth-scroll/dist/smooth-scroll.js", excludeFromBundle:true);
-    NopHtml.AppendScriptParts(ResourceLocation.Footer,$"~/Themes/{themename}/Content/vendor/bootstrap/dist/js/bootstrap.bundle.js", excludeFromBundle:true);
 
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/js/theme.js", excludeFromBundle: true);
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/lightgallery/plugins/video/lg-video.min.js", excludeFromBundle: true);
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/lightgallery/lightgallery.min.js", excludeFromBundle: true);
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/tiny-slider/dist/min/tiny-slider.js", excludeFromBundle: true);
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/jarallax/dist/jarallax.min.js", excludeFromBundle: true);
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/smooth-scroll/dist/smooth-scroll.js", excludeFromBundle: true);
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/bootstrap/dist/js/bootstrap.bundle.js", excludeFromBundle: true);
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/leaflet/dist/leaflet.js", excludeFromBundle: true);
+
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.min.js", excludeFromBundle: true);
+
+
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.min.js", excludeFromBundle: true);
+
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js", excludeFromBundle: true);
+
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.min.js", excludeFromBundle: true);
+
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.min.js", excludeFromBundle: true);
+
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.min.js", excludeFromBundle: true);
+
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/filepond/dist/filepond.min.js", excludeFromBundle: true);
+
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/cleave.js/dist/cleave.min.js", excludeFromBundle: true);
     //custom tag(s);
     if (!string.IsNullOrEmpty(seoSettings.CustomHeadTags))
     {
@@ -55,18 +72,18 @@
 <html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName" dir="@Html.GetUIDirection(!await Html.ShouldUseRtlThemeAsync())" class="@NopHtml.GeneratePageCssClasses()">
 <head>
     <title>@NopHtml.GenerateTitle()</title>
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-    <meta name="description" content="@NopHtml.GenerateMetaDescription()" />
-    <meta name="keywords" content="@NopHtml.GenerateMetaKeywords()" />
-    <meta name="generator" content="nopCommerce" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+    <meta name="description" content="@NopHtml.GenerateMetaDescription()"/>
+    <meta name="keywords" content="@NopHtml.GenerateMetaKeywords()"/>
+    <meta name="generator" content="nopCommerce"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     @NopHtml.GenerateHeadCustom()
     @*This is used so that themes can inject content into the header*@
     @await Html.PartialAsync("Head")
 
     @NopHtml.GenerateCssFiles()
 
-    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeadHtmlTag })
+    @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.HeadHtmlTag})
     @NopHtml.GenerateCanonicalUrls()
     @await Component.InvokeAsync("NewsRssHeaderLink")
     @await Component.InvokeAsync("BlogRssHeaderLink")
@@ -74,15 +91,19 @@
     @await Component.InvokeAsync("Favicon")
     @if (displayMiniProfiler)
     {
-        <mini-profiler />
+        <mini-profiler/>
     }
     @NopHtml.GenerateScripts(ResourceLocation.Head)
     @NopHtml.GenerateInlineScripts(ResourceLocation.Head)
     <!--Powered by nopCommerce - https://www.nopCommerce.com-->
 </head>
+@{
+    var controllerName = Url.ActionContext.RouteData.Values["controller"].ToString();
+    bool isAdPage = controllerName.Equals("makenewad", StringComparison.InvariantCultureIgnoreCase);
+}
 <body>
-    <nop-antiforgery-token />
-    <script asp-location="Footer" >
+<nop-antiforgery-token/>
+<script asp-location="Footer">
             setTimeout(function () {
                 if (!WebSocket) {
                     console.log("No WebSocket support available for LiveReload to work.");
@@ -170,8 +191,8 @@
                 });
             }, 500);
         </script>
-    @RenderBody()
-    @NopHtml.GenerateScripts(ResourceLocation.Footer)
-    @NopHtml.GenerateInlineScripts(ResourceLocation.Footer)
+@RenderBody()
+@NopHtml.GenerateScripts(ResourceLocation.Footer)
+@NopHtml.GenerateInlineScripts(ResourceLocation.Footer)
 </body>
 </html>

@@ -20,6 +20,12 @@ namespace SaljiDalje.Core.Controllers
             var model = await _catalogModelFactory.PrepareTopMenuModelAsync();
             return View("~/Plugins/SaljiDalje.Core/Views/Index.cshtml", model);
         }
+        
+        public async Task<IActionResult> PlaceAd()
+        {
+            var model = await _catalogModelFactory.PrepareTopMenuModelAsync();
+            return View("~/Plugins/SaljiDalje.Core/Views/PlaceAd.cshtml", model);
+        }
     }
     
     public class SortByCategoryModel
