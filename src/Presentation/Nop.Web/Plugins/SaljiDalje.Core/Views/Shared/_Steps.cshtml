@@ -1,0 +1,36 @@
+@using SaljiDalje.Core
+@model SaljiDalje.Core.StepsModel
+<div class="bg-secondary rounded-3 py-4 px-md-4 mb-3">
+    <div class="steps pt-4 pb-1">
+        <div class="step @{ if (Model is StepsModel.STEP_ONE or StepsModel.STEP_TWO){ <text>active</text> } }">
+            <div class="step-progress">
+                <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">1</span>
+            </div>
+            <div class="step-label">Choose category</div>
+        </div>
+        <div class="step @{ if (Model == StepsModel.STEP_TWO){ <text>active</text> } }">
+            <div class="step-progress">
+                <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">2</span>
+            </div>
+            <div class="step-label">Place ad</div>
+        </div>
+        @*<div class="step">
+                    <div class="step-progress">
+                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">3</span>
+                    </div>
+                    <div class="step-label">Experience</div>
+                </div>
+                <div class="step">
+                    <div class="step-progress">
+                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">4</span>
+                    </div>
+                    <div class="step-label">Skills</div>
+                </div>
+                <div class="step">
+                    <div class="step-progress">
+                        <span class="step-progress-start"></span><span class="step-progress-end"></span><span class="step-number">5</span>
+                    </div>
+                    <div class="step-label">Review</div>
+                </div>*@
+    </div>
+</div>

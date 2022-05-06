@@ -1,0 +1,14 @@
+@using LinqToDB.Common
+@model (string PreviousStep,string NextStep)
+
+<!-- Navigation-->
+<div class="d-flex flex-column flex-sm-row bg-secondary rounded-3 p-4 px-md-5">
+    @if (!Model.PreviousStep.IsNullOrEmpty())
+    {
+        <a class="btn btn-outline-primary btn-lg rounded-pill mb-3 mb-sm-0" asp-action="@Model.PreviousStep"><i class="fi-chevron-left fs-sm me-2"></i>Previous step</a>
+    }
+    @if (!Model.NextStep.IsNullOrEmpty())
+    {
+        <a id="btn-next-step" class="btn btn-primary disabled btn-lg rounded-pill ms-sm-auto" asp-action="@Model.NextStep">Next step<i class="fi-chevron-right fs-sm ms-2"></i></a>
+    }
+</div>
