@@ -1,0 +1,192 @@
+@using Nop.Web.Models.Catalog
+@using SaljiDalje.Core.Controllers
+@model Nop.Web.Models.Catalog.TopMenuModel
+
+@{
+    Layout = "_ColumnsOne";
+}
+<!-- Page content-->
+<!-- Page content-->
+<div class="row pb-sm-2">
+    <div class="col">
+        <!-- Page title-->
+        <h1 class="h2 text-center pb-4 mb-3">Create online resume</h1>
+        <!-- Steps-->
+        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Steps.cshtml", StepsModel.STEP_TWO); }
+        <!-- Step 3: Work Experience-->
+        <div class="bg-light rounded-3 p-4 mb-4">
+            <h2 class="h4 mb-4"><i class="fi-edit text-primary fs-5 mt-n1 me-2 pe-1"></i>Osnovni podaci</h2>
+            <label class="form-label" for="pr-title">Naslov <span class='text-danger'>*</span></label>
+            <input class="form-control mb-4" type="text" id="pr-title" placeholder="Enter job title" required>
+            <div class="row">
+                <div class="col col-sm-3 mb-3">
+                    <label class="form-label" for="ab-country">Stanje <span class="text-danger">*</span></label>
+                    <select class="form-select" id="ab-country" required="">
+                        <option value="" disabled="" selected>--Odaberite--</option>
+                        <option value="Germany">Novo</option>
+                        <option value="Germany">Rabljeno</option>
+                        <option value="Belgium">Oštećeno / Neispravno</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <hr/>
+                <div class="mt-3">
+                    <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" id="ab-amenity-wifi" type="checkbox">
+                                <label class="form-check-label" for="ab-amenity-wifi">Moguća dostava</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" id="ab-amenity-wifi" type="checkbox">
+                                <label class="form-check-label" for="ab-amenity-wifi">Razgledavanje putem video poziva</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Price-->
+        <section class="card card-body border-0 shadow-sm p-4 mb-4" id="price">
+            <h2 class="h4 mb-4"><i class="fi-cash text-primary fs-5 mt-n1 me-2"></i>Cijena</h2>
+            <label class="form-label" for="sc-price">Cijena <span class="text-danger">*</span></label>
+            <div class="d-flex mb-3">
+                <select class="form-select w-25 me-2 mb-2">
+                    <option value="usd">$</option>
+                    <option value="eur" selected>€</option>
+                    <option value="gbp">£</option>
+                    <option value="jpy">¥</option>
+                </select>
+                <input class="form-control w-100 me-2 mb-2" type="number" id="sc-price" min="200" step="50" value="31900" required="">
+            </div>
+            <div class="form-check form-switch mb-4">
+                <input class="form-check-input" type="checkbox" id="negotiated-price">
+                <label class="form-check-label" for="negotiated-price">Konačna cijena</label>
+            </div>
+            <div>
+                <label class="form-label d-block fw-bold mb-2 pb-1">Mogućnost plaćanja</label>
+                <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" id="ab-amenity-wifi" type="checkbox">
+                            <label class="form-check-label" for="ab-amenity-wifi">Gotovina</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="ab-amenity-wifi" type="checkbox">
+                            <label class="form-check-label" for="ab-amenity-wifi">Kredit</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="ab-amenity-wifi" type="checkbox">
+                            <label class="form-check-label" for="ab-amenity-wifi">Leasing</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" id="ab-amenity-pets" type="checkbox">
+                            <label class="form-check-label" for="ab-amenity-pets">Obročno bankovnim karticama</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="ab-amenity-pets" type="checkbox">
+                            <label class="form-check-label" for="ab-amenity-pets">Preuzimanje leasinga</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="ab-amenity-pets" type="checkbox">
+                            <label class="form-check-label" for="ab-amenity-pets">Staro za novo</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" id="ab-amenity-dishwasher" type="checkbox">
+                            <label class="form-check-label" for="ab-amenity-dishwasher">Zamjena</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Location-->
+        <section class="card card-body border-0 shadow-sm p-4 mb-4" id="location">
+            <h2 class="h4 mb-4"><i class="fi-map-pin text-primary fs-5 mt-n1 me-2"></i>Lokacija</h2>
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label" for="ab-country">Županija <span class="text-danger">*</span></label>
+                    <select class="form-select" id="ab-country" required="">
+                        <option value="" disabled="" selected>--Odaberi županiju--</option>
+                        <option value="Germany">Zagrebačka</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Canada">Canada</option>
+                        <option value="United States">United States</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label" for="ab-city">Grad <span class="text-danger">*</span></label>
+                    <select class="form-select" id="ab-city" required="">
+                        <option value="" disabled="" selected="">--Odaberi grad--</option>
+                        <option value="Zagreb">Zagreb</option>
+                        <option value="Hamburg">Hamburg</option>
+                        <option value="Munich">Munich</option>
+                        <option value="Frankfurt am Main">Frankfurt am Main</option>
+                        <option value="Stuttgart">Stuttgart</option>
+                        <option value="Cologne">Cologne</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label" for="ab-district">Naselje <span class="text-danger">*</span></label>
+                    <select class="form-select" id="ab-district" required="">
+                        <option value="" disabled="" selected>--Odaberi naselje--</option>
+                        <option value="Maksimir">Maksimir</option>
+                        <option value="Charlottenburg">Charlottenburg</option>
+                        <option value="Prenzlauer Berg">Prenzlauer Berg</option>
+                        <option value="Friedrichshain">Friedrichshain</option>
+                        <option value="Kreuzberg">Kreuzberg</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-label fw-bold pt-3 pb-2">Display on the map</div>
+            <div class="interactive-map rounded-3 leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" data-map-options="{&quot;mapLayer&quot;: &quot;https://api.maptiler.com/maps/pastel/{z}/{x}/{y}.png?key=5vRQzd34MMsINEyeKPIs&quot;, &quot;coordinates&quot;: [52.52, 13.405], &quot;zoom&quot;: 13, &quot;scrollWheelZoom&quot;: false, &quot;markers&quot;: [{&quot;coordinates&quot;: [52.52, 13.405], &quot;className&quot;: &quot;custom-marker-dot&quot;, &quot;popup&quot;: &quot;<div class='p-3'><h6 class='fs-base'>Berlin Business Hotel</h6><p class='fs-xs text-muted pt-1 mt-n3 mb-0'>Pasewalker Str. 97, Berlin</p></div>&quot;}]}" style="height: 250px; position: relative;" tabindex="0">
+                <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-30px, 0px, 0px);">
+                    <div class="leaflet-pane leaflet-tile-pane">
+                        <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
+                            <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);">
+                                <img crossorigin="" alt="" role="presentation" src="https://api.maptiler.com/maps/pastel/12/2200/1343.png?key=5vRQzd34MMsINEyeKPIs" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(138px, -31px, 0px); opacity: 1;"><img crossorigin="" alt="" role="presentation" src="https://api.maptiler.com/maps/pastel/12/2199/1343.png?key=5vRQzd34MMsINEyeKPIs" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(-374px, -31px, 0px); opacity: 1;"><img crossorigin="" alt="" role="presentation" src="https://api.maptiler.com/maps/pastel/12/2201/1343.png?key=5vRQzd34MMsINEyeKPIs" class="leaflet-tile leaflet-tile-loaded" style="width: 512px; height: 512px; transform: translate3d(650px, -31px, 0px); opacity: 1;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leaflet-pane leaflet-shadow-pane">
+                        <img src="../img/map/marker-shadow.png" class="leaflet-marker-shadow custom-marker-dot leaflet-zoom-animated" alt="" style="margin-left: -13px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(404px, 125px, 0px);">
+                    </div>
+                    <div class="leaflet-pane leaflet-overlay-pane"></div>
+                    <div class="leaflet-pane leaflet-marker-pane">
+                        <img src="../img/map/marker-icon.png" class="leaflet-marker-icon custom-marker-dot leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -39px; width: 25px; height: 39px; transform: translate3d(404px, 125px, 0px); z-index: 125;">
+                    </div>
+                    <div class="leaflet-pane leaflet-tooltip-pane"></div>
+                    <div class="leaflet-pane leaflet-popup-pane"></div>
+                    <div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.12667e+06px, 687772px, 0px) scale(4096);"></div>
+                </div>
+                <div class="leaflet-control-container">
+                    <div class="leaflet-top leaflet-left">
+                        <div class="leaflet-control-zoom leaflet-bar leaflet-control">
+                            <a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a>
+                        </div>
+                    </div>
+                    <div class="leaflet-top leaflet-right"></div>
+                    <div class="leaflet-bottom leaflet-left"></div>
+                    <div class="leaflet-bottom leaflet-right">
+                        <div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | <a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Navigation-->
+        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (nameof(MakeNewAdController.StepOne),nameof(MakeNewAdController.StepThree))); }
+    </div>
+</div>

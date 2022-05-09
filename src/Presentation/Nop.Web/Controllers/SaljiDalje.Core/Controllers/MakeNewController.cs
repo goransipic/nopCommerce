@@ -15,16 +15,21 @@ namespace SaljiDalje.Core.Controllers
             _catalogModelFactory = catalogModelFactory;
         }
 
-        public virtual async Task<IActionResult> Index()
+        public virtual async Task<IActionResult> StepOne()
         {
             var model = await _catalogModelFactory.PrepareTopMenuModelAsync();
-            return View("~/Plugins/SaljiDalje.Core/Views/Index.cshtml", model);
+            return View("~/Plugins/SaljiDalje.Core/Views/StepOne.cshtml", model);
+        }
+
+        public IActionResult StepTwo()
+        {
+            return View("~/Plugins/SaljiDalje.Core/Views/StepTwo.cshtml");
         }
         
-        public async Task<IActionResult> PlaceAd()
+        public async Task<IActionResult> StepThree()
         {
             var model = await _catalogModelFactory.PrepareTopMenuModelAsync();
-            return View("~/Plugins/SaljiDalje.Core/Views/PlaceAd.cshtml", model);
+            return View("~/Plugins/SaljiDalje.Core/Views/StepThree.cshtml", model);
         }
     }
     

@@ -107,8 +107,8 @@
 }
 
 <!-- Page content-->
-<div class="row justify-content-center pb-sm-2">
-    <div class="col-lg-11 col-xl-10">
+<div class="row pb-sm-2">
+    <div class="col">
         <!-- Breadcrumb-->
             <nav class="mb-3 pt-2 pt-lg-3" aria-label="Breadcrumb">
                 <ol class="breadcrumb">
@@ -129,7 +129,7 @@
         <!-- Steps-->
         @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Steps.cshtml", StepsModel.STEP_ONE); }
         <!-- Step 1: Basic Info-->
-        <div class="bg-secondary rounded-3 p-4 p-md-5 mb-3">
+        <div class="bg-light rounded-3 p-4 p-md-5 mb-3">
             <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Odaberite kategoriju u kojoj će se prikazati vaš oglas</h2>
             <div class="row shadow-sm bg-white rounded-1">
                 @{
@@ -201,7 +201,7 @@
             </div>
         </div>
         <!-- Navigation-->
-        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (string.Empty,nameof(MakeNewAdController.PlaceAd))); }
+        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (string.Empty,nameof(MakeNewAdController.StepTwo))); }
 
     </div>
 </div>

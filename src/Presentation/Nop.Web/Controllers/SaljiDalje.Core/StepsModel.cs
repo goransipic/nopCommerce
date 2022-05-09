@@ -9,6 +9,7 @@ namespace SaljiDalje.Core
    public enum StepsModel
     {
         STEP_ONE,
-        STEP_TWO
+        STEP_TWO,
+        STEP_THREE
     }
 }
