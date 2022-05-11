@@ -1,0 +1,228 @@
+@using Nop.Web.Models.Catalog
+@using SaljiDalje.Core.Controllers
+@model Nop.Web.Models.Catalog.TopMenuModel
+
+@{
+    Layout = "_ColumnsOne";
+    var categoryPerLevel = new Dictionary<int, List<SortByCategoryModel>>();
+
+    var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
+    @foreach (var category in rootCategories)
+    {
+        var categoryLineModel = new SortByCategoryModel
+        {
+            Category = category
+        };
+
+        await SortyByCategory(categoryLineModel, categoryPerLevel);
+    }
+}
+
+@functions {
+
+    async Task CategoryLine(TopMenuModel.CategoryLineModel lineModel)
+    {
+        if (lineModel.Category.SubCategories.Count > 0)
+        {
+            <div id="@lineModel.Category.Id" class="py-1 border-end border-bottom d-flex flex-row justify-content-between align-content-center">
+                <div>
+                    <a href="#" class="btn btn-sm ms-2">@lineModel.Category.Name</a>
+                </div>
+                <div>
+                    <div class="btn btn-sm ms-2">
+                        <i class="fi-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="d-none">
+                    @{
+                        @foreach (var subCategory in lineModel.Category.SubCategories)
+                        {
+                            var categoryLineModel = new TopMenuModel.CategoryLineModel
+                            {
+                                Category = subCategory,
+                                Level = lineModel.Level + 1,
+                                ResponsiveMobileMenu = lineModel.ResponsiveMobileMenu
+                            };
+                            await CategoryLine(categoryLineModel);
+                        }
+                    }
+                </div>
+            </div>
+            <script asp-location="Footer">
+                $('#@lineModel.Category.Id').click(function(){
+                        var temp = $('#@lineModel.Category.Id')
+                        temp.parent().parent().next().children().remove();
+                        var siblings = temp.children(".d-none").clone().removeClass("d-none");
+                        temp.parent().parent().next().append(siblings)
+                })                           
+            </script>
+        }
+        else
+        {
+            <div class="py-1 border-bottom border-end">
+                <a href="#" class="btn btn-sm ms-2">
+                    @lineModel.Category.Name
+                </a>
+            </div>
+        }
+    }
+
+    async Task SortyByCategory(SortByCategoryModel lineModel, Dictionary<int, List<SortByCategoryModel>> categoryPerLevel)
+    {
+        if (lineModel.Category.SubCategories.Count > 0)
+        {
+            AddItemToCollection(lineModel, categoryPerLevel);
+
+            foreach (var subCategory in lineModel.Category.SubCategories)
+            {
+                var categoryLineModel = new SortByCategoryModel
+                {
+                    Category = subCategory,
+                    Level = lineModel.Level + 1,
+                    ResponsiveMobileMenu = lineModel.ResponsiveMobileMenu,
+                    ParentCategory = lineModel.Category
+                };
+                await SortyByCategory(categoryLineModel, categoryPerLevel);
+            }
+        }
+        else
+        {
+            AddItemToCollection(lineModel, categoryPerLevel);
+        }
+    }
+
+    private static void AddItemToCollection(SortByCategoryModel lineModel, Dictionary<int, List<SortByCategoryModel>> categoryPerLevel)
+    {
+        if (categoryPerLevel.ContainsKey(lineModel.Level))
+        {
+            var itemList = categoryPerLevel[lineModel.Level];
+            itemList.Add(lineModel);
+        }
+        else
+        {
+            categoryPerLevel.Add(lineModel.Level, new List<SortByCategoryModel> {lineModel});
+        }
+    }
+
+}
+
+<!-- Page content-->
+<div class="row pb-sm-2">
+    <div class="col">
+        <!-- Breadcrumb-->
+        <nav class="mb-3 pt-2 pt-lg-3" aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Add business</li>
+            </ol>
+        </nav>
+        <!-- Page title-->
+        <div class="text-center pb-4 mb-3">
+            <h1 class="h2 mb-4">Create online resume</h1>
+            <p class="mb-4">Save time by uploading a resume to prefill some of the fields below. Please, use PDF format.</p>
+            @*<button class="btn btn-primary btn-lg rounded-pill" type="button">
+                <i class="fi-upload me-2"></i>Upload existing resume
+            </button>*@
+        </div>
+        <!-- Steps-->
+        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Steps.cshtml", StepsModel.STEP_ONE); }
+        <!-- Step 1: Basic Info-->
+        <section class="card card-body border-0 shadow-sm p-4 mb-4" id="basic-info">
+            <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Select Category</h2>
+            <div class="mb-3">
+                <label class="form-label">Category <span class="text-danger">*</span></label>
+                <div class="btn-group d-block dropdown" data-bs-toggle="select">
+                    <button class="btn btn-outline-secondary col-md-4 col-12 d-flex align-items-center justify-content-between ps-3 fw-normal dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="dropdown-toggle-label">--Odaberite Kategoriju--</span>
+                    </button>
+                    <input type="hidden" value="Fitness &amp; Sport">
+                    <div class="dropdown-menu w-100 my-1 p-3" style="">
+                        <div class="row row-cols-md-5 row-cols-sm-3 row-cols-2 g-2">
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-bed mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Accommodation</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-cafe mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Food &amp; Drink</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-shopping-bag mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Shopping</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-museum mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Art &amp; History</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-entertainment mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Entertainment</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-dumbell mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Fitness &amp; Sport</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-disco-ball mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Night Life</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-meds mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Medicine</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-makeup mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Beauty</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-car mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Car Rental</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-meds mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Medicine</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-makeup mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Beauty</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
+                                    <i class="fi-car mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Car Rental</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-md-6">
+                <label class="form-label" for="ab-subcategory">Subcategory <span class="text-danger">*</span></label>
+                <select class="form-select" id="ab-subcategory" required="">
+                    <option value="" disabled="">Choose property type</option>
+                    <option value="hotel">Hotel</option>
+                    <option value="hostel">Hostel</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="house">House</option>
+                    <option value="commercial">Commercial</option>
+                </select>
+            </div>*@
+        </section>
+        <!-- Navigation-->
+        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (string.Empty,nameof(MakeNewAdController.StepTwo))); }
+
+    </div>
+</div>

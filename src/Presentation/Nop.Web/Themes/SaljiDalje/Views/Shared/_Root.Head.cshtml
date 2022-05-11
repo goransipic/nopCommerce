@@ -57,6 +57,9 @@
     NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/filepond/dist/filepond.min.js", excludeFromBundle: true);
 
     NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/cleave.js/dist/cleave.min.js", excludeFromBundle: true);
+    
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, $"~/Themes/{themename}/Content/vendor/nouislider/dist/nouislider.min.js", excludeFromBundle: true);
+
     //custom tag(s);
     if (!string.IsNullOrEmpty(seoSettings.CustomHeadTags))
     {

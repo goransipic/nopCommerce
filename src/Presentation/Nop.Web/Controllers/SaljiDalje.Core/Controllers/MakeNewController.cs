@@ -18,7 +18,7 @@ namespace SaljiDalje.Core.Controllers
         public virtual async Task<IActionResult> StepOne()
         {
             var model = await _catalogModelFactory.PrepareTopMenuModelAsync();
-            return View("~/Plugins/SaljiDalje.Core/Views/StepOne.cshtml", model);
+            return View("~/Plugins/SaljiDalje.Core/Views/StepOneVer2.cshtml", model);
         }
 
         public IActionResult StepTwo()

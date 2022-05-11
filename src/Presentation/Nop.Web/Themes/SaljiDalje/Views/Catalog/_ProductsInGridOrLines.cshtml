@@ -1,4 +1,5 @@
 ﻿@model CatalogProductsModel
+@inject IHtmlHelper _htmlHelper
 
 @if (!string.IsNullOrEmpty(Model.WarningMessage))
 {
@@ -9,7 +10,29 @@
 
 @if (Model.Products.Count > 0)
 {
-    <div class="@(Model.ViewMode == "list" ? "product-list" : "product-grid")">
+    if (Model.ViewMode == "list")
+    {
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-sm-3 mb-4">
+                    @await Html.PartialAsync("_ProductBoxHorizontal", product)
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-sm-3 mb-4">
+                    @await Html.PartialAsync("_ProductBox", product)
+                </div>
+            }
+        </div>
+    }
+    @*<div class="@(Model.ViewMode == "list" ? "product-list" : "product-grid")">
         <div class="item-grid">
             @foreach (var product in Model.Products)
             {
@@ -18,10 +41,15 @@
                 </div>
             }
         </div>
-    </div>
+    </div>*@
 
-    var pager = Html.Pager(Model)
+    var pager = new Nop.Web.Controllers.SaljiDalje.Core.Pager(Model, _htmlHelper.ViewContext)
         .QueryParam("pagenumber")
+        .MainUlCssClass("pagination mb-1")
+        .IndividualPageCssClass("page-item d-none d-sm-block")
+        .CurrentPageCssClass("page-item active d-none d-sm-block")
+        .PreviousPageCssClass("page-item")
+        .NextPageCssClass("page-item")
         // for search page
         .BooleanParameterName("advs")
         .BooleanParameterName("isc")
@@ -30,9 +58,9 @@
 
     @if (!await pager.IsEmpty())
     {
-        <div class="pager">
+        <nav class="border-top pb-md-4 pt-4" aria-label="Pagination">
             @pager
-        </div>
+        </nav>
     }
 }
 else if (!string.IsNullOrEmpty(Model.NoResultMessage))
