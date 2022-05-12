@@ -8,6 +8,27 @@
 }
 
 <div class="block product-filters">
+    
+    <div class="pb-4 mb-2">
+        <h3 class="h6">Location</h3>
+        <select class="form-select mb-2">
+            <option value="" disabled="">Choose city</option>
+            <option value="Berlin" selected="">Berlin</option>
+            <option value="Hamburg">Hamburg</option>
+            <option value="Munich">Munich</option>
+            <option value="Koln">Koln</option>
+            <option value="Frankfurt am Main">Frankfurt am Main</option>
+        </select>
+        <select class="form-select">
+            <option value="" selected="" disabled="">Choose district</option>
+            <option value="Berlin-Mitte">Berlin-Mitte</option>
+            <option value="Charlottenburg">Charlottenburg</option>
+            <option value="Prenzlauer Berg">Prenzlauer Berg</option>
+            <option value="Friedrichshain">Friedrichshain</option>
+            <option value="Kreuzberg">Kreuzberg</option>
+        </select>
+    </div>
+
     @if (Model.PriceRangeFilter.Enabled)
     {
         @await Html.PartialAsync("_FilterPriceBox", Model.PriceRangeFilter)

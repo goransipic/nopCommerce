@@ -1,8 +1,55 @@
 ﻿@model PriceRangeFilterModel
 
-<script asp-exclude-from-bundle="true" src="~/lib_npm/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js" asp-location="Footer"></script>
+@* <script asp-exclude-from-bundle="true" src="~/lib_npm/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js" asp-location="Footer"></script> *@
 
-<div class="product-filter price-range-filter">
+<div class="pb-4 mb-2">
+    <h3 class="h6">@T("Filtering.PriceRangeFilter")</h3>
+    <div class="range-slider"
+         data-start-min="@Model.SelectedPriceRange.From"
+         data-start-max="@Model.SelectedPriceRange.To"
+         data-min="@Model.AvailablePriceRange.From"
+         data-max="@Model.AvailablePriceRange.To"
+         data-step="1">
+        <div id="range" class="range-slider-ui"></div>
+        <div class="d-flex align-items-center">
+            <div class="w-50 pe-2">
+                <div class="input-group">
+                    <span class="input-group-text fs-base">$</span>
+                    <input class="form-control range-slider-value-min" type="text">
+                </div>
+            </div>
+            <div class="text-muted">&mdash;</div>
+            <div class="w-50 ps-2">
+                <div class="input-group">
+                    <span class="input-group-text fs-base">$</span>
+                    <input class="form-control range-slider-value-max" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script asp-location="Footer">
+$(document).ready(function () {
+                let range = document.getElementById('range');
+                
+                range.noUiSlider.on('end', function( values, handle ) {
+                    CatalogProducts.getProducts();
+                });
+                
+                range.noUiSlider.on('set', function( values, handle ) {
+                                    CatalogProducts.getProducts();
+                                });
+                
+                $(CatalogProducts).on('before', function (e) {
+                    var priceRange = range.noUiSlider.get(true);
+                    if (priceRange && priceRange.length > 0) {
+                        e.payload.urlBuilder
+                            .addParameter('price', priceRange.join('-'));
+                    }
+                });
+            });
+</script>
+@*<div class="product-filter price-range-filter">
     <div class="filter-title">
         <strong>@T("Filtering.PriceRangeFilter")</strong>
     </div>
@@ -52,4 +99,4 @@
             }
         </script>
     </div>
-</div>
+</div>*@
