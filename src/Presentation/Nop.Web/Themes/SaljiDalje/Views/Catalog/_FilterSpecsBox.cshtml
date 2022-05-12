@@ -1,20 +1,43 @@
 ﻿@model SpecificationFilterModel
 
-<div class="product-filter product-spec-filter">
+
+<div class="pb-4 mb-2">
+    @* <h3 class="h6">@T("Filtering.SpecificationFilter")</h3> *@
+    @{ var i = 0; }
+    @foreach (var attr in Model.Attributes)
+    {
+        <h3 class="h6 @if(i > 0){<text>mt-3</text>}" >@attr.Name</h3>
+        i++;
+        foreach (var value in attr.Values)
+        {
+            <div class="form-check">
+                <input class="form-check-input" 
+                       type="checkbox" 
+                       id="attribute-option-@value.Id" 
+                       data-option-id="@value.Id" 
+                       checked="@value.Selected">
+                <label class="form-check-label fs-sm" for="attribute-option-@value.Id">@value.Name</label>
+            </div> 
+        }
+        
+    }
+</div>
+
+@*<div class="product-filter product-spec-filter">
     <div class="filter-title">
         <strong>@T("Filtering.SpecificationFilter")</strong>
     </div>
     <div class="filter-content">
         @foreach (var attr in Model.Attributes)
         {
-            <ul class="group product-spec-group @(attr.Values.Any(x => !string.IsNullOrEmpty(x.ColorSquaresRgb)) ? "product-spec-color" : null )">
+            <ul class="group product-spec-group @(attr.Values.Any(x => !string.IsNullOrEmpty(x.ColorSquaresRgb)) ? "product-spec-color" : null)">
                 <li class="name">
                     <strong>@attr.Name</strong>
                 </li>
                 @foreach (var value in attr.Values)
                 {
                     <li class="item @(!string.IsNullOrEmpty(value.ColorSquaresRgb) ? "color-item" : null)">
-                        <input id="attribute-option-@value.Id" type="checkbox" data-option-id="@value.Id" checked="@value.Selected" />
+                        <input id="attribute-option-@value.Id" type="checkbox" data-option-id="@value.Id" checked="@value.Selected"/>
                         @if (string.IsNullOrEmpty(value.ColorSquaresRgb))
                         {
                             <label for="attribute-option-@value.Id">
@@ -25,7 +48,7 @@
                         {
                             <label for="attribute-option-@value.Id" class="attribute-squares color-squares">
                                 <span class="attribute-square" style="background-color: @(value.ColorSquaresRgb);"></span>
-                                    @value.Name
+                                @value.Name
                             </label>
                         }
                     </li>
@@ -33,7 +56,7 @@
             </ul>
         }
     </div>
-</div>
+</div>*@
 <script asp-location="Footer">
     $(document).ready(function () {
         var $optionEls = $('[data-option-id]');
