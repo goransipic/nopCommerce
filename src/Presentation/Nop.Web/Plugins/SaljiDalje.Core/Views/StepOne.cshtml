@@ -201,7 +201,7 @@
             </div>
         </div>
         <!-- Navigation-->
-        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (string.Empty,nameof(MakeNewAdController.StepTwo))); }
+        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (StepsModel.STEP_ONE,string.Empty,nameof(MakeNewAdController.StepTwo))); }
 
     </div>
 </div>

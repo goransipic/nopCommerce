@@ -107,21 +107,21 @@
 }
 
 <!-- Page content-->
-<div class="row pb-sm-2">
-    <div class="col">
+<div class="row pb-sm-2 justify-content-center mt-4">
+    <div class="col-lg-8 mt-5 pt-5">
         <!-- Breadcrumb-->
-        <nav class="mb-3 pt-2 pt-lg-3" aria-label="Breadcrumb">
+        @*<nav class="mb-3 pt-5 mt-5 pt-lg-3" aria-label="Breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a asp-controller="Home" asp-action="Index">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Add business</li>
             </ol>
-        </nav>
+        </nav>*@
         <!-- Page title-->
         <div class="text-center pb-4 mb-3">
-            <h1 class="h2 mb-4">Create online resume</h1>
-            <p class="mb-4">Save time by uploading a resume to prefill some of the fields below. Please, use PDF format.</p>
+            <h1 class="h2 mb-1">Create online resume</h1>
+            @* <p class="mb-4">Save time by uploading a resume to prefill some of the fields below. Please, use PDF format.</p> *@
             @*<button class="btn btn-primary btn-lg rounded-pill" type="button">
                 <i class="fi-upload me-2"></i>Upload existing resume
             </button>*@
@@ -129,85 +129,83 @@
         <!-- Steps-->
         @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Steps.cshtml", StepsModel.STEP_ONE); }
         <!-- Step 1: Basic Info-->
-        <section class="card card-body border-0 shadow-sm p-4 mb-4" id="basic-info">
+        <section class="card card-body border-0 shadow-sm p-5 mb-4" id="basic-info">
             <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Select Category</h2>
-            <div class="mb-3">
+            <div id="lastItem" class="mb-1 col-12">
+                @*
                 <label class="form-label">Category <span class="text-danger">*</span></label>
-                <div class="btn-group d-block dropdown" data-bs-toggle="select">
-                    <button class="btn btn-outline-secondary col-md-4 col-12 d-flex align-items-center justify-content-between ps-3 fw-normal dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                *@
+                <div class="btn-group d-block dropdown mb-1 col-12" data-bs-toggle="select">
+                    <button class="btn btn-outline-secondary col-12 d-flex align-items-center justify-content-between ps-3 fw-normal dropdown-toggle"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
                         <span class="dropdown-toggle-label">--Odaberite Kategoriju--</span>
                     </button>
                     <input type="hidden" value="Fitness &amp; Sport">
                     <div class="dropdown-menu w-100 my-1 p-3" style="">
                         <div class="row row-cols-md-5 row-cols-sm-3 row-cols-2 g-2">
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-bed mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Accommodation</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-cafe mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Food &amp; Drink</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-shopping-bag mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Shopping</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-museum mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Art &amp; History</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-entertainment mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Entertainment</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-dumbell mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Fitness &amp; Sport</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-disco-ball mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Night Life</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-meds mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Medicine</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-makeup mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Beauty</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-car mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Car Rental</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-meds mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Medicine</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-makeup mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Beauty</span>
-                                </button>
-                            </div>
-                            <div class="col">
-                                <button class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center" type="button">
-                                    <i class="fi-car mb-1 fs-2 text-primary"></i><span class="dropdown-item-label d-block fs-sm">Car Rental</span>
-                                </button>
-                            </div>
+                            @foreach (var entry in categoryPerLevel[0])
+                            {
+                                <div class="col">
+                                    <button
+                                        id="@entry.Category.Id"
+                                        data-has-children="@if (entry.Category.HaveSubCategories){ <text>true</text> }else{ <text>false</text> }"
+                                        class="dropdown-item btn btn-outline-secondary border-0 d-block p-3 text-center"
+                                        type="button">
+                                        <i class="fi-bed mb-1 fs-2 text-primary"></i>
+                                        <span class="dropdown-item-label d-block fs-sm">@entry.Category.Name</span>
+                                    </button>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
+               
+                <script asp-location="Footer" asp-exclude-from-bundle="true">
+                $('#btn-next-step').addClass("disabled")
+                    $('.dropdown-item').click(function (){
+                        var baseURL = "@Url.Action("ChildrenCategories", "MakeNewAd")" + "/" + $(this).attr('id')
+                        if ($(this).data("hasChildren") === true) {
+                            $('#btn-next-step').addClass("disabled")
+                            $.ajax({
+                                    cache: false,
+                                    url: baseURL,
+                                    type: 'GET',
+                                    statusCode: {
+                                             200: function (response) {
+                                                     $('#btn-next-step').addClass("disabled")
+                                                     $(response).insertAfter($('#lastItem').children().last());
+                                             },
+                                            204: function (response) {
+                                                     $('#btn-next-step').removeClass("disabled")
+                                                     
+                                                     
+                                                     
+                                                     //$("#btn-next-step").attr("href", href + "/" + )
+                                            }
+                                                                                                    
+                                            },
+                                    success: function (response) {
+                                      //alert(response)
+                                      //$(response).insertAfter($('#lastItem').children().last());  
+                                      //$('.category-children').html(response);
+                                      //$(self).trigger({ type: "loaded" });
+                                    },
+                                    error: function () {
+                                      //$(self).trigger({ type: "error" });
+                                    },
+                                    complete: function () {
+                                      //self.setLoadWaiting();
+                                    }
+                            });
+                        }else {
+                            $('#btn-next-step').removeClass("disabled")
+                        }
+                    });
+                    
+                </script>
             </div>
             @*<div class="col-md-6">
                 <label class="form-label" for="ab-subcategory">Subcategory <span class="text-danger">*</span></label>
@@ -221,8 +219,15 @@
                 </select>
             </div>*@
         </section>
+        
         <!-- Navigation-->
-        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (string.Empty,nameof(MakeNewAdController.StepTwo))); }
+        @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (StepsModel.STEP_ONE,string.Empty,nameof(MakeNewAdController.StepTwo))); }
 
     </div>
+    
+</div>
+<div class="d-none d-sm-block">
+    <div class="d-none d-sm-block" style="height: 50px;"></div>
+    <div class="d-none d-md-block" style="height: 50px;"></div>
+    <div class="d-none d-lg-block" style="height: 50px;"></div>
 </div>
