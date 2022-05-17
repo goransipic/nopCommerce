@@ -1,0 +1,68 @@
+@using SaljiDalje.Core
+@model (IList<Nop.Core.Domain.Catalog.Category> model , int id)
+@if (Model.model.Count > 0)
+{
+    
+    <div class="col-12 mb-1 mt-n1">
+        <div class="row">
+            <span class="text-center mb-1"><i class="fi-arrow-down"></i></span> 
+        </div>
+        
+        @* <label class="form-label" for="ab-subcategory">Subcategory <span class="text-danger">*</span></label> *@
+        <select data-value="@Model.id" class="form-select" required="" autofocus>
+            <option value="" disabled="" selected>--Sljedeća podkategorija--</option>
+            @foreach (var itemSub in Model.model)
+            {
+                <option value="@itemSub.Id">@itemSub.Name</option>
+            }
+        </select>
+    </div>
+    <script asp-exclude-from-bundle="true" asp-location="Footer">
+        $(document).ready(function (){
+            $(`select[data-value="@Model.id"]`).change(function() {
+                
+                var baseURL = "/MakeNewAd/ChildrenCategories" + "/" + this.value
+             
+                                                  $('#btn-next-step').addClass("disabled")
+                                                  $.ajax({
+                                                          cache: false,
+                                                          url: baseURL,
+                                                          type: 'GET',
+                                                          statusCode: {
+                                                                200: function (response) {
+                                                                    $('#btn-next-step').addClass("disabled")
+                                                                   $(response).insertAfter($('#lastItem').children().last());
+                                                                },
+                                                                204: function (response) {
+                                                                   $('#btn-next-step').removeClass("disabled")
+                                                                   var href =$("#btn-next-step").attr("href")
+                                                                   
+                                                                   var selectedId =$('#lastItem').children()
+                                                                   .last()
+                                                                   .prev()
+                                                                   .find("select").
+                                                                   find(":selected")
+                                                                   .val()
+                                                                                                                        
+                                                                   $("#btn-next-step").attr("href", href + "/" + selectedId)
+                                                                }
+                                                                
+                                                             },
+                                                          success: function (response) {
+                                                            //alert(response)  
+                                                            //$(response).insertAfter($('#lastItem').children().last());
+                                                            //$(self).trigger({ type: "loaded" });
+                                                          },
+                                                          error: function () {
+                                                            //$(self).trigger({ type: "error" });
+                                                          },
+                                                          complete: function () {
+                                                            //self.setLoadWaiting();
+                                                          }
+                                                  });
+                                            
+            });
+        })
+        
+    </script>
+}
