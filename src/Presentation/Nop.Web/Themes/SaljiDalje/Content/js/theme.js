@@ -756,8 +756,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       FilePond.registerPlugin(FilePondPluginImageTransform);
     }
 
+    if (typeof FilePondPluginFileEncode !== 'undefined') {
+      FilePond.registerPlugin(FilePondPluginFileEncode);
+    }
+
     for (var i = 0; i < fileInput.length; i++) {
-      FilePond.create(fileInput[i]);
+      FilePond.create(fileInput[i],{
+        allowReorder : true,
+      });
     }
   }();
   /**

@@ -5,18 +5,32 @@
 <div class="d-flex flex-column flex-sm-row bg-light rounded-3 p-4 px-md-5 mb-2">
     @if (!Model.PreviousStep.IsNullOrEmpty())
     {
-        <a class="btn btn-outline-primary btn-lg rounded-pill mb-3 mb-sm-0" asp-action="@Model.PreviousStep"><i class="fi-chevron-left fs-sm me-2"></i>Previous step</a>
+        <a class="btn btn-outline-primary btn-lg rounded-pill mb-3 mb-sm-0" asp-action="@Model.PreviousStep"><i class="fi-chevron-left fs-sm me-2"></i>Prethodni korak</a>
     }
     @if (!Model.NextStep.IsNullOrEmpty())
     {
-        if (Model.stepsModel == StepsModel.STEP_TWO)
+        if (Model.stepsModel is StepsModel.STEP_TWO or StepsModel.STEP_THREE)
         {
-            <button id="btn-next-step" class="btn btn-primary btn-lg rounded-pill ms-sm-auto" type="submit">Next step<i class="fi-chevron-right fs-sm ms-2"></i></button>
+            <button id="btn-next-step" class="btn btn-primary btn-lg rounded-pill ms-sm-auto" type="submit">
+                
+                @if (Model.stepsModel == StepsModel.STEP_THREE)
+                {
+                    <i class="fi-check fs-sm me-2"></i>
+                    <text>Objavi oglas</text>
+                    
+                }
+                else
+                {
+                    <text>Sljedeći korak</text>
+                    <i class="fi-chevron-right fs-sm ms-2"></i>
+                }
+                
+            </button>
 
         }
         else
         {
-            <a id="btn-next-step" class="btn btn-primary btn-lg rounded-pill ms-sm-auto" asp-action="@Model.NextStep">Next step<i class="fi-chevron-right fs-sm ms-2"></i></a>
+            <a id="btn-next-step" class="btn btn-primary btn-lg rounded-pill ms-sm-auto" asp-action="@Model.NextStep">Sljedeći korak<i class="fi-chevron-right fs-sm ms-2"></i></a>
 
         }
     }
