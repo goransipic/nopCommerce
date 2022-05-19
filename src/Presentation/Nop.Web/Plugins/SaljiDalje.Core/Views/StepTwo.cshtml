@@ -27,8 +27,8 @@
                 <span class="mt-n5" asp-validation-for="Title"></span>
                 <div class="row">
                     <div class="col col-sm-3 mb-3">
-                        <label class="form-label" for="ab-country">Stanje <span class="text-danger">*</span></label>
-                        <select asp-for="Stanje" asp-items="Html.GetEnumSelectList<Stanje>()" class="form-select" id="ab-country">
+                        <label class="form-label" asp-for="Stanje">Stanje <span class="text-danger">*</span></label>
+                        <select asp-for="SpecificationAttributeOptionId" asp-items="@Model.Stanje" class="form-select">
                             <option value="" disabled="" selected>--Odaberite--</option>
                         </select>
                         <span asp-validation-for="Stanje"></span>

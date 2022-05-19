@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Nop.Core.Domain.Catalog;
 using Nop.Services.Catalog;
@@ -30,13 +31,15 @@ namespace SaljiDalje.Core.Controllers
         private readonly IUrlRecordService _urlRecordService;
         private readonly IPictureService _pictureService;
         private readonly INotificationService _notificationService;
+        private readonly ISpecificationAttributeService _specificationAttributeService;
 
         public MakeNewAdController(ICatalogModelFactory catalogModelFactory,
             ICategoryService categoryService,
             IProductService productService,
             IUrlRecordService urlRecordService,
             IPictureService pictureService,
-            INotificationService notificationService
+            INotificationService notificationService,
+            ISpecificationAttributeService _specificationAttributeService
         )
         {
             _catalogModelFactory = catalogModelFactory;
@@ -45,6 +48,7 @@ namespace SaljiDalje.Core.Controllers
             _urlRecordService = urlRecordService;
             _pictureService = pictureService;
             _notificationService = notificationService;
+            this._specificationAttributeService = _specificationAttributeService;
         }
 
         public virtual async Task<IActionResult> StepOne()
@@ -53,9 +57,15 @@ namespace SaljiDalje.Core.Controllers
             return View("~/Plugins/SaljiDalje.Core/Views/StepOneVer2.cshtml", model);
         }
 
-        public IActionResult StepTwo(int id)
+        public async Task<IActionResult> StepTwo(int id)
         {
-            return View("~/Plugins/SaljiDalje.Core/Views/StepTwo.cshtml", new StepThreeModel {categoryId = id});
+            
+            var item =(await _specificationAttributeService
+                    .GetSpecificationAttributeOptionsBySpecificationAttributeAsync(6))
+                .Select(option => new SelectListItem { Text = option.Name, Value = option.Id.ToString() })
+                .ToList();
+            
+            return View("~/Plugins/SaljiDalje.Core/Views/StepTwo.cshtml", new StepThreeModel {categoryId = id, Stanje = item});
         }
 
         [HttpPost]
@@ -92,6 +102,25 @@ namespace SaljiDalje.Core.Controllers
             await SaveCategoryMappingsAsync(product, stepThreeModel);
             
             await Insertpictures(stepThreeModelFinish, product);
+            
+            //var psa = model.ToEntity<ProductSpecificationAttribute>();
+            //psa.CustomValue = model.ValueRaw;
+            
+            //var sawp = await _specificationAttributeService.GetSpecificationAttributesWithOptionsAsync();
+            //sawp.First(item => item.Id == 1 )
+            var psa = new ProductSpecificationAttribute
+            {
+                ProductId = product.Id,
+                AttributeType = SpecificationAttributeType.Option,
+                AllowFiltering = true,
+                ShowOnProductPage = true,
+                SpecificationAttributeOptionId = stepThreeModel.SpecificationAttributeOptionId
+            };
+            await _specificationAttributeService.InsertProductSpecificationAttributeAsync(psa);
+
+            //_specificationAttributeService.GetProductSpecificationAttributesAsync(1);
+            
+            //await _specificationAttributeService.GetSpecificationAttributeOptionsBySpecificationAttributeAsync(Convert.ToInt32(attributeId));
             
             _notificationService.SuccessNotification("Uspješno dodan oglas!");
 
@@ -187,8 +216,9 @@ namespace SaljiDalje.Core.Controllers
     {
         public int categoryId { get; set; }
         [Required] public string Title { get; set; }
-        [Required] public Stanje Stanje { get; set; }
-
+        [Required] public IList<SelectListItem> Stanje { get; set; }
+        
+        public int  SpecificationAttributeOptionId { get; set; }
         public Boolean MogucaDostava { get; set; }
 
         public Boolean RazgledavanjePutemPoziva { get; set; }
