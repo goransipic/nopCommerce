@@ -1,11 +1,136 @@
 ﻿@model SearchBoxModel
-<form asp-route="ProductSearch" method="get" id="small-search-box-form" class="container-fluid">
+<!-- Search form-->
+<form asp-route="ProductSearch" method="get" id="small-search-box-form" class="form-group d-block d-md-flex position-relative rounded-md-pill mb-2 mb-sm-4 mb-lg-5">
+    @if (Model.ShowSearchBox)
+    {
+        <div class="input-group input-group-lg border-end-md">
+            <span class="input-group-text text-muted rounded-pill ps-3">
+                <i class="fi-search"></i>
+            </span>
+            <input id="small-searchterms"
+                   autocomplete="off"
+                   name="q"
+                   placeholder="@T("Search.SearchBox.Tooltip")"
+                   aria-label="@T("Search.SearchBox.Text.Label")"
+                   class="form-control"
+                   type="text">
+        </div>
+        <hr class="d-md-none my-2">
+        <div class="d-sm-flex">
+            <div class="dropdown w-100 mb-sm-0 mb-3" data-bs-toggle="select">
+                <button class="btn btn-link btn-lg dropdown-toggle ps-2 ps-sm-3" type="button" data-bs-toggle="dropdown">
+                    <i class="fi-list me-2"></i><span class="dropdown-toggle-label">All categories</span>
+                </button>
+                <input type="hidden">
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fi-bed fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Accomodation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fi-cafe fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Food &amp; Drink</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fi-shopping-bag fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Shopping</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fi-museum fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Art &amp; History</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fi-entertainment fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Entertainment</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fi-meds fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Medicine</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fi-makeup fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Beauty</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fi-car fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Car Rental</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <button class="btn btn-primary btn-lg rounded-pill w-100 w-md-auto ms-sm-3" type="submit">Search</button>
+        </div>
+        @if (Model.SearchTermMinimumLength > 0)
+        {
+            <script asp-location="Footer">
+                $("#small-search-box-form").on("submit", function(event) {
+                    if ($("#small-searchterms").val() == "") {
+                        alert('@Html.Raw(JavaScriptEncoder.Default.Encode(T("Search.EnterSearchTerms").Text))');
+                        $("#small-searchterms").focus();
+                        event.preventDefault();
+                    }
+                });
+            </script>
+        }
+
+        @if (Model.AutoCompleteEnabled)
+        {
+            <script asp-location="Footer">
+                $(document).ready(function() {
+                    var showLinkToResultSearch;
+                    var searchText;
+                    $('#small-searchterms').autocomplete({
+                            delay: 500,
+                            minLength: @(Model.SearchTermMinimumLength.ToString()),
+                            source: '@(Url.RouteUrl("ProductSearchAutoComplete"))',
+                            appendTo: '.search-box',
+                            select: function(event, ui) {
+                                $("#small-searchterms").val(ui.item.label);
+                                setLocation(ui.item.producturl);
+                                return false;
+                        },
+                        //append link to the end of list
+                        open: function(event, ui) {
+                            //display link to search page
+                            if (showLinkToResultSearch) {
+                                searchText = document.getElementById("small-searchterms").value;
+                                $(".ui-autocomplete").append("<li class=\"ui-menu-item\" role=\"presentation\"><a href=\"/search?q=" + searchText + "\">@T("Search.SearchBox.SearchPageLink")</a></li>");
+                            }
+                        }
+                    })
+                    .data("ui-autocomplete")._renderItem = function(ul, item) {
+                        var t = item.label;
+                        showLinkToResultSearch = item.showlinktoresultsearch;
+                        //html encode
+                        t = htmlEncode(t);
+                        return $("<li></li>")
+                            .data("item.autocomplete", item)
+                            .append("<a href=\"#\" class=\"text-decoration-none\">@(Model.ShowProductImagesInSearchAutoComplete ? Html.Raw("<img src='\" + item.productpictureurl + \"'>") : null)<span>" + t + "</span></a>")
+                            .appendTo(ul);
+                    };
+                });
+            </script>
+        }
+    }
+
+</form>
+
+@*<form asp-route="ProductSearch" method="get" id="small-search-box-form" class="container-fluid">
     @if (Model.ShowSearchBox)
     {
         <div class="input-group">
-            <input type="text" class="search-box-text form-control" id="small-searchterms" autocomplete="off" name="q" placeholder="@T("Search.SearchBox.Tooltip")" aria-label="@T("Search.SearchBox.Text.Label")" />
-            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.SearchBoxBeforeSearchButton, additionalData = Model })
-            <button type="submit" class="button-1 search-box-button input-group-text bg-warning"><i class="fi-search"></i></button>
+            <input type="text" class="search-box-text form-control" id="small-searchterms" autocomplete="off" name="q" placeholder="@T("Search.SearchBox.Tooltip")" aria-label="@T("Search.SearchBox.Text.Label")"/>
+            @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.SearchBoxBeforeSearchButton, additionalData = Model})
+            <button type="submit" class="button-1 search-box-button input-group-text bg-warning">
+                <i class="fi-search"></i>
+            </button>
         </div>
         @if (Model.SearchTermMinimumLength > 0)
         {
@@ -58,6 +183,9 @@
                 });
             </script>
         }
-        @* @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.SearchBox, additionalData = Model }) *@
+        
+        
+        @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.SearchBox, additionalData = Model}) #
+        
     }
-</form>
+</form>*@

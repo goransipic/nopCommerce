@@ -101,6 +101,47 @@
     }
     @NopHtml.GenerateScripts(ResourceLocation.Head)
     @NopHtml.GenerateInlineScripts(ResourceLocation.Head)
+    <style>
+        .ui-autocomplete a:hover, .ui-autocomplete a:focus, .ui-autocomplete a.ui-state-focus,
+        .ui-autocomplete a.ui-state-active
+        {
+            background-color: var(--bs-secondary) !important;
+            font-family: var(--bs-body-font-family)!important;
+            color: var(--bs-primary) !important;
+            font-weight: bold !important;
+            border-radius: 10px !important;
+        }
+        
+        .ui-autocomplete {
+            border: none !important;
+            box-shadow: 0 0.125rem 0.125rem -0.125rem rgb(31 27 45 / 8%), 0 0.25rem 0.75rem rgb(31 27 45 / 8%) !important;
+            border-radius: 10px !important;
+        }
+        
+        .ui-autocomplete li:first-child {
+            border-top: none;
+        }
+        
+        .ui-autocomplete li {
+            border-top: 1px solid #ddd;
+        }
+        
+        .ui-autocomplete a {
+            text-align: left;
+            display: block;
+            padding: 15px;
+            font-weight: bold;
+            font-family: var(--bs-body-font-family);
+            /*font-size: 14px;*/
+            margin: 0 !important;
+            border: none !important;
+            border-radius: 0px !important;
+            background: none !important;
+            padding: 15px !important;
+            /*line-height: normal !important;*/
+            /*color: #777 !important;*/
+        }
+    </style>
     <!--Powered by nopCommerce - https://www.nopCommerce.com-->
 </head>
 @{
