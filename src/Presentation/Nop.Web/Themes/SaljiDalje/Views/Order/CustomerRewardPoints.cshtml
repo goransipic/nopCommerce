@@ -12,6 +12,7 @@
 {
     @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.RewardPoints })
 }
+<div class="col-lg-8 col-md-7 mb-5">
 <div class="page account-page reward-points-page">
     <div class="page-title">
         <h1>@T("Account.MyAccount") - @T("Account.RewardPoints")</h1>
@@ -99,4 +100,5 @@
             }
         </div>
     </div>
+</div>
 </div>

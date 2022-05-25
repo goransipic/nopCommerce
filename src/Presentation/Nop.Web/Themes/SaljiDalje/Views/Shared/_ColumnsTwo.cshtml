@@ -29,17 +29,19 @@
     }
 }
 
-<div class="container-fluid mt-5 pt-5 p-0">
-    <div class="row g-0 mt-n3">
-        <aside class="col-lg-4 col-xl-3 border-top-lg border-end-lg shadow-sm px-3 px-xl-4 px-xxl-5 pt-lg-2">
-            @if (IsSectionDefined("left"))
-            {
-                @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.LeftSideColumnBefore})
-                @await RenderSectionAsync("left")
-                @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.LeftSideColumnAfter})
-            }
-            else
-            {
+<div class="container mt-5 pt-5 p-0">
+
+    <div class="row g-0">
+
+        @if (IsSectionDefined("left"))
+        {
+            @* @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.LeftSideColumnBefore}) *@
+            @await RenderSectionAsync("left")
+            @* @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.LeftSideColumnAfter}) *@
+        }
+        else
+        {
+            <aside class="col-lg-4 col-xl-3 border-top-lg border-end-lg shadow-sm px-3 px-xl-4 px-xxl-5 pt-lg-2">
                 <div class="offcanvas offcanvas-start offcanvas-collapse" id="filters-sidebar">
                     <div class="offcanvas-header bg-transparent d-flex d-lg-none align-items-center">
                         <h2 class="h5 mb-0">Filters</h2>
@@ -59,13 +61,13 @@
                 @* @await Component.InvokeAsync("PopularProductTags") *@
                 @* @await Component.InvokeAsync("PollBlock", new {systemKeyword = "LeftColumnPoll"}) *@
                 @* @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.LeftSideColumnAfter}) *@
-            }
-        </aside>
-        <div class="col-lg-8 col-xl-9 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
-            @await RenderSectionAsync("Breadcrumb", false)
-            @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.MainColumnBefore})
-            @RenderBody()
-            @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.MainColumnAfter})
-        </div>
+            </aside>
+        }
+        @await RenderSectionAsync("Breadcrumb", false)
+
+        @* @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.MainColumnBefore}) *@
+        @RenderBody()
+        @* @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.MainColumnAfter}) *@
+
     </div>
 </div>
