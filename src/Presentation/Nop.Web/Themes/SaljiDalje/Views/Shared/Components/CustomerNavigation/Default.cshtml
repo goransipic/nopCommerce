@@ -7,27 +7,58 @@
             <div class="pt-md-2 pt-lg-0 ps-3 ps-md-0 ps-lg-3">
                 <h2 class="fs-lg mb-0">Annette Black</h2>
                 <span class="star-rating">
-                    <i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i>
+                    <i class="star-rating-icon fi-star-filled active"></i>
+                    <i class="star-rating-icon fi-star-filled active"></i>
+                    <i class="star-rating-icon fi-star-filled active"></i>
+                    <i class="star-rating-icon fi-star-filled active"></i>
+                    <i class="star-rating-icon fi-star-filled active"></i>
                 </span>
                 <ul class="list-unstyled fs-sm mt-3 mb-0">
                     <li>
-                        <a class="nav-link fw-normal p-0" href="tel:3025550107"><i class="fi-phone opacity-60 me-2"></i>(302) 555-0107</a>
+                        <a class="nav-link fw-normal p-0" href="tel:3025550107">
+                            <i class="fi-phone opacity-60 me-2"></i>(302) 555-0107
+                        </a>
                     </li>
                     <li>
-                        <a class="nav-link fw-normal p-0" href="mailto:annette_black@email.com"><i class="fi-mail opacity-60 me-2"></i>annette_black@email.com</a>
+                        <a class="nav-link fw-normal p-0" href="mailto:annette_black@email.com">
+                            <i class="fi-mail opacity-60 me-2"></i>annette_black@email.com
+                        </a>
                     </li>
                 </ul>
             </div>
-        </div><a class="btn btn-primary btn-lg w-100 mb-3" href="real-estate-add-property.html"><i class="fi-plus me-2"></i>Predaj Oglas</a><a class="btn btn-outline-secondary d-block d-md-none w-100 mb-3" href="#account-nav" data-bs-toggle="collapse"><i class="fi-align-justify me-2"></i>Menu</a>
+        </div>
+        @*<a class="btn btn-primary btn-lg w-100 mb-3" href="real-estate-add-property.html">
+            <i class="fi-plus me-2"></i>Predaj Oglas
+        </a>*@
+        <a class="btn btn-outline-secondary d-block d-md-none w-100 mb-3" href="#account-nav" data-bs-toggle="collapse">
+            <i class="fi-align-justify me-2"></i>Menu
+        </a>
         <div class="collapse d-md-block mt-3" id="account-nav">
             <div class="card-nav">
-                @foreach (var item in Model.CustomerNavigationItems)
-                {
-                    <a class="card-nav-link @(Model.SelectedTab == item.Tab ? "active" : "")" href="@Url.RouteUrl(item.RouteName)">
-                        <i class="fi-user opacity-60 me-2"></i>@(item.Title)
-                    </a>
-                }
-                
+                <a class="card-nav-link" asp-controller="Customer" asp-action="Info">
+                    <i class="fi-user opacity-60 me-2"></i>Personal Info
+                </a>
+                <a class="card-nav-link" asp-controller="Customer" asp-action="ChangePassword">
+                    <i class="fi-lock opacity-60 me-2"></i>Password &amp; Security
+                </a>
+                <a class="card-nav-link" href="real-estate-account-properties.html">
+                    <i class="fi-home opacity-60 me-2"></i>My Properties
+                </a>
+                <a class="card-nav-link" asp-controller="ShoppingCart" asp-action="Wishlist">
+                    <i class="fi-heart opacity-60 me-2"></i>Wishlist
+                </a>
+                <a class="card-nav-link" asp-controller="Product" asp-action="CustomerProductReviews">
+                    <i class="fi-star opacity-60 me-2"></i>Reviews
+                </a>
+                <a class="card-nav-link" href="real-estate-account-notifications.html">
+                    <i class="fi-bell opacity-60 me-2"></i>Notifications
+                </a>
+                <a class="card-nav-link" href="real-estate-help-center.html">
+                    <i class="fi-help opacity-60 me-2"></i>Help
+                </a>
+                <a class="card-nav-link" href="@Url.RouteUrl("Logout")">
+                    <i class="fi-logout opacity-60 me-2"></i>Sign Out
+                </a>
             </div>
         </div>
     </div>

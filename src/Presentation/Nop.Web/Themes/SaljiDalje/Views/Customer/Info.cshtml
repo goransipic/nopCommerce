@@ -14,179 +14,135 @@
 @section left
 {
     <nav class="mb-4 pt-md-3" aria-label="Breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="real-estate-home-v1.html">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="real-estate-account-info.html">Account</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Personal Info</li>
-            </ol>
-        </nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="real-estate-home-v1.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="real-estate-account-info.html">Account</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Personal Info</li>
+        </ol>
+    </nav>
     @await Component.InvokeAsync("CustomerNavigation", new {selectedTabId = CustomerNavigationEnum.Info})
 }
 
 <div class="col-lg-8 col-md-7 mb-5">
     <h1 class="h2">Personal Info</h1>
-    <div class="mb-2 pt-1">Your personal info is 50% completed</div>
+    @*<div class="mb-2 pt-1">Your personal info is 50% completed</div>
     <div class="progress mb-4" style="height: .25rem;">
         <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-    <label class="form-label pt-2" for="account-bio">Short bio</label>
-    <div class="row pb-2">
-        <div class="col-lg-9 col-sm-8 mb-4">
-            <textarea class="form-control" id="account-bio" rows="6" placeholder="Write your bio here. It will be displayed on your public profile."></textarea>
+    </div>*@
+    <div class="row pt-2">
+        <div class="col-lg-9 col-md-12 col-sm-8 mb-2 mb-m-4">
+            <div class="border rounded-3 p-3 mb-4" id="personal-info">
+                <!-- Name-->
+                <div class="border-bottom pb-3 mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="pe-2 opacity-70">
+                            <label class="form-label fw-bold">Full name</label>
+                            <div id="name-value">Robert Fox</div>
+                        </div>
+                        <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                            <a class="nav-link py-0" href="#name-collapse" data-bs-toggle="collapse" aria-expanded="true">
+                                <i class="fi-edit"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse show" id="name-collapse" data-bs-parent="#personal-info" style="">
+                        <input class="form-control mt-3" type="text" data-bs-binded-element="#name-value" data-bs-unset-value="Not specified" value="Robert Fox">
+                    </div>
+                </div>
+                <!-- Gender-->
+                <div class="border-bottom pb-3 mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="pe-2 opacity-70">
+                            <label class="form-label fw-bold">Gender</label>
+                            <div id="gender-value">Not specified</div>
+                        </div>
+                        <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                            <a class="nav-link py-0 collapsed" href="#gender-collapse" data-bs-toggle="collapse" aria-expanded="false">
+                                <i class="fi-edit"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="gender-collapse" data-bs-parent="#personal-info">
+                        <select class="form-select mt-3" data-bs-binded-element="#gender-value">
+                            <option value="" disabled="" selected="">Select your gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Email-->
+                <div class="border-bottom pb-3 mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="pe-2 opacity-70">
+                            <label class="form-label fw-bold">Email</label>
+                            <div id="email-value">robert_fox@email.com</div>
+                        </div>
+                        <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                            <a class="nav-link py-0 collapsed" href="#email-collapse" data-bs-toggle="collapse" aria-expanded="false">
+                                <i class="fi-edit"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="email-collapse" data-bs-parent="#personal-info">
+                        <input class="form-control mt-3" type="email" data-bs-binded-element="#email-value" data-bs-unset-value="Not specified" value="robert_fox@email.com">
+                    </div>
+                </div>
+                <!-- Phone number-->
+                <div class="border-bottom pb-3 mb-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="pe-2 opacity-70">
+                            <label class="form-label fw-bold">Phone number</label>
+                            <div id="phone-value">(302) 555-0107</div>
+                        </div>
+                        <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                            <a class="nav-link py-0 collapsed" href="#phone-collapse" data-bs-toggle="collapse" aria-expanded="false">
+                                <i class="fi-edit"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="phone-collapse" data-bs-parent="#personal-info">
+                        <input class="form-control mt-3" type="text" data-bs-binded-element="#phone-value" data-bs-unset-value="Not specified" value="(302) 555-0107">
+                    </div>
+                </div>
+                <!-- Address-->
+                <div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="pe-2 opacity-70">
+                            <label class="form-label fw-bold">Address</label>
+                            <div id="address-value">Not specified</div>
+                        </div>
+                        <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                            <a class="nav-link nav-link-light py-0 collapsed" href="#address-collapse" data-bs-toggle="collapse" aria-expanded="false">
+                                <i class="fi-edit"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="address-collapse" data-bs-parent="#personal-info">
+                        <input class="form-control mt-3" type="text" data-bs-binded-element="#address-value" data-bs-unset-value="Not specified" placeholder="Enter address">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-3 col-sm-4 mb-4">
-            <div class="filepond--root file-uploader bg-secondary filepond--hopper" data-style-panel-layout="compact" data-style-button-remove-item-position="left" data-style-button-process-item-position="right" data-style-load-indicator-position="right" data-style-progress-indicator-position="right" data-style-button-remove-item-align="false" style="height: 160px;">
-                <input class="filepond--browser" type="file" id="filepond--browser-9q4ppcmbt" name="filepond" aria-controls="filepond--assistant-9q4ppcmbt" aria-labelledby="filepond--drop-label-9q4ppcmbt" accept="image/png,image/jpeg"><a class="filepond--credits" aria-hidden="true" href="https://pqina.nl/" target="_blank" rel="noopener noreferrer" style="transform: translateY(152px);">Powered by PQINA</a>
-                <div class="filepond--drop-label" style="transform: translate3d(0px, 0px, 0px); opacity: 1;">
-                    <label for="filepond--browser-9q4ppcmbt" id="filepond--drop-label-9q4ppcmbt" aria-hidden="true">
-                        <i class="d-inline-block fi-camera-plus fs-2 text-muted mb-2"></i><br><span class="fw-bold">Change picture</span>
-                    </label>
-                </div>
-                <div class="filepond--list-scroller" style="transform: translate3d(0px, 0px, 0px);">
-                    <ul class="filepond--list" role="list"></ul>
-                </div>
-                <div class="filepond--panel filepond--panel-root" data-scalable="true">
-                    <div class="filepond--panel-top filepond--panel-root"></div>
-                    <div class="filepond--panel-center filepond--panel-root" style="transform: translate3d(0px, 8px, 0px) scale3d(1, 1.44, 1);"></div>
-                    <div class="filepond--panel-bottom filepond--panel-root" style="transform: translate3d(0px, 152px, 0px);"></div>
-                </div><span class="filepond--assistant" id="filepond--assistant-9q4ppcmbt" role="status" aria-live="polite" aria-relevant="additions"></span>
-                <div class="filepond--drip"></div><fieldset class="filepond--data"></fieldset>
-            </div>
-        </div>
-    </div>
-    <div class="border rounded-3 p-3 mb-4" id="personal-info">
-        <!-- Name-->
-        <div class="border-bottom pb-3 mb-3">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="pe-2">
-                    <label class="form-label fw-bold">Full name</label>
-                    <div id="name-value">Annette Black</div>
-                </div>
-                <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
-                    <a class="nav-link py-0" href="#name-collapse" data-bs-toggle="collapse">
-                        <i class="fi-edit"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="collapse" id="name-collapse" data-bs-parent="#personal-info">
-                <input class="form-control mt-3" type="text" data-bs-binded-element="#name-value" data-bs-unset-value="Not specified" value="Annette Black">
-            </div>
-        </div>
-        <!-- Email-->
-        <div class="border-bottom pb-3 mb-3">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="pe-2">
-                    <label class="form-label fw-bold">Email</label>
-                    <div id="email-value">annette_black@email.com</div>
-                </div>
-                <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
-                    <a class="nav-link py-0" href="#email-collapse" data-bs-toggle="collapse">
-                        <i class="fi-edit"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="collapse" id="email-collapse" data-bs-parent="#personal-info">
-                <input class="form-control mt-3" type="email" data-bs-binded-element="#email-value" data-bs-unset-value="Not specified" value="annette_black@email.com">
-            </div>
-        </div>
-        <!-- Phone number-->
-        <div class="border-bottom pb-3 mb-3">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="pe-2">
-                    <label class="form-label fw-bold">Phone number</label>
-                    <div id="phone-value">(302) 555-0107</div>
-                </div>
-                <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
-                    <a class="nav-link py-0" href="#phone-collapse" data-bs-toggle="collapse">
-                        <i class="fi-edit"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="collapse" id="phone-collapse" data-bs-parent="#personal-info">
-                <input class="form-control mt-3" type="text" data-bs-binded-element="#phone-value" data-bs-unset-value="Not specified" value="(302) 555-0107">
-            </div>
-        </div>
-        <!-- Company name-->
-        <div class="border-bottom pb-3 mb-3">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="pe-2">
-                    <label class="form-label fw-bold">Company name</label>
-                    <div id="company-value">Not specified</div>
-                </div>
-                <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
-                    <a class="nav-link py-0" href="#company-collapse" data-bs-toggle="collapse">
-                        <i class="fi-edit"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="collapse" id="company-collapse" data-bs-parent="#personal-info">
-                <input class="form-control mt-3" type="text" data-bs-binded-element="#company-value" data-bs-unset-value="Not specified" placeholder="Enter company name">
-            </div>
-        </div>
-        <!-- Address-->
-        <div>
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="pe-2">
-                    <label class="form-label fw-bold">Address</label>
-                    <div id="address-value">Not specified</div>
-                </div>
-                <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
-                    <a class="nav-link py-0" href="#address-collapse" data-bs-toggle="collapse">
-                        <i class="fi-edit"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="collapse" id="address-collapse" data-bs-parent="#personal-info">
-                <input class="form-control mt-3" type="text" data-bs-binded-element="#address-value" data-bs-unset-value="Not specified" placeholder="Enter address">
+        <div class="col-lg-3 col-md-12 col-sm-4 mb-4">
+            <input class="file-uploader bg-faded-light" type="file" accept="image/png, image/jpeg" data-label-idle="&lt;i class=&quot;d-inline-block fi-camera-plus fs-2 text-muted mb-2&quot;&gt;&lt;/i&gt;&lt;br&gt;&lt;span class=&quot;fw-bold opacity-70&quot;&gt;Change picture&lt;/span&gt;" data-style-panel-layout="compact" data-image-preview-height="160" data-image-crop-aspect-ratio="1:1" data-image-resize-target-width="200" data-image-resize-target-height="200">
+            <div class="pt-4 pb-2 py-lg-5">
+                <h6 class="mb-2">Who can see my profile?</h6>
+                <p class="fs-sm opacity-70 mb-0">Your profile is private. No one else will see it untill a reservation is confirmed.</p>
             </div>
         </div>
     </div>
-    <!-- Socials-->
-    <div class="pt-2">
-        <label class="form-label fw-bold mb-3">Socials</label>
-    </div>
-    <div class="d-flex align-items-center mb-3">
-        <div class="btn btn-icon btn-light btn-xs shadow-sm rounded-circle pe-none flex-shrink-0 me-3">
-            <i class="fi-facebook text-body"></i>
-        </div>
-        <input class="form-control" type="text" placeholder="Your Facebook account">
-    </div>
-    <div class="d-flex align-items-center mb-3">
-        <div class="btn btn-icon btn-light btn-xs shadow-sm rounded-circle pe-none flex-shrink-0 me-3">
-            <i class="fi-linkedin text-body"></i>
-        </div>
-        <input class="form-control" type="text" placeholder="Your LinkedIn account">
-    </div>
-    <div class="d-flex align-items-center mb-3">
-        <div class="btn btn-icon btn-light btn-xs shadow-sm rounded-circle pe-none flex-shrink-0 me-3">
-            <i class="fi-twitter text-body"></i>
-        </div>
-        <input class="form-control" type="text" placeholder="Your Twitter account">
-    </div>
-    <div class="collapse" id="showMoreSocials">
-        <div class="d-flex align-items-center mb-3">
-            <div class="btn btn-icon btn-light btn-xs shadow-sm rounded-circle pe-none flex-shrink-0 me-3">
-                <i class="fi-instagram text-body"></i>
+    <!-- Action buttons-->
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="d-flex align-items-center justify-content-between pb-1">
+                <button class="btn btn-primary" type="button">Save changes</button>
+                <button class="btn btn-link btn-sm px-0" type="button"><i class="fi-trash me-2"></i>Delete account</button>
             </div>
-            <input class="form-control" type="text" placeholder="Your Instagram account">
         </div>
-        <div class="d-flex align-items-center mb-3">
-            <div class="btn btn-icon btn-light btn-xs shadow-sm rounded-circle pe-none flex-shrink-0 me-3">
-                <i class="fi-pinterest text-body"></i>
-            </div>
-            <input class="form-control" type="text" placeholder="Your Pinterest account">
-        </div>
-    </div>
-    <a class="collapse-label collapsed d-inline-block fs-sm fw-bold text-decoration-none pt-2 pb-3" href="#showMoreSocials" data-bs-toggle="collapse" data-bs-label-collapsed="Show more" data-bs-label-expanded="Show less" role="button" aria-expanded="false" aria-controls="showMoreSocials">
-        <i class="fi-arrow-down me-2"></i>
-    </a>
-    <div class="d-flex align-items-center justify-content-between border-top mt-4 pt-4 pb-1">
-        <button class="btn btn-primary px-3 px-sm-4" type="button">Save changes</button>
-        <button class="btn btn-link btn-sm px-0" type="button"><i class="fi-trash me-2"></i>Delete account</button>
     </div>
 </div>
 
