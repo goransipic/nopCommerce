@@ -27,12 +27,12 @@
         <div class="mt-4 mt-sm-5 text-center">Don't have an account? <a href="#" onclick="location.href='@registerUrl'">@T("Account.Register")</a></div>
     </div>*@
     <div class="col-sm-10 col-md-6 mx-auto px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
-        <form asp-route="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" autocomplete="off">
+        <form asp-route="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" autocomplete="off" novalidate="">
             <div asp-validation-summary="ModelOnly">@T("Account.Login.Unsuccessful")</div>
-            <div class="mb-4">
-                <label asp-for="Email" class="form-label mb-2" for="signin-email"></label>
-                <input asp-for="Email" class="form-control" type="email" id="signin-email" autofocus="autofocus"/>
-                <span asp-validation-for="Email"></span>
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label mb-2"></label>
+                <input asp-for="Username" class="form-control" autofocus="autofocus"/>
+                <span asp-validation-for="Username"></span>
             </div>
             <div class="mb-3">
                 <div class="d-flex align-items-center justify-content-between mb-2">

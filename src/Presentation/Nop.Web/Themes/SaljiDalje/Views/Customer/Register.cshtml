@@ -19,8 +19,8 @@
             <form asp-route="Register" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" autocomplete="off">
                 <div asp-validation-summary="ModelOnly" class="message-error"></div>
                 <div class="mb-4">
-                    <label asp-for="Username" class="form-label" for="signup-name"></label>
-                    <input asp-for="Username" class="form-control" type="text" id="signup-name" placeholder="Enter your full name" required=""/>
+                    <label asp-for="Username" class="form-label"></label>
+                    <input asp-for="Username" class="form-control" type="text" placeholder="Enter your full name"/>
                     @* <nop-required/> *@
                     <span asp-validation-for="Username"></span>
                     @if (Model.CheckUsernameAvailabilityEnabled)
@@ -29,14 +29,14 @@
                     }
                 </div>
                 <div class="mb-4">
-                    <label asp-for="Email" class="form-label" for="signup-email"></label>
-                    <input asp-for="Email" class="form-control" type="email" id="signup-email" placeholder="Enter your email"/>
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" type="email" placeholder="Enter your email"/>
                     <span asp-validation-for="Email"></span>
                 </div>
                 <div class="mb-4">
-                    <label asp-for="Password" class="form-label" for="signup-password"></label>
+                    <label asp-for="Password" class="form-label"></label>
                     <div class="password-toggle">
-                        <input asp-for="Password" class="form-control" type="password" id="signup-password"/>
+                        <input asp-for="Password" class="form-control" type="password"/>
                         <label class="password-toggle-btn" aria-label="Show/hide password">
                             <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                         </label>
@@ -44,9 +44,9 @@
                     <span asp-validation-for="Password"></span>
                 </div>
                 <div class="mb-4">
-                    <label asp-for="ConfirmPassword" class="form-label" for="signup-password-confirm"></label>
+                    <label asp-for="ConfirmPassword" class="form-label"></label>
                     <div class="password-toggle">
-                        <input asp-for="ConfirmPassword" class="form-control" type="password" id="signup-password-confirm"/>
+                        <input asp-for="ConfirmPassword" class="form-control" type="password"/>
                         <label class="password-toggle-btn" aria-label="Show/hide password">
                             <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
                         </label>
