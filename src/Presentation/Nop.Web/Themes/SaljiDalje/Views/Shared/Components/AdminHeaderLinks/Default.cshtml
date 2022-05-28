@@ -1,7 +1,7 @@
 ﻿@model AdminHeaderLinksModel
 @if (Model.IsCustomerImpersonated || Model.DisplayAdminLink)
 {
-    <div class="admin-header-links">
+    <div class="container py-2 admin-header-links text-center">
         @if (Model.IsCustomerImpersonated)
         {
             <div class="impersonate">
@@ -11,7 +11,7 @@
         }
         @if (Model.DisplayAdminLink)
         {
-            <a href="@Url.Content("~/Admin")" class="administration">@T("Account.Administration")</a>
+            <a href="@Url.Content("~/Admin")" class="administration text-decoration-none">@T("Account.Administration")</a>
         }
         @if (!string.IsNullOrEmpty(Model.EditPageUrl))
         {

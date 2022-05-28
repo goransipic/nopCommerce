@@ -6,7 +6,9 @@
 @{ await Html.RenderPartialAsync("_JavaScriptDisabledWarning"); }
 @{ await Html.RenderPartialAsync("_OldInternetExplorerWarning"); }
 <div class="master-wrapper-page">
-    @await Component.InvokeAsync("AdminHeaderLinks")
+    <div class="bg-dark">
+        @await Component.InvokeAsync("AdminHeaderLinks")
+    </div>
     @{ await Html.RenderPartialAsync("_Header"); }
     <script asp-location="Footer">
         var localized_data = {
