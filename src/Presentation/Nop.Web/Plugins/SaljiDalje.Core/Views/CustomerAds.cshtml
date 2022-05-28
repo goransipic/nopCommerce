@@ -1,0 +1,137 @@
+@using Nop.Web.Models.Catalog
+@using SaljiDalje.Core.Controllers
+@using Nop.Web.Controllers.SaljiDalje.Core
+@using Nop.Web.Models.Customer
+@model Nop.Web.Models.Catalog.TopMenuModel
+
+@{
+    Layout = "_ColumnsTwo";
+var customerNavigationModel = new CustomerNavigationModel
+    {
+        CustomerNavigationItems = new List<CustomerNavigationItemModel>
+        {
+            new()
+            {
+                Title = "Customer Ads"
+            }
+        },
+        SelectedTab = (int)CustomerNavigationItem.CustomerAds
+    };
+}
+
+@section left
+{
+    
+    @await Html.PartialAsync("~/Themes/SaljiDalje/Views/Shared/Components/CustomerNavigation/Default.cshtml",customerNavigationModel)
+    @* @await Component.InvokeAsync("CustomerNavigation", new {selectedTabId = CustomerNavigationItem.Info}) *@
+}
+
+<!-- Page content-->
+<div class="col-lg-8 col-md-7 mb-5">
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="h2 mb-0">Customer Ads</h1><a class="nav-link fw-bold" href="#"><i class="fi-trash mt-n1 me-2"></i>Delete all</a>
+</div>
+<p class="pt-1 mb-4">Here you can see your car offers and edit them easily.</p>
+<!-- Nav tabs-->
+<ul class="nav nav-tabs border-bottom mb-4" role="tablist">
+    <li class="nav-item mb-3">
+        <a class="nav-link active" href="#" role="tab" aria-selected="true">
+            <i class="fi-file fs-base me-2"></i>Published
+        </a>
+    </li>
+    <li class="nav-item mb-3">
+        <a class="nav-link" href="#" role="tab" aria-selected="false">
+            <i class="fi-file-clean fs-base me-2"></i>Drafts
+        </a>
+    </li>
+    <li class="nav-item mb-3">
+        <a class="nav-link" href="#" role="tab" aria-selected="false"><i class="fi-archive fs-base me-2"></i>Archived</a>
+    </li>
+</ul>
+<!-- Item-->
+<div class="card card-hover card-horizontal mb-4">
+    <div class="tns-carousel-wrapper card-img-top card-img-hover">
+        <a class="img-overlay" href="car-finder-single.html"></a>
+        <div class="position-absolute start-0 top-0 pt-3 ps-3">
+            <span class="d-table badge bg-info">Used</span>
+        </div>
+        <div class="content-overlay end-0 top-0 pt-3 pe-3">
+            <button class="btn btn-icon btn-xs text-primary rounded-circle" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to Wishlist" aria-label="Add to Wishlist">
+                <i class="fi-heart"></i>
+            </button>
+        </div>
+        <div class="tns-outer" id="tns1-ow">
+            <div class="tns-controls" aria-label="Carousel Navigation" tabindex="0">
+                <button type="button" data-controls="prev" tabindex="-1" aria-controls="tns1">
+                    <i class="fi-chevron-left"></i>
+                </button>
+                <button type="button" data-controls="next" tabindex="-1" aria-controls="tns1">
+                    <i class="fi-chevron-right"></i>
+                </button>
+            </div>
+            <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">3</span> of 2</div>
+            <div id="tns1-mw" class="tns-ovh">
+                <div class="tns-inner" id="tns1-iw">
+                    <div class="tns-carousel-inner position-absolute top-0 h-100  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" id="tns1" style="transition-duration: 0s; transform: translate3d(-33.3333%, 0px, 0px);">
+                        <div class="bg-size-cover bg-position-center w-100 h-100 tns-item tns-slide-cloned" style="background-image: url(img/car-finder/catalog/14.jpg);" aria-hidden="true" tabindex="-1"></div>
+                        <div class="bg-size-cover bg-position-center w-100 h-100 tns-item tns-slide-cloned" style="background-image: url(img/car-finder/catalog/14.jpg);" aria-hidden="true" tabindex="-1"></div>
+                        <div class="bg-size-cover bg-position-center w-100 h-100 tns-item tns-slide-active" style="background-image: url(img/car-finder/catalog/14.jpg);" id="tns1-item0"></div>
+                        <div class="bg-size-cover bg-position-center w-100 h-100 tns-item" style="background-image: url(img/car-finder/catalog/14.jpg);" id="tns1-item1" aria-hidden="true" tabindex="-1"></div>
+                        <div class="bg-size-cover bg-position-center w-100 h-100 tns-item tns-slide-cloned" style="background-image: url(img/car-finder/catalog/14.jpg);" aria-hidden="true" tabindex="-1"></div>
+                        <div class="bg-size-cover bg-position-center w-100 h-100 tns-item tns-slide-cloned" style="background-image: url(img/car-finder/catalog/14.jpg);" aria-hidden="true" tabindex="-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tns-nav" aria-label="Carousel Pagination">
+                <button type="button" data-nav="0" aria-controls="tns1" style="" aria-label="Carousel Page 1 (Current Slide)" class="tns-nav-active"></button><button type="button" data-nav="1" tabindex="-1" aria-controls="tns1" style="" aria-label="Carousel Page 2"></button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body position-relative">
+        <div class="dropdown position-absolute zindex-5 top-0 end-0 mt-3 me-3">
+            <button class="btn btn-icon btn-xs rounded-circle" type="button" id="contextMenu1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fi-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu my-1" aria-labelledby="contextMenu1">
+                <li>
+                    <button class="dropdown-item" type="button"><i class="fi-edit me-2"></i>Edit</button>
+                </li>
+                <li>
+                    <button class="dropdown-item" type="button"><i class="fi-flame me-2"></i>Promote</button>
+                </li>
+                <li>
+                    <button class="dropdown-item" type="button"><i class="fi-power me-2"></i>Deactivate</button>
+                </li>
+                <li>
+                    <button class="dropdown-item" type="button"><i class="fi-trash me-2"></i>Delete</button>
+                </li>
+            </ul>
+        </div>
+        <div class="fs-sm pb-1">2017</div>
+        <h3 class="h6 mb-1">
+            <a class="nav-link" href="car-finder-single.html">Toyota GT86</a>
+        </h3>
+        <div class="text-primary fw-bold mb-1">$16,000</div>
+        <div class="fs-sm opacity-70"><i class="fi-map-pin me-1"></i>Chicago</div>
+        <div class="border-top  mt-3 pt-3">
+            <div class="row g-2">
+                <div class="col me-sm-1">
+                    <div class="bg-secondary rounded text-center w-100 h-100 p-2">
+                        <i class="fi-dashboard d-block h4 mb-0 mx-center"></i><span class="fs-xs">32K mi</span>
+                    </div>
+                </div>
+                <div class="col me-sm-1">
+                    <div class="bg-secondary rounded text-center w-100 h-100 p-2">
+                        <i class="fi-gearbox d-block h4 mb-0 mx-center"></i><span class="fs-xs">Manual</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="bg-secondary rounded text-center w-100 h-100 p-2">
+                        <i class="fi-petrol d-block h4 mb-0 mx-center"></i><span class="fs-xs">Gasoline</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

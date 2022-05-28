@@ -148,7 +148,7 @@
     var controllerName = Url.ActionContext.RouteData.Values["controller"].ToString();
     bool isAdPage = controllerName.Equals("makenewad", StringComparison.InvariantCultureIgnoreCase);
 }
-<body class="@{ if(isAdPage){ <text> bg-secondary </text> } }">
+<body class="@{ if(isAdPage){ <text>bg-secondary</text> } }">
 <nop-antiforgery-token/>
 <script asp-location="Footer">
             setTimeout(function () {

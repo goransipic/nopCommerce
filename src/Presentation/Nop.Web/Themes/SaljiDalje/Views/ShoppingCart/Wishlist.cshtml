@@ -1,31 +1,45 @@
 @model WishlistModel
 @using Nop.Core
 @using Nop.Core.Domain.Tax
+@using Nop.Services.Customers
+@using Nop.Web.Controllers.SaljiDalje.Core
 @inject IWebHelper webHelper
 @inject IWorkContext workContext
+@inject ICustomerService _customerService
 @{
-    Layout = "_ColumnsTwo";
-
+    var costumer = await workContext.GetCurrentCustomerAsync();
+    var isGuest = await _customerService.IsGuestAsync(costumer);
+    if (isGuest)
+    {
+        Layout = "_ColumnsOne";
+    }
+    else
+    {
+        Layout = "_ColumnsTwo";
+    }
     //title
     NopHtml.AddTitleParts(T("PageTitle.Wishlist").Text);
     //page class
     NopHtml.AppendPageCssClassParts("html-wishlist-page");
+    
+    var customerNavigationModel = new CustomerNavigationModel
+    {
+        CustomerNavigationItems = new List<CustomerNavigationItemModel>
+        {
+            new()
+            {
+                Title = "WishList"
+            }
+        },
+        SelectedTab = (int) CustomerNavigationItem.WishList
+    };
 }
 
 @section left
 {
-    <nav class="mb-4 pt-md-3" aria-label="Breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="real-estate-home-v1.html">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="real-estate-account-info.html">Account</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">Personal Info</li>
-        </ol>
-    </nav>
-    @await Component.InvokeAsync("CustomerNavigation", new {selectedTabId = CustomerNavigationEnum.Info})
+
+    @await Html.PartialAsync("~/Themes/SaljiDalje/Views/Shared/Components/CustomerNavigation/Default.cshtml", customerNavigationModel)
+    @* @await Component.InvokeAsync("CustomerNavigation", new {selectedTabId = CustomerNavigationItem.Info}) *@
 }
 
 <div class="col-lg-8 col-md-7 mb-5">
@@ -52,7 +66,7 @@
                 <div class="card-body position-relative pb-3">
                     <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">For sale</h4>
                     <h3 class="h6 mb-2 fs-base">
-                    <a class="nav-link stretched-link" href="@Url.RouteUrl("Product", new {SeName = item.ProductSeName})">@item.ProductName</a>
+                        <a class="nav-link stretched-link" href="@Url.RouteUrl("Product", new {SeName = item.ProductSeName})">@item.ProductName</a>
                     </h3>
                     <p class="mb-2 fs-sm text-muted">@item.AttributeInfo</p>
                     <div class="fw-bold">

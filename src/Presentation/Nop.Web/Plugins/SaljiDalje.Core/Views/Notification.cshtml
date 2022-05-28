@@ -1,0 +1,96 @@
+@using Nop.Web.Models.Catalog
+@using SaljiDalje.Core.Controllers
+@using Nop.Web.Controllers.SaljiDalje.Core
+@using Nop.Web.Models.Customer
+@model Nop.Web.Models.Catalog.TopMenuModel
+
+@{
+    Layout = "_ColumnsTwo";
+var customerNavigationModel = new CustomerNavigationModel
+    {
+        CustomerNavigationItems = new List<CustomerNavigationItemModel>
+        {
+            new()
+            {
+                Title = "Notification"
+            }
+        },
+        SelectedTab = (int)CustomerNavigationItem.Notification
+    };
+}
+
+@section left
+{
+    
+    @await Html.PartialAsync("~/Themes/SaljiDalje/Views/Shared/Components/CustomerNavigation/Default.cshtml",customerNavigationModel)
+    @* @await Component.InvokeAsync("CustomerNavigation", new {selectedTabId = CustomerNavigationItem.Info}) *@
+}
+
+<!-- Page content-->
+<div class="col-lg-8 col-md-7 mb-5">
+    <h1 class="h2">Notifications</h1>
+    <p class="pt-1 mb-4">Get real-time vehicle updates, price drop alerts, helpful shopping information and more.</p>
+    <div class="py-2" id="notification-settings">
+        <div class="d-flex justify-content-between mb-4">
+            <div class="me-2">
+                <h6 class="mb-1">New vehicles alerts</h6>
+                <p class="fs-sm mb-0">
+                    <span class="opacity-70">New vehicles that match your</span> <a href="car-finder-account-wishlist.html" >Wishlist</a>
+                </p>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="new-vehicles" checked="">
+                <label class="form-check-label" for="new-vehicles"></label>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
+            <div class="me-2">
+                <h6 class="mb-1">Vehicle status updates</h6>
+                <p class="fs-sm mb-0">
+                    <span class="opacity-70">Updates like price changes and off-market status on your</span> 
+                    <a href="car-finder-account-wishlist.html" >Wishlist</a>
+                </p>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="vehicle-update" checked="">
+                <label class="form-check-label" for="vehicle-update"></label>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
+            <div class="me-2">
+                <h6 class="mb-1">Finder recommendations</h6>
+                <p class="fs-sm opacity-70 mb-0">Vehicles we think you'll like. These recommendations may be slightly outside your search criteria</p>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="finder-recomendation">
+                <label class="form-check-label" for="finder-recomendation"> </label>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
+            <div class="me-2">
+                <h6 class="mb-1">Featured news</h6>
+                <p class="fs-sm opacity-70 mb-0">News and tips you may be interested in</p>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="featured-news" checked="">
+                <label class="form-check-label" for="featured-news"></label>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
+            <div class="me-2">
+                <h6 class="mb-1">Finder extras</h6>
+                <p class="fs-sm opacity-70 mb-0">Occasional notifications about new features to make finding the perfect car easy</p>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="extras">
+                <label class="form-check-label" for="extras"></label>
+            </div>
+        </div>
+    </div>
+    <div class="border-top pt-4">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="all-notifications" data-master-checkbox-for="#notification-settings" checked="">
+            <label class="form-check-label" for="all-notifications">Enable / disable all notifications</label>
+        </div>
+    </div>
+</div>

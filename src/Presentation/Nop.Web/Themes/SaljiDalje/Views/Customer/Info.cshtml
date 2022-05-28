@@ -1,4 +1,5 @@
 ﻿@using Nop.Core
+@using Nop.Web.Controllers.SaljiDalje.Core
 @model CustomerInfoModel
 @inject Nop.Core.IWebHelper webHelper
 @{
@@ -9,22 +10,25 @@
     //page class
     NopHtml.AppendPageCssClassParts("html-account-page");
     NopHtml.AppendPageCssClassParts("html-customer-info-page");
+    
+    var customerNavigationModel = new CustomerNavigationModel
+    {
+        CustomerNavigationItems = new List<CustomerNavigationItemModel>
+        {
+            new()
+            {
+                Title = "Personal Info"
+            }
+        },
+        SelectedTab = (int)CustomerNavigationItem.Info
+    };
 }
 
 @section left
 {
-    <nav class="mb-4 pt-md-3" aria-label="Breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="real-estate-home-v1.html">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="real-estate-account-info.html">Account</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">Personal Info</li>
-        </ol>
-    </nav>
-    @await Component.InvokeAsync("CustomerNavigation", new {selectedTabId = CustomerNavigationEnum.Info})
+    
+    @await Html.PartialAsync("~/Themes/SaljiDalje/Views/Shared/Components/CustomerNavigation/Default.cshtml",customerNavigationModel)
+    @* @await Component.InvokeAsync("CustomerNavigation", new {selectedTabId = CustomerNavigationItem.Info}) *@
 }
 
 <div class="col-lg-8 col-md-7 mb-5">
@@ -51,7 +55,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="collapse @{if(!ViewData.ModelState.IsValid){ <text>show</text> }} " id="name-collapse" data-bs-parent="#personal-info" style="">
+                        <div class="collapse @{if (!ViewData.ModelState.IsValid){ <text>show</text> }} " id="name-collapse" data-bs-parent="#personal-info" style="">
                             <input
                                 asp-for="Username"
                                 class="form-control mt-3"
@@ -63,32 +67,8 @@
                             <span asp-validation-for="Username"></span>
                         </div>
                     </div>
-                    <!-- Email-->
-                    <div class="border-bottom pb-3 mb-3">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="pe-2 opacity-70">
-                                <label class="form-label fw-bold">Email</label>
-                                <div id="email-value">@Model.Email</div>
-                            </div>
-                            <div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
-                                <a class="nav-link py-0 collapsed" href="#email-collapse" data-bs-toggle="collapse" aria-expanded="false">
-                                    <i class="fi-edit"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="collapse @{if(!ViewData.ModelState.IsValid){ <text>show</text> }} " id="email-collapse" data-bs-parent="#personal-info">
-                            <input asp-for="Email"
-                                   class="form-control mt-3"
-                                   type="email"
-                                   data-bs-binded-element="#email-value"
-                                   data-bs-unset-value="Not specified"
-                                   value="@Model.Email">
-                            </input>
-                            <span asp-validation-for="Email"></span>
-                        </div>
-                    </div>
                     <!-- Phone number-->
-                    <div class="pb-3 ">
+                    <div class="border-bottom pb-3">
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="pe-2 opacity-70">
                                 <label class="form-label fw-bold">Phone number</label>
@@ -111,7 +91,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="collapse @{if(!ViewData.ModelState.IsValid){ <text>show</text> }} " id="phone-collapse" data-bs-parent="#personal-info">
+                        <div class="collapse @{if (!ViewData.ModelState.IsValid){ <text>show</text> }} " id="phone-collapse" data-bs-parent="#personal-info">
                             <input asp-for="Phone"
                                    class="form-control mt-3"
                                    type="text"
@@ -121,6 +101,32 @@
                             </input>
                             <span asp-validation-for="Phone"></span>
                         </div>
+                    </div>
+                    <!-- Email-->
+                    <div class="pt-3 mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="pe-2 opacity-70">
+                                <label class="form-label fw-bold">Email</label>
+                                <div id="email-value">@Model.Email</div>
+                            </div>
+                            @*<div class="me-n3" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                                                    <a class="nav-link py-0 collapsed" href="#email-collapse" data-bs-toggle="collapse" aria-expanded="false">
+                                                        <i class="fi-edit"></i>
+                                                    </a>
+                                                </div>*@
+                        </div>
+
+                        @* <div class="collapse @{if(!ViewData.ModelState.IsValid){ <text>show</text> }} " id="email-collapse" data-bs-parent="#personal-info"> *@
+                        <input asp-for="Email"
+                               class="form-control mt-3"
+                               type="hidden"
+                               data-bs-binded-element="#email-value"
+                               data-bs-unset-value="Not specified"
+                               value="@Model.Email">
+                        </input>
+                        @*<span asp-validation-for="Email"></span>
+                                            </div>*@
+
                     </div>
                     <!-- Address-->
                     @*<div>

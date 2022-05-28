@@ -1,5 +1,12 @@
 ﻿@{
     Layout = "_Root.Head";
+    var controllerName = Url.ActionContext.RouteData.Values["controller"].ToString();
+    var actionName = Url.ActionContext.RouteData.Values["action"].ToString();
+
+    bool isHome = controllerName.Equals("home", StringComparison.InvariantCultureIgnoreCase);
+
+    bool isProfile = actionName.Equals("info", StringComparison.InvariantCultureIgnoreCase);
+
 }
 @* @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BodyStartHtmlTagAfter }) *@
 @{ await Html.RenderPartialAsync("_Notifications"); }
@@ -20,16 +27,16 @@
         @await Component.InvokeAsync("TopMenu")
     </div>*@
     @* <div class="master-wrapper-content"> *@
-        @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContentBefore })*@
+    @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContentBefore })*@
 
-        @if (IsSectionDefined("Breadcrumb"))
-        {
-            @RenderSection("Breadcrumb") 
-        }
-        <div class="container master-column-wrapper p-0">
-            @RenderBody()
-        </div>
-        @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContentAfter })*@
+    @if (IsSectionDefined("Breadcrumb"))
+    {
+        @RenderSection("Breadcrumb")
+    }
+    <div class="@{ if(isHome){ <text>container-fluid</text> }else{ <text>container</text> } } master-column-wrapper p-0">
+        @RenderBody()
+    </div>
+    @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContentAfter })*@
     @* </div> *@
     @await Component.InvokeAsync("Footer")
 </div>
