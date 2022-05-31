@@ -67,26 +67,26 @@
                    asp-controller="Customer" asp-action="Info">
                     <i class="fi-user opacity-60 me-2"></i>Personal Info
                 </a>
-                <a class="card-nav-link @(((CustomerNavigationItem) Model.SelectedTab) == CustomerNavigationItem.ChangePassword ? "active" : "")" 
+                <a class="card-nav-link @(((CustomerNavigationItem) Model.SelectedTab) == CustomerNavigationItem.ChangePassword ? "active" : "")"
                    asp-controller="Customer" asp-action="ChangePassword">
                     <i class="fi-lock opacity-60 me-2"></i>Password &amp; Security
                 </a>
-                <a class="card-nav-link @(((CustomerNavigationItem) Model.SelectedTab) == CustomerNavigationItem.CustomerAds ? "active" : "")" 
+                <a class="card-nav-link @(((CustomerNavigationItem) Model.SelectedTab) == CustomerNavigationItem.CustomerAds ? "active" : "")"
                    asp-controller="CustomerInfo" asp-action="CustomerAds">
                     <i class="fi-home opacity-60 me-2"></i>Customer Ads
                 </a>
-                <a class="card-nav-link @(((CustomerNavigationItem) Model.SelectedTab) == CustomerNavigationItem.Avatar ? "active" : "")" 
+                <a class="card-nav-link @(((CustomerNavigationItem) Model.SelectedTab) == CustomerNavigationItem.Avatar ? "active" : "")"
                    asp-controller="Customer" asp-action="Avatar">
                     <i class="fi-flame opacity-60 me-2"></i>Avatar
                 </a>
-                <a class="card-nav-link @((CustomerNavigationItem) Model.SelectedTab == CustomerNavigationItem.WishList ? "active" : "")" 
+                <a class="card-nav-link @((CustomerNavigationItem) Model.SelectedTab == CustomerNavigationItem.WishList ? "active" : "")"
                    asp-controller="ShoppingCart" asp-action="Wishlist">
                     <i class="fi-heart opacity-60 me-2"></i>Wishlist
                 </a>
                 @*<a class="card-nav-link @((CustomerNavigationItem) Model.SelectedTab == CustomerNavigationItem.ProductReviews ? "active" : "")" asp-controller="Product" asp-action="CustomerProductReviews">
                     <i class="fi-star opacity-60 me-2"></i>Reviews
                 </a>*@
-                <a class="card-nav-link @((CustomerNavigationItem) Model.SelectedTab == CustomerNavigationItem.Notification ? "active" : "")" 
+                <a class="card-nav-link @((CustomerNavigationItem) Model.SelectedTab == CustomerNavigationItem.Notification ? "active" : "")"
                    asp-controller="CustomerInfo" asp-action="Notification">
                     <i class="fi-bell opacity-60 me-2"></i>Notifications
                 </a>
