@@ -7,5 +7,6 @@ public enum CustomerNavigationItem
     CustomerAds = 2,
     ProductReviews = 3,
     WishList = 4,
-    Notification = 5
+    Notification = 5,
+    Avatar = 6
 }

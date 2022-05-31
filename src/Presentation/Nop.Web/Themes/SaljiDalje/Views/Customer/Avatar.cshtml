@@ -1,4 +1,5 @@
-﻿@model CustomerAvatarModel
+﻿@using Nop.Web.Controllers.SaljiDalje.Core
+@model CustomerAvatarModel
 @{
     Layout = "_ColumnsTwo";
 
@@ -7,12 +8,102 @@
     //page class
     NopHtml.AppendPageCssClassParts("html-account-page");
     NopHtml.AppendPageCssClassParts("html-avatar-page");
+    
+    var customerNavigationModel = new CustomerNavigationModel
+    {
+        CustomerNavigationItems = new List<CustomerNavigationItemModel>
+        {
+            new()
+            {
+                Title = "Avatar"
+            }
+        },
+        SelectedTab = (int) CustomerNavigationItem.Avatar
+    };
 }
+
 @section left
 {
-    @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.Avatar })
+    @await Html.PartialAsync("~/Themes/SaljiDalje/Views/Shared/Components/CustomerNavigation/Default.cshtml", customerNavigationModel)
 }
-<form asp-route="CustomerAvatar" method="post" enctype="multipart/form-data">
+
+<div class="col-lg-8 col-md-7 mb-5">
+    <h1 class="h2">@T("Account.Avatar")</h1>
+    <div class="mb-2 pt-1">@T("Account.Avatar.UploadRules")</div>
+    @*<div class="progress mb-4" style="height: .25rem;">
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>*@
+    <form method="post" enctype="multipart/form-data">
+        <div class="row pt-2">
+            <div asp-validation-summary="ModelOnly" class="message-error"></div>
+            <div class="col-3 mb-2 mb-m-4">
+                @if (!string.IsNullOrEmpty(Model.AvatarUrl))
+                {
+                    <div class="image">
+                        <img class="rounded" src="@(Model.AvatarUrl)" width="196" height="160" alt="avatar"/>
+                    </div>
+                }
+                else
+                {
+                    <input name="uploadedFile"
+                           class="file-uploader bg-faded-light"
+                           type="file"
+                           accept="image/png, image/jpeg"
+                           data-label-idle="&lt;i class=&quot;d-inline-block fi-camera-plus fs-2 text-muted mb-2&quot;&gt;&lt;/i&gt;&lt;br&gt;&lt;span class=&quot;fw-bold opacity-70&quot;&gt;Add picture&lt;/span&gt;"
+                           data-style-panel-layout="compact"
+                           data-image-preview-height="160"
+                           data-image-crop-aspect-ratio="1:1"
+                           data-image-resize-target-width="200"
+                           data-image-resize-target-height="200">
+                }
+            </div>
+        </div>
+        <!-- Action buttons-->
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="d-flex align-items-center pt-3">
+                    @if (string.IsNullOrEmpty(Model.AvatarUrl))
+                    {
+                        <button
+                            id="uploadAvatar"
+                            asp-controller="CustomerInfo"
+                            asp-action="Avatar"
+                            name="upload-avatar"
+                            class="btn btn-primary"
+                            type="submit"
+                            disabled>
+                            @T("Common.Upload")
+                        </button>
+                    }
+                    else
+                    {
+                        <button
+                            asp-controller="Customer"
+                            asp-action="Avatar"
+                            name="remove-avatar"
+                            class="btn btn-outline-primary"
+                            type="submit">
+                            <i class="fi-trash me-2"></i>
+                            @T("Account.Avatar.RemoveAvatar")
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script asp-location="Footer">
+    $(document).ready(function() {
+      var buttonUpload = $("#uploadAvatar")  
+      const pond = document.querySelector('.filepond--root');
+      // listen for events
+      pond.addEventListener('FilePond:addfile', (e) => {
+          buttonUpload.prop('disabled', false);      
+      });
+    });
+    
+</script>
+@*<form asp-route="CustomerAvatar" method="post" enctype="multipart/form-data">
     <div class="page account-page avatar-page">
         <div class="page-title">
             <h1>@T("Account.MyAccount") - @T("Account.Avatar")</h1>
@@ -40,4 +131,4 @@
             </div>
         </div>
     </div>
-</form>
+</form>*@

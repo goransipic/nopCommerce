@@ -10,7 +10,7 @@
     //page class
     NopHtml.AppendPageCssClassParts("html-account-page");
     NopHtml.AppendPageCssClassParts("html-customer-info-page");
-    
+
     var customerNavigationModel = new CustomerNavigationModel
     {
         CustomerNavigationItems = new List<CustomerNavigationItemModel>
@@ -20,14 +20,14 @@
                 Title = "Personal Info"
             }
         },
-        SelectedTab = (int)CustomerNavigationItem.Info
+        SelectedTab = (int) CustomerNavigationItem.Info
     };
 }
 
 @section left
 {
-    
-    @await Html.PartialAsync("~/Themes/SaljiDalje/Views/Shared/Components/CustomerNavigation/Default.cshtml",customerNavigationModel)
+
+    @await Html.PartialAsync("~/Themes/SaljiDalje/Views/Shared/Components/CustomerNavigation/Default.cshtml", customerNavigationModel)
     @* @await Component.InvokeAsync("CustomerNavigation", new {selectedTabId = CustomerNavigationItem.Info}) *@
 }
 
@@ -40,7 +40,7 @@
     <form asp-route="CustomerInfo" method="post">
         <div class="row pt-2">
             <div asp-validation-summary="ModelOnly" class="message-error"></div>
-            <div class="col-lg-9 col-md-12 col-sm-8 mb-2 mb-m-4">
+            <div class="col mb-2 mb-m-4">
                 <div class="border rounded-3 p-3 mb-4" id="personal-info">
                     <!-- Name-->
                     <div class="border-bottom pb-3 mb-3">
@@ -147,17 +147,17 @@
                     </div>*@
                 </div>
             </div>
-            <div class="col-lg-3 col-md-12 col-sm-4 mb-4">
+            @*<div class="col-lg-3 col-md-12 col-sm-4 mb-4">
                 <input class="file-uploader bg-faded-light" type="file" accept="image/png, image/jpeg" data-label-idle="&lt;i class=&quot;d-inline-block fi-camera-plus fs-2 text-muted mb-2&quot;&gt;&lt;/i&gt;&lt;br&gt;&lt;span class=&quot;fw-bold opacity-70&quot;&gt;Change picture&lt;/span&gt;" data-style-panel-layout="compact" data-image-preview-height="160" data-image-crop-aspect-ratio="1:1" data-image-resize-target-width="200" data-image-resize-target-height="200">
-                @*<div class="pt-4 pb-2 py-lg-5">
+                $1$<div class="pt-4 pb-2 py-lg-5">
                     <h6 class="mb-2">Who can see my profile?</h6>
                     <p class="fs-sm opacity-70 mb-0">Your profile is private. No one else will see it untill a reservation is confirmed.</p>
-                </div>*@
-            </div>
+                </div>#1#
+            </div>*@
         </div>
         <!-- Action buttons-->
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col">
                 <div class="d-flex align-items-center justify-content-between pb-1">
                     <button class="btn btn-primary" type="submit">Save changes</button>
                     <button class="btn btn-link btn-sm px-0" type="button"><i class="fi-trash me-2"></i>Delete account</button>
