@@ -11,7 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using Nop.Core;
 using Nop.Core.Domain.Catalog;
+using Nop.Data;
 using Nop.Services.Catalog;
 using Nop.Services.Media;
 using Nop.Services.Messages;
@@ -19,6 +21,7 @@ using Nop.Services.Seo;
 using Nop.Web.Factories;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Models.Catalog;
+using SaljiDalje.Core.Data;
 
 namespace SaljiDalje.Core.Controllers
 {
@@ -32,6 +35,8 @@ namespace SaljiDalje.Core.Controllers
         private readonly IPictureService _pictureService;
         private readonly INotificationService _notificationService;
         private readonly ISpecificationAttributeService _specificationAttributeService;
+        private readonly IRepository<ProductExtended> _productExtendedRepository;
+        private readonly IWorkContext _workContext;
 
         public MakeNewAdController(ICatalogModelFactory catalogModelFactory,
             ICategoryService categoryService,
@@ -39,8 +44,9 @@ namespace SaljiDalje.Core.Controllers
             IUrlRecordService urlRecordService,
             IPictureService pictureService,
             INotificationService notificationService,
-            ISpecificationAttributeService _specificationAttributeService
-        )
+            ISpecificationAttributeService _specificationAttributeService,
+            IRepository<ProductExtended> productExtendedRepository,
+            IWorkContext workContext)
         {
             _catalogModelFactory = catalogModelFactory;
             _categoryService = categoryService;
@@ -49,6 +55,8 @@ namespace SaljiDalje.Core.Controllers
             _pictureService = pictureService;
             _notificationService = notificationService;
             this._specificationAttributeService = _specificationAttributeService;
+            _productExtendedRepository = productExtendedRepository;
+            _workContext = workContext;
         }
 
         public virtual async Task<IActionResult> StepOne()
@@ -121,6 +129,12 @@ namespace SaljiDalje.Core.Controllers
             //_specificationAttributeService.GetProductSpecificationAttributesAsync(1);
             
             //await _specificationAttributeService.GetSpecificationAttributeOptionsBySpecificationAttributeAsync(Convert.ToInt32(attributeId));
+
+            await _productExtendedRepository.InsertAsync(new ProductExtended
+            {
+                ProductId = product.Id,
+                UserId =  (await _workContext.GetCurrentCustomerAsync()).Id
+            });
             
             _notificationService.SuccessNotification("Uspješno dodan oglas!");
 

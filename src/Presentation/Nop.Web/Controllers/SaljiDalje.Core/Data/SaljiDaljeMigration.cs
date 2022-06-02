@@ -1,0 +1,76 @@
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
+using System.Linq;
+using FluentMigrator;
+using Nop.Core.Domain.Catalog;
+using Nop.Core.Domain.Customers;
+using Nop.Core.Domain.Directory;
+using Nop.Data;
+using Nop.Data.Extensions;
+using Nop.Data.Migrations;
+using Nop.Services.Common;
+using Nop.Services.Configuration;
+using Nop.Services.Localization;
+
+namespace SaljiDalje.Core.Data
+{
+    [NopMigration("2022-04-28 00:00:00", "SaljiDaljeMigration", MigrationProcessType.Update)]
+    public class SaljiDaljeMigration : MigrationBase
+    {
+        #region Fields
+
+        private readonly ILanguageService _languageService;
+        private readonly ILocalizationService _localizationService;
+        private readonly ISettingService _settingService;
+
+        #endregion
+
+        #region Ctor
+
+        public SaljiDaljeMigration(
+            ILanguageService languageService,
+            ILocalizationService localizationService,
+            ISettingService settingService)
+        {
+            _languageService = languageService;
+            _localizationService = localizationService;
+            _settingService = settingService;
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Collect the UP migration expressions
+        /// </summary>
+        public override void Up()
+        {
+            if (!DataSettingsManager.IsDatabaseInstalled())
+                return;
+
+            Create.TableFor<ProductExtended>();
+
+            Create.ForeignKey()
+                .FromTable(nameof(ProductExtended))
+                .ForeignColumn(nameof(ProductExtended.ProductId))
+                .ToTable(nameof(Product)).PrimaryColumn(nameof(Product.Id)).OnDelete(Rule.Cascade);
+
+            Create.ForeignKey()
+                .FromTable(nameof(ProductExtended))
+                .ForeignColumn(nameof(ProductExtended.UserId))
+                .ToTable(nameof(Customer)).PrimaryColumn(nameof(Customer.Id)).OnDelete(Rule.Cascade);
+        }
+
+        /// <summary>
+        /// Collects the DOWN migration expressions
+        /// </summary>
+        public override void Down()
+        {
+            //nothing
+        }
+
+        #endregion
+    }
+}
