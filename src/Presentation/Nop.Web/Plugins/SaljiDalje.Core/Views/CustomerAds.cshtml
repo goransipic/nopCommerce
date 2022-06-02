@@ -116,14 +116,13 @@
                                            return `@(Model.CurrentActiveTab == CurrentActiveTab.ACTIVE ? CommmandToExecute.MAKE_PASSIVE : CommmandToExecute.MAKE_ACTIVE)`
                                         })"
                                         type="button"
-                                        class="mt-4 btn btn-secondary me-2">
+                                        class="mt-4 btn btn-primary me-2">
                                         <i class="@(Model.CurrentActiveTab == CurrentActiveTab.ACTIVE ? "fi-file-clean" : "fi-file") me-2"></i>
                                         @(Model.CurrentActiveTab == CurrentActiveTab.ACTIVE ? "Deaktiviraj" : "Aktiviraj")
                                     </button>
                                     <a
                                         asp-controller="MakeNewAd"
                                         asp-action="StepTwo"
-                                        type="button"
                                         class="mt-4 btn btn-accent me-2">
                                         <i class="fi-edit me-2"></i>
                                         Editiraj
