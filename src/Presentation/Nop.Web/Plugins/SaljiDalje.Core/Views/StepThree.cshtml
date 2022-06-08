@@ -33,8 +33,25 @@
         <!-- Page content-->
         <div class="col-lg-8">
             <form asp-controller="MakeNewAd" asp-action="StepThreeFinal">
-                <input type="hidden" asp-for="@Model.StepThreeModel.SpecificationAttributeOptionId" >
-                <input type="hidden" asp-for="@Model.StepThreeModel.categoryId" >
+                <input type="hidden" asp-for="@Model.StepThreeModel.SpecificationAttributeOptionIdStateOptionId">
+                <input type="hidden" asp-for="@Model.StepThreeModel.Description">
+
+                @{ int i = 0; }
+                @foreach (var item in Model.StepThreeModel.MogucaDostavaList)
+                {
+                    <input type="hidden" value="@item" name="StepThreeModel.MogucaDostavaList[@i]">
+                    i++;
+                }
+
+                @{ int j = 0; }
+                @foreach (var item in Model.StepThreeModel.MogućnostPlaćanjaList)
+                {
+                    <input type="hidden" value="@item" name="StepThreeModel.MogućnostPlaćanjaList[@j]">
+                    j++;
+                }
+
+                <input type="hidden" asp-for="@Model.StepThreeModel.OdabaranaZupanija">
+                <input type="hidden" asp-for="@Model.StepThreeModel.categoryId">
                 <input type="hidden" asp-for="@Model.StepThreeModel.Title">
                 <input type="hidden" asp-for="@Model.StepThreeModel.Stanje">
 

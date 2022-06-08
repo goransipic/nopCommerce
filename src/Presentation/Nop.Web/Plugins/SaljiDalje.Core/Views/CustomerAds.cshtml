@@ -123,6 +123,8 @@
                                     <a
                                         asp-controller="MakeNewAd"
                                         asp-action="StepTwo"
+                                        asp-route-isEditMode="true"
+                                        asp-route-productId="@productInformation.Product.Id"
                                         class="mt-4 btn btn-accent me-2">
                                         <i class="fi-edit me-2"></i>
                                         Editiraj

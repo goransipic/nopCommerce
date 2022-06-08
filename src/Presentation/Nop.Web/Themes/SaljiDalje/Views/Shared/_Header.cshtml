@@ -16,6 +16,11 @@
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMiddle })
     *@
 @* <div class="header-lower"> *@
+@{
+    var controllerName = Url.ActionContext.RouteData.Values["controller"].ToString();
+    bool isAdPage = controllerName.Equals("makenewad", StringComparison.InvariantCultureIgnoreCase);
+}
+
 <header class="navbar navbar-expand-lg navbar-light bg-light navbar-stuck" data-scroll-header="">
     <div class="container">
         <a class="navbar-brand me-3 me-xl-4" href="@Url.RouteUrl("Homepage")">
@@ -25,9 +30,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         @await Component.InvokeAsync("HeaderLinks")
-        <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" asp-controller="MakeNewAd" asp-action="StepOne">
-            <i class="fi-plus me-2"></i>Predaj<span class="d-none d-sm-inline"> Oglas</span>
-        </a>
+        @if (!isAdPage)
+        {
+            <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" asp-controller="MakeNewAd" asp-action="StepOne">
+                <i class="fi-plus me-2"></i>Predaj<span class="d-none d-sm-inline"> Oglas</span>
+            </a>
+        }
         <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
             <div class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
                 @await Component.InvokeAsync("TopMenu")

@@ -15,6 +15,7 @@ using Nop.Core.Domain.Media;
 using Nop.Core.Domain.Messages;
 using Nop.Data;
 using Nop.Services.Authentication;
+using Nop.Services.Catalog;
 using Nop.Services.Common;
 using Nop.Services.Customers;
 using Nop.Services.Directory;
@@ -44,6 +45,7 @@ public class CustomerInfoController : BasePluginController
     private readonly ICustomerModelFactory _customerModelFactory;
     private readonly IRepository<ProductExtended> _productExtendedRepository;
     private readonly IRepository<Product> _productRepository;
+    private readonly ICategoryService _categoryService;
 
     public CustomerInfoController(
         IWorkContext workContext,
@@ -57,7 +59,8 @@ public class CustomerInfoController : BasePluginController
         ICustomerModelFactory customerModelFactory,
         IRepository<ProductExtended> productExtendedRepository,
         IRepository<Product> productRepository,
-        IRepository<ProductPicture> productPictureRepository)
+        IRepository<ProductPicture> productPictureRepository,
+        ICategoryService categoryService)
     {
         ProductPictureRepository = productPictureRepository;
         _workContext = workContext;
@@ -71,6 +74,7 @@ public class CustomerInfoController : BasePluginController
         _customerModelFactory = customerModelFactory;
         _productExtendedRepository = productExtendedRepository;
         _productRepository = productRepository;
+        _categoryService = categoryService;
     }
 
     public virtual IActionResult Notification()

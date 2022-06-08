@@ -9,6 +9,7 @@ using Nop.Core.Domain.Directory;
 using Nop.Data;
 using Nop.Data.Extensions;
 using Nop.Data.Migrations;
+using Nop.Services.Catalog;
 using Nop.Services.Common;
 using Nop.Services.Configuration;
 using Nop.Services.Localization;
@@ -23,6 +24,8 @@ namespace SaljiDalje.Core.Data
         private readonly ILanguageService _languageService;
         private readonly ILocalizationService _localizationService;
         private readonly ISettingService _settingService;
+        private readonly ISpecificationAttributeService _specificationAttributeService;
+        private readonly CustomerSettings _customerSettings;
 
         #endregion
 
@@ -31,11 +34,15 @@ namespace SaljiDalje.Core.Data
         public SaljiDaljeMigration(
             ILanguageService languageService,
             ILocalizationService localizationService,
-            ISettingService settingService)
+            ISettingService settingService,
+            ISpecificationAttributeService specificationAttributeService,
+            CustomerSettings customerSettings)
         {
             _languageService = languageService;
             _localizationService = localizationService;
             _settingService = settingService;
+            _specificationAttributeService = specificationAttributeService;
+            _customerSettings = customerSettings;
         }
 
         #endregion
@@ -50,6 +57,12 @@ namespace SaljiDalje.Core.Data
             if (!DataSettingsManager.IsDatabaseInstalled())
                 return;
 
+            _customerSettings.UsernamesEnabled = true;
+            _customerSettings.AllowCustomersToUploadAvatars = true;
+            _customerSettings.AvatarMaximumSizeBytes = 2000000;
+
+            _settingService.SaveSettingAsync(_customerSettings).Wait();
+            
             Create.TableFor<ProductExtended>();
 
             Create.ForeignKey()
