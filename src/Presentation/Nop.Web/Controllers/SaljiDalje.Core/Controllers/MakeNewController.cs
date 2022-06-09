@@ -22,6 +22,7 @@ using Nop.Services.Messages;
 using Nop.Services.Seo;
 using Nop.Web.Factories;
 using Nop.Web.Framework.Controllers;
+using Nop.Web.Framework.Mvc.ModelBinding;
 using Nop.Web.Models.Catalog;
 using SaljiDalje.Core.Data;
 
@@ -77,8 +78,9 @@ namespace SaljiDalje.Core.Controllers
         public async Task<IActionResult> StepTwo(bool isEditMode, int productId, int? categoryId = null)
         {
             Product productToEdit = null;
-            StepThreeModel stepThreeModel = null;
+            StepTwoModel stepTwoModel = null;
 
+            Dictionary<string, IList<SpecificationAttributeOption>> SpecificationAttributeOptions = new();
 
             var specificationAttributeGroup = (await _specificationAttributeService
                     .GetSpecificationAttributeGroupsAsync())
@@ -106,21 +108,31 @@ namespace SaljiDalje.Core.Controllers
                 .GetSpecificationAttributeOptionsBySpecificationAttributeAsync(
                     specificationAttributeDostava.Id));
 
+            SpecificationAttributeOptions["Dostava"] = Dostava;
+
 
             var MogućnostPlaćanja = (await _specificationAttributeService
                 .GetSpecificationAttributeOptionsBySpecificationAttributeAsync(
                     specificationAttributeMogućnostPlaćanja.Id));
+            
+            SpecificationAttributeOptions["MogućnostPlaćanja"] = MogućnostPlaćanja;
 
 
             var specificationAttributeNegotiateForPriceId = (await _specificationAttributeService
                 .GetSpecificationAttributeOptionsBySpecificationAttributeAsync(
                     specificationAttributeNegotiateForPrice.Id)).First();
+            
+            SpecificationAttributeOptions["PregovaranjeZaCijenu"] = new List<SpecificationAttributeOption>
+            {
+               specificationAttributeNegotiateForPriceId
+            };
 
 
             var StanjeOption = await _specificationAttributeService
                 .GetSpecificationAttributeOptionsBySpecificationAttributeAsync(
                     specificationAttributeState.Id);
 
+            SpecificationAttributeOptions["StanjeOption"] = StanjeOption;
 
             var item = (StanjeOption)
                 .Select(option => new SelectListItem {Text = option.Name, Value = option.Id.ToString()})
@@ -129,6 +141,8 @@ namespace SaljiDalje.Core.Controllers
             var itemZupanijeOption = await _specificationAttributeService
                 .GetSpecificationAttributeOptionsBySpecificationAttributeAsync(
                     specificationAttributeZupanija.Id);
+            
+            SpecificationAttributeOptions["Županije"] = itemZupanijeOption;
 
 
             var itemZupanije = (itemZupanijeOption)
@@ -169,7 +183,7 @@ namespace SaljiDalje.Core.Controllers
                     return RedirectToRoute("Homepage");
                 }
 
-                stepThreeModel = new StepThreeModel
+                stepTwoModel = new StepTwoModel
                 {
                     Title = productToEdit.Name,
                     Cijena = (int)productToEdit.Price,
@@ -181,7 +195,13 @@ namespace SaljiDalje.Core.Controllers
                         productSpecificationOption.SpecificationAttributeOptionId,
                     NegotatiedPrice = specificationAttributeNegotiateForPriceId != null ? true : false,
                     Stanje = item,
-                    Zupanije = itemZupanije
+                    Zupanije = itemZupanije,
+                    GenericOptionsList = new List<GenericItem>
+                    {
+                        new(){ item = "67"},
+                        new(){ item = "67"}
+                    },
+                    SpecificationAttributeOptions = SpecificationAttributeOptions,
                 };
             }
             else
@@ -192,40 +212,32 @@ namespace SaljiDalje.Core.Controllers
                 }
                 else
                 {
-                    stepThreeModel = new StepThreeModel
+                    stepTwoModel = new StepTwoModel
                     {
                         Stanje = item,
                         Dostava = Dostava,
                         MogućnostPlaćanja = MogućnostPlaćanja,
-                        Zupanije = itemZupanije
+                        Zupanije = itemZupanije,
+                        SpecificationAttributeOptions = SpecificationAttributeOptions,
                     };
                 }
             }
 
-            return View("~/Plugins/SaljiDalje.Core/Views/StepTwo.cshtml",
-                stepThreeModel);
+            return View("~/Plugins/SaljiDalje.Core/Views/StepTwoVer2.cshtml",
+                stepTwoModel);
         }
 
         [HttpPost]
-        public IActionResult StepThree(StepThreeModel stepThreeModel)
-        {
-            var stepThreeModelFinish = new StepThreeModelFinish {StepThreeModel = stepThreeModel};
-
-            return View("~/Plugins/SaljiDalje.Core/Views/StepThree.cshtml", stepThreeModelFinish);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> StepThreeFinal(StepThreeModelFinish stepThreeModelFinish)
+        public async Task<IActionResult> StepTwoFinish(StepTwoModel stepTwoModel)
         {
             using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
             try
             {
-                var stepThreeModel = stepThreeModelFinish.StepThreeModel;
-                var product = new Product()
+                var product = new Product
                 {
-                    Name = stepThreeModel.Title,
-                    Price = stepThreeModel.Cijena,
-                    FullDescription = stepThreeModel.Description,
+                    Name = stepTwoModel.Title,
+                    Price = stepTwoModel.Cijena ?? 0,
+                    FullDescription = stepTwoModel.Description,
                     CreatedOnUtc = DateTime.UtcNow,
                     UpdatedOnUtc = DateTime.UtcNow,
                     Published = true,
@@ -241,9 +253,9 @@ namespace SaljiDalje.Core.Controllers
                 //await UpdateLocalesAsync(product, model);
 
                 //categories
-                await SaveCategoryMappingsAsync(product, stepThreeModel);
+                await SaveCategoryMappingsAsync(product, stepTwoModel);
 
-                await Insertpictures(stepThreeModelFinish, product);
+                await Insertpictures(stepTwoModel, product);
 
                 //var psa = model.ToEntity<ProductSpecificationAttribute>();
                 //psa.CustomValue = model.ValueRaw;
@@ -265,12 +277,12 @@ namespace SaljiDalje.Core.Controllers
                             });
                 }
 
-                foreach (var mogućaDostavaItem in stepThreeModelFinish.StepThreeModel.MogucaDostavaList)
+                foreach (var mogućaDostavaItem in stepTwoModel.MogucaDostavaList)
                 {
                     await InsertProductAttribute(mogućaDostavaItem);
                 }
 
-                foreach (var mogućnostPlaćanjaItem in stepThreeModelFinish.StepThreeModel.MogućnostPlaćanjaList)
+                foreach (var mogućnostPlaćanjaItem in stepTwoModel.MogućnostPlaćanjaList)
                 {
                     await InsertProductAttribute(mogućnostPlaćanjaItem);
                 }
@@ -281,7 +293,7 @@ namespace SaljiDalje.Core.Controllers
                     AttributeType = SpecificationAttributeType.Option,
                     AllowFiltering = true,
                     ShowOnProductPage = true,
-                    SpecificationAttributeOptionId = stepThreeModel.SpecificationAttributeOptionIdStateOptionId
+                    SpecificationAttributeOptionId = stepTwoModel.SpecificationAttributeOptionIdStateOptionId
                 };
                 var psaZupanija = new ProductSpecificationAttribute
                 {
@@ -289,7 +301,7 @@ namespace SaljiDalje.Core.Controllers
                     AttributeType = SpecificationAttributeType.Option,
                     AllowFiltering = true,
                     ShowOnProductPage = true,
-                    SpecificationAttributeOptionId = (int)stepThreeModel.OdabaranaZupanija
+                    SpecificationAttributeOptionId = (int)stepTwoModel.OdabaranaZupanija
                 };
 
                 await _specificationAttributeService.InsertProductSpecificationAttributeAsync(psa);
@@ -318,9 +330,9 @@ namespace SaljiDalje.Core.Controllers
             }
         }
 
-        private async Task Insertpictures(StepThreeModelFinish stepThreeModelFinish, Product product)
+        private async Task Insertpictures(StepTwoModel stepTwoModel, Product product)
         {
-            foreach (var base64EncodedPictures in stepThreeModelFinish.ImageFile)
+            foreach (var base64EncodedPictures in stepTwoModel.ImageFile)
             {
                 if (base64EncodedPictures == null)
                 {
@@ -328,7 +340,7 @@ namespace SaljiDalje.Core.Controllers
                 }
             }
 
-            foreach (var base64EncodedPictures in stepThreeModelFinish.ImageFile)
+            foreach (var base64EncodedPictures in stepTwoModel.ImageFile)
             {
                 FilePond filePond =
                     JsonSerializer.Deserialize<FilePond>(base64EncodedPictures);
@@ -352,7 +364,7 @@ namespace SaljiDalje.Core.Controllers
             //Console.Write(picture.VirtualPath);
         }
 
-        protected virtual async Task SaveCategoryMappingsAsync(Product product, StepThreeModel model)
+        protected virtual async Task SaveCategoryMappingsAsync(Product product, StepTwoModel model)
         {
             var existingProductCategories =
                 await _categoryService.GetProductCategoriesByProductIdAsync(product.Id, true);
@@ -400,11 +412,17 @@ namespace SaljiDalje.Core.Controllers
         public CategorySimpleModel ParentCategory { get; set; }
     }
 
-    public record StepThreeModel
+    public record StepTwoModel
     {
+        public Dictionary<string, IList<SpecificationAttributeOption>> SpecificationAttributeOptions = new();
         public int categoryId { get; set; }
         [Required] public string Title { get; set; }
         [Required] public IList<SelectListItem> Stanje { get; set; }
+        
+        [DisplayName("Upload File")] public string[] ImageFile { get; set; }
+        
+        [Required] public IList<GenericItem> GenericOptionsList{ get; set; }
+            
 
         [Required] public IList<SpecificationAttributeOption> Dostava { get; set; }
 
@@ -424,7 +442,7 @@ namespace SaljiDalje.Core.Controllers
 
         [Required] public Valuta Valuta { get; set; }
 
-        [Required] public int Cijena { get; set; }
+        public int? Cijena { get; set; }
 
         [Display(Name = "Pregovaranje za cijenu")]
         public Boolean NegotatiedPrice { get; set; }
@@ -442,13 +460,18 @@ namespace SaljiDalje.Core.Controllers
 
         [Display(Name = "Staro za Novo")] public string StaroZaNovo { get; set; }
         [Display(Name = "Zamjena")] public string Zamjena { get; set; }
-        public Dictionary<string, IList<SpecificationAttributeOption>> ProductOptionProperty { get; set; }
+    }
+    
+    public record GenericItem
+    {
+        [Required] public string item { get; set; }
+        public string itemBool { get; set; }
     }
 
     public record StepThreeModelFinish
     {
         [DisplayName("Upload File")] public string[] ImageFile { get; set; }
-        public StepThreeModel StepThreeModel { get; set; }
+        public StepTwoModel StepTwoModel { get; set; }
     }
 
     public enum Stanje

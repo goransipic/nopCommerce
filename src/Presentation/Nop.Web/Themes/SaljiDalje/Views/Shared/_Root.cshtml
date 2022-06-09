@@ -13,9 +13,9 @@
 @{ await Html.RenderPartialAsync("_JavaScriptDisabledWarning"); }
 @{ await Html.RenderPartialAsync("_OldInternetExplorerWarning"); }
 <div class="master-wrapper-page">
-    <div class="bg-dark">
+    @*<div class="bg-dark">
         @await Component.InvokeAsync("AdminHeaderLinks")
-    </div>
+    </div>*@
     @{ await Html.RenderPartialAsync("_Header"); }
     <script asp-location="Footer">
         var localized_data = {

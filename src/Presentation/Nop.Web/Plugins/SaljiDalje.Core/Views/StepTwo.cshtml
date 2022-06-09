@@ -1,7 +1,7 @@
 @using Nop.Web.Models.Catalog
 @using NUglify.Helpers
 @using SaljiDalje.Core.Controllers
-@model StepThreeModel
+@model StepTwoModel
 
 @{
     Layout = "_ColumnsOne";
@@ -191,7 +191,7 @@
                 </div>
             </section>
             <!-- Navigation-->
-            @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (StepsModel.STEP_TWO,nameof(MakeNewAdController.StepOne),nameof(MakeNewAdController.StepThree))); }
+            @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (StepsModel.STEP_TWO,nameof(MakeNewAdController.StepOne),nameof(MakeNewAdController.StepTwoFinish))); }
         </form>
     </div>
 </div>

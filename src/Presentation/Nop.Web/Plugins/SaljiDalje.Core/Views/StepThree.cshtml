@@ -33,42 +33,42 @@
         <!-- Page content-->
         <div class="col-lg-8">
             <form asp-controller="MakeNewAd" asp-action="StepThreeFinal">
-                <input type="hidden" asp-for="@Model.StepThreeModel.SpecificationAttributeOptionIdStateOptionId">
-                <input type="hidden" asp-for="@Model.StepThreeModel.Description">
+                <input type="hidden" asp-for="@Model.StepTwoModel.SpecificationAttributeOptionIdStateOptionId">
+                <input type="hidden" asp-for="@Model.StepTwoModel.Description">
 
                 @{ int i = 0; }
-                @foreach (var item in Model.StepThreeModel.MogucaDostavaList)
+                @foreach (var item in Model.StepTwoModel.MogucaDostavaList)
                 {
                     <input type="hidden" value="@item" name="StepThreeModel.MogucaDostavaList[@i]">
                     i++;
                 }
 
                 @{ int j = 0; }
-                @foreach (var item in Model.StepThreeModel.MogućnostPlaćanjaList)
+                @foreach (var item in Model.StepTwoModel.MogućnostPlaćanjaList)
                 {
                     <input type="hidden" value="@item" name="StepThreeModel.MogućnostPlaćanjaList[@j]">
                     j++;
                 }
 
-                <input type="hidden" asp-for="@Model.StepThreeModel.OdabaranaZupanija">
-                <input type="hidden" asp-for="@Model.StepThreeModel.categoryId">
-                <input type="hidden" asp-for="@Model.StepThreeModel.Title">
-                <input type="hidden" asp-for="@Model.StepThreeModel.Stanje">
+                <input type="hidden" asp-for="@Model.StepTwoModel.OdabaranaZupanija">
+                <input type="hidden" asp-for="@Model.StepTwoModel.categoryId">
+                <input type="hidden" asp-for="@Model.StepTwoModel.Title">
+                <input type="hidden" asp-for="@Model.StepTwoModel.Stanje">
 
-                <input type="hidden" asp-for="@Model.StepThreeModel.Valuta">
-                <input type="hidden" asp-for="@Model.StepThreeModel.Cijena">
-                <input type="hidden" asp-for="@Model.StepThreeModel.NegotatiedPrice">
+                <input type="hidden" asp-for="@Model.StepTwoModel.Valuta">
+                <input type="hidden" asp-for="@Model.StepTwoModel.Cijena">
+                <input type="hidden" asp-for="@Model.StepTwoModel.NegotatiedPrice">
 
-                <input type="hidden" asp-for="@Model.StepThreeModel.MogucaDostava">
-                <input type="hidden" asp-for="@Model.StepThreeModel.RazgledavanjePutemPoziva">
+                <input type="hidden" asp-for="@Model.StepTwoModel.MogucaDostava">
+                <input type="hidden" asp-for="@Model.StepTwoModel.RazgledavanjePutemPoziva">
 
-                <input type="hidden" asp-for="@Model.StepThreeModel.Gotovina">
-                <input type="hidden" asp-for="@Model.StepThreeModel.Kredit">
-                <input type="hidden" asp-for="@Model.StepThreeModel.Leasing">
-                <input type="hidden" asp-for="@Model.StepThreeModel.ObrocnoBankovnimKarticama">
-                <input type="hidden" asp-for="@Model.StepThreeModel.PreuzimanjeLeasinga">
-                <input type="hidden" asp-for="@Model.StepThreeModel.StaroZaNovo">
-                <input type="hidden" asp-for="@Model.StepThreeModel.Zamjena">
+                <input type="hidden" asp-for="@Model.StepTwoModel.Gotovina">
+                <input type="hidden" asp-for="@Model.StepTwoModel.Kredit">
+                <input type="hidden" asp-for="@Model.StepTwoModel.Leasing">
+                <input type="hidden" asp-for="@Model.StepTwoModel.ObrocnoBankovnimKarticama">
+                <input type="hidden" asp-for="@Model.StepTwoModel.PreuzimanjeLeasinga">
+                <input type="hidden" asp-for="@Model.StepTwoModel.StaroZaNovo">
+                <input type="hidden" asp-for="@Model.StepTwoModel.Zamjena">
 
                 <!-- Photos / video-->
                 <section class="card card-body border-0 shadow-sm p-4 mb-4" id="photos">
@@ -85,7 +85,7 @@
                 </section>
                 <!-- Action buttons -->
                 <!-- Navigation-->
-                @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (StepsModel.STEP_THREE,nameof(MakeNewAdController.StepTwo),nameof(MakeNewAdController.StepThree))); }
+                @{ await Html.RenderPartialAsync("~/Plugins/SaljiDalje.Core/Views/Shared/_Navigation.cshtml", (StepsModel.STEP_THREE,nameof(MakeNewAdController.StepTwo),nameof(MakeNewAdController.StepTwoFinish))); }
                 @*<section class="d-sm-flex justify-content-between pt-2">
                     <a class="btn btn-outline-primary btn-lg d-block rounded-pill mb-3 mb-sm-2"
                        href="#preview-modal" data-bs-toggle="modal">
