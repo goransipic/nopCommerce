@@ -4,13 +4,18 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
+using System.Net.Mime;
+using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Nop.Core;
 using Nop.Core.Domain.Catalog;
@@ -41,6 +46,7 @@ namespace SaljiDalje.Core.Controllers
         private readonly IRepository<ProductExtended> _productExtendedRepository;
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<SpecificationAttribute> _specificationAttributeRepository;
+        private readonly IRepository<CostumerPictureAttachmentMapping> _costumerPictureAttachmentMappingRepository;
         private readonly IRepository<SpecificationAttributeGroup> _specificationAttributeGroupRepository;
         private readonly IWorkContext _workContext;
 
@@ -54,6 +60,7 @@ namespace SaljiDalje.Core.Controllers
             IRepository<ProductExtended> productExtendedRepository,
             IRepository<Product> productRepository,
             IRepository<SpecificationAttribute> specificationAttributeRepository,
+            IRepository<CostumerPictureAttachmentMapping> costumerPictureAttachmentMappingRepository,
             IWorkContext workContext)
         {
             _catalogModelFactory = catalogModelFactory;
@@ -66,6 +73,7 @@ namespace SaljiDalje.Core.Controllers
             _productExtendedRepository = productExtendedRepository;
             _productRepository = productRepository;
             _specificationAttributeRepository = specificationAttributeRepository;
+            _costumerPictureAttachmentMappingRepository = costumerPictureAttachmentMappingRepository;
             _workContext = workContext;
         }
 
@@ -114,17 +122,17 @@ namespace SaljiDalje.Core.Controllers
             var MogućnostPlaćanja = (await _specificationAttributeService
                 .GetSpecificationAttributeOptionsBySpecificationAttributeAsync(
                     specificationAttributeMogućnostPlaćanja.Id));
-            
+
             SpecificationAttributeOptions["MogućnostPlaćanja"] = MogućnostPlaćanja;
 
 
             var specificationAttributeNegotiateForPriceId = (await _specificationAttributeService
                 .GetSpecificationAttributeOptionsBySpecificationAttributeAsync(
                     specificationAttributeNegotiateForPrice.Id)).First();
-            
+
             SpecificationAttributeOptions["PregovaranjeZaCijenu"] = new List<SpecificationAttributeOption>
             {
-               specificationAttributeNegotiateForPriceId
+                specificationAttributeNegotiateForPriceId
             };
 
 
@@ -141,7 +149,7 @@ namespace SaljiDalje.Core.Controllers
             var itemZupanijeOption = await _specificationAttributeService
                 .GetSpecificationAttributeOptionsBySpecificationAttributeAsync(
                     specificationAttributeZupanija.Id);
-            
+
             SpecificationAttributeOptions["Županije"] = itemZupanijeOption;
 
 
@@ -196,11 +204,7 @@ namespace SaljiDalje.Core.Controllers
                     NegotatiedPrice = specificationAttributeNegotiateForPriceId != null ? true : false,
                     Stanje = item,
                     Zupanije = itemZupanije,
-                    GenericOptionsList = new List<GenericItem>
-                    {
-                        new(){ item = "67"},
-                        new(){ item = "67"}
-                    },
+                    GenericOptionsList = new List<GenericItem> {new() {item = "67"}, new() {item = "67"}},
                     SpecificationAttributeOptions = SpecificationAttributeOptions,
                 };
             }
@@ -402,8 +406,112 @@ namespace SaljiDalje.Core.Controllers
             return PartialView("~/Plugins/SaljiDalje.Core/Views/Shared/_ChildrenCategories.cshtml",
                 (model: model, id: id));
         }
-    }
 
+        [HttpPost]
+        public async Task<IActionResult> Process(IFormFile ImageFile, CancellationToken cancellationToken)
+        {
+            if (ImageFile is null)
+            {
+                return BadRequest("Process Error: No file submitted");
+            }
+
+            // We do some internal application validation here with our caseId
+
+            try
+            {
+                // get a guid to use as the filename as they're highly unique
+                var guid = Guid.NewGuid().ToString();
+                //var newimage = string.Format("{0}.{1}", guid, file.FileName.Split('.').LastOrDefault());
+                
+                using var newMemoryStream = new MemoryStream();
+                await ImageFile.CopyToAsync(newMemoryStream, cancellationToken);
+                
+                await _costumerPictureAttachmentMappingRepository.InsertAsync(new CostumerPictureAttachmentMapping
+                {
+                    FileName = ImageFile.FileName,
+                    FileType = ImageFile.ContentType,
+                    FileSize = ImageFile.Length,
+                    CreatedOn = DateTime.Now,
+                    UserId = (await _workContext.GetCurrentCustomerAsync()).Id,
+                    PictureData = newMemoryStream.ToArray(),
+                    Guid = guid
+                });
+                
+                return Ok(guid);
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Process Error: {e.Message}"); // Oops!
+            }
+        }
+        [HttpDelete]
+        public async Task<ActionResult> Revert()
+        {
+            // The server id will be send in the delete request body as plain text
+            using StreamReader reader = new(Request.Body, Encoding.UTF8);
+            string guid = await reader.ReadToEndAsync();
+            if (string.IsNullOrEmpty(guid))
+            {
+                return BadRequest("Revert Error: Invalid unique file ID");
+            }
+            var attachment = await _costumerPictureAttachmentMappingRepository.Table.FirstOrDefaultAsync(i => i.Guid == guid);
+            // We do some internal application validation here
+            try
+            {
+                await _costumerPictureAttachmentMappingRepository.DeleteAsync(attachment);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(string.Format("Revert Error:'{0}' when writing an object", e.Message));
+            }
+        }
+        
+        [HttpDelete]
+        public async Task<ActionResult> Remove()
+        {
+            // The server id will be send in the delete request body as plain text
+            using StreamReader reader = new(Request.Body, Encoding.UTF8);
+            string guid = await reader.ReadToEndAsync();
+            if (string.IsNullOrEmpty(guid))
+            {
+                return BadRequest("Revert Error: Invalid unique file ID");
+            }
+            var attachment = await _costumerPictureAttachmentMappingRepository.Table.FirstOrDefaultAsync(i => i.Guid == guid);
+            // We do some internal application validation here
+            try
+            {
+                await _costumerPictureAttachmentMappingRepository.DeleteAsync(attachment);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(string.Format("Revert Error:'{0}' when writing an object", e.Message));
+            }
+        }
+        
+        [HttpGet("Load/{id}")]
+        public async Task<IActionResult> Load(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound("Load Error: Invalid parameters");
+            }
+            var attachment = await _costumerPictureAttachmentMappingRepository.Table
+                .SingleOrDefaultAsync(i => i.Guid.Equals(id));
+            if (attachment is null)
+            {
+                return NotFound("Load Error: File not found");
+            }
+
+            Response.Headers.Add("Content-Disposition", new ContentDisposition
+            {
+                FileName = string.Format("{0}.{1}", attachment.FileName, attachment.FileType),
+                Inline = true // false = prompt the user for downloading; true = browser to try to show the file inline
+            }.ToString());
+            return File(attachment.PictureData, attachment.FileType);
+        }
+    }
     public class SortByCategoryModel
     {
         public int Level { get; set; }
@@ -418,11 +526,11 @@ namespace SaljiDalje.Core.Controllers
         public int categoryId { get; set; }
         [Required] public string Title { get; set; }
         [Required] public IList<SelectListItem> Stanje { get; set; }
-        
+
         [DisplayName("Upload File")] public string[] ImageFile { get; set; }
-        
-        [Required] public IList<GenericItem> GenericOptionsList{ get; set; }
-            
+
+        [Required] public IList<GenericItem> GenericOptionsList { get; set; }
+
 
         [Required] public IList<SpecificationAttributeOption> Dostava { get; set; }
 
@@ -461,7 +569,7 @@ namespace SaljiDalje.Core.Controllers
         [Display(Name = "Staro za Novo")] public string StaroZaNovo { get; set; }
         [Display(Name = "Zamjena")] public string Zamjena { get; set; }
     }
-    
+
     public record GenericItem
     {
         [Required] public string item { get; set; }

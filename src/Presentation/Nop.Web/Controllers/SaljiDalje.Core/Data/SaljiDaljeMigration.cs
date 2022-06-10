@@ -16,7 +16,7 @@ using Nop.Services.Localization;
 
 namespace SaljiDalje.Core.Data
 {
-    [NopMigration("2022-04-28 00:00:00", "SaljiDaljeMigration", MigrationProcessType.Update)]
+    [NopMigration("2022-04-29 00:00:00", "SaljiDaljeMigration", MigrationProcessType.Update)]
     public class SaljiDaljeMigration : MigrationBase
     {
         #region Fields
@@ -60,11 +60,13 @@ namespace SaljiDalje.Core.Data
             _customerSettings.UsernamesEnabled = true;
             _customerSettings.AllowCustomersToUploadAvatars = true;
             _customerSettings.AvatarMaximumSizeBytes = 2000000;
-
+            
             _settingService.SaveSettingAsync(_customerSettings).Wait();
             
+            Create.TableFor<CostumerPictureAttachmentMapping>();
+            
             Create.TableFor<ProductExtended>();
-
+            
             Create.ForeignKey()
                 .FromTable(nameof(ProductExtended))
                 .ForeignColumn(nameof(ProductExtended.ProductId))

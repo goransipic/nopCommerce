@@ -725,45 +725,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   /**
    * File uploader
    * @requires https://github.com/pqina/filepond
-  */
+   */
 
 
   var fileUploader = function () {
-    var fileInput = document.querySelectorAll('.file-uploader');
+    var fileInput = document.querySelectorAll(".file-uploader");
     if (fileInput.length === 0) return;
 
-    if (typeof FilePondPluginFileValidateType !== 'undefined') {
+    if (typeof FilePondPluginFileValidateType !== "undefined") {
       FilePond.registerPlugin(FilePondPluginFileValidateType);
     }
 
-    if (typeof FilePondPluginFileValidateSize !== 'undefined') {
+    if (typeof FilePondPluginFileValidateSize !== "undefined") {
       FilePond.registerPlugin(FilePondPluginFileValidateSize);
     }
 
-    if (typeof FilePondPluginImagePreview !== 'undefined') {
+    if (typeof FilePondPluginImagePreview !== "undefined") {
       FilePond.registerPlugin(FilePondPluginImagePreview);
     }
 
-    if (typeof FilePondPluginImageCrop !== 'undefined') {
+    if (typeof FilePondPluginImageCrop !== "undefined") {
       FilePond.registerPlugin(FilePondPluginImageCrop);
     }
 
-    if (typeof FilePondPluginImageResize !== 'undefined') {
+    if (typeof FilePondPluginImageResize !== "undefined") {
       FilePond.registerPlugin(FilePondPluginImageResize);
     }
 
-    if (typeof FilePondPluginImageTransform !== 'undefined') {
+    if (typeof FilePondPluginImageTransform !== "undefined") {
       FilePond.registerPlugin(FilePondPluginImageTransform);
     }
 
-    if (typeof FilePondPluginFileEncode !== 'undefined') {
-      FilePond.registerPlugin(FilePondPluginFileEncode);
+    if (typeof FilePondPluginImageExifOrientation !== "undefined") {
+      FilePond.registerPlugin(FilePondPluginImageExifOrientation);
     }
 
     for (var i = 0; i < fileInput.length; i++) {
-      FilePond.create(fileInput[i],{
-        allowReorder : true,
-      });
+      FilePond.create(fileInput[i]);
     }
   }();
   /**
