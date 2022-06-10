@@ -1,6 +1,7 @@
 @using Nop.Web.Models.Catalog
 @using NUglify.Helpers
 @using SaljiDalje.Core.Controllers
+@using DocumentFormat.OpenXml.EMMA
 @model StepTwoModel
 
 @{
@@ -135,23 +136,33 @@
         //imageResizeTargetWidth:50,
         //imageResizeTargetHeight:50,
         server: {
-            url: "http://localhost:5000",
-            process: "/MakeNewAd/Process",
-            revert: '/MakeNewAd/Revert',
-            load: "/Load/",
-            fetch: "/fetch/",
-            restore:"/Load/",
-            remove: remove,},
+            process: {
+                url:"@Url.Action("Process","MakeNewAd")",
+                ondata: (formData) => {
+                    //add token
+                        var tokenInput = $('input[name=__RequestVerificationToken]');
+                        if (tokenInput.length) {
+                            formData.append('__RequestVerificationToken', tokenInput.val());
+                        }
+                   return formData;
+                }
+            },
+            revert: '@Url.Action("Revert","MakeNewAd")',
+            load: '@Url.Action("Load","MakeNewAd")?id=',
+            remove: remove
+            },
             files : [
+                @foreach(var attachment in Model.ImageFile)
                 {
-                            // the server file reference
-                            source: 'fb0a8577-4fc6-44ef-9489-07b96b32c917',
-                
-                            // set type to local to indicate an already uploaded file
-                            options: {
-                                type: 'local',
-                            },
+                    <text>
+                        {
+                        source: "@attachment",
+                        options: {
+                            type: 'local', // local to indicate an already uploaded file, so it hits the load endpoint
+                        }
                         },
+                    </text>
+                }
             ]
     });
     </script>

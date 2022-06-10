@@ -206,6 +206,9 @@ namespace SaljiDalje.Core.Controllers
                     Zupanije = itemZupanije,
                     GenericOptionsList = new List<GenericItem> {new() {item = "67"}, new() {item = "67"}},
                     SpecificationAttributeOptions = SpecificationAttributeOptions,
+                    ImageFile = (await _pictureService.GetPicturesByProductIdAsync(productId))
+                        .Select(item => item.Id.ToString())
+                        .ToArray()
                 };
             }
             else
@@ -346,15 +349,15 @@ namespace SaljiDalje.Core.Controllers
 
             foreach (var base64EncodedPictures in stepTwoModel.ImageFile)
             {
-                FilePond filePond =
-                    JsonSerializer.Deserialize<FilePond>(base64EncodedPictures);
+               var filePond = await _costumerPictureAttachmentMappingRepository.Table
+                    .FirstOrDefaultAsync(item => item.Guid == base64EncodedPictures);
                 //Console.Write(stepThreeModelFinish.StepThreeModel);
                 //Console.Write(filePond.name);
-                byte[] byteArray = Convert.FromBase64String(filePond.data);
+                byte[] byteArray = filePond.PictureData;
                 var stream = new MemoryStream(byteArray);
-                IFormFile file = new FormFile(stream, 0, byteArray.Length, filePond.id, filePond.name)
+                IFormFile file = new FormFile(stream, 0, byteArray.Length, filePond.Guid, filePond.FileName)
                 {
-                    Headers = new HeaderDictionary(), ContentType = filePond.type,
+                    Headers = new HeaderDictionary(), ContentType = filePond.FileType,
                 };
 
                 var picture = await _pictureService.InsertPictureAsync(file, file.Name);
@@ -362,6 +365,8 @@ namespace SaljiDalje.Core.Controllers
                 {
                     PictureId = picture.Id, ProductId = product.Id, DisplayOrder = 1
                 });
+                
+                await _costumerPictureAttachmentMappingRepository.DeleteAsync(filePond);
             }
 
 
@@ -408,6 +413,7 @@ namespace SaljiDalje.Core.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Process(IFormFile ImageFile, CancellationToken cancellationToken)
         {
             if (ImageFile is null)
@@ -477,11 +483,11 @@ namespace SaljiDalje.Core.Controllers
             {
                 return BadRequest("Revert Error: Invalid unique file ID");
             }
-            var attachment = await _costumerPictureAttachmentMappingRepository.Table.FirstOrDefaultAsync(i => i.Guid == guid);
+            var attachment = await _pictureService.GetPictureByIdAsync(int.Parse(guid));
             // We do some internal application validation here
             try
             {
-                await _costumerPictureAttachmentMappingRepository.DeleteAsync(attachment);
+                await _pictureService.DeletePictureAsync(attachment);
                 return Ok();
             }
             catch (Exception e)
@@ -490,15 +496,16 @@ namespace SaljiDalje.Core.Controllers
             }
         }
         
-        [HttpGet("Load/{id}")]
+        [HttpGet]
         public async Task<IActionResult> Load(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return NotFound("Load Error: Invalid parameters");
             }
-            var attachment = await _costumerPictureAttachmentMappingRepository.Table
-                .SingleOrDefaultAsync(i => i.Guid.Equals(id));
+
+            var attachment = await _pictureService.GetPictureByIdAsync(int.Parse(id));
+            var pictureBinary = await _pictureService.GetPictureBinaryByPictureIdAsync(attachment.Id);
             if (attachment is null)
             {
                 return NotFound("Load Error: File not found");
@@ -506,10 +513,10 @@ namespace SaljiDalje.Core.Controllers
 
             Response.Headers.Add("Content-Disposition", new ContentDisposition
             {
-                FileName = string.Format("{0}.{1}", attachment.FileName, attachment.FileType),
+                FileName = string.Format("{0}.{1}", attachment.SeoFilename, attachment.MimeType.Split("/").LastOrDefault()),
                 Inline = true // false = prompt the user for downloading; true = browser to try to show the file inline
             }.ToString());
-            return File(attachment.PictureData, attachment.FileType);
+            return File(pictureBinary.BinaryData, attachment.MimeType);
         }
     }
     public class SortByCategoryModel
@@ -593,49 +600,5 @@ namespace SaljiDalje.Core.Controllers
     {
         // [Display(Name = "$")] USD,
         [Display(Name = "€")] EURO,
-    }
-
-    public class Center
-    {
-        public double x { get; set; }
-        public double y { get; set; }
-    }
-
-    public class Crop
-    {
-        public Center center { get; set; }
-        public Flip flip { get; set; }
-        public int rotation { get; set; }
-        public int zoom { get; set; }
-        public object aspectRatio { get; set; }
-    }
-
-    public class Flip
-    {
-        public bool horizontal { get; set; }
-        public bool vertical { get; set; }
-    }
-
-    public class Metadata
-    {
-        public Crop crop { get; set; }
-        public Output output { get; set; }
-    }
-
-    public class Output
-    {
-        public object type { get; set; }
-        public object quality { get; set; }
-        public List<string> client { get; set; }
-    }
-
-    public class FilePond
-    {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string type { get; set; }
-        public int size { get; set; }
-        public Metadata metadata { get; set; }
-        public string data { get; set; }
     }
 }

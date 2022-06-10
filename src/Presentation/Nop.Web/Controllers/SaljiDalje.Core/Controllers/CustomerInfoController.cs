@@ -206,7 +206,7 @@ public class CustomerInfoController : BasePluginController
 
         IFormFile uploadedFile = null;
 
-        if (!StringValues.IsNullOrEmpty(form["uploadedFile"]))
+        /*if (!StringValues.IsNullOrEmpty(form["uploadedFile"]))
         {
             FilePond filePond = JsonSerializer.Deserialize<FilePond>(form["uploadedFile"]);
             //Console.Write(stepThreeModelFinish.StepThreeModel);
@@ -217,7 +217,7 @@ public class CustomerInfoController : BasePluginController
             {
                 Headers = new HeaderDictionary(), ContentType = filePond.type,
             };
-        }
+        }*/
 
         var contentType = uploadedFile.ContentType.ToLowerInvariant();
 
