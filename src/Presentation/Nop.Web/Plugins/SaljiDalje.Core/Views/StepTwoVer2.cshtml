@@ -151,19 +151,27 @@
             load: '@Url.Action("Load","MakeNewAd")?id=',
             remove: remove
             },
-            files : [
-                @foreach(var attachment in Model.ImageFile)
+            @if (Model.ImageFile != null)
+            {
+                <text>
+                files : [
+                </text>
+                    @foreach(var attachment in Model.ImageFile)
                 {
-                    <text>
-                        {
+                <text>
+                    {
                         source: "@attachment",
                         options: {
                             type: 'local', // local to indicate an already uploaded file, so it hits the load endpoint
                         }
-                        },
-                    </text>
+                    },
+                </text>
                 }
-            ]
+            <text>
+            ] 
+            </text>
+            }
+            
     });
     </script>
     <!-- Location-->
