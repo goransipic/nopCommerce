@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
@@ -30,7 +31,7 @@ using Nop.Web.Models.Customer;
 using SaljiDalje.Core.Data;
 
 namespace SaljiDalje.Core.Controllers;
-
+[Authorize]
 public class CustomerInfoController : BasePluginController
 {
     public IRepository<ProductPicture> ProductPictureRepository { get; }

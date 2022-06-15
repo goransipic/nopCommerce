@@ -33,6 +33,7 @@ using SaljiDalje.Core.Data;
 
 namespace SaljiDalje.Core.Controllers
 {
+    [Authorize]
     public partial class MakeNewAdController : BasePluginController
     {
         private readonly ICatalogModelFactory _catalogModelFactory;
