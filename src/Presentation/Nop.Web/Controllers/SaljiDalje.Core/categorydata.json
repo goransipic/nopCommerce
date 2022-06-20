@@ -1,0 +1,629 @@
+﻿[
+  {
+    "Auto Moto": {
+      "CategoryName": "Auto Moto",
+      "ChildCategory": [
+        {
+          "CategoryName": "Osobni automobili",
+          "ChildCategory": [
+            {
+              "CategoryName": "Abarth",
+              "ChildCategory": [
+                {
+                  "CategoryName": "500"
+                },
+                {
+                  "CategoryName": "Grande Punto"
+                }
+              ]
+            },
+            {
+              "CategoryName": "Acura",
+              "ChildCategory": [
+                {
+                  "CategoryName": "MDX"
+                }
+              ]
+            },
+            {
+              "CategoryName": "Aiways",
+              "ChildCategory": [
+                {
+                  "CategoryName": "U5"
+                }
+              ]
+            },
+            {
+              "CategoryName": "Alfa Romeo",
+              "ChildCategory": [
+                {
+                  "CategoryName": "147"
+                },
+                {
+                  "CategoryName": "156"
+                },
+                {
+                  "CategoryName": "156 SW"
+                },
+                {
+                  "CategoryName": "159"
+                },
+                {
+                  "CategoryName": "159 SW"
+                },
+                {
+                  "CategoryName": "164"
+                },
+                {
+                  "CategoryName": "166"
+                },
+                {
+                  "CategoryName": "Brera"
+                },
+                {
+                  "CategoryName": "Giulia"
+                },
+                {
+                  "CategoryName": "Giulietta"
+                },
+                {
+                  "CategoryNAme": "GT"
+                },
+                {
+                  "CategoryNAme": "GTV"
+                },
+                {
+                  "CategoryNAme": "MiTo"
+                },
+                {
+                  "CategoryNAme": "Spider"
+                },
+                {
+                  "CategoryNAme": "Stelvio"
+                }
+              ]
+            },
+            {
+              "CategoryName": "Aston Martin",
+              "ChildCategory": [
+                {
+                  "CategoryName": "DBX"
+                },
+                {
+                  "CategoryName": "DB9"
+                },
+                {
+                  "CategoryName": "V8"
+                },
+                {
+                  "CategoryName": "Vantage"
+                }
+              ]
+            },
+            {
+              "CategoryName": "Audi",
+              "ChildCategory": [
+                {
+                  "CategoryName": "80"
+                },
+                {
+                  "CategoryName": "80 Avant"
+                },
+                {
+                  "CategoryName": "A1"
+                },
+                {
+                  "CategoryName": "A2"
+                },
+                {
+                  "CategoryName": "A3"
+                },
+                {
+                  "CategoryName": "A4"
+                },
+                {
+                  "CategoryName": "A3 Cabrio"
+                },
+                {
+                  "CategoryName": "A3 Coupe"
+                },
+                {
+                  "CategoryName": "A4 Cabrio"
+                },
+                {
+                  "CategoryName": "A4 Allroad"
+                },
+                {
+                  "CategoryName": "A4 Avant"
+                },
+                {
+                  "CategoryName": "A5 Coupe"
+                },
+                {
+                  "CategoryName": "A5 Cabrio"
+                },
+                {
+                  "CategoryName": "A5 Sportback"
+                },
+                {
+                  "CategoryName": "A6 Allroad 26"
+                },
+                {
+                  "CategoryName": "A6 314"
+                },
+                {
+                  "CategoryName": "A6 Avant 178"
+                },
+                {
+                  "CategoryName": "A7 54"
+                },
+                {
+                  "CategoryName": "A8 72"
+                },
+                {
+                  "CategoryName": "e-tron 23"
+                },
+                {
+                  "CategoryName": "Q2 59"
+                },
+                {
+                  "CategoryName": "Q3 159"
+                },
+                {
+                  "CategoryName": "Q4 e-tron 2"
+                },
+                {
+                  "CategoryName": "Q5 155"
+                },
+                {
+                  "CategoryName": "Q7 105"
+                },
+                {
+                  "CategoryName": "Q8 22"
+                },
+                {
+                  "CategoryName": "R8 3"
+                },
+                {
+                  "CategoryName": "RS3"
+                },
+                {
+                  "CategoryName": "RS4"
+                },
+                {
+                  "CategoryName": "RS5"
+                },
+                {
+                  "CategoryName": "RS6"
+                },
+                {
+                  "CategoryName": "S1"
+                },
+                {
+                  "CategoryName": "S3"
+                },
+                {
+                  "CategoryName": "S4"
+                },
+                {
+                  "CategoryName": "S4 Avant"
+                },
+                {
+                  "CategoryName": "S5"
+                },
+                {
+                  "CategoryName": "S6"
+                },
+                {
+                  "CategoryName": "S6 Avant"
+                },
+                {
+                  "CategoryName": "S8"
+                },
+                {
+                  "CategoryName": "TT"
+                }
+              ]
+            },
+            {
+              "CategoryName": "Bentley",
+              "ChildCategory": [
+                {
+                  "CategoryName": "Continental"
+                },
+                {
+                  "CategoryName": "Continental GT"
+                },
+                {
+                  "CategoryName": "Flying Spur"
+                }
+              ]
+            },
+            {
+              "CategoryName": "BMW",
+              "ChildCategory": [
+                {
+                  "CategoryName": "i3"
+                },
+                {
+                  "CategoryName": "i8"
+                },
+                {
+                  "CategoryName": "M2"
+                },
+                {
+                  "CategoryName": "M3"
+                },
+                {
+                  "CategoryName": "M3 Cabriolet"
+                },
+                {
+                  "CategoryName": "M4"
+                },
+                {
+                  "CategoryName": "M5"
+                },
+                {
+                  "CategoryName": "M5 Touring"
+                },
+                {
+                  "CategoryName": "M6"
+                },
+                {
+                  "CategoryName": "serija 1"
+                },
+                {
+                  "CategoryName": "serija 2"
+                },
+                {
+                  "CategoryName": "serija 2 Active Tourer"
+                },
+                {
+                  "CategoryName": "serija 2 Gran Tourer"
+                },
+                {
+                  "CategoryName": "serija 2 Gran Coupe"
+                },
+                {
+                  "CategoryName": "serija 3"
+                },
+                {
+                  "CategoryName": "serija 3 Cabriolet"
+                },
+                {
+                  "CategoryName": "serija 3 Compact"
+                },
+                {
+                  "CategoryName": "serija 3 Coupe"
+                },
+                {
+                  "CategoryName": "serija 3 Gran Turismo"
+                },
+                {
+                  "CategoryName": "serija 3 Touring"
+                },
+                {
+                  "CategoryName": "serija 4 Cabriolet"
+                },
+                {
+                  "CategoryName": "serija 4 Coupe"
+                },
+                {
+                  "CategoryName": "serija 4 Gran Coupe"
+                },
+                {
+                  "CategoryName": "serija 5"
+                },
+                {
+                  "CategoryName": "serija 5 Gran Turismo"
+                },
+                {
+                  "CategoryName": "serija 5 Touring"
+                },
+                {
+                  "CategoryName": "serija 6"
+                },
+                {
+                  "CategoryName": "serija 6 Gran Coupe"
+                },
+                {
+                  "CategoryName": "serija 7"
+                },
+                {
+                  "CategoryName": "serija 8"
+                },
+                {
+                  "CategoryName": "X1"
+                },
+                {
+                  "CategoryName": "X2"
+                },
+                {
+                  "CategoryName": "X3"
+                },
+                {
+                  "CategoryName": "X4"
+                },
+                {
+                  "CategoryName": "X5"
+                },
+                {
+                  "CategoryName": "X6"
+                },
+                {
+                  "CategoryName": "X7"
+                },
+                {
+                  "CategoryName": "Z3"
+                },
+                {
+                  "CategoryName": "Z4"
+                }
+              ]
+            },
+            {
+              "CategoryName": "Cadillac",
+              "ChildCategory": [
+                {
+                  "CategoryName": "Escalade"
+                },
+                {
+                  "CategoryName": "Fleetwood"
+                },
+                {
+                  "CategoryName": "STS"
+                }
+              ]
+            },
+            {
+              "CategoryName": "Chevrolet"
+            },
+            {
+              "CategoryName": "Chrysler"
+            },
+            {
+              "CategoryName": "Citroën"
+            },
+            {
+              "CategoryName": "Cupra"
+            },
+            {
+              "CategoryName": "Dacia"
+            },
+            {
+              "CategoryName": "Daewoo"
+            },
+            {
+              "CategoryName": "Daihatsu"
+            },
+            {
+              "CategoryName": "Dodge"
+            },
+            {
+              "CategoryName": "DFSK"
+            },
+            {
+              "CategoryName": "DS Automobiles"
+            },
+            {
+              "CategoryName": "Ferrari"
+            },
+            {
+              "CategoryName": "Fiat"
+            },
+            {
+              "CategoryName": "Fisker"
+            },
+            {
+              "CategoryName": "Ford"
+            },
+            {
+              "CategoryName": "GMC"
+            },
+            {
+              "CategoryName": "Great Wall Motor"
+            },
+            {
+              "CategoryName": "Honda"
+            },
+            {
+              "CategoryName": "Hummer"
+            },
+            {
+              "CategoryName": "Hyundai"
+            },
+            {
+              "CategoryName": "Infiniti"
+            },
+            {
+              "CategoryName": "Isuzu"
+            },
+            {
+              "CategoryName": "Iveco"
+            },
+            {
+              "CategoryName": "Jaguar"
+            },
+            {
+              "CategoryName": "Jeep"
+            },
+            {
+              "CategoryName": "Kia"
+            },
+            {
+              "CategoryName": "Lada"
+            },
+            {
+              "CategoryName": "Lamborghini"
+            },
+            {
+              "CategoryName": "Lancia"
+            },
+            {
+              "CategoryName": "Land Rover"
+            },
+            {
+              "CategoryName": "Lexus"
+            },
+            {
+              "CategoryName": "Lincoln"
+            },
+            {
+              "CategoryName": "Maserati"
+            },
+            {
+              "CategoryName": "Mazda"
+            },
+            {
+              "CategoryName": "Mercedes-Benz"
+            },
+            {
+              "CategoryName": "MG"
+            },
+            {
+              "CategoryName": "MINI"
+            },
+            {
+              "CategoryName": "Mitsubishi"
+            },
+            {
+              "CategoryName": "Nissan"
+            },
+            {
+              "CategoryName": "Opel"
+            },
+            {
+              "CategoryName": "Peugeot"
+            },
+            {
+              "CategoryName": "Polestar"
+            },
+            {
+              "CategoryName": "Pontiac"
+            },
+            {
+              "CategoryName": "Porsche"
+            },
+            {
+              "CategoryName": "Puch"
+            },
+            {
+              "CategoryName": "Renault"
+            },
+            {
+              "CategoryName": "Rolls-Royce"
+            },
+            {
+              "CategoryName": "Rover"
+            },
+            {
+              "CategoryName": "Saab"
+            },
+            {
+              "CategoryName": "Seat"
+            },
+            {
+              "CategoryName": "Smart"
+            },
+            {
+              "CategoryName": "Ssang Yong"
+            },
+            {
+              "CategoryName": "Subaru"
+            },
+            {
+              "CategoryName": "Suzuki"
+            },
+            {
+              "CategoryName": "Škoda"
+            },
+            {
+              "CategoryName": "Tesla"
+            },
+            {
+              "CategoryName": "Toyota"
+            },
+            {
+              "CategoryName": "Trabant"
+            },
+            {
+              "CategoryName": "UAZ"
+            },
+            {
+              "CategoryName": "Volvo"
+            },
+            {
+              "CategoryName": "VW"
+            },
+            {
+              "CategoryName": "Wartburg"
+            },
+            {
+              "CategoryName": "Yugo"
+            },
+            {
+              "CategoryName": "Zastava"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Novi automobili"
+        },
+        {
+          "CategoryName": "Karambolirani automobili"
+        },
+        {
+          "CategoryName": "Motocikli / Motori"
+        },
+        {
+          "CategoryName": "Rezervni dijelovi i oprema"
+        },
+        {
+          "CategoryName": "Gospodarska vozila"
+        },
+        {
+          "CategoryName": "Kamperi i kamp prikolice"
+        },
+        {
+          "CategoryName": "Oldtimeri"
+        }
+      ]
+    }
+  },
+  {
+    "Software": {
+      "CategoryName": "Auto Moto",
+      "ChildCategory": [
+        {
+          "CategoryName": "Osobni automobili",
+          "ChildCategory": [
+            {
+              "CategoryName": "Novi automobili"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Novi automobili"
+        },
+        {
+          "CategoryName": "Karambolirani automobili"
+        },
+        {
+          "CategoryName": "Motocikli / Motori"
+        },
+        {
+          "CategoryName": "Rezervni dijelovi i oprema"
+        },
+        {
+          "CategoryName": "Gospodarska vozila"
+        },
+        {
+          "CategoryName": "Kamperi i kamp prikolice"
+        },
+        {
+          "CategoryName": "Oldtimeri"
+        }
+      ]
+    }
+  }
+]
