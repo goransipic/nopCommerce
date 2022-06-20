@@ -5717,25 +5717,60 @@
           ]
         },
         {
-          "CategoryName": "Novogradnja",
-          "ChildCategory": {
-            
-          }
+          "CategoryName": "Novogradnja"
         },
         {
           "CategoryName": "Nekretnine za odmor"
         },
         {
-          "CategoryName": "Montažni objekti"
+          "CategoryName": "Montažni objekti",
+          "ChildCategory": [
+            {
+              "CategoryName": "Montažne kuće"
+            },
+            {
+              "CategoryName": "Niskoenergetske kuće"
+            },
+            {
+              "CategoryName": "Drvene kuće i objekti"
+            },
+            {
+              "CategoryName": "Mobilne kućice i objekti"
+            }
+          ]
         },
         {
-          "CategoryName": "Poslovni prostori"
+          "CategoryName": "Poslovni prostori",
+          "ChildCategory": [
+            {
+              "CategoryName" : "Prodaja poslovnih prostora"
+            },
+            {
+              "CategoryName" : "Iznajmljivanje poslovnih prostora"
+            }
+          ]
         },
         {
-          "CategoryName": "Garaže"
+          "CategoryName": "Garaže",
+          "ChildCategory" : [
+            {
+              "CategoryName" : "Prodaja garaža"
+            },
+            {
+              "CategoryName" : "Iznajmljivanje garaža garaža"
+            }
+          ]
         },
         {
-          "CategoryName": "Sobe"
+          "CategoryName": "Sobe",
+          "ChildCategory": [
+            {
+              "CategoryName" : "Iznajmljivanje soba"
+            },
+            {
+              "CategoryName" : "Tražim cimera/icu"
+            }
+          ]
         }
       ]
     }
