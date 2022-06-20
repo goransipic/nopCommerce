@@ -5743,21 +5743,21 @@
           "CategoryName": "Poslovni prostori",
           "ChildCategory": [
             {
-              "CategoryName" : "Prodaja poslovnih prostora"
+              "CategoryName": "Prodaja poslovnih prostora"
             },
             {
-              "CategoryName" : "Iznajmljivanje poslovnih prostora"
+              "CategoryName": "Iznajmljivanje poslovnih prostora"
             }
           ]
         },
         {
           "CategoryName": "Garaže",
-          "ChildCategory" : [
+          "ChildCategory": [
             {
-              "CategoryName" : "Prodaja garaža"
+              "CategoryName": "Prodaja garaža"
             },
             {
-              "CategoryName" : "Iznajmljivanje garaža garaža"
+              "CategoryName": "Iznajmljivanje garaža garaža"
             }
           ]
         },
@@ -5765,12 +5765,91 @@
           "CategoryName": "Sobe",
           "ChildCategory": [
             {
-              "CategoryName" : "Iznajmljivanje soba"
+              "CategoryName": "Iznajmljivanje soba"
             },
             {
-              "CategoryName" : "Tražim cimera/icu"
+              "CategoryName": "Tražim cimera/icu"
             }
           ]
+        }
+      ]
+    }
+  },
+  {
+    "Nautika": {
+      "CategoryName": "Nautika",
+      "ChildCategory": [
+        {
+          "CategoryName": "Plovila",
+          "ChildCategory": [
+            {
+              "CategoryName": "Jedrilice"
+            },
+            {
+              "CategoryName": "Motorni brodovi"
+            },
+            {
+              "CategoryName": "Gumenjaci"
+            },
+            {
+              "CategoryName": "Čamci i mala plovila"
+            },
+            {
+              "CategoryName": "Jet-ski"
+            },
+            {
+              "CategoryName": "Ostala plovila"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Charter"
+        },
+        {
+          "CategoryName": "Nautička oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Brodska elektrika"
+            },
+            {
+              "CategoryName": "Brodska elektronika"
+            },
+            {
+              "CategoryName": "Inox oprema za plovila"
+            },
+            {
+              "CategoryName": "Brodska navigacija i komunikacija"
+            },
+            {
+              "CategoryName": "Nautička odjeća i obuća"
+            },
+            {
+              "CategoryName": "Prsluci za spašavanje i sigurnost"
+            },
+            {
+              "CategoryName": "Oprema za sidrenje i privez"
+            },
+            {
+              "CategoryName": "Ostala nautička oprema"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Brodski motori",
+          "ChildCategory": [
+            {
+              "CategoryName": "Vanbrodski motori"
+            },
+            {
+              "CategoryName": "Unutarnji brodski motori"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Brodski rezervni dijelovi"
+        },
+        {
+          "CategoryName": "Prikolice za plovila"
         }
       ]
     }

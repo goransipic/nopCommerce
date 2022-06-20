@@ -17,7 +17,7 @@
     <div class="row">
         <div class="mx-auto col-md-6 px-4 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
             <form asp-route="Register" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" autocomplete="off">
-                <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                <div asp-validation-summary="All" class="message-error"></div>
                 <div class="mb-4">
                     <label asp-for="Username" class="form-label"></label>
                     <input asp-for="Username" class="form-control" type="text" placeholder="Enter your full name"/>
