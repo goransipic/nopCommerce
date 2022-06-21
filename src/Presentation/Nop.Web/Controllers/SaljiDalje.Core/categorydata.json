@@ -8675,7 +8675,8 @@
     }
   },
   {
-    "Dječji svijet - sve za djecu i bebe": {"CategoryName": "Dječji svijet - sve za djecu i bebe",
+    "Dječji svijet - sve za djecu i bebe": {
+      "CategoryName": "Dječji svijet - sve za djecu i bebe",
       "ChildCategory": [
         {
           "CategoryName": "Oprema za bebe",
@@ -8830,6 +8831,718 @@
         },
         {
           "CategoryName": "Ostalo za djecu"
+        }
+      ]
+    }
+  },
+  {
+    "Strojevi, alati i profesionalna oprema": {
+      "CategoryName": "Strojevi, alati i profesionalna oprema",
+      "ChildCategory": [
+        {
+          "CategoryName": "Poljoprivredni strojevi i alati",
+          "ChildCategory": [
+            {
+              "CategoryName": "Traktori"
+            },
+            {
+              "CategoryName": "Rezervni dijelovi za traktore"
+            },
+            {
+              "CategoryName": "Oprema: zaštita, gnojidba, navodnjavanje"
+            },
+            {
+              "CategoryName": "Oprema: sjetva, žetva i berba"
+            },
+            {
+              "CategoryName": "Oprema: obrada tla"
+            },
+            {
+              "CategoryName": "Oprema: transport i pretovar tereta"
+            },
+            {
+              "CategoryName": "Kombajni"
+            },
+            {
+              "CategoryName": "Rezervni dijelovi za kombajne"
+            },
+            {
+              "CategoryName": "Alati i oprema za gospodarstvo"
+            },
+            {
+              "CategoryName": "Bačve"
+            },
+            {
+              "CategoryName": "Ručni alati"
+            },
+            {
+              "CategoryName": "Oprema za stočarstvo"
+            },
+            {
+              "CategoryName": "Ostalo za poljoprivredu"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Građevinski strojevi i alati",
+          "ChildCategory": [
+            {
+              "CategoryName": "Bageri / Rovokopači"
+            },
+            {
+              "CategoryName": "Buldozeri"
+            },
+            {
+              "CategoryName": "Utovarivači"
+            },
+            {
+              "CategoryName": "Kombinirke"
+            },
+            {
+              "CategoryName": "Valjci"
+            },
+            {
+              "CategoryName": "Grederi"
+            },
+            {
+              "CategoryName": "Demperi"
+            },
+            {
+              "CategoryName": "Drobilice i separacije"
+            },
+            {
+              "CategoryName": "Kranovi i dizalice"
+            },
+            {
+              "CategoryName": "Vibro ploče i vibro nabijači"
+            },
+            {
+              "CategoryName": "Radni priključci i oprema"
+            },
+            {
+              "CategoryName": "Rezervni dijelovi za građevinske strojeve"
+            },
+            {
+              "CategoryName": "Građevinski kompresori"
+            },
+            {
+              "CategoryName": "Ručni strojevi i alati"
+            },
+            {
+              "CategoryName": "Građevinski materijal"
+            },
+            {
+              "CategoryName": "Građevinska stolarija"
+            },
+            {
+              "CategoryName": "Ostalo za građevinu"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Vrtni strojevi i alati",
+          "ChildCategory": [
+            {
+              "CategoryName": "Kosilice"
+            },
+            {
+              "CategoryName": "Trimeri"
+            },
+            {
+              "CategoryName": "Vrtne škare"
+            },
+            {
+              "CategoryName": "Puhači i usisavači lišća"
+            },
+            {
+              "CategoryName": "Ostali vrtni strojevi i alati"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Viličari",
+          "ChildCategory": [
+            {
+              "CategoryName": "Čeoni viličari"
+            },
+            {
+              "CategoryName": "Regalni viličari"
+            },
+            {
+              "CategoryName": "Ručni viličari"
+            },
+            {
+              "CategoryName": "Dijelovi i oprema za viličare"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Platforme i oprema za visinske radove",
+          "ChildCategory": [
+            {
+              "CategoryName": "Platforme za visinske radove"
+            },
+            {
+              "CategoryName": "Oprema za visinske radove"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Strojevi i alati za komunalnu djelatnost",
+          "ChildCategory": [
+            {
+              "CategoryName": "Strojevi za komunalnu djelatnost"
+            },
+            {
+              "CategoryName": "Radni priključci za komunalne strojeve"
+            },
+            {
+              "CategoryName": "Alati i oprema za komunalnu djelatnost"
+            },
+            {
+              "CategoryName": "Dijelovi strojeva za komunalnu djelatnost"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Obradni strojevi i alati",
+          "ChildCategory": [
+            {
+              "CategoryName": "Strojevi i alati za obradu metala"
+            },
+            {
+              "CategoryName": "Strojevi i alati za obradu drva"
+            },
+            {
+              "CategoryName": "Strojevi i alati za obradu kamena"
+            },
+            {
+              "CategoryName": "Strojevi i alati za obradu keramike i stakla"
+            },
+            {
+              "CategoryName": "Strojevi i alati za obradu plastike"
+            },
+            {
+              "CategoryName": "Strojevi i alati za tekstilnu industriju"
+            },
+            {
+              "CategoryName": "Strojevi i alati za pakiranje"
+            },
+            {
+              "CategoryName": "Strojevi za pranje i čišćenje"
+            },
+            {
+              "CategoryName": "Tiskarski strojevi i alati za tiskare"
+            },
+            {
+              "CategoryName": "Strojevi i alati za sitotisak"
+            },
+            {
+              "CategoryName": "Elektromotori i agregati"
+            },
+            {
+              "CategoryName": "Pumpe i kompresori 1.796Ostali obradni strojevi i alati"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Strojevi i oprema za šumarstvo",
+          "ChildCategory": [
+            {
+              "CategoryName": "Strojevi za šumarstvo i priključci"
+            },
+            {
+              "CategoryName": "Motorne i električne pile"
+            },
+            {
+              "CategoryName": "Rezervni dijelovi strojeva za šumarstvo"
+            },
+            {
+              "CategoryName": "Alati i oprema za šumarstvo"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Mjerni instrumenti"
+        },
+        {
+          "CategoryName": "Elektronski uređaji"
+        },
+        {
+          "CategoryName": "Ručni alati",
+          "ChildCategory": [
+            {
+              "CategoryName": "Akumulatorski ručni alati"
+            },
+            {
+              "CategoryName": "Električni ručni alati"
+            },
+            {
+              "CategoryName": "Pneumatski ručni alati"
+            },
+            {
+              "CategoryName": "Klasični ručni alati"
+            },
+            {
+              "CategoryName": "Oprema i dijelovi za električne i akumulatorske ručne alate"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ugostiteljska i trgovačka oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Šank"
+            },
+            {
+              "CategoryName": "Kuhinja"
+            },
+            {
+              "CategoryName": "Inventar"
+            },
+            {
+              "CategoryName": "Vanjsko ugostiteljstvo"
+            },
+            {
+              "CategoryName": "Ostala ugostiteljska i trgovačka oprema"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Zaštita od požara",
+          "ChildCategory": [
+            {
+              "CategoryName": "Vatrogasni aparati"
+            },
+            {
+              "CategoryName": "Detektori dima"
+            },
+            {
+              "CategoryName": "Ostalo za zaštitu od požara"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ostali strojevi i alati"
+        }
+      ]
+    }
+  },
+  {
+    "Od glave do pete": {
+      "CategoryName": "Od glave do pete",
+      "ChildCategory": [
+        {
+          "CategoryName": "Odjeća",
+          "ChildCategory": [
+            {
+              "CategoryName": "Muška odjeća"
+            },
+            {
+              "CategoryName": "Ženska odjeća"
+            },
+            {
+              "CategoryName": "Žensko donje rublje"
+            },
+            {
+              "CategoryName": "Odjeća za vjenčanja"
+            },
+            {
+              "CategoryName": "Sportski dresovi"
+            },
+            {
+              "CategoryName": "Ostala odjeća"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Obuća",
+          "ChildCategory": [
+            {
+              "CategoryName": "Muška obuća"
+            },
+            {
+              "CategoryName": "Ženska obuća"
+            },
+            {
+              "CategoryName": "Ostala obuća"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Radna odjeća i zaštitna oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Muška radna odjeća"
+            },
+            {
+              "CategoryName": "Ženska radna odjeća"
+            },
+            {
+              "CategoryName": "Zaštitne rukavice"
+            },
+            {
+              "CategoryName": "Zaštitne kacige i kape"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Dječja odjeća i obuća",
+          "ChildCategory": [
+            {
+              "CategoryName": "Odjeća za bebe"
+            },
+            {
+              "CategoryName": "Obuća za bebe"
+            },
+            {
+              "CategoryName": "Odjeća za djecu"
+            },
+            {
+              "CategoryName": "Obuća za djecu"
+            },
+            {
+              "CategoryName": "Dječje kape, rukavice i šalovi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Torbe i novčanici",
+          "ChildCategory": [
+            {
+              "CategoryName": "Sportske torbe"
+            },
+            {
+              "CategoryName": "Školske torbe"
+            },
+            {
+              "CategoryName": "Putne torbe i koferi"
+            },
+            {
+              "CategoryName": "Ženske torbice"
+            },
+            {
+              "CategoryName": "Ženski novčanici"
+            },
+            {
+              "CategoryName": "Muške torbice"
+            },
+            {
+              "CategoryName": "Muški novčanici"
+            },
+            {
+              "CategoryName": "Ostale torbe"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Naočale",
+          "ChildCategory": [
+            {
+              "CategoryName": "Sunčane naočale"
+            },
+            {
+              "CategoryName": "Dioptrijske naočale"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Nakit",
+          "ChildCategory": [
+            {
+              "CategoryName": "Narukvice"
+            },
+            {
+              "CategoryName": "Prstenje"
+            },
+            {
+              "CategoryName": "Ogrlice i lančići"
+            },
+            {
+              "CategoryName": "Naušnice"
+            },
+            {
+              "CategoryName": "Ukrasi za kosu"
+            },
+            {
+              "CategoryName": "Broševi"
+            },
+            {
+              "CategoryName": "Privjesci"
+            },
+            {
+              "CategoryName": "Ostali nakit"
+            },
+            {
+              "CategoryName": "Materijal za izradu nakita"
+            },
+            {
+              "CategoryName": "Stalci i kutije za nakit"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Satovi",
+          "ChildCategory": [
+            {
+              "CategoryName": "Muški satovi"
+            },
+            {
+              "CategoryName": "Ženski satovi"
+            },
+            {
+              "CategoryName": "Džepni satovi"
+            },
+            {
+              "CategoryName": "Pametni satovi"
+            },
+            {
+              "CategoryName": "Ostali satovi"
+            },
+            {
+              "CategoryName": "Dijelovi za satove"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Poslovi i natječaji za zapošljavanje": {
+      "CategoryName": "Poslovi i natječaji za zapošljavanje",
+      "ChildCategory": [
+        {
+          "CategoryName": "Arhitektura, graditeljstvo i geodezija"
+        },
+        {
+          "CategoryName": "Biotehnologija i farmacija"
+        },
+        {
+          "CategoryName": "Elektrotehnika, strojarstvo i brodogradnja"
+        },
+        {
+          "CategoryName": "Financije, računovodstvo i osiguranja"
+        },
+        {
+          "CategoryName": "Informatika i telekomunikacije"
+        },
+        {
+          "CategoryName": "Instalacije, održavanje i popravak"
+        },
+        {
+          "CategoryName": "Ljepota, zabava i rekreacija"
+        },
+        {
+          "CategoryName": "Marketing i PR"
+        },
+        {
+          "CategoryName": "Mediji i izdavaštvo"
+        },
+        {
+          "CategoryName": "Obrazovanje i znanost"
+        },
+        {
+          "CategoryName": "Poljoprivreda, šumarstvo i ribarstvo"
+        },
+        {
+          "CategoryName": "Poslovna suradnja"
+        },
+        {
+          "CategoryName": "Pravo i administracija"
+        },
+        {
+          "CategoryName": "Prodaja"
+        },
+        {
+          "CategoryName": "Proizvodnja i zanatske usluge"
+        },
+        {
+          "CategoryName": "Sigurnost i zaštita"
+        },
+        {
+          "CategoryName": "Transport, skladištenje i logistika"
+        },
+        {
+          "CategoryName": "Turizam i ugostiteljstvo"
+        },
+        {
+          "CategoryName": "Umjetnost, kultura i dizajn"
+        },
+        {
+          "CategoryName": "Upravljanje, organizacija i savjetovanje"
+        },
+        {
+          "CategoryName": "Zdravstvo, socijalna skrb i njega"
+        }
+      ]
+    }
+  },
+  {
+    "Ostalo": {
+      "CategoryName": "Ostalo",
+      "ChildCategory": [
+        {
+          "CategoryName": "Modelarstvo i maketarstvo",
+          "ChildCategory": [
+            {
+              "CategoryName": "RC modeli"
+            },
+            {
+              "CategoryName": "Makete"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ljepota i njega",
+          "ChildCategory": [
+            {
+              "CategoryName": "Parfemi"
+            },
+            {
+              "CategoryName": "Kozmetika"
+            },
+            {
+              "CategoryName": "Umjetni nokti i oprema"
+            },
+            {
+              "CategoryName": "Umjetne trepavice i ekstenzije"
+            },
+            {
+              "CategoryName": "Ekstenzije za kosu i umeci"
+            },
+            {
+              "CategoryName": "Pegle za kosu"
+            },
+            {
+              "CategoryName": "Sušila za kosu"
+            },
+            {
+              "CategoryName": "Epilatori"
+            },
+            {
+              "CategoryName": "Brijaći aparati"
+            },
+            {
+              "CategoryName": "Profesionalna oprema za salone"
+            },
+            {
+              "CategoryName": "Ostali kozmetički aparati"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Sve za vjenčanje",
+          "ChildCategory": [
+            {
+              "CategoryName": "Pozivnice i zahvalnice"
+            },
+            {
+              "CategoryName": "Reveri"
+            },
+            {
+              "CategoryName": "Odjeća za vjenčanja"
+            },
+            {
+              "CategoryName": "Ostala oprema za vjenčanje"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Karte i ulaznice",
+          "ChildCategory": [
+            {
+              "CategoryName": "Karte / ulaznice za koncerte"
+            },
+            {
+              "CategoryName": "Karte / ulaznice za utakmice"
+            },
+            {
+              "CategoryName": "Karte / ulaznice za ostalo"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Stočna hrana",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Domaće životinje",
+          "ChildCategory": [
+            {
+              "CategoryName": "Divljač"
+            },
+            {
+              "CategoryName": "Govedarstvo"
+            },
+            {
+              "CategoryName": "Konjogojstvo"
+            },
+            {
+              "CategoryName": "Kozarstvo"
+            },
+            {
+              "CategoryName": "Kunićarstvo"
+            },
+            {
+              "CategoryName": "Magarci, mazge i mule"
+            },
+            {
+              "CategoryName": "Ovčarstvo"
+            },
+            {
+              "CategoryName": "Pčelarstvo"
+            },
+            {
+              "CategoryName": "Peradarstvo"
+            },
+            {
+              "CategoryName": "Svinjogojstvo"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Medicinska oprema i pomagala",
+          "ChildCategory": [
+            {
+              "CategoryName": "Inhalatori"
+            },
+            {
+              "CategoryName": "Tlakomjeri"
+            },
+            {
+              "CategoryName": "Toplomjeri"
+            },
+            {
+              "CategoryName": "Masažeri"
+            },
+            {
+              "CategoryName": "Štake, štapovi i hodalice"
+            },
+            {
+              "CategoryName": "Invalidska kolica"
+            },
+            {
+              "CategoryName": "Medicinski kreveti i madraci"
+            },
+            {
+              "CategoryName": "Zaštitne maske za lice"
+            },
+            {
+              "CategoryName": "Ostala medicinska oprema i pomagala"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Grobna mjesta",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Poklanjamo",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Sve ostalo",
+          "ChildCategory": []
         }
       ]
     }
