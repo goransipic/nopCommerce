@@ -6830,5 +6830,1114 @@
         }
       ]
     }
+  },
+  {
+    "InformatičkaOprema": {
+      "CategoryName": "Informatička oprema",
+      "ChildCategory": [
+        {
+          "CategoryName": "Softver"
+        },
+        {
+          "CategoryName": "Stolna računala"
+        },
+        {
+          "CategoryName": "Server računala"
+        },
+        {
+          "CategoryName": "Monitori",
+          "ChildCategory": [
+            {
+              "CategoryName": "CRT monitori"
+            },
+            {
+              "CategoryName": "LCD monitori"
+            },
+            {
+              "CategoryName": "LED monitori"
+            },
+            {
+              "CategoryName": "Adapteri za monitore"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Računalne komponente",
+          "ChildCategory": [
+            {
+              "CategoryName": "Procesori"
+            },
+            {
+              "CategoryName": "Hladnjaci i ventilatori"
+            },
+            {
+              "CategoryName": "Memorije"
+            },
+            {
+              "CategoryName": "Kućišta"
+            },
+            {
+              "CategoryName": "Napajanja"
+            },
+            {
+              "CategoryName": "Matične ploče"
+            },
+            {
+              "CategoryName": "CD / DVD / FDD uređaji"
+            },
+            {
+              "CategoryName": "Zvučne kartice"
+            },
+            {
+              "CategoryName": "Ostale kartice / komponente"
+            },
+            {
+              "CategoryName": "Hard diskovi"
+            },
+            {
+              "CategoryName": "SSD diskovi"
+            },
+            {
+              "CategoryName": "Grafičke kartice"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Mrežna i wireless oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Routeri i modemi"
+            },
+            {
+              "CategoryName": "Switch / Hub"
+            },
+            {
+              "CategoryName": "Mrežni i Wi-Fi adapteri i kartice"
+            },
+            {
+              "CategoryName": "Adapteri za mobilni internet"
+            },
+            {
+              "CategoryName": "NAS serveri"
+            },
+            {
+              "CategoryName": "Mrežni kabeli"
+            },
+            {
+              "CategoryName": "3G/4G i Wi-Fi antene"
+            },
+            {
+              "CategoryName": "Wi-Fi repeateri / pojačivači"
+            },
+            {
+              "CategoryName": "Ostala mrežna i Wi-Fi oprema"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Pisači / fotokopirni uređaji",
+          "ChildCategory": [
+            {
+              "CategoryName": "Ink-jet pisači / printeri"
+            },
+            {
+              "CategoryName": "Tinte za ink-jet printere"
+            },
+            {
+              "CategoryName": "Laserski pisači / printeri"
+            },
+            {
+              "CategoryName": "Toneri za laserske printere"
+            },
+            {
+              "CategoryName": "Multifunkcijski uređaji"
+            },
+            {
+              "CategoryName": "3D printeri i oprema"
+            },
+            {
+              "CategoryName": "Ostali pisači i uređaji"
+            }
+          ]
+        },
+        {
+          "CategoryName": "USB prijenosna memorija",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Prijenosna računala / laptopi",
+          "ChildCategory": [
+            {
+              "CategoryName": "Acer laptopi"
+            },
+            {
+              "CategoryName": "Asus laptopi"
+            },
+            {
+              "CategoryName": "Apple Macbook laptopi"
+            },
+            {
+              "CategoryName": "Dell laptopi"
+            },
+            {
+              "CategoryName": "Fujitsu Siemens laptopi"
+            },
+            {
+              "CategoryName": "HP / Compaq laptopi"
+            },
+            {
+              "CategoryName": "IBM / Lenovo laptopi"
+            },
+            {
+              "CategoryName": "Sony laptopi"
+            },
+            {
+              "CategoryName": "Toshiba laptopi"
+            },
+            {
+              "CategoryName": "Ostale marke laptopa"
+            },
+            {
+              "CategoryName": "Neispravni laptopi za dijelove"
+            },
+            {
+              "CategoryName": "Dijelovi za prijenosna računala"
+            },
+            {
+              "CategoryName": "Oprema za prijenosna računala"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Tablet računala",
+          "ChildCategory": [
+            {
+              "CategoryName": "Apple iPad tableti"
+            },
+            {
+              "CategoryName": "Huawei tableti"
+            },
+            {
+              "CategoryName": "Lenovo tableti"
+            },
+            {
+              "CategoryName": "Samsung tableti"
+            },
+            {
+              "CategoryName": "Ostale marke tablet računala"
+            },
+            {
+              "CategoryName": "Dijelovi za tablet računala"
+            },
+            {
+              "CategoryName": "Oprema za tablet računala"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Memorijske kartice i čitači",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Igre i igraće konzole",
+          "ChildCategory": [
+            {
+              "CategoryName": "Sony PlayStation"
+            },
+            {
+              "CategoryName": "Nintendo"
+            },
+            {
+              "CategoryName": "Xbox konzole"
+            },
+            {
+              "CategoryName": "Xbox igre"
+            },
+            {
+              "CategoryName": "PC igre i gaming oprema za PC"
+            },
+            {
+              "CategoryName": "Ostale konzole i igre, oprema"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Dronovi i oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Dronovi"
+            },
+            {
+              "CategoryName": "Dijelovi i oprema za dronove"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ostala informatička oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Skeneri"
+            },
+            {
+              "CategoryName": "PC zvučnici, slušalice, mikrofoni"
+            },
+            {
+              "CategoryName": "Web kamere"
+            },
+            {
+              "CategoryName": "Tipkovnice i miševi"
+            },
+            {
+              "CategoryName": "Gadgeti"
+            },
+            {
+              "CategoryName": "Informatička literatura"
+            },
+            {
+              "CategoryName": "Sva ostala informatička oprema"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Mobiteli": {
+      "CategoryName": "Mobiteli",
+      "ChildCategory": [
+        {
+          "CategoryName": "Alcatel mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Apple iPhone",
+          "ChildCategory": [
+            {
+              "CategoryName": "iPhone 13"
+            },
+            {
+              "CategoryName": "iPhone 13 mini"
+            },
+            {
+              "CategoryName": "iPhone 13 Pro"
+            },
+            {
+              "CategoryName": "iPhone 13 Pro Max"
+            },
+            {
+              "CategoryName": "iPhone 12"
+            },
+            {
+              "CategoryName": "iPhone 12 mini"
+            },
+            {
+              "CategoryName": "iPhone 12 Pro"
+            },
+            {
+              "CategoryName": "iPhone 12 Pro Max"
+            },
+            {
+              "CategoryName": "iPhone 11"
+            },
+            {
+              "CategoryName": "iPhone 11 Pro"
+            },
+            {
+              "CategoryName": "iPhone 11 Pro Max"
+            },
+            {
+              "CategoryName": "iPhone X"
+            },
+            {
+              "CategoryName": "iPhone XR"
+            },
+            {
+              "CategoryName": "iPhone XS"
+            },
+            {
+              "CategoryName": "iPhone XS Max"
+            },
+            {
+              "CategoryName": "iPhone SE"
+            },
+            {
+              "CategoryName": "iPhone 8"
+            },
+            {
+              "CategoryName": "iPhone 8 Plus"
+            },
+            {
+              "CategoryName": "iPhone 6"
+            },
+            {
+              "CategoryName": "iPhone 6 Plus"
+            },
+            {
+              "CategoryName": "iPhone 6s"
+            },
+            {
+              "CategoryName": "iPhone 6s Plus"
+            },
+            {
+              "CategoryName": "iPhone 7"
+            },
+            {
+              "CategoryName": "iPhone 7 Plus"
+            },
+            {
+              "CategoryName": "iPhone 5"
+            },
+            {
+              "CategoryName": "iPhone 5c"
+            },
+            {
+              "CategoryName": "iPhone 5s"
+            },
+            {
+              "CategoryName": "iPhone 4 16Gb"
+            },
+            {
+              "CategoryName": "iPhone 4 32Gb"
+            },
+            {
+              "CategoryName": "iPhone 4S"
+            },
+            {
+              "CategoryName": "iPhone 3G"
+            },
+            {
+              "CategoryName": "iPhone 3GS 16Gb"
+            },
+            {
+              "CategoryName": "iPhone 3GS 32Gb"
+            },
+            {
+              "CategoryName": "iPhone 2G"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Blackberry mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Caterpillar mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Cubot mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Doogee mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Google Pixel mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "HTC mobiteli",
+          "ChildCategory": [
+            {
+              "CategoryName": "HTC U Ultra"
+            },
+            {
+              "CategoryName": "HTC 10"
+            },
+            {
+              "CategoryName": "HTC U11"
+            },
+            {
+              "CategoryName": "HTC U12"
+            },
+            {
+              "CategoryName": "HTC One"
+            },
+            {
+              "CategoryName": "HTC One mini"
+            },
+            {
+              "CategoryName": "HTC One X"
+            },
+            {
+              "CategoryName": "HTC Desire"
+            },
+            {
+              "CategoryName": "HTC Wildfire"
+            },
+            {
+              "CategoryName": "HTC HD2"
+            },
+            {
+              "CategoryName": "Ostali HTC mobiteli"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Huawei mobiteli",
+          "ChildCategory": [
+            {
+              "CategoryName": "Huawei G serija"
+            },
+            {
+              "CategoryName": "Huawei Honor serija"
+            },
+            {
+              "CategoryName": "Huawei Mate serija"
+            },
+            {
+              "CategoryName": "Huawei Nova serija"
+            },
+            {
+              "CategoryName": "Huawei P serija"
+            },
+            {
+              "CategoryName": "Huawei Y serija"
+            },
+            {
+              "CategoryName": "Ostali Huawei mobiteli"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Lenovo mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "LG mobiteli",
+          "ChildCategory": [
+            {
+              "CategoryName": "LG Cookie"
+            },
+            {
+              "CategoryName": "LG Optimus L3"
+            },
+            {
+              "CategoryName": "LG Optimus L4"
+            },
+            {
+              "CategoryName": "LG Optimus L5"
+            },
+            {
+              "CategoryName": "LG Optimus L7"
+            },
+            {
+              "CategoryName": "LG G2"
+            },
+            {
+              "CategoryName": "LG G3"
+            },
+            {
+              "CategoryName": "LG G4"
+            },
+            {
+              "CategoryName": "LG G5"
+            },
+            {
+              "CategoryName": "LG G6"
+            },
+            {
+              "CategoryName": "LG G7"
+            },
+            {
+              "CategoryName": "LG V10"
+            },
+            {
+              "CategoryName": "LG G Flex"
+            },
+            {
+              "CategoryName": "Ostali LG mobiteli"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Motorola mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Noa mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Nokia mobiteli",
+          "ChildCategory": [
+            {
+              "CategoryName": "Nokia Lumia"
+            },
+            {
+              "CategoryName": "Nokia X6"
+            },
+            {
+              "CategoryName": "Nokia N97"
+            },
+            {
+              "CategoryName": "Nokia N8"
+            },
+            {
+              "CategoryName": "Nokia 5230"
+            },
+            {
+              "CategoryName": "Nokia 5800"
+            },
+            {
+              "CategoryName": "Nokia E72"
+            },
+            {
+              "CategoryName": "Nokia N95"
+            },
+            {
+              "CategoryName": "Nokia 3310 (2017)"
+            },
+            {
+              "CategoryName": "Ostali Nokia mobiteli"
+            }
+          ]
+        },
+        {
+          "CategoryName": "OnePlus mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Oukitel mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Prestigio mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Samsung mobiteli",
+          "ChildCategory": [
+            {
+              "CategoryName": "Samsung Galaxy S22"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S21"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S20"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S10"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S10+"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S10E"
+            },
+            {
+              "CategoryName": "Samsung Galaxy Note"
+            },
+            {
+              "CategoryName": "Samsung Galaxy Z serija"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S3"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S3 mini"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S4"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S4 mini"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S5"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S5 mini"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S6"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S6 edge"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S7"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S7 edge"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S8"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S8+"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S9"
+            },
+            {
+              "CategoryName": "Samsung Galaxy S9+"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A3"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A5"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A6"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A6+"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A7"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A8"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A9"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A10"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A21s"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A30"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A40"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A50"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A51"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A70"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A71"
+            },
+            {
+              "CategoryName": "Samsung Galaxy A80"
+            },
+            {
+              "CategoryName": "Samsung Galaxy J3"
+            },
+            {
+              "CategoryName": "Samsung Galaxy J4+"
+            },
+            {
+              "CategoryName": "Samsung Galaxy J5"
+            },
+            {
+              "CategoryName": "Samsung Galaxy J6"
+            },
+            {
+              "CategoryName": "Samsung Galaxy J6+"
+            },
+            {
+              "CategoryName": "Samsung Galaxy J7"
+            },
+            {
+              "CategoryName": "Samsung Galaxy Xcover"
+            },
+            {
+              "CategoryName": "Samsung Galaxy"
+            },
+            {
+              "CategoryName": "Samsung S5230"
+            },
+            {
+              "CategoryName": "Samsung Wave"
+            },
+            {
+              "CategoryName": "Samsung Omnia"
+            },
+            {
+              "CategoryName": "Ostali Samsung mobiteli"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Siemens mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Sony Ericsson mobiteli",
+          "ChildCategory": [
+            {
+              "CategoryName": "Sony Ericsson X10"
+            },
+            {
+              "CategoryName": "Sony Ericsson Satio"
+            },
+            {
+              "CategoryName": "Sony Ericsson Vivaz"
+            },
+            {
+              "CategoryName": "Ostali Sony Ericsson mobiteli"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Sony mobiteli",
+          "ChildCategory": [
+            {
+              "CategoryName": "Sony Xperia X"
+            },
+            {
+              "CategoryName": "Sony Xperia X Compact"
+            },
+            {
+              "CategoryName": "Sony Xperia XA"
+            },
+            {
+              "CategoryName": "Sony Xperia XZ"
+            },
+            {
+              "CategoryName": "Sony Xperia Z"
+            },
+            {
+              "CategoryName": "Sony Xperia Z1"
+            },
+            {
+              "CategoryName": "Sony Xperia Z1 Compact"
+            },
+            {
+              "CategoryName": "Sony Xperia Z2"
+            },
+            {
+              "CategoryName": "Sony Xperia Z3"
+            },
+            {
+              "CategoryName": "Sony Xperia Z3 Compact"
+            },
+            {
+              "CategoryName": "Sony Xperia Z5"
+            },
+            {
+              "CategoryName": "Sony Xperia Z5 Compact"
+            },
+            {
+              "CategoryName": "Sony Xperia J"
+            },
+            {
+              "CategoryName": "Sony Xperia M"
+            },
+            {
+              "CategoryName": "Sony Xperia M2"
+            },
+            {
+              "CategoryName": "Sony Xperia M4 Aqua"
+            },
+            {
+              "CategoryName": "Sony Xperia M5"
+            },
+            {
+              "CategoryName": "Sony Xperia E"
+            },
+            {
+              "CategoryName": "Sony Xperia E1"
+            },
+            {
+              "CategoryName": "Sony Xperia E5"
+            },
+            {
+              "CategoryName": "Sony Xperia T3"
+            },
+            {
+              "CategoryName": "Ostali Sony mobiteli"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Vivax mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Xiaomi mobiteli",
+          "ChildCategory": [
+            {
+              "CategoryName": "Xiaomi Mi mobiteli"
+            },
+            {
+              "CategoryName": "Xiaomi Pocophone"
+            },
+            {
+              "CategoryName": "Xiaomi Redmi mobiteli"
+            }
+          ]
+        },
+        {
+          "CategoryName": "ZTE mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Ostali mobiteli",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Memorijske kartice i čitači",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "SIM kartice i bonovi",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Oprema za mobitele",
+          "ChildCategory": [
+            {
+              "CategoryName": "Maskice i torbice za mobitele"
+            },
+            {
+              "CategoryName": "Zaštitna stakla i folije za mobitele"
+            },
+            {
+              "CategoryName": "Power bank, prijenosne baterije"
+            },
+            {
+              "CategoryName": "Držači, nosači i stalci za mobitele"
+            },
+            {
+              "CategoryName": "Punjači i kablovi za mobitele"
+            },
+            {
+              "CategoryName": "Baterije za mobitele"
+            },
+            {
+              "CategoryName": "Ostala oprema za mobitele"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Dijelovi za mobitele",
+          "ChildCategory": [
+            {
+              "CategoryName": "Ekrani i touch screen za mobitele"
+            },
+            {
+              "CategoryName": "Kamere i leće za mobitele"
+            },
+            {
+              "CategoryName": "Kućišta mobitela"
+            },
+            {
+              "CategoryName": "Tipke i gumbi za mobitele"
+            },
+            {
+              "CategoryName": "Matične ploče za mobitele"
+            },
+            {
+              "CategoryName": "Flat kabeli za mobitele"
+            },
+            {
+              "CategoryName": "Mikrofoni za mobitele"
+            },
+            {
+              "CategoryName": "Zvučnici za mobitele"
+            },
+            {
+              "CategoryName": "Ostali dijelovi za mobitele"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Audio, video i foto oprema": {
+      "CategoryName": "Audio, video i foto oprema",
+      "ChildCategory": [
+        {
+          "CategoryName": "TV / video / DVD / satelitska",
+          "ChildCategory": [
+            {
+              "CategoryName": "LED TV"
+            },
+            {
+              "CategoryName": "LCD TV i Plazma TV"
+            },
+            {
+              "CategoryName": "CRT TV"
+            },
+            {
+              "CategoryName": "Media playeri"
+            },
+            {
+              "CategoryName": "Projektori"
+            },
+            {
+              "CategoryName": "DVD playeri i rekorderi"
+            },
+            {
+              "CategoryName": "Kućno kino"
+            },
+            {
+              "CategoryName": "VHS videorekorderi"
+            },
+            {
+              "CategoryName": "Satelitska TV oprema"
+            },
+            {
+              "CategoryName": "Ostalo za TV"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Video kamere i oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Analogne video kamere"
+            },
+            {
+              "CategoryName": "Digitalne video kamere"
+            },
+            {
+              "CategoryName": "Sportske i akcijske kamere"
+            },
+            {
+              "CategoryName": "Oprema za video kamere"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Fotoaparati i foto oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Digitalni kompaktni fotoaparati"
+            },
+            {
+              "CategoryName": "DSLR fotoaparati"
+            },
+            {
+              "CategoryName": "Analogni fotoaparati"
+            },
+            {
+              "CategoryName": "Objektivi"
+            },
+            {
+              "CategoryName": "Sjenila i poklopci"
+            },
+            {
+              "CategoryName": "Filteri"
+            },
+            {
+              "CategoryName": "Bljeskalice"
+            },
+            {
+              "CategoryName": "Daljinski okidači"
+            },
+            {
+              "CategoryName": "Stativi i monopodi"
+            },
+            {
+              "CategoryName": "Memorijske kartice i čitači"
+            },
+            {
+              "CategoryName": "Baterije i punjači"
+            },
+            {
+              "CategoryName": "Torbe za foto opremu"
+            },
+            {
+              "CategoryName": "Zaštitna kućišta"
+            },
+            {
+              "CategoryName": "Studijska rasvjeta i oprema"
+            },
+            {
+              "CategoryName": "Ostala foto oprema i pribor"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Audio oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Gramofoni"
+            },
+            {
+              "CategoryName": "Linije i radio kasetofoni"
+            },
+            {
+              "CategoryName": "Hi-Fi komponente i pojačala"
+            },
+            {
+              "CategoryName": "Zvučnici, zvučne kutije"
+            },
+            {
+              "CategoryName": "Slušalice"
+            },
+            {
+              "CategoryName": "Diktafoni"
+            },
+            {
+              "CategoryName": "Ostala audio oprema"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Auto akustika i navigacija",
+          "ChildCategory": [
+            {
+              "CategoryName": "Auto radiokasetofoni"
+            },
+            {
+              "CategoryName": "Auto MP3, CD i DVD playeri"
+            },
+            {
+              "CategoryName": "Auto zvučnici i pojačala"
+            },
+            {
+              "CategoryName": "GPS navigacija"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Filmovi i glazba",
+          "ChildCategory": [
+            {
+              "CategoryName": "DVD i Blu-Ray filmovi"
+            },
+            {
+              "CategoryName": "Glazbeni CD-i"
+            },
+            {
+              "CategoryName": "VHS kasete"
+            },
+            {
+              "CategoryName": "Gramofonske ploče"
+            },
+            {
+              "CategoryName": "Audio kasete"
+            }
+          ]
+        },
+        {
+          "CategoryName": "iPod, MP3 i MP4 playeri"
+        },
+        {
+          "CategoryName": "Radio stanice i radioamaterstvo",
+          "ChildCategory": [
+            {
+              "CategoryName": "Radio stanice i uređaji"
+            },
+            {
+              "CategoryName": "Antene i antenska oprema"
+            },
+            {
+              "CategoryName": "Dijelovi za radio stanice i uređaje"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ostala audio-video-foto oprema"
+        }
+      ]
+    }
   }
 ]
