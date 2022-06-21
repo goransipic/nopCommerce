@@ -8321,5 +8321,517 @@
         }
       ]
     }
+  },
+  {
+    "Sport i oprema": {
+      "CategoryName": "Sport i oprema",
+      "ChildCategory": [
+        {
+          "CategoryName": "Airsoft i paintball oprema"
+        },
+        {
+          "CategoryName": "Alpinizam i planinarenje"
+        },
+        {
+          "CategoryName": "Bicikli i biciklistička oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "BMX i DIRT bicikli"
+            },
+            {
+              "CategoryName": "Cestovni bicikli - Specijalke"
+            },
+            {
+              "CategoryName": "MTB bicikli"
+            },
+            {
+              "CategoryName": "Trekking i Touring bicikli"
+            },
+            {
+              "CategoryName": "Gradski bicikli"
+            },
+            {
+              "CategoryName": "Dječji bicikli"
+            },
+            {
+              "CategoryName": "Električni bicikli"
+            },
+            {
+              "CategoryName": "Ostali bicikli"
+            },
+            {
+              "CategoryName": "Dijelovi za bicikle"
+            },
+            {
+              "CategoryName": "Oprema za bicikle i bicikliste"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Biljarski stolovi i oprema"
+        },
+        {
+          "CategoryName": "Borilački sportovi"
+        },
+        {
+          "CategoryName": "Dodaci prehrani",
+          "ChildCategory": [
+            {
+              "CategoryName": "Whey protein"
+            },
+            {
+              "CategoryName": "Kreatin"
+            },
+            {
+              "CategoryName": "Vitamini i minerali"
+            },
+            {
+              "CategoryName": "Ostali dodaci prehrani"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Fitness oprema"
+        },
+        {
+          "CategoryName": "Golf oprema"
+        },
+        {
+          "CategoryName": "Kampiranje i kamp oprema"
+        },
+        {
+          "CategoryName": "Navijački rekviziti"
+        },
+        {
+          "CategoryName": "Nogometna oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Kopačke"
+            },
+            {
+              "CategoryName": "Nogometne lopte"
+            },
+            {
+              "CategoryName": "Ostala nogometna oprema"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Oružje i oprema za lov",
+          "ChildCategory": [
+            {
+              "CategoryName": "Zračne puške i pištolji"
+            },
+            {
+              "CategoryName": "Plinske puške i pištolji"
+            },
+            {
+              "CategoryName": "Vatreno oružje"
+            },
+            {
+              "CategoryName": "Streljivo i spremnici"
+            },
+            {
+              "CategoryName": "Noževi i ostala sječiva"
+            },
+            {
+              "CategoryName": "Futrole"
+            },
+            {
+              "CategoryName": "Koferi i ormari za pohranu oružja"
+            },
+            {
+              "CategoryName": "Samoobrana"
+            },
+            {
+              "CategoryName": "Praćke"
+            },
+            {
+              "CategoryName": "Baterijske lampe i ručne svjetiljke"
+            },
+            {
+              "CategoryName": "Dalekozori i dvogledi"
+            },
+            {
+              "CategoryName": "Optika"
+            },
+            {
+              "CategoryName": "Lovačka odjeća i obuća"
+            },
+            {
+              "CategoryName": "Trofeji"
+            },
+            {
+              "CategoryName": "Streličarska oprema"
+            },
+            {
+              "CategoryName": "Zamke, mamci i kavezi"
+            },
+            {
+              "CategoryName": "Ostalo oružje i lovačka oprema"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Poker oprema"
+        },
+        {
+          "CategoryName": "Ribolovni pribor i oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Ribolovni štapovi"
+            },
+            {
+              "CategoryName": "Role za ribolov"
+            },
+            {
+              "CategoryName": "Mamci i varalice"
+            },
+            {
+              "CategoryName": "Plovci i olovo"
+            },
+            {
+              "CategoryName": "Udice i parangali"
+            },
+            {
+              "CategoryName": "Najloni i upredenice za ribolov"
+            },
+            {
+              "CategoryName": "Mreže, vrše i podmetači"
+            },
+            {
+              "CategoryName": "Indikatori ugriza"
+            },
+            {
+              "CategoryName": "Torbe za ribolov"
+            },
+            {
+              "CategoryName": "Rasvjeta za ribolov"
+            },
+            {
+              "CategoryName": "Odjeća i obuća za ribolov"
+            },
+            {
+              "CategoryName": "Podvodne puške 100Ostala oprema i pribor za ribolov"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ritmika, ples i balet"
+        },
+        {
+          "CategoryName": "Role i oprema za rolanje"
+        },
+        {
+          "CategoryName": "Romobili i hoverboardi",
+          "ChildCategory": [
+            {
+              "CategoryName": "Romobili"
+            },
+            {
+              "CategoryName": "Električni romobili"
+            },
+            {
+              "CategoryName": "Hoverboardi i električni monocikli"
+            },
+            {
+              "CategoryName": "Ostalo za romobile i hoverboarde"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Skateboard"
+        },
+        {
+          "CategoryName": "Sportski dresovi",
+          "ChildCategory": [
+            {
+              "CategoryName": "Nogometni dresovi"
+            },
+            {
+              "CategoryName": "Košarkaški dresovi"
+            },
+            {
+              "CategoryName": "Ostali sportski dresovi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Sportski zrakoplovi i oprema"
+        },
+        {
+          "CategoryName": "Teniski reketi i oprema"
+        },
+        {
+          "CategoryName": "Vodeni sportovi"
+        },
+        {
+          "CategoryName": "Zimski sportovi",
+          "ChildCategory": [
+            {
+              "CategoryName": "Skijanje / ski oprema"
+            },
+            {
+              "CategoryName": "Bordanje / snowboard oprema"
+            },
+            {
+              "CategoryName": "Klizanje / klizaljke"
+            },
+            {
+              "CategoryName": "Sanjkanje / Sanjke"
+            },
+            {
+              "CategoryName": "Hokej oprema"
+            },
+            {
+              "CategoryName": "Ostali zimski sportovi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ostala sportska oprema"
+        }
+      ]
+    }
+  },
+  {
+    "Pronađeno blago": {
+      "CategoryName": "Pronađeno blago",
+      "ChildCategory": [
+        {
+          "CategoryName": "Antikviteti"
+        },
+        {
+          "CategoryName": "Antikvarne knjige"
+        },
+        {
+          "CategoryName": "Starine"
+        },
+        {
+          "CategoryName": "Replike"
+        },
+        {
+          "CategoryName": "Militarija"
+        },
+        {
+          "CategoryName": "Umjetničke slike"
+        },
+        {
+          "CategoryName": "Skulpture"
+        },
+        {
+          "CategoryName": "Suveniri"
+        },
+        {
+          "CategoryName": "Razglednice i fotografije"
+        },
+        {
+          "CategoryName": "Posteri i plakati"
+        },
+        {
+          "CategoryName": "Sličice i albumi"
+        },
+        {
+          "CategoryName": "Telefonske kartice"
+        },
+        {
+          "CategoryName": "Gobleni i tapiserije"
+        },
+        {
+          "CategoryName": "Filatelija"
+        },
+        {
+          "CategoryName": "Značke"
+        },
+        {
+          "CategoryName": "Numizmatika",
+          "ChildCategory": [
+            {
+              "CategoryName": "Kovanice"
+            },
+            {
+              "CategoryName": "Novčanice"
+            },
+            {
+              "CategoryName": "Ostalo za numizmatiku"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Materijal i oprema za umjetnost",
+          "ChildCategory": [
+            {
+              "CategoryName": "Decoupage"
+            },
+            {
+              "CategoryName": "Slikarstvo"
+            },
+            {
+              "CategoryName": "Ostali umjetnički materijal i oprema"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Dječji svijet - sve za djecu i bebe": {"CategoryName": "Dječji svijet - sve za djecu i bebe",
+      "ChildCategory": [
+        {
+          "CategoryName": "Oprema za bebe",
+          "ChildCategory": [
+            {
+              "CategoryName": "Auto-sjedalice"
+            },
+            {
+              "CategoryName": "Baby monitori"
+            },
+            {
+              "CategoryName": "Bočice i pribor"
+            },
+            {
+              "CategoryName": "Dječja kolica"
+            },
+            {
+              "CategoryName": "Hodalice"
+            },
+            {
+              "CategoryName": "Hranilice"
+            },
+            {
+              "CategoryName": "Kadice za kupanje"
+            },
+            {
+              "CategoryName": "Komode i podloge za previjanje"
+            },
+            {
+              "CategoryName": "Krevetići"
+            },
+            {
+              "CategoryName": "Nosiljke i klokanice"
+            },
+            {
+              "CategoryName": "Njihaljke i ležaljke"
+            },
+            {
+              "CategoryName": "Pelene"
+            },
+            {
+              "CategoryName": "Vreće za spavanje"
+            },
+            {
+              "CategoryName": "Vrtići"
+            },
+            {
+              "CategoryName": "Ostala oprema za bebe"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Dječja odjeća i obuća",
+          "ChildCategory": [
+            {
+              "CategoryName": "Odjeća za bebe"
+            },
+            {
+              "CategoryName": "Obuća za bebe"
+            },
+            {
+              "CategoryName": "Odjeća za djecu"
+            },
+            {
+              "CategoryName": "Obuća za djecu"
+            },
+            {
+              "CategoryName": "Dječje kape, rukavice i šalovi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Društvene igre"
+        },
+        {
+          "CategoryName": "Igračke",
+          "ChildCategory": [
+            {
+              "CategoryName": "Lego"
+            },
+            {
+              "CategoryName": "Plišane igračke"
+            },
+            {
+              "CategoryName": "Lutke"
+            },
+            {
+              "CategoryName": "Figure"
+            },
+            {
+              "CategoryName": "Igračke za bebe"
+            },
+            {
+              "CategoryName": "Igračke na daljinsko upravljanje"
+            },
+            {
+              "CategoryName": "Igračke vozila i plovila"
+            },
+            {
+              "CategoryName": "Puzzle"
+            },
+            {
+              "CategoryName": "Tobogani, ljuljačke i penjalice"
+            },
+            {
+              "CategoryName": "Ostale igračke"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Sličice i albumi"
+        },
+        {
+          "CategoryName": "Dječje sobe namještaj",
+          "ChildCategory": [
+            {
+              "CategoryName": "Dječje sobe kompleti"
+            },
+            {
+              "CategoryName": "Ormari"
+            },
+            {
+              "CategoryName": "Komode"
+            },
+            {
+              "CategoryName": "Dječji kreveti"
+            },
+            {
+              "CategoryName": "Ostalo za dječju sobu"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Dječje knjige",
+          "ChildCategory": [
+            {
+              "CategoryName": "Dječji romani i priče"
+            },
+            {
+              "CategoryName": "Bajke i basne"
+            },
+            {
+              "CategoryName": "Slikovnice"
+            },
+            {
+              "CategoryName": "Ostale dječje knjige"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Odjeća za trudnice"
+        },
+        {
+          "CategoryName": "Ostalo za djecu"
+        }
+      ]
+    }
   }
 ]
