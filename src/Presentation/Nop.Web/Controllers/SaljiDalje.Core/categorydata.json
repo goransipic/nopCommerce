@@ -7939,5 +7939,387 @@
         }
       ]
     }
+  },
+  {
+    "Glazbala / Glazbeni instrumenti": {
+      "CategoryName": "Glazbala / Glazbeni instrumenti",
+      "ChildCategory": [
+        {
+          "CategoryName": "Trzalački instrumenti i oprema",
+          "ChildCategory": [
+            {
+              "ChildCategory": "Akustične i elektro-akustične gitare"
+            },
+            {
+              "ChildCategory": "Klasične gitare"
+            },
+            {
+              "ChildCategory": "Električne gitare"
+            },
+            {
+              "ChildCategory": "Bas gitare"
+            },
+            {
+              "ChildCategory": "Tamburaški instrumenti"
+            },
+            {
+              "ChildCategory": "Ostali trzalački instrumenti"
+            },
+            {
+              "ChildCategory": "Gitarska pojačala"
+            },
+            {
+              "ChildCategory": "Bas pojačala"
+            },
+            {
+              "ChildCategory": "Procesori, efekti, pedale i kontroleri"
+            },
+            {
+              "ChildCategory": "Ostala oprema za trzalačke instrumente"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Gudački instrumenti i oprema",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Puhački instrumenti i oprema",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Udaraljke i oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Bubnjevi"
+            },
+            {
+              "CategoryName": "Elektronski bubnjevi"
+            },
+            {
+              "CategoryName": "Ostale udaraljke"
+            },
+            {
+              "CategoryName": "Činele"
+            },
+            {
+              "CategoryName": "Elementi i oprema za udaraljke"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Klavijature i oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Klaviri"
+            },
+            {
+              "CategoryName": "Pianina"
+            },
+            {
+              "CategoryName": "Harmonike"
+            },
+            {
+              "CategoryName": "Ostale klavijature"
+            },
+            {
+              "CategoryName": "Oprema za klavijature"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Razglasi i studio oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Razglasi"
+            },
+            {
+              "CategoryName": "Miksete / Mikseri"
+            },
+            {
+              "CategoryName": "Mikrofoni"
+            },
+            {
+              "CategoryName": "Zvučnici, zvučne kutije"
+            },
+            {
+              "CategoryName": "Razglasna oprema"
+            },
+            {
+              "CategoryName": "Studijska oprema"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ostali glazbeni instrumenti",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Scenska oprema",
+          "ChildCategory": [
+            {
+              "CategoryName": "Scenska rasvjeta"
+            },
+            {
+              "CategoryName": "Mašine za dim, pjenu i balone"
+            },
+            {
+              "CategoryName": "Pozornice i konstrukcije"
+            },
+            {
+              "CategoryName": "Ostala scenska oprema i dijelovi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ostala glazbena oprema",
+          "ChildCategory": []
+        }
+      ]
+    }
+  },
+  {
+    "Literatura": {
+      "CategoryName": "Literatura",
+      "ChildCategory": [
+        {
+          "CategoryName": "Antikvarne knjige",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Časopisi i magazini",
+          "ChildCategory": [
+            {
+              "CategoryName": "Auto moto časopisi i magazini"
+            },
+            {
+              "CategoryName": "Lifestyle i popularno-znanstveni časopisi"
+            },
+            {
+              "CategoryName": "Računalni i informatički časopisi i magazini"
+            },
+            {
+              "CategoryName": "Sportski časopisi i magazini"
+            },
+            {
+              "CategoryName": "Znanstveni i stručni časopisi"
+            },
+            {
+              "CategoryName": "Ostali časopisi i magazini"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Dječje knjige",
+          "ChildCategory": [
+            {
+              "CategoryName": "Dječji romani i priče"
+            },
+            {
+              "CategoryName": "Bajke i basne"
+            },
+            {
+              "CategoryName": "Slikovnice"
+            },
+            {
+              "CategoryName": "Ostale dječje knjige"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Enciklopedije i leksikoni",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Književnost",
+          "ChildCategory": [
+            {
+              "CategoryName": "Horor romani"
+            },
+            {
+              "CategoryName": "Hrvatska književnost"
+            },
+            {
+              "CategoryName": "Humoristična književnost"
+            },
+            {
+              "CategoryName": "Književni klasici"
+            },
+            {
+              "CategoryName": "Krimi i Triler romani"
+            },
+            {
+              "CategoryName": "Ljubavni romani"
+            },
+            {
+              "CategoryName": "Poezija"
+            },
+            {
+              "CategoryName": "Povijesni romani"
+            },
+            {
+              "CategoryName": "Znanstveno fantastični romani"
+            },
+            {
+              "CategoryName": "Ostala književnost"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Kuharice i prehrana",
+          "ChildCategory": [
+          ]
+        },
+        {
+          "CategoryName": "Publicistika",
+          "ChildCategory": [
+            {
+              "CategoryName": "Biografije i autobiografije"
+            },
+            {
+              "CategoryName": "Literatura o sportu"
+            },
+            {
+              "CategoryName": "Literatura za obitelj i roditeljstvo"
+            },
+            {
+              "CategoryName": "Literatura za osobni rast i samopomoć"
+            },
+            {
+              "CategoryName": "Literatura za putovanja"
+            },
+            {
+              "CategoryName": "Monografije"
+            },
+            {
+              "CategoryName": "Popularno-znanstvena literatura"
+            },
+            {
+              "CategoryName": "Poslovna literatura"
+            },
+            {
+              "CategoryName": "Povijesna i politička literatura"
+            },
+            {
+              "CategoryName": "Ostala publicistika"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Religija i mitologija",
+          "ChildCategory": [
+          ]
+        },
+        {
+          "CategoryName": "Rječnici",
+          "ChildCategory": [
+          ]
+        },
+        {
+          "CategoryName": "Stripovi",
+          "ChildCategory": [
+            {
+              "CategoryName": "Europski strip"
+            },
+            {
+              "CategoryName": "Američki strip"
+            },
+            {
+              "CategoryName": "Manga"
+            },
+            {
+              "CategoryName": "Ostali stripovi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Stručna literatura",
+          "ChildCategory": [
+            {
+              "CategoryName": "Film i kazalište"
+            },
+            {
+              "CategoryName": "Informatika"
+            },
+            {
+              "CategoryName": "Umjetnost, moda i dizajn"
+            },
+            {
+              "CategoryName": "Ekonomija i marketing"
+            },
+            {
+              "CategoryName": "Filozofija, etika i teologija"
+            },
+            {
+              "CategoryName": "Fizika i astronomija"
+            },
+            {
+              "CategoryName": "Geografija i geologija"
+            },
+            {
+              "CategoryName": "Građevina i arhitektura"
+            },
+            {
+              "CategoryName": "Kemija, biologija i metalurgija"
+            },
+            {
+              "CategoryName": "Medicina i farmacija"
+            },
+            {
+              "CategoryName": "Politika i novinarstvo"
+            },
+            {
+              "CategoryName": "Poljoprivreda i šumarstvo"
+            },
+            {
+              "CategoryName": "Povijest i arheologija"
+            },
+            {
+              "CategoryName": "Teorija književnosti i jezika"
+            },
+            {
+              "CategoryName": "Psihologija, sociologija i pedagogija"
+            },
+            {
+              "CategoryName": "Matematika"
+            },
+            {
+              "CategoryName": "Pravo"
+            },
+            {
+              "CategoryName": "Strojarstvo i elektrotehnika"
+            },
+            {
+              "CategoryName": "Vojna znanost"
+            },
+            {
+              "CategoryName": "Ostala stručna literatura"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Školski udžbenici",
+          "ChildCategory": [
+            {
+              "CategoryName": "Knjige od 1. do 4. razreda osnovne škole"
+            },
+            {
+              "CategoryName": "Knjige od 5. do 8. razreda osnovne škole"
+            },
+            {
+              "CategoryName": "Udžbenici za gimnazije"
+            },
+            {
+              "CategoryName": "Udžbenici za strukovne škole"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ostala literatura",
+          "ChildCategory": [
+          ]
+        }
+      ]
+    }
   }
 ]
