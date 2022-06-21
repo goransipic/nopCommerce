@@ -5853,5 +5853,982 @@
         }
       ]
     }
+  },
+  {
+    "Hrana i piće": {
+      "CategoryName": "Hrana i piće",
+      "ChildCategory": [
+        {
+          "CategoryName": "Napitci",
+          "ChildCategory": [
+            {
+              "CategoryName": "Sokovi"
+            },
+            {
+              "CategoryName": "Čajevi"
+            },
+            {
+              "CategoryName": "Kava"
+            },
+            {
+              "CategoryName": "Ostali bezalkoholni napitci"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Mliječni proizvodi i jaja",
+          "ChildCategory": [
+            {
+              "CategoryName": "Mlijeko"
+            },
+            {
+              "CategoryName": "Sir"
+            },
+            {
+              "CategoryName": "Jaja"
+            },
+            {
+              "CategoryName": "Ostali mliječni proizvodi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Med i pčelinji proizvodi",
+          "ChildCategory": [
+            {
+              "CategoryName": "Domaći med"
+            },
+            {
+              "CategoryName": "Propolis"
+            },
+            {
+              "CategoryName": "Matična mliječ"
+            },
+            {
+              "CategoryName": "Ostali pčelinji proizvodi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ulje i mast",
+          "ChildCategory": [
+            {
+              "CategoryName": "Maslinovo ulje"
+            },
+            {
+              "CategoryName": "Bučino ulje"
+            },
+            {
+              "CategoryName": "Svinjska mast"
+            },
+            {
+              "CategoryName": "Ostalo ulje i mast"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Delikatesa",
+          "ChildCategory": [
+            {
+              "CategoryName": "Pršut, slanina i šunka"
+            },
+            {
+              "CategoryName": "Kobasice i salame"
+            },
+            {
+              "CategoryName": "Ostale delikatese"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Svježe meso",
+          "ChildCategory": [
+            {
+              "CategoryName": "Svinjetina"
+            },
+            {
+              "CategoryName": "Piletina i ostala perad"
+            },
+            {
+              "CategoryName": "Teletina, junetina, govedina"
+            },
+            {
+              "CategoryName": "Janjetina, divljač i ostalo meso"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Voće, povrće i gljive",
+          "ChildCategory": [
+            {
+              "CategoryName": "Voće"
+            },
+            {
+              "CategoryName": "Povrće"
+            },
+            {
+              "CategoryName": "Gljive"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Zimnica",
+          "ChildCategory": [
+            {
+              "CategoryName": "Pekmezi, džemovi i marmelade"
+            },
+            {
+              "CategoryName": "Ajvar i pinđur"
+            },
+            {
+              "CategoryName": "Ukiseljeno povrće"
+            },
+            {
+              "CategoryName": "Ostala zimnica"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Orašasti plodovi i sjemenke",
+          "ChildCategory": [
+            {
+              "CategoryName": "Orasi"
+            },
+            {
+              "CategoryName": "Lješnjaci"
+            },
+            {
+              "CategoryName": "Bademi"
+            },
+            {
+              "CategoryName": "Bučine sjemenke"
+            },
+            {
+              "CategoryName": "Ostali orašasti plodovi i sjemenke"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ocat i začini",
+          "ChildCategory": [
+            {
+              "CategoryName": "Mljevena paprika i ljute papričice"
+            },
+            {
+              "CategoryName": "Ocat"
+            },
+            {
+              "CategoryName": "Papar"
+            },
+            {
+              "CategoryName": "Ostali začini"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Brašno, kruh, tijesto i žitarice",
+          "ChildCategory": [
+            {
+              "CategoryName": "Brašno"
+            },
+            {
+              "CategoryName": "Kruh i peciva"
+            },
+            {
+              "CategoryName": "Tjestenina i ostale vrste tijesta"
+            },
+            {
+              "CategoryName": "Riža i žitarice"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Kolači i slatkiši"
+        },
+        {
+          "CategoryName": "Ostala hrana i piće"
+        }
+      ]
+    }
+  },
+  {
+    "Turizam": {
+      "CategoryName": "Turizam",
+      "ChildCategory": [
+        {
+          "CategoryName": "Privatni smještaj u Hrvatskoj"
+        },
+        {
+          "CategoryName": "Ostalo vezano uz turizam i gastronomiju"
+        },
+        {
+          "CategoryName": "Putovanja i putni aranžmani"
+        },
+        {
+          "CategoryName": "Skijanje i zimovanje",
+          "ChildCategory": [
+            {
+              "CategoryName": "Skijanje ostale zemlje"
+            },
+            {
+              "CategoryName": "Skijanje Austrija"
+            },
+            {
+              "CategoryName": "Skijanje Francuska"
+            },
+            {
+              "CategoryName": "Skijanje Slovenija"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Domaći hoteli",
+          "ChildCategory": [
+            {
+              "CategoryName": "Hoteli južna Dalmacija"
+            },
+            {
+              "CategoryName": "Hoteli sjeverna Dalmacija"
+            },
+            {
+              "CategoryName": "Hoteli kontinentalna Hrvatska"
+            },
+            {
+              "CategoryName": "Hoteli Kvarner i Primorje"
+            },
+            {
+              "CategoryName": "Hoteli srednja Dalmacija"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Usluge": {
+      "CategoryName": "Usluge",
+      "ChildCategory": [
+        {
+          "CategoryName": "Građevinska i zemljišna dokumentacija",
+          "ChildCategory": [
+            {
+              "CategoryName": "Energetsko certificiranje"
+            },
+            {
+              "CategoryName": "Legalizacija objekata"
+            },
+            {
+              "CategoryName": "Arhitektonske usluge"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Servisiranje vozila",
+          "ChildCategory": [
+            {
+              "CategoryName": "Vulkanizeri"
+            },
+            {
+              "CategoryName": "Automehaničari"
+            },
+            {
+              "CategoryName": "Autoelektričari"
+            },
+            {
+              "CategoryName": "Autolimari, lakiranje auta"
+            },
+            {
+              "CategoryName": "Autopraonice i kemijsko čišćenje"
+            },
+            {
+              "CategoryName": "Servis i ugradnja klima uređaja"
+            },
+            {
+              "CategoryName": "Ostali servisi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Iznajmljivanje vozila",
+          "ChildCategory": [
+            {
+              "CategoryName": "Rent-A-Car"
+            },
+            {
+              "CategoryName": "Iznajmljivanje kombija i dostavnih vozila"
+            },
+            {
+              "CategoryName": "Iznajmljivanje limuzina i oldtimera"
+            },
+            {
+              "CategoryName": "Iznajmljivanje ostalih vozila"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Servis strojeva i alata",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Iznajmljivanje strojeva i alata",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Servisiranje plovila",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Servisiranje uređaja, opreme i glazbala",
+          "ChildCategory": [
+            {
+              "CategoryName": "Servis TV, audio i video uređaja"
+            },
+            {
+              "CategoryName": "Servis mobitela"
+            },
+            {
+              "CategoryName": "Servis kućanskih aparata"
+            },
+            {
+              "CategoryName": "Servis klima uređaja"
+            },
+            {
+              "CategoryName": "Servis računala"
+            },
+            {
+              "CategoryName": "Servis igraćih konzola"
+            },
+            {
+              "CategoryName": "Ostali uređaji, oprema i glazbala"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Održavanje, čišćenje i kućanski poslovi",
+          "ChildCategory": [
+            {
+              "CategoryName": "Čišćenje, održavanje, pranje i peglanje"
+            },
+            {
+              "CategoryName": "Kućni majstor"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Baby sitting / čuvanje djece",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Popravci i održavanje odjeće i obuće",
+          "ChildCategory": [
+            {
+              "CategoryName": "Pletenje"
+            },
+            {
+              "CategoryName": "Krojačke usluge"
+            },
+            {
+              "CategoryName": "Postolari"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ljepota i njega",
+          "ChildCategory": [
+            {
+              "CategoryName": "Kozmetički saloni"
+            },
+            {
+              "CategoryName": "Frizerski saloni"
+            },
+            {
+              "CategoryName": "Masaže"
+            },
+            {
+              "CategoryName": "Manikura i pedikura"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Kućni ljubimci",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Građevinske usluge",
+          "ChildCategory": [
+            {
+              "CategoryName": "Građenje i iskopi"
+            },
+            {
+              "CategoryName": "Vodoinstalateri"
+            },
+            {
+              "CategoryName": "Elektroinstalateri"
+            },
+            {
+              "CategoryName": "Soboslikari, ličioci"
+            },
+            {
+              "CategoryName": "Parketari"
+            },
+            {
+              "CategoryName": "Keramičari"
+            },
+            {
+              "CategoryName": "Fasaderi"
+            },
+            {
+              "CategoryName": "Krovopokrivači"
+            },
+            {
+              "CategoryName": "Stolari"
+            },
+            {
+              "CategoryName": "Staklari"
+            },
+            {
+              "CategoryName": "Bravari"
+            },
+            {
+              "CategoryName": "Ograde i metalne konstrukcije"
+            },
+            {
+              "CategoryName": "Adaptacija i gradnja po sistemu “Ključ u ruke”"
+            },
+            {
+              "CategoryName": "Ostale građevinske usluge"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Dizajn interijera i namještaj po mjeri",
+          "ChildCategory": [
+            {
+              "CategoryName": "Uređenje interijera"
+            },
+            {
+              "CategoryName": "Izrada namještaja po mjeri"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Uređenje vrta, okućnice i izrada vrtnog namještaja",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Transporti i selidbe",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Instrukcije i poduke",
+          "ChildCategory": [
+            {
+              "CategoryName": "Instrukcije za osnovne, srednje škole i fakultete"
+            },
+            {
+              "CategoryName": "Učenje stranih jezika"
+            },
+            {
+              "CategoryName": "Škole sporta, sportski klubovi i treneri"
+            },
+            {
+              "CategoryName": "Ostale poduke i tečajevi"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Intelektualne usluge",
+          "ChildCategory": [
+            {
+              "CategoryName": "Knjigovodstvene i računovodstvene usluge"
+            },
+            {
+              "CategoryName": "Prijevodi i prijepisi"
+            },
+            {
+              "CategoryName": "Dizajn i tisak"
+            },
+            {
+              "CategoryName": "Ostale intelektualne usluge"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Proslave, vjenčanja i događanja",
+          "ChildCategory": [
+            {
+              "CategoryName": "Fotografi i snimatelji"
+            },
+            {
+              "CategoryName": "Izrada pozivnica, zahvalnica i čestitki"
+            },
+            {
+              "CategoryName": "Najam bendova, pjevača, dj-a, zabavljača"
+            },
+            {
+              "CategoryName": "Najam rasvjete, razglasa i ozvučenja"
+            },
+            {
+              "CategoryName": "Najam šatora, stolova i stolica"
+            },
+            {
+              "CategoryName": "Najam vjenčanica i odijela"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Najam prostora i dvorana",
+          "ChildCategory": [
+            {
+              "CategoryName": "Najam prostora za proslave"
+            },
+            {
+              "CategoryName": "Najam sportskih dvorana, terena i poslovnih prostora"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ostale usluge",
+          "ChildCategory": []
+        }
+      ]
+    }
+  },
+  {
+    "Sve za dom": {
+      "CategoryName": "Sve za dom",
+      "ChildCategory": [
+        {
+          "CategoryName": "Namještaj",
+          "ChildCategory": [
+            {
+              "CategoryName": "Namještaj za kuhinju"
+            },
+            {
+              "CategoryName": "Blagovaonski stolovi i stolice"
+            },
+            {
+              "CategoryName": "Namještaj za dnevni boravak"
+            },
+            {
+              "CategoryName": "Sjedeće garniture"
+            },
+            {
+              "CategoryName": "Namještaj za dječju sobu"
+            },
+            {
+              "CategoryName": "Namještaj za spavaću sobu"
+            },
+            {
+              "CategoryName": "Namještaj za ured"
+            },
+            {
+              "CategoryName": "Kupaonski namještaj"
+            },
+            {
+              "CategoryName": "Namještaj za predsoblje"
+            },
+            {
+              "CategoryName": "Dijelovi i oprema za namještaj"
+            },
+            {
+              "CategoryName": "Stilski namještaj"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Dekoracije za dom",
+          "ChildCategory": [
+            {
+              "CategoryName": "Naljepnice za zid"
+            },
+            {
+              "CategoryName": "Ukrasne svijeće"
+            },
+            {
+              "CategoryName": "Ukrasne kutije"
+            },
+            {
+              "CategoryName": "Vaze"
+            },
+            {
+              "CategoryName": "Figurice"
+            },
+            {
+              "CategoryName": "Svijećnjaci"
+            },
+            {
+              "CategoryName": "Zidni satovi"
+            },
+            {
+              "CategoryName": "Ostale dekoracije"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Masažne fotelje i stolice",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Suđe i posuđe",
+          "ChildCategory": [
+            {
+              "CategoryName": "Čaše"
+            },
+            {
+              "CategoryName": "Šalice"
+            },
+            {
+              "CategoryName": "Tanjuri"
+            },
+            {
+              "CategoryName": "Pribor za jelo"
+            },
+            {
+              "CategoryName": "Zdjele i posude"
+            },
+            {
+              "CategoryName": "Lonci i tave"
+            },
+            {
+              "CategoryName": "Pladnjevi i tacne"
+            },
+            {
+              "CategoryName": "Ostalo suđe i posuđe"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Kućanski tekstil",
+          "ChildCategory": [
+            {
+              "CategoryName": "Jastuci"
+            },
+            {
+              "CategoryName": "Posteljina"
+            },
+            {
+              "CategoryName": "Prekrivači i deke"
+            },
+            {
+              "CategoryName": "Ručnici"
+            },
+            {
+              "CategoryName": "Stolnjaci i tabletići"
+            },
+            {
+              "CategoryName": "Zavjese"
+            },
+            {
+              "CategoryName": "Karniše i dodaci za zavjese"
+            },
+            {
+              "CategoryName": "Ostali kućanski tekstil"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Tepisi i sagovi",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Rasvjeta",
+          "ChildCategory": [
+            {
+              "CategoryName": "LED rasvjeta"
+            },
+            {
+              "CategoryName": "Lusteri i visilice"
+            },
+            {
+              "CategoryName": "Stropna rasvjeta i plafonjere"
+            },
+            {
+              "CategoryName": "Zidna rasvjeta"
+            },
+            {
+              "CategoryName": "Podne lampe"
+            },
+            {
+              "CategoryName": "Stolne lampe"
+            },
+            {
+              "CategoryName": "Ugradbena rasvjeta"
+            },
+            {
+              "CategoryName": "Reflektori"
+            },
+            {
+              "CategoryName": "Žarulje"
+            },
+            {
+              "CategoryName": "Vanjska rasvjeta"
+            },
+            {
+              "CategoryName": "Pribor i oprema"
+            },
+            {
+              "CategoryName": "Ostala rasvjeta"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Kućanski aparati - uređaji",
+          "ChildCategory": [
+            {
+              "CategoryName": "Bijela tehnika"
+            },
+            {
+              "CategoryName": "Mali kuhinjski aparati"
+            },
+            {
+              "CategoryName": "Mali kućanski aparati"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Grijanje i hlađenje",
+          "ChildCategory": [
+            {
+              "CategoryName": "Klima uređaji"
+            },
+            {
+              "CategoryName": "Ventilatori"
+            },
+            {
+              "CategoryName": "Kamini"
+            },
+            {
+              "CategoryName": "Peći"
+            },
+            {
+              "CategoryName": "Bojleri"
+            },
+            {
+              "CategoryName": "Radijatori"
+            },
+            {
+              "CategoryName": "Grijalice"
+            },
+            {
+              "CategoryName": "Toplinske pumpe"
+            },
+            {
+              "CategoryName": "Ogrjevni materijal"
+            },
+            {
+              "CategoryName": "Ostala oprema za grijanje i hlađenje"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Plinske boce i oprema",
+          "ChildCategory": [
+          ]
+        },
+        {
+          "CategoryName": "Građenje i opremanje",
+          "ChildCategory": [
+            {
+              "CategoryName": "Građevinski materijal"
+            },
+            {
+              "CategoryName": "Građevinska kemija"
+            },
+            {
+              "CategoryName": "Suha gradnja"
+            },
+            {
+              "CategoryName": "Pokrov"
+            },
+            {
+              "CategoryName": "Odvodnja i drenaža"
+            },
+            {
+              "CategoryName": "Pomoćna sredstva za gradnju"
+            },
+            {
+              "CategoryName": "Keramika"
+            },
+            {
+              "CategoryName": "Boje i lakovi"
+            },
+            {
+              "CategoryName": "Ljepila i ljepljive trake"
+            },
+            {
+              "CategoryName": "Građevinsko drvo"
+            },
+            {
+              "CategoryName": "Hidroizolacija"
+            },
+            {
+              "CategoryName": "Termoizolacija"
+            },
+            {
+              "CategoryName": "Građevinska stolarija"
+            },
+            {
+              "CategoryName": "Podne obloge"
+            },
+            {
+              "CategoryName": "Ostalo za stolariju i podne obloge"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Oprema za vrt i voćnjak",
+          "ChildCategory": [
+            {
+              "CategoryName": "Sjeme i sadnice / sadni materijal"
+            },
+            {
+              "CategoryName": "Vrtni strojevi i alati"
+            },
+            {
+              "CategoryName": "Vrtni namještaj"
+            },
+            {
+              "CategoryName": "Betonska galanterija"
+            },
+            {
+              "CategoryName": "Metalna galanterija"
+            },
+            {
+              "CategoryName": "Ostala oprema za vrt i okućnicu"
+            },
+            {
+              "CategoryName": "Ostala oprema za voćnjak"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Bazeni i saune",
+          "ChildCategory": [
+            {
+              "CategoryName": "Bazeni"
+            },
+            {
+              "CategoryName": "Jacuzzi"
+            },
+            {
+              "CategoryName": "Bazeni na napuhavanje"
+            },
+            {
+              "CategoryName": "Oprema za bazene i jacuzzije"
+            },
+            {
+              "CategoryName": "Sauna"
+            },
+            {
+              "CategoryName": "Oprema za saune"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Uredska oprema",
+          "ChildCategory": []
+        },
+        {
+          "CategoryName": "Božićna drvca i dekoracije",
+          "ChildCategory": [
+            {
+              "CategoryName": "Božićna drvca"
+            },
+            {
+              "CategoryName": "Božićni ukrasi"
+            },
+            {
+              "CategoryName": "Božićne lampice"
+            },
+            {
+              "CategoryName": "Božićne čestitke"
+            },
+            {
+              "CategoryName": "Ostalo za Božić"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Kućni ljubimici": {
+      "CategoryName": "Kućni ljubimci",
+      "ChildCategory": [
+        {
+          "CategoryName": "Prodaja kućnih ljubimaca",
+          "ChildCategory": [
+            {
+              "CategoryName": "Psi s rodovnicom"
+            },
+            {
+              "CategoryName": "Psi"
+            },
+            {
+              "CategoryName": "Mačke"
+            },
+            {
+              "CategoryName": "Ptice i papige"
+            },
+            {
+              "CategoryName": "Glodavci, dvojezupci, tvorovi"
+            },
+            {
+              "CategoryName": "Ribice"
+            },
+            {
+              "CategoryName": "Teraristika"
+            },
+            {
+              "CategoryName": "Ostali kućni ljubimci"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Udomljavanje i pronađeni kućni ljubimci",
+          "ChildCategory": [
+            {
+              "CategoryName": "Psi za udomljavanje i pronađeni psi"
+            },
+            {
+              "CategoryName": "Mačke za udomljavanje i pronađene mačke"
+            },
+            {
+              "CategoryName": "Ostali ljubimci za udomljavanje"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Oprema za kućne ljubimce",
+          "ChildCategory": [
+            {
+              "ChildCategory": "Oprema za pse"
+            },
+            {
+              "ChildCategory": "Oprema za mačke"
+            },
+            {
+              "ChildCategory": "Oprema za ptice i papige"
+            },
+            {
+              "ChildCategory": "Glodavci, dvojezupci, tvorovi"
+            },
+            {
+              "ChildCategory": "Akvaristika"
+            },
+            {
+              "ChildCategory": "Teraristika"
+            },
+            {
+              "ChildCategory": "Oprema za ostale ljubimce"
+            }
+          ]
+        },
+        {
+          "CategoryName": "Ljubimci za parenje"
+        }
+      ]
+    }
   }
 ]
