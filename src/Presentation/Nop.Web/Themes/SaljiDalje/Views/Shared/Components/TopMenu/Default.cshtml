@@ -44,7 +44,7 @@
     @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.HeaderMenuBefore, additionalData = Model})
     @if (Model.DisplayHomepageMenuItem)
     {
-        <li><a href="@Url.RouteUrl("Homepage")">@T("Homepage")</a></li>
+        @* <li><a href="@Url.RouteUrl("Homepage")">@T("Homepage")</a></li> *@
     }
     @if (!Model.UseAjaxMenu)
     {
@@ -61,7 +61,7 @@
         </div>
 
     }
-    @foreach (var topic in Model.Topics)
+    @*@foreach (var topic in Model.Topics)
     {
         <li><a href="@Url.RouteUrl("Topic", new {SeName = topic.SeName})">@topic.Name</a></li>
     }
@@ -88,7 +88,7 @@
     @if (Model.DisplayContactUsMenuItem)
     {
         <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
-    }
+    }*@
     @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.HeaderMenuAfter, additionalData = Model})
 </div>
 
@@ -116,7 +116,7 @@
 }
 @if (Model.BlogEnabled && Model.DisplayBlogMenuItem)
 {
-    <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("Blog")">@T("Blog")</a></div>
+    @* <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("Blog")">@T("Blog")</a></div> *@
 }
 @if (Model.ForumEnabled && Model.DisplayForumsMenuItem)
 {
@@ -124,7 +124,7 @@
 }
 @if (Model.DisplayContactUsMenuItem)
 {
-    <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></div>
+    @* <div class="nav-item"><a class="nav-link" href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></div> *@
 }
 
 @*@{
