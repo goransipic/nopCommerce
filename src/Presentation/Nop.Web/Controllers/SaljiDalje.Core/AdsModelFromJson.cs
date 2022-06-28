@@ -18,7 +18,7 @@ public class AudioVideoIFotoOprema
     public class ChildCategory
     {
         public string CategoryName { get; set; }
-        
+        public string CategoryImage { get; set; }
         [JsonProperty("ChildCategory")]
         public List<ChildCategory> NestedChildCategory { get; set; }
     }
@@ -91,6 +91,8 @@ public class AudioVideoIFotoOprema
 
     public class PosloviINatječajiZaZapošljavanje
     {
+        public string CategoryImage { get; set; }
+        public string CategoryImage2 { get; set; }
         public string CategoryName { get; set; }
         public List<ChildCategory> ChildCategory { get; set; }
     }
@@ -177,3 +179,4 @@ public class AudioVideoIFotoOprema
         public string CategoryName { get; set; }
         public List<ChildCategory> ChildCategory { get; set; }
     }
+

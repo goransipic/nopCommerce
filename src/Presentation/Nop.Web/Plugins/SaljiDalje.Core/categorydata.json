@@ -3,7 +3,8 @@
     "CategoryName": "Auto Moto",
     "ChildCategory": [
       {
-        "CategoryName": "Rabljeni automobili",
+        "CategoryName": "Osnovni automobili",
+        "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg",
         "ChildCategory": [
           {
             "CategoryName": "Abarth",
@@ -5657,10 +5658,11 @@
         "CategoryName": "Kuće",
         "ChildCategory": [
           {
+            "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/house.jpg",
             "CategoryName": "Prodaja kuća"
           },
           {
-            "CategoryName": "Iznajmljivanje kuća"
+            "CategoryName": "Najam kuća"
           }
         ]
       },
@@ -5668,10 +5670,12 @@
         "CategoryName": "Stanovi",
         "ChildCategory": [
           {
+            "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/apartment_exterior.jpg",
             "CategoryName": "Prodaja stanova"
           },
           {
-            "CategoryName": "Iznajmljivanje stanova"
+            "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/apartment_interior.jpg",
+            "CategoryName": "Najam stanova"
           }
         ]
       },
@@ -6047,6 +6051,7 @@
     "CategoryName": "Turizam",
     "ChildCategory": [
       {
+        "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/apartment_sea.jpg",
         "CategoryName": "Privatni smještaj u Hrvatskoj"
       },
       {
@@ -9272,6 +9277,8 @@
     ]
   },
   "Poslovi i natječaji za zapošljavanje": {
+    "CategoryImage" : "~/Plugins/SaljiDalje.Core/samples/jobs.jpg",
+    "CategoryImage2" : "~/Plugins/SaljiDalje.Core/samples/jobs.jpg",
     "CategoryName": "Poslovi i natječaji za zapošljavanje",
     "ChildCategory": [
       {

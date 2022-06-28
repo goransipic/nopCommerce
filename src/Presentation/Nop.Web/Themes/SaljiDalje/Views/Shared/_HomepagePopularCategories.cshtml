@@ -1,44 +1,97 @@
+@using Nop.Services.Catalog
+@using Nop.Services.Media
+@inject ICategoryService _categoryService
+@inject IPictureService _pictureService
+@{
+    var categories = await _categoryService
+        .GetAllCategoriesAsync("Osnovni automobili");
+
+    var categories2 = await _categoryService
+        .GetAllCategoriesAsync("Najam stanova");
+
+    var categories3 = await _categoryService
+        .GetAllCategoriesAsync("Privatni smještaj u Hrvatskoj");
+
+    var categories4 = await _categoryService
+        .GetAllCategoriesAsync("Prodaja kuća");
+
+    var categories5 = await _categoryService
+        .GetAllCategoriesAsync("Prodaja stanova");
+
+    var picture = await _pictureService.GetPictureUrlAsync(categories[0].PictureId, 200);
+    var picture2 = await _pictureService.GetPictureUrlAsync(categories2[0].PictureId, 200);
+    var picture3 = await _pictureService.GetPictureUrlAsync(categories3[0].PictureId, 500);
+    var picture4 = await _pictureService.GetPictureUrlAsync(categories4[0].PictureId, 500);
+    var picture5 = await _pictureService.GetPictureUrlAsync(categories5[0].PictureId, 500);
+
+}
 <section class="container py-5 pt-xxl-4 mt-md-2 mb-md-4">
+    @{
+        await Html.RenderPartialAsync("_SectionTitle", "Popularno");
+    }
     <div class="row row-cols-lg-6 row-cols-sm-3 row-cols-2 g-3 g-xl-4">
         <div class="col">
-            <a class="icon-box card card-body h-100 border-0 shadow-sm card-hover text-center" href="city-guide-catalog.html">
-                <div class="icon-box-media bg-faded-accent text-accent rounded-circle mb-3 mx-auto">
-                    <i class="fi-bed"></i>
+            <div class="card bg-size-cover bg-position-center border-0 overflow-hidden" style="background-image: url('@picture');">
+                <span class="img-gradient-overlay"></span>
+                <div class="card-footer content-overlay border-0 pt-0 pb-4">
+                    <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2">
+                        <a href="#" class="text-decoration-none text-light pe-2">
+                            <h3 class="h5 text-light mb-1">@categories[0].Name</h3>
+                        </a>
+                    </div>
                 </div>
-                <h3 class="icon-box-title fs-base mb-0">Accommodation</h3>
-            </a>
+            </div>
         </div>
         <div class="col">
-            <a class="icon-box card card-body h-100 border-0 shadow-sm card-hover text-center" href="city-guide-catalog.html">
-                <div class="icon-box-media bg-faded-warning text-warning rounded-circle mb-3 mx-auto">
-                    <i class="fi-cafe"></i>
+            <div class="card bg-size-cover bg-position-center border-0 overflow-hidden" style="background-image: url('@picture2');">
+                <span class="img-gradient-overlay"></span>
+                <div class="card-footer content-overlay border-0 pt-0 pb-4">
+                    <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2">
+                        <a href="#" class="text-decoration-none text-light pe-2">
+                            <h3 class="h5 text-light mb-1">@categories2[0].Name</h3>
+                        </a>
+                    </div>
                 </div>
-                <h3 class="icon-box-title fs-base mb-0">Food &amp; Drink</h3>
-            </a>
+            </div>
         </div>
         <div class="col">
-            <a class="icon-box card card-body h-100 border-0 shadow-sm card-hover text-center" href="city-guide-catalog.html">
-                <div class="icon-box-media bg-faded-primary text-primary rounded-circle mb-3 mx-auto">
-                    <i class="fi-shopping-bag"></i>
+            <div class="card bg-size-cover bg-position-center border-0 overflow-hidden" style="background-image: url('@picture5');">
+                <span class="img-gradient-overlay"></span>
+                <div class="card-footer content-overlay border-0 pt-0 pb-4">
+                    <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2">
+                        <a href="#" class="text-decoration-none text-light pe-2">
+                            <h3 class="h5 text-light mb-1">@categories5[0].Name</h3>
+                        </a>
+                    </div>
                 </div>
-                <h3 class="icon-box-title fs-base mb-0">Shopping</h3>
-            </a>
+            </div>
         </div>
         <div class="col">
-            <a class="icon-box card card-body h-100 border-0 shadow-sm card-hover text-center" href="city-guide-catalog.html">
-                <div class="icon-box-media bg-faded-success text-success rounded-circle mb-3 mx-auto">
-                    <i class="fi-museum"></i>
+            <div class="card bg-size-cover bg-position-center border-0 overflow-hidden" style="background-image: url('@picture4');">
+                <span class="img-gradient-overlay"></span>
+                <div class="card-footer content-overlay border-0 pt-0 pb-4">
+                    <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2">
+                        <a href="#" class="text-decoration-none text-light pe-2">
+                            <h3 class="h5 text-light mb-1">
+                                @categories4[0].Name @categories4[0].Name
+                            </h3>
+                        </a>
+                    </div>
                 </div>
-                <h3 class="icon-box-title fs-base mb-0">Art &amp; History</h3>
-            </a>
+            </div>
         </div>
         <div class="col">
-            <a class="icon-box card card-body h-100 border-0 shadow-sm card-hover text-center" href="city-guide-catalog.html">
-                <div class="icon-box-media bg-faded-primary text-primary rounded-circle mb-3 mx-auto">
-                    <i class="fi-entertainment"></i>
+            <div class="card bg-size-cover bg-position-center border-0 overflow-hidden"
+                 style="background-image: url('@picture3');">
+                <span class="img-gradient-overlay"></span>
+                <div class="card-footer content-overlay border-0 pt-0 pb-4">
+                    <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2">
+                        <a href="#" class="text-decoration-none text-light pe-2">
+                            <h3 class="h5 text-light mb-1">@categories2[0].Name</h3>
+                        </a>
+                    </div>
                 </div>
-                <h3 class="icon-box-title fs-base mb-0">Entertainment</h3>
-            </a>
+            </div>
         </div>
         <div class="col">
             <div class="dropdown h-100">
@@ -46,7 +99,7 @@
                     <div class="icon-box-media bg-faded-info text-info rounded-circle mb-3 mx-auto">
                         <i class="fi-dots-horisontal"></i>
                     </div>
-                    <h3 class="icon-box-title fs-base mb-0">More</h3>
+                    <h3 class="icon-box-title fs-base mb-0">Najam apartmana</h3>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end my-1">
                     <a class="dropdown-item fw-bold" href="city-guide-catalog.html"><i class="fi-meds fs-base opacity-60 me-2"></i>Medicine</a><a class="dropdown-item fw-bold" href="city-guide-catalog.html"><i class="fi-makeup fs-base opacity-60 me-2"></i>Beauty</a><a class="dropdown-item fw-bold" href="city-guide-catalog.html"><i class="fi-car fs-base opacity-60 me-2"></i>Car Rental</a><a class="dropdown-item fw-bold" href="city-guide-catalog.html"><i class="fi-dumbell fs-base opacity-60 me-2"></i>Fitness &amp; Sport</a><a class="dropdown-item fw-bold" href="city-guide-catalog.html"><i class="fi-disco-ball fs-base opacity-60 me-2"></i>Night Club</a>

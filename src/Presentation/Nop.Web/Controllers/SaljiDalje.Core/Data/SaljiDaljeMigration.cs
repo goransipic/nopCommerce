@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using FluentMigrator;
 using Newtonsoft.Json;
+using Nop.Core;
 using Nop.Core.Domain;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Customers;
@@ -19,11 +20,13 @@ using Nop.Services.Catalog;
 using Nop.Services.Common;
 using Nop.Services.Configuration;
 using Nop.Services.Localization;
+using Nop.Services.Media;
+using Nop.Services.Seo;
 using Nop.Web.Framework.Themes;
 
 namespace SaljiDalje.Core.Data
 {
-    [NopMigration("2022-04-30 10:00:00", "SaljiDaljeMigration", MigrationProcessType.Update)]
+    [NopMigration("2022-04-30 11:00:00", "SaljiDaljeMigration", MigrationProcessType.Update)]
     public class SaljiDaljeMigration : MigrationBase
     {
         #region Fields
@@ -75,11 +78,12 @@ namespace SaljiDalje.Core.Data
 
             var storeInformationSettings = EngineContext.Current.Resolve<StoreInformationSettings>();
             storeInformationSettings.AllowCustomerToSelectTheme = true;
+            storeInformationSettings.DefaultStoreTheme = "SaljiDalje";
             
             _settingService.SaveSettingAsync(storeInformationSettings).Wait();
-            
+
             //EngineContext.Current.Resolve<IThemeContext>().SetWorkingThemeNameAsync("SaljiDalje");
-            
+
             _customerSettings.UsernamesEnabled = true;
             _customerSettings.FirstNameRequired = false;
             _customerSettings.LastNameRequired = false;
@@ -90,7 +94,7 @@ namespace SaljiDalje.Core.Data
 
             InstallCategories();
 
-            Create.TableFor<CostumerPictureAttachmentMapping>();
+            /*Create.TableFor<CostumerPictureAttachmentMapping>();
 
             Create.TableFor<ProductExtended>();
 
@@ -102,7 +106,7 @@ namespace SaljiDalje.Core.Data
             Create.ForeignKey()
                 .FromTable(nameof(ProductExtended))
                 .ForeignColumn(nameof(ProductExtended.UserId))
-                .ToTable(nameof(Customer)).PrimaryColumn(nameof(Customer.Id)).OnDelete(Rule.Cascade);
+                .ToTable(nameof(Customer)).PrimaryColumn(nameof(Customer.Id)).OnDelete(Rule.Cascade);*/
         }
 
         private void InstallCategories()
@@ -110,25 +114,67 @@ namespace SaljiDalje.Core.Data
             var filePath = _fileProvider.MapPath("~/Plugins/SaljiDalje.Core/categorydata.json");
             var jsonString = _fileProvider.ReadAllText(filePath, Encoding.UTF8);
             var adsCategory = JsonConvert.DeserializeObject<AdsCategory>(jsonString);
+            var urlRecordService = EngineContext.Current.Resolve<IUrlRecordService>();
+            
+            var pictureService = EngineContext.Current.Resolve<IPictureService>();
+            
 
             var prop = adsCategory.GetType().GetProperties();
             for (int i = 0; i < prop.Length; i++)
             {
+                
                 var value = prop[i].GetValue(adsCategory, null);
-                var category = AddCategories((string) value
+
+                var categoryName = (string)value
                     .GetType()
                     .GetProperty("CategoryName")
-                    .GetValue(value), i);
+                    .GetValue(value);
                 
-                List<ChildCategory> type = (List<ChildCategory>) value.GetType().GetProperty("ChildCategory").GetValue(value);
-                AddChildCategory(type,category.Id);
+                var categoryImagePropertyInfo = value
+                    .GetType()
+                    .GetProperty("CategoryImage");
+
+                string categoryImage = null;
+                if (categoryImagePropertyInfo != null)
+                {
+                   categoryImage = (string) categoryImagePropertyInfo.GetValue(value);
+                   InsertCategoryPicture(categoryName, categoryImage);
+                }
+
+                //var categoryImage2PropertyInfo = value
+                //    .GetType()
+                //    .GetProperty("CategoryImage2");
+                //if (categoryImage2PropertyInfo != null)
+                //{
+                //    categoryImage = (string) categoryImage2PropertyInfo.GetValue(value);
+                //    InsertCategoryPicture(categoryName, categoryImage);
+               //}
+
+
+                var category = AddCategories(categoryName, i, default, 
+                    true);
+                
+                GenerateSeoName(category);
+
+                List<ChildCategory> type =
+                    (List<ChildCategory>)value.GetType().GetProperty("ChildCategory").GetValue(value);
+                AddChildCategory(type, category.Id);
             }
-            
+
             void AddChildCategory(List<ChildCategory> categories, int parentCategoryId)
             {
                 for (int i = 0; i < categories.Count; i++)
                 {
-                    var category = AddCategories(categories[i].CategoryName, i, parentCategoryId);
+                    var categoryImage = categories[i].CategoryImage;
+                    int? pictureId = null;
+                    if (categoryImage != null)
+                    {
+                       pictureId = InsertCategoryPicture(categories[i].CategoryName,categoryImage);
+                    }
+
+                    var category = AddCategories(categories[i].CategoryName, i,
+                        parentCategoryId, false, pictureId ?? default);
+                    
                     if (categories[i].NestedChildCategory != null)
                     {
                         AddChildCategory(categories[i].NestedChildCategory, category.Id);
@@ -136,7 +182,8 @@ namespace SaljiDalje.Core.Data
                 }
             }
 
-            Category AddCategories(string name, int displayOrder, int parentCategoryId = default)
+            Category AddCategories(string name, int displayOrder, int parentCategoryId = default,
+                bool showOnHomePage = false, int? pictureId = null)
             {
                 var categoryTemplateInGridAndLines = _categoryTemplateRepository
                     .Table.FirstOrDefault(pt => pt.Name == "Products in Grid or Lines");
@@ -152,7 +199,8 @@ namespace SaljiDalje.Core.Data
                     AllowCustomersToSelectPageSize = true,
                     PageSizeOptions = "25,50,100",
                     IncludeInTopMenu = true,
-                    ShowOnHomepage = true,
+                    PictureId = pictureId ?? default,
+                    ShowOnHomepage = showOnHomePage,
                     PriceRangeFiltering = true,
                     Published = true,
                     DisplayOrder = displayOrder,
@@ -161,6 +209,21 @@ namespace SaljiDalje.Core.Data
                 };
 
                 return _nopDataProvider.InsertEntityAsync(category).Result;
+            }
+
+            void GenerateSeoName(Category category)
+            {
+                var SeName = urlRecordService.ValidateSeNameAsync(category, null, category.Name, true).Result;
+                urlRecordService.SaveSlugAsync(category, SeName, 0).Wait();
+            }
+            
+            int InsertCategoryPicture(string categoryName, string pictureLocalUri)
+            {
+                var imagePath = _fileProvider.MapPath(pictureLocalUri);
+                return (pictureService.InsertPictureAsync(
+                    _fileProvider.ReadAllBytesAsync(imagePath).Result,
+                    MimeTypes.ImageJpeg, 
+                    pictureService.GetPictureSeNameAsync(categoryName).Result)).Id;
             }
         }
 
