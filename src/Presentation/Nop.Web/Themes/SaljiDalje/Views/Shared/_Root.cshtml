@@ -33,12 +33,16 @@
     {
         @RenderSection("Breadcrumb")
     }
-    <div class="@{ if(isHome){ <text>container-fluid</text> }else{ <text>container</text> } } master-column-wrapper p-0">
+    <div class="@{ if (isHome){ <text>container-fluid</text> }else{ <text>container</text> } } master-column-wrapper p-0">
         @RenderBody()
     </div>
     @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContentAfter })*@
     @* </div> *@
     @await Component.InvokeAsync("Footer")
+    <!-- Back to top button-->
+    <a class="btn-scroll-top" href="#top" data-scroll>
+        <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon fi-chevron-up"> </i>
+    </a>
 </div>
 @await Component.InvokeAsync("EuCookieLaw")
 @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BodyEndHtmlTagBefore })*@
