@@ -1,0 +1,714 @@
+﻿{
+  "Žene": {
+    "CategoryName": "Žene",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg",
+    "ChildCategory": [
+      {
+        "CategoryName": "Odjeća",
+        "ChildCategory": [
+          {
+            "CategoryName": "Džemperi i veste",
+            "ChildCategory": [
+              {
+                "CategoryName": "S kapuljačom"
+              },
+              {
+                "CategoryName": "Kardigani"
+              },
+              {
+                "CategoryName": "Džemperi i veste"
+              },
+              {
+                "CategoryName": "Bolera"
+              },
+              {
+                "CategoryName": "Kimona"
+              },
+              {
+                "CategoryName": "Prsluci"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Haljine",
+            "ChildCategory": [
+              {
+                "CategoryName": "Mini"
+              },
+              {
+                "CategoryName": "Midi"
+              },
+              {
+                "CategoryName": "Maksi"
+              },
+              {
+                "CategoryName": "Za posebne prilike"
+              },
+              {
+                "CategoryName": "Formalne"
+              },
+              {
+                "CategoryName": "Mala crna haljina"
+              },
+              {
+                "CategoryName": "Ljetne haljine"
+              },
+              {
+                "CategoryName": "Ležerne haljine"
+              },
+              {
+                "CategoryName": "Traper haljine"
+              },
+              {
+                "CategoryName": "Vječanice"
+              },
+              {
+                "CategoryName": "Zimske haljine"
+              },
+              {
+                "CategoryName": "Top haljine"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Gornji dijelovi",
+            "ChildCategory": [
+              {
+                "CategoryName": "Košulje"
+              },
+              {
+                "CategoryName": "Crop top"
+              },
+              {
+                "CategoryName": "Majice"
+              },
+              {
+                "CategoryName": "Dugi rukavi"
+              },
+              {
+                "CategoryName": "Dolčevite"
+              },
+              {
+                "CategoryName": "Bluze"
+              },
+              {
+                "CategoryName": "Prsluci"
+              },
+              {
+                "CategoryName": "Kratki rukavi"
+              },
+              {
+                "CategoryName": "Bodiji"
+              },
+              {
+                "CategoryName": "Peplum"
+              },
+              {
+                "CategoryName": "Potkošulje"
+              },
+              {
+                "CategoryName": "Tunike"
+              },
+              {
+                "CategoryName": "Tri četvrtine rukavi"
+              },
+              {
+                "CategoryName": "Majice bez rukava"
+              },
+              {
+                "CategoryName": "Majica oko vrata"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Hlače i tajice",
+            "ChildCategory": [
+              {
+                "CategoryName": "Skraćene hlače"
+              },
+              {
+                "CategoryName": "Hlače na crtu"
+              },
+              {
+                "CategoryName": "Tajice"
+              },
+              {
+                "CategoryName": "Hlače širokih nogavica"
+              },
+              {
+                "CategoryName": "Jahačke hlače"
+              },
+              {
+                "CategoryName": "Dimije"
+              },
+              {
+                "CategoryName": "Skinny hlače"
+              },
+              {
+                "CategoryName": "Kožne hlače"
+              },
+              {
+                "CategoryName": "Ostale hlače"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Kombinezoni",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Dugi kombinezoni"
+              },
+              {
+                "CategoryName": "Kratki kombinezoni"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Donje rublje i spavaćice",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Grudnjaci"
+              },
+              {
+                "CategoryName": "Gaćice"
+              },
+              {
+                "CategoryName": "Kompleti"
+              },
+              {
+                "CategoryName": "Odjeća za oblikovanje"
+              },
+              {
+                "CategoryName": "Pidžame"
+              },
+              {
+                "CategoryName": "Spavaćice"
+              },
+              {
+                "CategoryName": "Najlonke i dokoljenke"
+              },
+              {
+                "CategoryName": "Čarape"
+              },
+              {
+                "CategoryName": "Dodaci za rublje"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Sportska odjeća",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Odjeća za van"
+              },
+              {
+                "CategoryName": "Trenirke"
+              },
+              {
+                "CategoryName": "Sportske hlače"
+              },
+              {
+                "CategoryName": "Kratke hlače"
+              },
+              {
+                "CategoryName": "Sportske haljine"
+              },
+              {
+                "CategoryName": "Sportske suknje"
+              },
+              {
+                "CategoryName": "Majice i topovi za vježbanje"
+              },
+              {
+                "CategoryName": "Hoodice i gornji dijelovi trenirke"
+              },
+              {
+                "CategoryName": "Dodaci za sport"
+              },
+              {
+                "CategoryName": "Sportski grudnjaci"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Jakne i kaputi",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Kaputi"
+              },
+              {
+                "CategoryName": "Jakne"
+              },
+              {
+                "CategoryName": "Pelerine i ponča"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Odijela i sakoi",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Sakoi"
+              },
+              {
+                "CategoryName": "Kompleti s hlačama"
+              },
+              {
+                "CategoryName": "Kompleti sa suknjama"
+              },
+              {
+                "CategoryName": "Pojedinačni dijelovi"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Suknje",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Mini"
+              },
+              {
+                "CategoryName": "Do koljena"
+              },
+              {
+                "CategoryName": "Duge"
+              },
+              {
+                "CategoryName": "A kroj"
+              },
+              {
+                "CategoryName": "Uske suknje"
+              },
+              {
+                "CategoryName": "Traper suknje"
+              },
+              {
+                "CategoryName": "Visoki struk"
+              },
+              {
+                "CategoryName": "Plisirane suknje"
+              },
+              {
+                "CategoryName": "Poslovne suknje"
+              },
+              {
+                "CategoryName": "Skater suknje"
+              },
+              {
+                "CategoryName": "Tulip suknje"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Traperice",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Boyfriend"
+              },
+              {
+                "CategoryName": "Visokog struka"
+              },
+              {
+                "CategoryName": "Ravnog kroja"
+              },
+              {
+                "CategoryName": "Hlače do gležnja"
+              },
+              {
+                "CategoryName": "Ripped"
+              },
+              {
+                "CategoryName": "Skinny"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Kratke hlače i šorcevi",
+            "ChildCategory": [
+              {
+                "CategoryName": "Niskog struka"
+              },
+              {
+                "CategoryName": "Visokog struka"
+              },
+              {
+                "CategoryName": "Do koljena"
+              },
+              {
+                "CategoryName": "Cargo"
+              },
+              {
+                "CategoryName": "Traper hlačice"
+              },
+              {
+                "CategoryName": "Elegantne"
+              },
+              {
+                "CategoryName": "Kožne"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Kupaći kostimi",
+            "ChildCategory": [
+              {
+                "CategoryName": "Jednodjelni"
+              },
+              {
+                "CategoryName": "Dvodjelni"
+              },
+              {
+                "CategoryName": "Haljine za plažu"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Odjeća za trudnice",
+            "ChildCategory": [
+              {
+                "CategoryName": "Majice"
+              },
+              {
+                "CategoryName": "Hlače"
+              },
+              {
+                "CategoryName": "Veste"
+              },
+              {
+                "CategoryName": "Donje rublje"
+              },
+              {
+                "CategoryName": "Haljine"
+              },
+              {
+                "CategoryName": "Suknje"
+              },
+              {
+                "CategoryName": "Kombinezoni"
+              },
+              {
+                "CategoryName": "Kratke hlače"
+              },
+              {
+                "CategoryName": "Jakne i kaputi"
+              },
+              {
+                "CategoryName": "Kupaći kostimi"
+              },
+              {
+                "CategoryName": "Sportska odjeća"
+              },
+              {
+                "CategoryName": "Košulje za trudnice"
+              },
+              {
+                "CategoryName": "Za dojenje"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Kostimi i uniforme"
+          },
+          {
+            "CategoryName": "Ostala odjeća"
+          }
+        ]
+      },
+      {
+        "CategoryName": "Obuća",
+        "ChildCategory": [
+          {
+            "CategoryName": "Čizme",
+            "ChildCategory": [
+              {
+                "CategoryName": "Platforme"
+              },
+              {
+                "CategoryName": "Čizme za vezanje"
+              },
+              {
+                "CategoryName": "Do koljena"
+              },
+              {
+                "CategoryName": "Kaubojke"
+              },
+              {
+                "CategoryName": "Gumenjaci"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Potpetice",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Štikle"
+              },
+              {
+                "CategoryName": "Salonke"
+              },
+              {
+                "CategoryName": "Špagerice"
+              },
+              {
+                "CategoryName": "Klompe i natikače"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Ravne cipele i balerinke"
+          },
+          {
+            "CategoryName": "Oksfordice i mokasinke"
+          },
+          {
+            "CategoryName": "Tenisice",
+            "ChildCategory": [
+              {
+                "CategoryName": "Za trčanje"
+              },
+              {
+                "CategoryName": "Za planinarenje"
+              },
+              {
+                "CategoryName": "Za trening unutra"
+              },
+              {
+                "CategoryName": "Tenisice za trening"
+              },
+              {
+                "CategoryName": "Fensi tenisice"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Gležnjače"
+          },
+          {
+            "CategoryName": "Japanke"
+          },
+          {
+            "CategoryName": "Papuče"
+          },
+          {
+            "CategoryName": "Sandale"
+          },
+          {
+            "CategoryName": "Ostale cipele"
+          }
+        ]
+      },
+      {
+        "CategoryName": "Torbe",
+        "ChildCategory": [
+          {
+            "CategoryName": "Ručne torbe"
+          },
+          {
+            "CategoryName": "Platnene torbe"
+          },
+          {
+            "CategoryName": "Na ramenu"
+          },
+          {
+            "CategoryName": "Ruksaci"
+          },
+          {
+            "CategoryName": "Clutchevi"
+          },
+          {
+            "CategoryName": "Novčanici"
+          },
+          {
+            "CategoryName": "Kozmetičke torbice"
+          },
+          {
+            "CategoryName": "Kožne torbe"
+          },
+          {
+            "CategoryName": "Torbice oko struka"
+          },
+          {
+            "CategoryName": "Casual torbe"
+          },
+          {
+            "CategoryName": "Putne torbe"
+          },
+          {
+            "CategoryName": "Kovčezi i prtljaga"
+          },
+          {
+            "CategoryName": "Ostale torbe"
+          }
+        ]
+      },
+      {
+        "CategoryName": "Modni dodaci",
+        "ChildCategory": [
+          {
+            "CategoryName": "Nakit",
+            "ChildCategory": [
+              {
+                "CategoryName": "Prstenje"
+              },
+              {
+                "CategoryName": "Naušnice"
+              },
+              {
+                "CategoryName": "Ogrlice"
+              },
+              {
+                "CategoryName": "Narukvice"
+              },
+              {
+                "CategoryName": "Setovi nakita"
+              },
+              {
+                "CategoryName": "Broševi"
+              },
+              {
+                "CategoryName": "Ukrasi za noge"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Sunčane naočale"
+          },
+          {
+            "CategoryName": "Satovi"
+          },
+          {
+            "CategoryName": "Remenje"
+          },
+          {
+            "CategoryName": "Šalovi i marame i kravate"
+          },
+          {
+            "CategoryName": "Rukavice"
+          },
+          {
+            "CategoryName": "Dodaci za kosu"
+          },
+          {
+            "CategoryName": "Šeširi i kape"
+          },
+          {
+            "CategoryName": "Kišobrani"
+          },
+          {
+            "CategoryName": "Privjesci za ključeve"
+          },
+          {
+            "CategoryName": "Tehnološki dodaci"
+          }
+        ]
+      },
+      {
+        "CategoryName": "Njega i ljepota",
+        "ChildCategory": [
+          {
+            "CategoryName": "Šminka"
+          },
+          {
+            "CategoryName": "Njega tijela"
+          },
+          {
+            "CategoryName": "Njega ruku"
+          },
+          {
+            "CategoryName": "Njega kose"
+          },
+          {
+            "CategoryName": "Njega lica"
+          },
+          {
+            "CategoryName": "Njega noktiju"
+          },
+          {
+            "CategoryName": "Parfemi"
+          },
+          {
+            "CategoryName": "Pribor za uljepšavanje",
+            "ChildCategory": [
+              {
+                "CategoryName": "Za kosu"
+              },
+              {
+                "CategoryName": "Za lice"
+              },
+              {
+                "CategoryName": "Za šminkanje"
+              },
+              {
+                "CategoryName": "Za tijelo"
+              },
+              {
+                "CategoryName": "Za nokte"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Ostali pribor"
+          }
+        ]
+      }
+    ]
+  },
+  "Muškarci": {
+    "CategoryName": "Muškarci",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg"
+  },
+  "Djeca": {
+    "CategoryName": "Djeca",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg"
+  },
+  "Dom": {
+    "CategoryName": "Dom",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg"
+  },
+  "Kućni ljubimci": {
+    "CategoryName": "Kućni ljubimci",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg"
+  }
+}
