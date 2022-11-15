@@ -154,18 +154,21 @@
           
         </style>
     <!-- Page loading scripts-->
-    <script>
-          (function () {
-            window.onload = function () {
-              var preloader = document.querySelector('.page-loading');
-              preloader.classList.remove('active');
-              setTimeout(function () {
-                preloader.remove();
-              }, 2000);
-            };
-          })();
-          
-        </script>
+    <environment names="Production">
+        <script>
+                  (function () {
+                    window.onload = function () {
+                      var preloader = document.querySelector('.page-loading');
+                      preloader.classList.remove('active');
+                      setTimeout(function () {
+                        preloader.remove();
+                      }, 2000);
+                    };
+                  })();
+                  
+                </script>
+    </environment>
+    
     @NopHtml.GenerateHeadCustom()
     @*This is used so that themes can inject content into the header*@
     @await Html.PartialAsync("Head")
@@ -233,11 +236,13 @@
 }
 <body class="@{ if (isAdPage){ <text>bg-secondary</text> } }">
 <!-- Page loading spinner-->
-<div class="page-loading active">
-    <div class="page-loading-inner">
-        <div class="page-spinner"></div><span>Loading...</span>
+<environment names="Production">
+    <div class="page-loading active">
+        <div class="page-loading-inner">
+            <div class="page-spinner"></div><span>Loading...</span>
+        </div>
     </div>
-</div>
+</environment>
 <nop-antiforgery-token/>
 <script asp-location="Footer">
             setTimeout(function () {
