@@ -1358,28 +1358,512 @@
         ]
       },
       {
-        "CategoryName": "Dječaci"
+        "CategoryName": "Dječaci",
+        "ChildCategory": [
+          {
+            "CategoryName": "Bebe",
+            "ChildCategory": [
+              {
+                "CategoryName": "Kombinezonići"
+              },
+              {
+                "CategoryName": "Bodiji"
+              },
+              {
+                "CategoryName": "Skafanderi"
+              },
+              {
+                "CategoryName": "Kompleti"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Džemperi i hodice",
+            "ChildCategory": [
+              {
+                "CategoryName": "Džemperi"
+              },
+              {
+                "CategoryName": "Sa cifom"
+              },
+              {
+                "CategoryName": "Bez rukava"
+              },
+              {
+                "CategoryName": "V izrez"
+              },
+              {
+                "CategoryName": "Bolera"
+              },
+              {
+                "CategoryName": "Dolčevite"
+              },
+              {
+                "CategoryName": "Hoodice"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Modni dodaci",
+            "ChildCategory": [
+              {
+                "CategoryName": "Kapice i šeširići"
+              },
+              {
+                "CategoryName": "Remenje"
+              },
+              {
+                "CategoryName": "Rukavičice"
+              },
+              {
+                "CategoryName": "Kravate i leptir mašne"
+              },
+              {
+                "CategoryName": "Šalovi i marame"
+              },
+              {
+                "CategoryName": "Torbice"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Pidžame",
+            "ChildCategory": [
+              {
+                "CategoryName": "Jednodjelne pidžame"
+              },
+              {
+                "CategoryName": "Dvodijelne pidžame"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Odjeća za blizance"
+          },
+          {
+            "CategoryName": "Obuća",
+            "ChildCategory": [
+              {
+                "CategoryName": "Za nehodače"
+              },
+              {
+                "CategoryName": "Za posebne prilike"
+              },
+              {
+                "CategoryName": "Čizme do pola lista"
+              },
+              {
+                "CategoryName": "Papučice"
+              },
+              {
+                "CategoryName": "Ravne cipelice"
+              },
+              {
+                "CategoryName": "Mokasinke"
+              },
+              {
+                "CategoryName": "Gumenjaci"
+              },
+              {
+                "CategoryName": "Sandale"
+              },
+              {
+                "CategoryName": "Gležnjače"
+              },
+              {
+                "CategoryName": "Tenisice"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Majice i gornji dijelovi",
+            "ChildCategory": [
+              {
+                "CategoryName": "Kratki rukavi"
+              },
+              {
+                "CategoryName": "Majice"
+              },
+              {
+                "CategoryName": "Polo"
+              },
+              {
+                "CategoryName": "Dugi rukavi"
+              },
+              {
+                "CategoryName": "Košulje"
+              },
+              {
+                "CategoryName": "Bez rukava"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Hlače i šorcevi",
+            "ChildCategory": [
+              {
+                "CategoryName": "Traperice"
+              },
+              {
+                "CategoryName": "Tajice"
+              },
+              {
+                "CategoryName": "Dimije"
+              },
+              {
+                "CategoryName": "Skinny"
+              },
+              {
+                "CategoryName": "Kombinezoni"
+              },
+              {
+                "CategoryName": "Tregerice"
+              },
+              {
+                "CategoryName": "Široki nogavi"
+              },
+              {
+                "CategoryName": "Šorcevi i bermude"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Kupaći kostimi",
+            "ChildCategory": [
+              {
+                "CategoryName": "Kupaće gaće"
+              },
+              {
+                "CategoryName": "Kupaći ogrtači"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Sportska odjeća"
+          },
+          {
+            "CategoryName": "Torbe i ruksaci"
+          },
+          {
+            "CategoryName": "Donje rublje i čarape"
+          },
+          {
+            "CategoryName": "Formalna odjeća"
+          },
+          {
+            "CategoryName": "LOTovi odjeće za dječake"
+          },
+          {
+            "CategoryName": "Kaputi i jakne",
+            "ChildCategory": [
+              {
+                "CategoryName": "Prsluci"
+              },
+              {
+                "CategoryName": "Kaputići"
+              },
+              {
+                "CategoryName": "Jakne"
+              },
+              {
+                "CategoryName": "Sakoi"
+              },
+              {
+                "CategoryName": "Kabanice"
+              },
+              {
+                "CategoryName": "Ponča"
+              },
+              {
+                "CategoryName": "Skafanderi"
+              },
+              {
+                "CategoryName": "Ostale jakne"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Maske i kostimi"
+          },
+          {
+            "CategoryName": "Ostala odjeća za dječake"
+          }
+        ]
       },
       {
-        "CategoryName": "Igre i igračke"
+        "CategoryName": "Igre i igračke",
+        "ChildCategory": [
+          {
+            "CategoryName": "Slagalice i puzzle"
+          },
+          {
+            "CategoryName": "Igre i igračke"
+          },
+          {
+            "CategoryName": "Igračke",
+            "ChildCategory": [
+              {
+                "CategoryName": "Superheroji"
+              },
+              {
+                "CategoryName": "Mekane"
+              },
+              {
+                "CategoryName": "Makete"
+              },
+              {
+                "CategoryName": "Igračke za vodu"
+              },
+              {
+                "CategoryName": "Igračke spavalice"
+              },
+              {
+                "CategoryName": "Lutke"
+              },
+              {
+                "CategoryName": "Zvečke i glodalice"
+              },
+              {
+                "CategoryName": "Drvene igračke"
+              },
+              {
+                "CategoryName": "Igračke za dvorište"
+              },
+              {
+                "CategoryName": "Didaktičke igračke"
+              },
+              {
+                "CategoryName": "Instrumenti"
+              },
+              {
+                "CategoryName": "Muzičke kutije"
+              },
+              {
+                "CategoryName": "Zanimanja"
+              }
+            ]
+          }
+        ]
       },
       {
-        "CategoryName": "Njega bebe"
+        "CategoryName": "Njega bebe",
+        "ChildCategory": [
+          {
+            "CategoryName": "Ishrana",
+            "ChildCategory": [
+              {
+                "CategoryName": "Jastuci za dojenje"
+              },
+              {
+                "CategoryName": "Pribor za jelo"
+              },
+              {
+                "CategoryName": "Bočice za bebe"
+              },
+              {
+                "CategoryName": "Termosice i grijači"
+              },
+              {
+                "CategoryName": "Dudice"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Oprema za plivanje"
+          },
+          {
+            "CategoryName": "Aparati i oprema za bebe",
+            "ChildCategory": [
+              {
+                "CategoryName": "Monitori za bebe"
+              },
+              {
+                "CategoryName": "Sterilizatori"
+              },
+              {
+                "CategoryName": "Grijači hrane"
+              },
+              {
+                "CategoryName": "Vage i toplomjeri"
+              },
+              {
+                "CategoryName": "Pumpice"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Opršnjaci"
+          },
+          {
+            "CategoryName": "Sigurnost i zaštita",
+            "ChildCategory": [
+              {
+                "CategoryName": "Zaštitne ogradice"
+              },
+              {
+                "CategoryName": "Auto zavjese"
+              },
+              {
+                "CategoryName": "Kacige i štitnici"
+              },
+              {
+                "CategoryName": "Ostalo"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Za spavanje",
+            "ChildCategory": [
+              {
+                "CategoryName": "Dekice"
+              },
+              {
+                "CategoryName": "Jastuci"
+              },
+              {
+                "CategoryName": "Pokrivači"
+              },
+              {
+                "CategoryName": "Vreće za spavanje"
+              },
+              {
+                "CategoryName": "Posteljina"
+              },
+              {
+                "CategoryName": "Grijane podloge i termofori"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Nosiljke i marame"
+          },
+          {
+            "CategoryName": "Pelene i njega kože",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Pelene"
+              },
+              {
+                "CategoryName": "Vreće za pelene"
+              },
+              {
+                "CategoryName": "Higijena"
+              },
+              {
+                "CategoryName": "Torbe za presvlačenje"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Za ljuljanje",
+            "ChildCategory" : [
+              {
+                "CategoryName": "Hodalice"
+              },
+              {
+                "CategoryName": "Ljuljačke"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Kahlice i nastavci za wc"
+          },
+          {
+            "CategoryName": "Torbe za bebine stvari"
+          }
+        ]
       },
       {
-        "CategoryName": "Kolica"
+        "CategoryName": "Kolica",
+        "ChildCategory" : [
+          {
+            "CategoryName": "Kolica za šetnju i trčanje"
+          },
+          {
+            "CategoryName": "Kišobran kolica"
+          },
+          {
+            "CategoryName": "Univerzalna kolica"
+          },
+          {
+            "CategoryName": "Kolica za blizance"
+          },
+          {
+            "CategoryName": "Dodaci za kolica"
+          }
+        ]
       },
       {
-        "CategoryName": "Vozila"
+        "CategoryName": "Vozila",
+        "ChildCategory" : [
+          {
+            "CategoryName": "Guralice"
+          },
+          {
+            "CategoryName": "Romobili"
+          },
+          {
+            "CategoryName": "Bicikli"
+          },
+          {
+            "CategoryName": "Sanjke skije snowboardi"
+          },
+          {
+            "CategoryName": "Hodalice"
+          },
+          {
+            "CategoryName": "Sjedalice za bicikle"
+          },
+          {
+            "CategoryName": "Tricikli"
+          },
+          {
+            "CategoryName": "Vozila za dvorište"
+          },
+          {
+            "CategoryName": "Role i klizaljke"
+          }
+        ]
       },
       {
-        "CategoryName": "Sjedalice"
+        "CategoryName": "Sjedalice",
+        "ChildCategory": [
+          {
+            "CategoryName": "Hranilice"
+          },
+          {
+            "CategoryName": "Autosjedalice"
+          }
+        ]
       },
       {
         "CategoryName": "Namještaj za djecu"
       },
       {
-        "CategoryName": "Školska oprema"
+        "CategoryName": "Školska oprema",
+        "ChildCategory": [
+          {
+            "CategoryName": "Školske torbe"
+          },
+          {
+            "CategoryName": "Školski pribor"
+          }
+        ]
       },
       {
         "CategoryName": "Ostali dječji predmeti"
@@ -1388,7 +1872,77 @@
   },
   "Dom": {
     "CategoryName": "Dom",
-    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg"
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg",
+    "ChildCategory" : [
+      {
+        "CategoryName": "Tekstil",
+        "ChildCategory": [
+          {
+            "CategoryName": "Prekrivači"
+          },
+          {
+            "CategoryName": "Jastučići"
+          },
+          {
+            "CategoryName": "Stolnjaci"
+          },
+          {
+            "CategoryName": "Ručnici"
+          },
+          {
+            "CategoryName": "Posteljina"
+          },
+          {
+            "CategoryName": "Zavjese",
+            "ChildCategory": [
+              {
+                "CategoryName": "Zavjese"
+              },
+              {
+                "CategoryName": "Draperije"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Tapiserije prostirke i otirači"
+          },
+          {
+            "CategoryName": "Tapiserije i makramei"
+          }
+        ]
+      },
+      {
+        "CategoryName": "Dekor",
+        "ChildCategory": [
+          {
+            "CategoryName": "Satovi",
+            "ChildCategory": [
+              {
+                "CategoryName": "Stolni"
+              },
+              {
+                "CategoryName": "Zidni"
+              }
+            ]
+          },
+          {
+            "CategoryName": "Lampe"
+          },
+          {
+            "CategoryName": "Pohrana"
+          },
+          {
+            "CategoryName": "Svijeće i svijećnjaci"
+          },
+          {
+            "CategoryName": "Ogledala"
+          },
+          {
+            "CategoryName": "Vaze"
+          }
+        ]
+      }
+    ]
   },
   "Kućni ljubimci": {
     "CategoryName": "Kućni ljubimci",
