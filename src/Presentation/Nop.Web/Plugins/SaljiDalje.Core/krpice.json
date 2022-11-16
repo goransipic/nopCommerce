@@ -1929,13 +1929,38 @@
             "CategoryName": "Lampe"
           },
           {
-            "CategoryName": "Pohrana"
+            "CategoryName": "Pohrana",
+            "ChildCategory": [
+              {
+                "CategoryName": "Torbe"
+              },
+              {
+                "CategoryName": "Kutije"
+              },
+              {
+                "CategoryName": "Navlake za odjeću i vješalice"
+              },
+              {
+                "CategoryName": "Kutije za nakit"
+              },
+              {
+                "CategoryName": "Koferi i torbe za šminku"
+              }
+            ]
           },
           {
             "CategoryName": "Svijeće i svijećnjaci"
           },
           {
-            "CategoryName": "Ogledala"
+            "CategoryName": "Ogledala",
+            "ChildCategory": [
+              {
+                "CategoryName": "Stolna ogledala"
+              },
+              {
+                "CategoryName": "Zidna ogledala"
+              }
+            ]
           },
           {
             "CategoryName": "Vaze"
@@ -1946,6 +1971,43 @@
   },
   "Kućni ljubimci": {
     "CategoryName": "Kućni ljubimci",
-    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg"
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg",
+    "ChildCategory": [
+      {
+        "CategoryName": "Odjeća"
+      },
+      {
+        "CategoryName": "Kreveti"
+      },
+      {
+        "CategoryName": "Zdjelice"
+      },
+      {
+        "CategoryName": "Ogrlice oprsnice vodilice"
+      },
+      {
+        "CategoryName": "Torbe i transporteri"
+      },
+      {
+        "CategoryName": "Igračke"
+      },
+      {
+        "CategoryName": "Kozmetika",
+        "ChildCategory" : [
+          {
+            "CategoryName": "Šampon"
+          },
+          {
+            "CategoryName": "Ulja"
+          },
+          {
+            "CategoryName": "Regenerator"
+          },
+          {
+            "CategoryName": "Prašak"
+          }
+        ]
+      }
+    ]
   }
 }
