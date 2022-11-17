@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
+namespace SaljiDalje.Core.SaljiDalje;
 public class AudioVideoIFotoOprema
     {
         public string CategoryName { get; set; }

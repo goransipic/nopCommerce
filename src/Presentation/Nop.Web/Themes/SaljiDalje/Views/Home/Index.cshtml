@@ -26,7 +26,7 @@
         @*@await Component.InvokeAsync("TopicBlock", new { systemName = "HomepageText" })*@
         @* @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeCategories }) *@
         <div class="container">
-            @await Html.PartialAsync("_HomepagePopularCategories")
+            @* @await Html.PartialAsync("_HomepagePopularCategories") *@
             @await Component.InvokeAsync("HomepageCategories")
             @* @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeProducts }) *@
             @await Component.InvokeAsync("HomepageProducts")

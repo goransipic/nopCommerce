@@ -22,7 +22,7 @@ using Nop.Services.Configuration;
 using Nop.Services.Localization;
 using Nop.Services.Media;
 using Nop.Services.Seo;
-using Nop.Web.Framework.Themes;
+using SaljiDalje.Core.Krpice;
 
 namespace SaljiDalje.Core.Data
 {
@@ -111,9 +111,9 @@ namespace SaljiDalje.Core.Data
 
         private void InstallCategories()
         {
-            var filePath = _fileProvider.MapPath("~/Plugins/SaljiDalje.Core/categorydata.json");
+            var filePath = _fileProvider.MapPath("~/Plugins/SaljiDalje.Core/krpice.json");
             var jsonString = _fileProvider.ReadAllText(filePath, Encoding.UTF8);
-            var adsCategory = JsonConvert.DeserializeObject<AdsCategory>(jsonString);
+            var adsCategory = JsonConvert.DeserializeObject<KrpiceCategory>(jsonString);
             var urlRecordService = EngineContext.Current.Resolve<IUrlRecordService>();
             
             var pictureService = EngineContext.Current.Resolve<IPictureService>();
@@ -135,10 +135,11 @@ namespace SaljiDalje.Core.Data
                     .GetProperty("CategoryImage");
 
                 string categoryImage = null;
+                int? pictureId = null;
                 if (categoryImagePropertyInfo != null)
-                {
-                   categoryImage = (string) categoryImagePropertyInfo.GetValue(value);
-                   InsertCategoryPicture(categoryName, categoryImage);
+                { 
+                    categoryImage = (string) categoryImagePropertyInfo.GetValue(value);
+                  pictureId = InsertCategoryPicture(categoryName, categoryImage);
                 }
 
                 //var categoryImage2PropertyInfo = value
@@ -152,7 +153,7 @@ namespace SaljiDalje.Core.Data
 
 
                 var category = AddCategories(categoryName, i, default, 
-                    true);
+                    true, pictureId ?? default);
                 
                 GenerateSeoName(category);
 

@@ -1,4 +1,21 @@
-﻿@model SearchBoxModel
+﻿@using Nop.Services.Catalog
+@model SearchBoxModel
+@inject ICategoryService categoryService
+
+@{
+    string RenderImage(int index)
+    {
+        return index switch
+        {
+            0 => "fi-bed",
+            1 => "fi-cafe",
+            2 => "fi-makeup",
+            3 => "fi-meds",
+            4 => "fi-museum",
+            _ => String.Empty
+            };
+    }
+}
 <!-- Search form-->
 <form asp-route="ProductSearch" method="get" id="small-search-box-form" class="form-group d-block d-md-flex position-relative rounded-md-pill mb-2 mb-sm-4 mb-lg-5">
     @if (Model.ShowSearchBox)
@@ -23,46 +40,14 @@
                 </button>
                 <input type="hidden">
                 <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="fi-bed fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Accomodation</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="fi-cafe fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Food &amp; Drink</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="fi-shopping-bag fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Shopping</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="fi-museum fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Art &amp; History</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="fi-entertainment fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Entertainment</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="fi-meds fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Medicine</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="fi-makeup fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Beauty</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="fi-car fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">Car Rental</span>
-                        </a>
-                    </li>
+                    @foreach (var item in (await categoryService.GetAllCategoriesDisplayedOnHomepageAsync()).Select((category, index) => (category, index)))
+                    {
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="@RenderImage(item.index) fs-lg opacity-60 me-2"></i><span class="dropdown-item-label">@item.category.Name</span>
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
             <button class="btn btn-primary btn-lg rounded-pill w-100 w-md-auto ms-sm-3" type="submit">Search</button>

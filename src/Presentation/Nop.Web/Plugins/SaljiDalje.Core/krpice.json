@@ -1,7 +1,7 @@
 ﻿{
   "Žene": {
     "CategoryName": "Žene",
-    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/alyssa-strohmann-TS--uNw-JqE-unsplash.jpg",
     "ChildCategory": [
       {
         "CategoryName": "Odjeća",
@@ -697,7 +697,7 @@
   },
   "Muškarci": {
     "CategoryName": "Muškarci",
-    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/nordwood-themes-Nv4QHkTVEaI-unsplash.jpg",
     "ChildCategory": [
       {
         "CategoryName": "Odjeća",
@@ -1070,7 +1070,7 @@
   },
   "Djeca": {
     "CategoryName": "Djeca",
-    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/kin-li-du2JnmcSvX0-unsplash.jpg",
     "ChildCategory": [
       {
         "CategoryName": "Djevojčice",
@@ -1872,7 +1872,7 @@
   },
   "Dom": {
     "CategoryName": "Dom",
-    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/sarah-dorweiler-fr0J5-GIVyg-unsplash.jpg",
     "ChildCategory" : [
       {
         "CategoryName": "Tekstil",
@@ -1971,7 +1971,7 @@
   },
   "Kućni ljubimci": {
     "CategoryName": "Kućni ljubimci",
-    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/cars.jpg",
+    "CategoryImage": "~/Plugins/SaljiDalje.Core/samples/paul-hanaoka-w2DsS-ZAP4U-unsplash.jpg",
     "ChildCategory": [
       {
         "CategoryName": "Odjeća"
