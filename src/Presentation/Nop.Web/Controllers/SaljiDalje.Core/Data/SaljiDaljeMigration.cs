@@ -38,6 +38,7 @@ namespace SaljiDalje.Core.Data
         private readonly ISettingService _settingService;
         private readonly ISpecificationAttributeService _specificationAttributeService;
         private readonly CustomerSettings _customerSettings;
+        private readonly CatalogSettings _catalogSettings;
         private readonly INopFileProvider _fileProvider;
 
         #endregion
@@ -52,6 +53,7 @@ namespace SaljiDalje.Core.Data
             ISettingService settingService,
             ISpecificationAttributeService specificationAttributeService,
             CustomerSettings customerSettings,
+            CatalogSettings catalogSettings,
             INopFileProvider nopFileProvider)
         {
             _nopDataProvider = nopDataProvider;
@@ -61,6 +63,7 @@ namespace SaljiDalje.Core.Data
             _settingService = settingService;
             _specificationAttributeService = specificationAttributeService;
             _customerSettings = customerSettings;
+            _catalogSettings = catalogSettings;
             _fileProvider = nopFileProvider;
         }
 
@@ -90,11 +93,16 @@ namespace SaljiDalje.Core.Data
             _customerSettings.AllowCustomersToUploadAvatars = true;
             _customerSettings.AvatarMaximumSizeBytes = 2000000;
 
+            _catalogSettings.ShowProductsFromSubcategories = true;
+            _catalogSettings.EnablePriceRangeFiltering = true;
+
+
             _settingService.SaveSettingAsync(_customerSettings).Wait();
+            _settingService.SaveSettingAsync(_catalogSettings).Wait();
 
             InstallCategories();
 
-            /*Create.TableFor<CostumerPictureAttachmentMapping>();
+            Create.TableFor<CostumerPictureAttachmentMapping>();
 
             Create.TableFor<ProductExtended>();
 
@@ -106,7 +114,7 @@ namespace SaljiDalje.Core.Data
             Create.ForeignKey()
                 .FromTable(nameof(ProductExtended))
                 .ForeignColumn(nameof(ProductExtended.UserId))
-                .ToTable(nameof(Customer)).PrimaryColumn(nameof(Customer.Id)).OnDelete(Rule.Cascade);*/
+                .ToTable(nameof(Customer)).PrimaryColumn(nameof(Customer.Id)).OnDelete(Rule.Cascade);
         }
 
         private void InstallCategories()
