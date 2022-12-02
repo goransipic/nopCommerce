@@ -6,22 +6,28 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using FluentMigrator;
+using LinqToDB.Expressions;
 using Newtonsoft.Json;
 using Nop.Core;
 using Nop.Core.Domain;
 using Nop.Core.Domain.Catalog;
+using Nop.Core.Domain.Configuration;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Directory;
+using Nop.Core.Domain.Security;
 using Nop.Core.Infrastructure;
 using Nop.Data;
 using Nop.Data.Extensions;
 using Nop.Data.Migrations;
+using Nop.Services.Authentication.External;
 using Nop.Services.Catalog;
 using Nop.Services.Common;
 using Nop.Services.Configuration;
 using Nop.Services.Localization;
 using Nop.Services.Media;
+using Nop.Services.Plugins;
 using Nop.Services.Seo;
+using NuGet.Protocol.Plugins;
 using SaljiDalje.Core.Krpice;
 
 namespace SaljiDalje.Core.Data
@@ -39,6 +45,11 @@ namespace SaljiDalje.Core.Data
         private readonly ISpecificationAttributeService _specificationAttributeService;
         private readonly CustomerSettings _customerSettings;
         private readonly CatalogSettings _catalogSettings;
+        private readonly CaptchaSettings _captchaSettings;
+        private readonly SecuritySettings _securitySettings;
+        private readonly IAuthenticationPluginManager _authenticationPluginManager;
+        private readonly IRepository<Setting> _settingRepository;
+        private readonly ExternalAuthenticationSettings _externalAuthenticationSettings;
         private readonly INopFileProvider _fileProvider;
 
         #endregion
@@ -54,6 +65,11 @@ namespace SaljiDalje.Core.Data
             ISpecificationAttributeService specificationAttributeService,
             CustomerSettings customerSettings,
             CatalogSettings catalogSettings,
+            CaptchaSettings captchaSettings,
+            SecuritySettings securitySettings,
+            IAuthenticationPluginManager pluginManager,
+            IRepository<Setting> settingRepository,
+            ExternalAuthenticationSettings externalAuthenticationSettings,
             INopFileProvider nopFileProvider)
         {
             _nopDataProvider = nopDataProvider;
@@ -64,6 +80,11 @@ namespace SaljiDalje.Core.Data
             _specificationAttributeService = specificationAttributeService;
             _customerSettings = customerSettings;
             _catalogSettings = catalogSettings;
+            _captchaSettings = captchaSettings;
+            _securitySettings = securitySettings;
+            _authenticationPluginManager = pluginManager;
+            _settingRepository = settingRepository;
+            _externalAuthenticationSettings = externalAuthenticationSettings;
             _fileProvider = nopFileProvider;
         }
 
@@ -79,11 +100,50 @@ namespace SaljiDalje.Core.Data
             if (!DataSettingsManager.IsDatabaseInstalled())
                 return;
 
+            var method = _authenticationPluginManager.LoadPluginBySystemNameAsync("ExternalAuth.Facebook").GetAwaiter()
+                .GetResult();
+            if (method.PluginDescriptor.Installed)
+            {
+                
+                if (!_externalAuthenticationSettings.ActiveAuthenticationMethodSystemNames.Contains(
+                        "ExternalAuth.Facebook"))
+                {
+                    _externalAuthenticationSettings.ActiveAuthenticationMethodSystemNames.Add("ExternalAuth.Facebook");
+                    _settingService.SaveSettingAsync(_externalAuthenticationSettings).Wait();
+                }
+                
+                var item = _settingRepository.Table.Single(item =>
+                    item.Name == "facebookexternalauthsettings.clientkeyidentifier");
+                item.Value = "1554191924993548";
+                _settingRepository.UpdateAsync(item).Wait();
+                
+                var item2 = _settingRepository.Table.Single(item =>
+                    item.Name == "facebookexternalauthsettings.clientsecret");
+                item2.Value = "60a581cbf9a9491ee86c9c2fe48606d3";
+                _settingRepository.UpdateAsync(item2).Wait();
+            }
+            else
+            {
+                throw new NotSupportedException();
+            }
+
+
             var storeInformationSettings = EngineContext.Current.Resolve<StoreInformationSettings>();
             storeInformationSettings.AllowCustomerToSelectTheme = true;
             storeInformationSettings.DefaultStoreTheme = "SaljiDalje";
-            
+
+            _captchaSettings.Enabled = true;
+            _captchaSettings.CaptchaType = CaptchaType.CheckBoxReCaptchaV2;
+            _captchaSettings.ShowOnRegistrationPage = true;
+            _captchaSettings.ReCaptchaPublicKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+            _captchaSettings.ReCaptchaPrivateKey = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
+
+            _settingService.SaveSettingAsync(_captchaSettings).Wait();
             _settingService.SaveSettingAsync(storeInformationSettings).Wait();
+
+            _securitySettings.HoneypotEnabled = true;
+
+            _settingService.SaveSettingAsync(_securitySettings).Wait();
 
             //EngineContext.Current.Resolve<IThemeContext>().SetWorkingThemeNameAsync("SaljiDalje");
 
@@ -92,6 +152,7 @@ namespace SaljiDalje.Core.Data
             _customerSettings.LastNameRequired = false;
             _customerSettings.AllowCustomersToUploadAvatars = true;
             _customerSettings.AvatarMaximumSizeBytes = 2000000;
+
 
             _catalogSettings.ShowProductsFromSubcategories = true;
             _catalogSettings.EnablePriceRangeFiltering = true;
@@ -123,21 +184,20 @@ namespace SaljiDalje.Core.Data
             var jsonString = _fileProvider.ReadAllText(filePath, Encoding.UTF8);
             var adsCategory = JsonConvert.DeserializeObject<KrpiceCategory>(jsonString);
             var urlRecordService = EngineContext.Current.Resolve<IUrlRecordService>();
-            
+
             var pictureService = EngineContext.Current.Resolve<IPictureService>();
-            
+
 
             var prop = adsCategory.GetType().GetProperties();
             for (int i = 0; i < prop.Length; i++)
             {
-                
                 var value = prop[i].GetValue(adsCategory, null);
 
                 var categoryName = (string)value
                     .GetType()
                     .GetProperty("CategoryName")
                     .GetValue(value);
-                
+
                 var categoryImagePropertyInfo = value
                     .GetType()
                     .GetProperty("CategoryImage");
@@ -145,9 +205,9 @@ namespace SaljiDalje.Core.Data
                 string categoryImage = null;
                 int? pictureId = null;
                 if (categoryImagePropertyInfo != null)
-                { 
-                    categoryImage = (string) categoryImagePropertyInfo.GetValue(value);
-                  pictureId = InsertCategoryPicture(categoryName, categoryImage);
+                {
+                    categoryImage = (string)categoryImagePropertyInfo.GetValue(value);
+                    pictureId = InsertCategoryPicture(categoryName, categoryImage);
                 }
 
                 //var categoryImage2PropertyInfo = value
@@ -157,12 +217,12 @@ namespace SaljiDalje.Core.Data
                 //{
                 //    categoryImage = (string) categoryImage2PropertyInfo.GetValue(value);
                 //    InsertCategoryPicture(categoryName, categoryImage);
-               //}
+                //}
 
 
-                var category = AddCategories(categoryName, i, default, 
+                var category = AddCategories(categoryName, i, default,
                     true, pictureId ?? default);
-                
+
                 GenerateSeoName(category);
 
                 List<ChildCategory> type =
@@ -178,12 +238,12 @@ namespace SaljiDalje.Core.Data
                     int? pictureId = null;
                     if (categoryImage != null)
                     {
-                       pictureId = InsertCategoryPicture(categories[i].CategoryName,categoryImage);
+                        pictureId = InsertCategoryPicture(categories[i].CategoryName, categoryImage);
                     }
 
                     var category = AddCategories(categories[i].CategoryName, i,
                         parentCategoryId, false, pictureId ?? default);
-                    
+
                     if (categories[i].NestedChildCategory != null)
                     {
                         AddChildCategory(categories[i].NestedChildCategory, category.Id);
@@ -225,13 +285,13 @@ namespace SaljiDalje.Core.Data
                 var SeName = urlRecordService.ValidateSeNameAsync(category, null, category.Name, true).Result;
                 urlRecordService.SaveSlugAsync(category, SeName, 0).Wait();
             }
-            
+
             int InsertCategoryPicture(string categoryName, string pictureLocalUri)
             {
                 var imagePath = _fileProvider.MapPath(pictureLocalUri);
                 return (pictureService.InsertPictureAsync(
                     _fileProvider.ReadAllBytesAsync(imagePath).Result,
-                    MimeTypes.ImageJpeg, 
+                    MimeTypes.ImageJpeg,
                     pictureService.GetPictureSeNameAsync(categoryName).Result)).Id;
             }
         }

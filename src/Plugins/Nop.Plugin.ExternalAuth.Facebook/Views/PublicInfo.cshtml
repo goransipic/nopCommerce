@@ -1,9 +1,9 @@
 ﻿@{
-    Layout = ""; 
+    Layout = "";
 }
-<link rel="stylesheet" href="~/Plugins/ExternalAuth.Facebook/Content/facebookstyles.css" />
-<div class="facebook-login-block">
-    <div class="buttons">
-        <a asp-controller="facebookauthentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" class="facebook-btn"></a>
-    </div>
-</div>
+<a class="btn btn-outline-info rounded-pill w-100 mb-3"
+   asp-route-returnurl="@Context.Request.Query["ReturnUrl"]"
+   asp-action="Login"
+   asp-controller="facebookauthentication">
+    <i class="fi-facebook fs-lg me-1"></i>Sign in with Facebook
+</a>

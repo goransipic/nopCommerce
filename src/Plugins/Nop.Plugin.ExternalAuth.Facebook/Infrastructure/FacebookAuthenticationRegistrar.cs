@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.OAuth;
@@ -25,7 +27,8 @@ namespace Nop.Plugin.ExternalAuth.Facebook.Infrastructure
                 var settings = EngineContext.Current.Resolve<FacebookExternalAuthSettings>();
                 options.AppId = settings.ClientKeyIdentifier;
                 options.AppSecret = settings.ClientSecret;
-
+                options.Fields.Add("picture");
+                //options.Fields.Add("mobilephone");
                 //store access and refresh tokens for the further usage
                 options.SaveTokens = true;
 
@@ -41,6 +44,13 @@ namespace Nop.Plugin.ExternalAuth.Facebook.Infrastructure
                         context.Response.Redirect(errorUrl);
 
                         return Task.FromResult(0);
+                    },
+                    OnCreatingTicket = (context) =>
+                    {
+                        ClaimsIdentity identity = (ClaimsIdentity)context.Principal.Identity;
+                        string profileImg = context.User.GetProperty("picture").GetProperty("data").GetProperty("url").ToString();
+                        identity.AddClaim(new Claim(ClaimTypes.UserData, profileImg));
+                        return Task.CompletedTask;
                     }
                 };
             });

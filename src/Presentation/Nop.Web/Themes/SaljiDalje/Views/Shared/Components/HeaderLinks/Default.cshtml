@@ -35,17 +35,16 @@
         <div class="dropdown-menu dropdown-menu-end">
             <div class="d-flex align-items-start border-bottom px-3 py-1 mb-2" style="width: 16rem;">
                 <img class="rounded-circle" src="@picture" width="48" alt="@user.Username">
-                <div class="ps-2">
-                    <h6 class="fs-base mb-0">@user.Username</h6>
+                <div class="ps-2 text-truncate">
+                    <span class="fs-base mb-0 h6">@user.Username</span>
+                    <br/>
+                    <span class="star-rating star-rating-sm">
+                        <i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i>
+                    </span>
                     <ul class="list-unstyled fs-sm py-2 mb-0">
                         <li>
-                            <a class="nav-link fw-normal p-0" href="#">
-                                <i class="fi-phone opacity-60 me-2"></i>@phone
-                            </a>
-                        </li>
-                        <li>
                             <a class="nav-link fw-normal p-0 text-truncate" href="#">
-                                <i class="fi-mail opacity-60 me-2"></i>@user.Email
+                                @user.Email
                             </a>
                         </li>
                     </ul>

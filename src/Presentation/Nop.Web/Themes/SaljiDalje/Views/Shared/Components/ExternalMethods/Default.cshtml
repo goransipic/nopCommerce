@@ -1,7 +1,11 @@
 ﻿@model List<ExternalAuthenticationMethodModel>
 @if (Model.Any())
 {
-    <div class="title">@T("Account.AssociatedExternalAuth.Or")</div>
+    <div class="d-flex align-items-center py-4 mb-2">
+        <hr class="w-100">
+        <div class="px-3">ili</div>
+        <hr class="w-100">
+    </div>
 }
 @foreach (var authenticationMethod in Model)
 {
